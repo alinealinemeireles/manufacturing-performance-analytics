@@ -1,0 +1,1328 @@
+﻿NCId,Date,Type,Source,Area,Process,Category,Severity,RelatedRecordId
+NC-00000,2025-07-15,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2010
+NC-00001,2025-08-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2023
+NC-00002,2025-08-11,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-007-2033
+NC-00003,2025-09-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2065
+NC-00004,2025-10-23,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2091
+NC-00005,2025-10-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2093
+NC-00006,2025-11-04,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2102
+NC-00007,2025-11-08,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2106
+NC-00008,2025-11-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2112
+NC-00009,2025-12-03,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-007-2126
+NC-00010,2025-12-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2130
+NC-00011,2025-12-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2140
+NC-00012,2026-01-04,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2150
+NC-00013,2026-01-11,Internal,Lot Rejection,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2155
+NC-00014,2026-01-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2159
+NC-00015,2026-01-31,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2168
+NC-00016,2026-03-10,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2194
+NC-00017,2026-03-16,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2200
+NC-00018,2026-04-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2213
+NC-00019,2026-04-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2224
+NC-00020,2026-04-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2230
+NC-00021,2026-05-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2248
+NC-00022,2026-05-19,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2252
+NC-00023,2026-06-25,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2284
+NC-00024,2026-06-29,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2287
+NC-00025,2026-07-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2296
+NC-00026,2026-07-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2298
+NC-00027,2026-07-13,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2299
+NC-00028,2026-07-20,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2306
+NC-00029,2026-07-23,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2307
+NC-00030,2026-08-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2318
+NC-00031,2026-08-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2323
+NC-00032,2026-09-02,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2342
+NC-00033,2026-09-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2345
+NC-00034,2026-09-06,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2346
+NC-00035,2026-09-19,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2358
+NC-00036,2026-10-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2377
+NC-00037,2026-11-10,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2393
+NC-00038,2026-11-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2396
+NC-00039,2026-11-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2411
+NC-00040,2026-12-03,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2413
+NC-00041,2026-12-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-001-2421
+NC-00042,2026-12-17,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2424
+NC-00043,2025-07-03,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2437
+NC-00044,2025-07-31,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2459
+NC-00045,2025-08-20,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2475
+NC-00046,2025-09-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2484
+NC-00047,2025-09-04,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2487
+NC-00048,2025-10-29,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2538
+NC-00049,2025-11-13,Internal,Lot Concession/Deviation,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2553
+NC-00050,2025-12-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-005-2566
+NC-00051,2025-12-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2585
+NC-00052,2026-01-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2607
+NC-00053,2026-01-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-005-2610
+NC-00054,2026-01-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2612
+NC-00055,2026-03-20,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2655
+NC-00056,2026-05-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2693
+NC-00057,2026-06-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2728
+NC-00058,2026-06-29,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-005-2739
+NC-00059,2026-07-14,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-005-2752
+NC-00060,2026-07-28,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-005-2761
+NC-00061,2026-08-20,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2779
+NC-00062,2026-10-01,Internal,Lot Concession/Deviation,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2816
+NC-00063,2026-10-30,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-008-2840
+NC-00064,2026-12-11,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-2872
+NC-00065,2026-12-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-005-2882
+NC-00066,2025-07-09,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-006-2896
+NC-00067,2025-07-20,Internal,Lot Rework,Production,blow molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-2904
+NC-00068,2025-07-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-2911
+NC-00069,2025-07-29,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-2913
+NC-00070,2025-08-04,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-2918
+NC-00071,2025-08-06,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-2919
+NC-00072,2025-08-13,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-2924
+NC-00073,2025-08-14,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-2925
+NC-00074,2025-08-18,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-2930
+NC-00075,2025-08-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-2935
+NC-00076,2025-08-28,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-2938
+NC-00077,2025-09-09,Internal,Lot Rework,Production,blow molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-2947
+NC-00078,2025-09-10,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-2948
+NC-00079,2025-09-13,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-2950
+NC-00080,2025-09-15,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-2951
+NC-00081,2025-09-17,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-2952
+NC-00082,2025-09-20,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-2954
+NC-00083,2025-10-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-2973
+NC-00084,2025-10-18,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-2981
+NC-00085,2025-10-23,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-2984
+NC-00086,2025-10-29,Internal,Lot Concession/Deviation,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-2988
+NC-00087,2025-11-04,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-003-2992
+NC-00088,2025-11-25,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3012
+NC-00089,2025-11-29,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3015
+NC-00090,2025-12-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3018
+NC-00091,2025-12-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3019
+NC-00092,2025-12-07,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3022
+NC-00093,2025-12-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-3025
+NC-00094,2025-12-18,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-3030
+NC-00095,2025-12-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-3036
+NC-00096,2025-12-30,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-3041
+NC-00097,2025-12-31,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3043
+NC-00098,2026-01-05,Internal,Lot Concession/Deviation,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3049
+NC-00099,2026-01-09,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3052
+NC-00100,2026-01-17,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-3057
+NC-00101,2026-01-19,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3059
+NC-00102,2026-01-26,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3065
+NC-00103,2026-02-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3072
+NC-00104,2026-02-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3077
+NC-00105,2026-02-20,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3086
+NC-00106,2026-02-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3087
+NC-00107,2026-02-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3089
+NC-00108,2026-03-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3092
+NC-00109,2026-03-10,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3099
+NC-00110,2026-03-19,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3106
+NC-00111,2026-03-20,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3107
+NC-00112,2026-03-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3108
+NC-00113,2026-04-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3115
+NC-00114,2026-04-23,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3130
+NC-00115,2026-04-25,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3131
+NC-00116,2026-04-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-3132
+NC-00117,2026-04-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3133
+NC-00118,2026-05-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-025-3139
+NC-00119,2026-05-06,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3140
+NC-00120,2026-05-12,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-3144
+NC-00121,2026-05-17,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3147
+NC-00122,2026-05-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3151
+NC-00123,2026-05-27,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3155
+NC-00124,2026-05-29,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-3156
+NC-00125,2026-06-05,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3162
+NC-00126,2026-06-07,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3163
+NC-00127,2026-06-13,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3169
+NC-00128,2026-06-17,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3172
+NC-00129,2026-06-20,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-3174
+NC-00130,2026-07-04,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3185
+NC-00131,2026-07-07,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3187
+NC-00132,2026-07-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3188
+NC-00133,2026-07-14,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-3191
+NC-00134,2026-07-31,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-3204
+NC-00135,2026-08-06,Internal,Lot Rejection,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3209
+NC-00136,2026-08-06,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3210
+NC-00137,2026-08-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3213
+NC-00138,2026-08-13,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-3214
+NC-00139,2026-08-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3216
+NC-00140,2026-08-22,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-003-3224
+NC-00141,2026-08-27,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-3229
+NC-00142,2026-08-31,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-003-3231
+NC-00143,2026-09-03,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3233
+NC-00144,2026-09-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3234
+NC-00145,2026-09-07,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3235
+NC-00146,2026-09-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3236
+NC-00147,2026-09-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3241
+NC-00148,2026-09-28,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3248
+NC-00149,2026-09-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-3250
+NC-00150,2026-10-01,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-3251
+NC-00151,2026-10-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3253
+NC-00152,2026-10-06,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3254
+NC-00153,2026-10-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3255
+NC-00154,2026-10-16,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3262
+NC-00155,2026-10-20,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3266
+NC-00156,2026-10-25,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3270
+NC-00157,2026-10-26,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3271
+NC-00158,2026-11-03,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-003-3279
+NC-00159,2026-11-08,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-3282
+NC-00160,2026-11-10,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-009-3283
+NC-00161,2026-11-13,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3285
+NC-00162,2026-11-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3289
+NC-00163,2026-11-20,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3290
+NC-00164,2026-11-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-3292
+NC-00165,2026-11-27,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-003-3295
+NC-00166,2026-11-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-003-3297
+NC-00167,2026-12-02,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-009-3298
+NC-00168,2026-12-04,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-021-3300
+NC-00169,2026-12-07,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-006-3302
+NC-00170,2026-12-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3303
+NC-00171,2026-12-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3304
+NC-00172,2026-12-13,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-025-3305
+NC-00173,2026-12-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-006-3320
+NC-00174,2025-07-21,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-012-3338
+NC-00175,2025-07-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-012-3342
+NC-00176,2025-08-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-026-3366
+NC-00177,2025-09-05,Internal,Lot Rework,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-004-3375
+NC-00178,2025-10-03,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-012-3395
+NC-00179,2025-10-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-026-3400
+NC-00180,2025-10-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-029-3413
+NC-00181,2025-11-02,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-029-3421
+NC-00182,2025-11-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Minor,LOTE-M-SOP-029-3439
+NC-00183,2026-01-28,Internal,Lot Rework,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-004-3486
+NC-00184,2026-02-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-026-3507
+NC-00185,2026-03-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-004-3515
+NC-00186,2026-04-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-029-3539
+NC-00187,2026-06-04,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-012-3583
+NC-00188,2026-08-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-004-3626
+NC-00189,2026-08-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-012-3635
+NC-00190,2026-10-17,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-029-3683
+NC-00191,2026-11-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-026-3709
+NC-00192,2026-12-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-026-3733
+NC-00193,2026-12-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-004-3739
+NC-00194,2025-09-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-027-3807
+NC-00195,2025-10-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-013-3814
+NC-00196,2025-10-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-010-3826
+NC-00197,2025-11-17,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-010-3847
+NC-00198,2025-12-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-023-3874
+NC-00199,2026-01-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-013-3890
+NC-00200,2026-01-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-027-3892
+NC-00201,2026-01-31,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-023-3907
+NC-00202,2026-02-03,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-023-3909
+NC-00203,2026-02-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-013-3912
+NC-00204,2026-02-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-010-3918
+NC-00205,2026-02-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-023-3922
+NC-00206,2026-05-03,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-010-3979
+NC-00207,2026-06-17,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-027-4015
+NC-00208,2026-08-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-013-4067
+NC-00209,2026-10-01,Internal,Lot Rejection,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-023-4093
+NC-00210,2026-10-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-027-4114
+NC-00211,2026-11-17,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-013-4130
+NC-00212,2026-11-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-023-4138
+NC-00213,2026-12-16,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-013-4153
+NC-00214,2025-10-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4238
+NC-00215,2025-10-11,Internal,Lot Rejection,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4240
+NC-00216,2025-10-25,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-011-4252
+NC-00217,2025-11-07,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4260
+NC-00218,2025-11-10,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-024-4262
+NC-00219,2025-11-29,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4277
+NC-00220,2025-12-17,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-011-4292
+NC-00221,2025-12-19,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-024-4294
+NC-00222,2026-02-23,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4349
+NC-00223,2026-02-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-018-4350
+NC-00224,2026-04-07,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-018-4380
+NC-00225,2026-04-20,Internal,Lot Rework,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-011-4390
+NC-00226,2026-05-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-024-4406
+NC-00227,2026-05-25,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-014-4418
+NC-00228,2026-07-19,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-014-4455
+NC-00229,2026-08-09,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-011-4471
+NC-00230,2026-09-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-018-4490
+NC-00231,2026-09-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4492
+NC-00232,2026-09-11,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-018-4500
+NC-00233,2026-10-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-014-4519
+NC-00234,2026-10-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-018-4535
+NC-00235,2026-11-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4537
+NC-00236,2026-11-05,Internal,Lot Rejection,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-028-4539
+NC-00237,2026-12-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-018-4568
+NC-00238,2026-12-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-014-4569
+NC-00239,2025-07-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-017-4592
+NC-00240,2025-10-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-020-4655
+NC-00241,2025-11-06,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-4680
+NC-00242,2026-01-08,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-020-4732
+NC-00243,2026-01-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-015-4742
+NC-00244,2026-03-21,Internal,Lot Rework,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-017-4793
+NC-00245,2026-04-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-4811
+NC-00246,2026-05-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-020-4835
+NC-00247,2026-05-21,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-017-4842
+NC-00248,2026-06-27,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-017-4873
+NC-00249,2026-07-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-4893
+NC-00250,2026-09-16,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-017-4938
+NC-00251,2026-09-28,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-002-4946
+NC-00252,2026-11-24,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-015-4994
+NC-00253,2026-11-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-020-4996
+NC-00254,2026-12-09,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-020-5005
+NC-00255,2026-12-14,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-015-5011
+NC-00256,2026-12-23,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-020-5018
+NC-00257,2025-07-03,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5028
+NC-00258,2025-07-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-019-5034
+NC-00259,2025-08-06,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5051
+NC-00260,2025-08-17,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5058
+NC-00261,2025-08-31,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-019-5073
+NC-00262,2025-09-04,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5077
+NC-00263,2025-09-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5086
+NC-00264,2025-09-26,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5093
+NC-00265,2025-10-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5097
+NC-00266,2025-10-29,Internal,Lot Concession/Deviation,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5120
+NC-00267,2025-12-04,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5147
+NC-00268,2025-12-30,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5166
+NC-00269,2026-01-01,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5167
+NC-00270,2026-01-28,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5186
+NC-00271,2026-02-20,Internal,Lot Rejection,Production,BLOW MOLDING,In-Process Quality Deviation,Major,LOTE-M-SOP-019-5208
+NC-00272,2026-02-22,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5210
+NC-00273,2026-03-18,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5229
+NC-00274,2026-03-20,Internal,Lot Rejection,Production,blow molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5230
+NC-00275,2026-04-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-019-5251
+NC-00276,2026-05-12,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5270
+NC-00277,2026-06-10,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-019-5294
+NC-00278,2026-07-05,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5314
+NC-00279,2026-07-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5317
+NC-00280,2026-08-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5349
+NC-00281,2026-08-22,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-019-5354
+NC-00282,2026-09-07,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-016-5366
+NC-00283,2026-09-11,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5369
+NC-00284,2026-09-15,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5373
+NC-00285,2026-10-20,Internal,Lot Rejection,Production,  Blow Molding  ,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5403
+NC-00286,2026-12-03,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-022-5442
+NC-00287,2025-07-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5467
+NC-00288,2025-07-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5472
+NC-00289,2025-07-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5475
+NC-00290,2025-07-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5476
+NC-00291,2025-07-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5477
+NC-00292,2025-07-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5487
+NC-00293,2025-08-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5490
+NC-00294,2025-08-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5494
+NC-00295,2025-08-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5496
+NC-00296,2025-08-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5506
+NC-00297,2025-08-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5511
+NC-00298,2025-08-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5513
+NC-00299,2025-09-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5516
+NC-00300,2025-09-19,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5529
+NC-00301,2025-09-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5535
+NC-00302,2025-10-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5550
+NC-00303,2025-10-14,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5552
+NC-00304,2025-10-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5555
+NC-00305,2025-10-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5557
+NC-00306,2025-10-29,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5567
+NC-00307,2025-11-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5572
+NC-00308,2025-11-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5584
+NC-00309,2025-12-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5593
+NC-00310,2025-12-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5594
+NC-00311,2025-12-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5608
+NC-00312,2026-01-01,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5616
+NC-00313,2026-01-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5628
+NC-00314,2026-01-19,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5631
+NC-00315,2026-01-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5635
+NC-00316,2026-01-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5637
+NC-00317,2026-01-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5639
+NC-00318,2026-02-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5646
+NC-00319,2026-02-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5656
+NC-00320,2026-02-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5662
+NC-00321,2026-02-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5663
+NC-00322,2026-03-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5669
+NC-00323,2026-03-09,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5673
+NC-00324,2026-03-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5675
+NC-00325,2026-03-16,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5678
+NC-00326,2026-03-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5680
+NC-00327,2026-03-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5681
+NC-00328,2026-03-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5682
+NC-00329,2026-03-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5683
+NC-00330,2026-04-19,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5708
+NC-00331,2026-04-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5712
+NC-00332,2026-05-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5722
+NC-00333,2026-05-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5724
+NC-00334,2026-05-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5725
+NC-00335,2026-05-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5731
+NC-00336,2026-05-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5739
+NC-00337,2026-06-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5763
+NC-00338,2026-07-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5765
+NC-00339,2026-07-06,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5767
+NC-00340,2026-07-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5768
+NC-00341,2026-07-16,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5775
+NC-00342,2026-07-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5779
+NC-00343,2026-07-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5780
+NC-00344,2026-08-02,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5786
+NC-00345,2026-08-03,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5787
+NC-00346,2026-08-05,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5788
+NC-00347,2026-08-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5791
+NC-00348,2026-08-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5802
+NC-00349,2026-08-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5805
+NC-00350,2026-08-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5806
+NC-00351,2026-08-28,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5809
+NC-00352,2026-09-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5812
+NC-00353,2026-09-06,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5816
+NC-00354,2026-09-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5833
+NC-00355,2026-09-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5835
+NC-00356,2026-10-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5841
+NC-00357,2026-10-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5856
+NC-00358,2026-10-30,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5861
+NC-00359,2026-11-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5863
+NC-00360,2026-11-04,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5865
+NC-00361,2026-11-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5868
+NC-00362,2026-11-16,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5873
+NC-00363,2026-11-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5874
+NC-00364,2026-11-23,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5881
+NC-00365,2026-12-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5886
+NC-00366,2026-12-06,Internal,Lot Concession/Deviation,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5890
+NC-00367,2026-12-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5902
+NC-00368,2026-12-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5903
+NC-00369,2026-12-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-5905
+NC-00370,2025-07-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5911
+NC-00371,2025-07-07,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5912
+NC-00372,2025-07-10,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5915
+NC-00373,2025-07-11,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5916
+NC-00374,2025-07-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5917
+NC-00375,2025-07-17,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5920
+NC-00376,2025-08-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5930
+NC-00377,2025-08-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5932
+NC-00378,2025-08-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5933
+NC-00379,2025-08-10,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5935
+NC-00380,2025-08-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5936
+NC-00381,2025-08-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5945
+NC-00382,2025-08-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5946
+NC-00383,2025-08-24,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5947
+NC-00384,2025-08-29,Internal,Lot Rework,Production,  Injection Molding  ,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5950
+NC-00385,2025-09-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5952
+NC-00386,2025-09-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5953
+NC-00387,2025-09-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5954
+NC-00388,2025-09-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5955
+NC-00389,2025-09-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5960
+NC-00390,2025-09-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5962
+NC-00391,2025-09-22,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5969
+NC-00392,2025-09-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5971
+NC-00393,2025-09-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5972
+NC-00394,2025-10-03,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5977
+NC-00395,2025-10-04,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5978
+NC-00396,2025-10-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5979
+NC-00397,2025-10-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5980
+NC-00398,2025-10-08,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5982
+NC-00399,2025-10-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5984
+NC-00400,2025-10-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5988
+NC-00401,2025-10-14,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5990
+NC-00402,2025-10-16,Internal,Lot Concession/Deviation,Production,INJECTION MOLDING,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-5991
+NC-00403,2025-10-17,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5992
+NC-00404,2025-10-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5998
+NC-00405,2025-10-22,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-002-5999
+NC-00406,2025-10-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6000
+NC-00407,2025-10-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6004
+NC-00408,2025-11-01,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6007
+NC-00409,2025-11-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6009
+NC-00410,2025-11-04,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6010
+NC-00411,2025-11-04,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6011
+NC-00412,2025-11-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6012
+NC-00413,2025-11-11,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6017
+NC-00414,2025-11-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6022
+NC-00415,2025-11-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6028
+NC-00416,2025-11-24,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6029
+NC-00417,2025-12-01,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6034
+NC-00418,2025-12-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6041
+NC-00419,2025-12-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6042
+NC-00420,2025-12-20,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6048
+NC-00421,2026-01-05,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6060
+NC-00422,2026-01-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6061
+NC-00423,2026-01-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6064
+NC-00424,2026-01-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6065
+NC-00425,2026-01-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6067
+NC-00426,2026-01-16,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6070
+NC-00427,2026-01-19,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6072
+NC-00428,2026-01-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6073
+NC-00429,2026-01-24,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6076
+NC-00430,2026-02-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6082
+NC-00431,2026-02-01,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6083
+NC-00432,2026-02-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6084
+NC-00433,2026-02-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6086
+NC-00434,2026-02-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6096
+NC-00435,2026-02-25,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6103
+NC-00436,2026-02-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6106
+NC-00437,2026-03-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6108
+NC-00438,2026-03-11,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6114
+NC-00439,2026-03-22,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6124
+NC-00440,2026-03-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6126
+NC-00441,2026-03-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6127
+NC-00442,2026-03-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6130
+NC-00443,2026-04-04,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6136
+NC-00444,2026-04-05,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6137
+NC-00445,2026-04-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6142
+NC-00446,2026-04-13,Internal,Lot Rework,Production,INJECTION MOLDING,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6143
+NC-00447,2026-04-22,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6151
+NC-00448,2026-04-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6152
+NC-00449,2026-04-28,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6156
+NC-00450,2026-05-04,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6161
+NC-00451,2026-05-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6168
+NC-00452,2026-05-15,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6169
+NC-00453,2026-05-20,Internal,Lot Rework,Production,injection molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6174
+NC-00454,2026-05-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6175
+NC-00455,2026-05-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6176
+NC-00456,2026-05-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6178
+NC-00457,2026-06-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6184
+NC-00458,2026-06-02,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6185
+NC-00459,2026-06-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6187
+NC-00460,2026-06-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6188
+NC-00461,2026-06-12,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6195
+NC-00462,2026-06-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6198
+NC-00463,2026-06-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6199
+NC-00464,2026-06-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6200
+NC-00465,2026-06-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6201
+NC-00466,2026-06-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6202
+NC-00467,2026-06-23,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6204
+NC-00468,2026-06-24,Internal,Lot Rework,Production,  Injection Molding  ,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6205
+NC-00469,2026-07-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6215
+NC-00470,2026-07-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6221
+NC-00471,2026-07-13,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6224
+NC-00472,2026-07-15,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6225
+NC-00473,2026-07-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6227
+NC-00474,2026-07-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6239
+NC-00475,2026-08-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6242
+NC-00476,2026-08-04,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6243
+NC-00477,2026-08-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6249
+NC-00478,2026-08-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6250
+NC-00479,2026-08-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6252
+NC-00480,2026-08-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6255
+NC-00481,2026-08-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6258
+NC-00482,2026-08-25,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6259
+NC-00483,2026-08-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6261
+NC-00484,2026-08-28,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6262
+NC-00485,2026-08-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6265
+NC-00486,2026-09-03,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6268
+NC-00487,2026-09-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6269
+NC-00488,2026-09-05,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6270
+NC-00489,2026-09-11,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6275
+NC-00490,2026-09-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6276
+NC-00491,2026-09-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6278
+NC-00492,2026-09-18,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6284
+NC-00493,2026-09-22,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6286
+NC-00494,2026-09-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6288
+NC-00495,2026-09-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6289
+NC-00496,2026-10-07,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6296
+NC-00497,2026-10-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6297
+NC-00498,2026-10-13,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6305
+NC-00499,2026-10-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6306
+NC-00500,2026-10-16,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6307
+NC-00501,2026-10-19,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6309
+NC-00502,2026-10-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6314
+NC-00503,2026-10-28,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6315
+NC-00504,2026-10-30,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6317
+NC-00505,2026-10-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6318
+NC-00506,2026-11-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6320
+NC-00507,2026-11-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6322
+NC-00508,2026-11-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6325
+NC-00509,2026-11-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6326
+NC-00510,2026-11-14,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6329
+NC-00511,2026-11-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6330
+NC-00512,2026-11-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6335
+NC-00513,2026-11-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6342
+NC-00514,2026-12-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6343
+NC-00515,2026-12-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6354
+NC-00516,2026-12-15,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6357
+NC-00517,2026-12-23,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-002-6367
+NC-00518,2026-12-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6368
+NC-00519,2026-12-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-002-6372
+NC-00520,2025-07-25,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6396
+NC-00521,2025-07-29,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6399
+NC-00522,2025-08-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6407
+NC-00523,2025-08-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6412
+NC-00524,2025-08-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6417
+NC-00525,2025-08-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6422
+NC-00526,2025-09-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6428
+NC-00527,2025-09-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6430
+NC-00528,2025-09-16,Internal,Lot Concession/Deviation,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6435
+NC-00529,2025-09-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6445
+NC-00530,2025-10-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6454
+NC-00531,2025-10-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6461
+NC-00532,2025-11-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6475
+NC-00533,2025-11-04,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6477
+NC-00534,2025-11-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6480
+NC-00535,2025-11-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6481
+NC-00536,2025-11-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6484
+NC-00537,2025-11-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6486
+NC-00538,2025-11-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6495
+NC-00539,2025-11-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6496
+NC-00540,2025-12-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6499
+NC-00541,2025-12-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6501
+NC-00542,2025-12-19,Internal,Lot Concession/Deviation,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6513
+NC-00543,2025-12-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6516
+NC-00544,2026-01-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6524
+NC-00545,2026-01-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6526
+NC-00546,2026-01-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6527
+NC-00547,2026-01-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6540
+NC-00548,2026-02-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6546
+NC-00549,2026-02-08,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6553
+NC-00550,2026-02-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6556
+NC-00551,2026-02-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6566
+NC-00552,2026-03-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6573
+NC-00553,2026-03-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6575
+NC-00554,2026-03-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6580
+NC-00555,2026-03-16,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6581
+NC-00556,2026-03-27,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6590
+NC-00557,2026-03-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6592
+NC-00558,2026-04-10,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6601
+NC-00559,2026-04-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6607
+NC-00560,2026-04-30,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6616
+NC-00561,2026-05-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6617
+NC-00562,2026-05-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6621
+NC-00563,2026-05-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6634
+NC-00564,2026-05-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6636
+NC-00565,2026-05-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6640
+NC-00566,2026-06-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6644
+NC-00567,2026-06-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6648
+NC-00568,2026-06-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6650
+NC-00569,2026-06-16,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6653
+NC-00570,2026-06-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6660
+NC-00571,2026-06-30,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6666
+NC-00572,2026-07-10,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6674
+NC-00573,2026-07-13,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6677
+NC-00574,2026-07-23,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6685
+NC-00575,2026-07-25,Internal,Lot Rework,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6686
+NC-00576,2026-08-06,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6696
+NC-00577,2026-08-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6706
+NC-00578,2026-08-26,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6714
+NC-00579,2026-08-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6716
+NC-00580,2026-08-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6717
+NC-00581,2026-08-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6719
+NC-00582,2026-09-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6728
+NC-00583,2026-09-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6734
+NC-00584,2026-10-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6740
+NC-00585,2026-10-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6744
+NC-00586,2026-10-29,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6762
+NC-00587,2026-11-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6766
+NC-00588,2026-11-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6781
+NC-00589,2026-11-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6784
+NC-00590,2026-12-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6789
+NC-00591,2026-12-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6795
+NC-00592,2026-12-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-001-6796
+NC-00593,2026-12-30,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-003-6806
+NC-00594,2025-07-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6808
+NC-00595,2025-07-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6812
+NC-00596,2025-07-29,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6813
+NC-00597,2025-08-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6817
+NC-00598,2025-08-18,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6819
+NC-00599,2025-08-22,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6820
+NC-00600,2025-08-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6821
+NC-00601,2025-08-26,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6822
+NC-00602,2025-09-02,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6823
+NC-00603,2025-09-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6824
+NC-00604,2025-09-13,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6826
+NC-00605,2025-09-24,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6827
+NC-00606,2025-09-27,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-007-6828
+NC-00607,2025-10-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6830
+NC-00608,2025-10-20,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6833
+NC-00609,2025-10-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6835
+NC-00610,2025-11-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6836
+NC-00611,2025-11-07,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6837
+NC-00612,2025-11-17,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6838
+NC-00613,2025-11-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6839
+NC-00614,2025-12-02,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6840
+NC-00615,2025-12-03,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-007-6841
+NC-00616,2025-12-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6842
+NC-00617,2025-12-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6843
+NC-00618,2025-12-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6844
+NC-00619,2025-12-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6846
+NC-00620,2026-01-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-007-6848
+NC-00621,2026-01-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6852
+NC-00622,2026-02-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6854
+NC-00623,2026-02-12,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6855
+NC-00624,2026-02-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6856
+NC-00625,2026-02-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6857
+NC-00626,2026-03-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6858
+NC-00627,2026-03-09,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6859
+NC-00628,2026-03-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6860
+NC-00629,2026-03-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6861
+NC-00630,2026-03-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6862
+NC-00631,2026-03-29,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-004-6863
+NC-00632,2026-04-04,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6864
+NC-00633,2026-04-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6865
+NC-00634,2026-04-18,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6866
+NC-00635,2026-04-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-004-6867
+NC-00636,2026-04-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6868
+NC-00637,2026-05-03,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6869
+NC-00638,2026-05-13,Internal,Lot Rework,Production,  Injection Molding  ,In-Process Quality Deviation,Minor,LOTE-M-INJ-004-6871
+NC-00639,2026-05-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6872
+NC-00640,2026-05-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6873
+NC-00641,2026-05-31,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6875
+NC-00642,2026-06-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6877
+NC-00643,2026-06-23,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6884
+NC-00644,2026-07-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6885
+NC-00645,2026-07-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6888
+NC-00646,2026-07-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6890
+NC-00647,2026-08-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6891
+NC-00648,2026-08-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6892
+NC-00649,2026-08-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6893
+NC-00650,2026-08-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6896
+NC-00651,2026-09-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6897
+NC-00652,2026-09-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6899
+NC-00653,2026-09-10,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-004-6900
+NC-00654,2026-09-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6901
+NC-00655,2026-09-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-004-6902
+NC-00656,2026-09-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6903
+NC-00657,2026-09-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6904
+NC-00658,2026-10-01,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6905
+NC-00659,2026-10-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6906
+NC-00660,2026-10-12,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6907
+NC-00661,2026-10-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6908
+NC-00662,2026-10-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6909
+NC-00663,2026-10-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6910
+NC-00664,2026-11-02,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-007-6911
+NC-00665,2026-11-13,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6912
+NC-00666,2026-11-14,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Minor,LOTE-M-INJ-007-6913
+NC-00667,2026-11-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-004-6914
+NC-00668,2026-12-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6919
+NC-00669,2025-07-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6929
+NC-00670,2025-07-14,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6931
+NC-00671,2025-07-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6935
+NC-00672,2025-07-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6937
+NC-00673,2025-08-02,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6947
+NC-00674,2025-08-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6951
+NC-00675,2025-08-13,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6955
+NC-00676,2025-08-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6957
+NC-00677,2025-08-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6960
+NC-00678,2025-08-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6962
+NC-00679,2025-09-06,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6978
+NC-00680,2025-09-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6981
+NC-00681,2025-09-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6986
+NC-00682,2025-09-16,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6987
+NC-00683,2025-09-19,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-6989
+NC-00684,2025-10-02,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-6999
+NC-00685,2025-10-11,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7006
+NC-00686,2025-10-16,Internal,Lot Concession/Deviation,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7011
+NC-00687,2025-10-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7012
+NC-00688,2025-10-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7017
+NC-00689,2025-10-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7019
+NC-00690,2025-11-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7038
+NC-00691,2025-12-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7067
+NC-00692,2026-01-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7083
+NC-00693,2026-01-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7093
+NC-00694,2026-02-05,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7101
+NC-00695,2026-02-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7112
+NC-00696,2026-03-02,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7118
+NC-00697,2026-03-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7127
+NC-00698,2026-03-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7130
+NC-00699,2026-03-29,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7137
+NC-00700,2026-04-13,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7148
+NC-00701,2026-04-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7154
+NC-00702,2026-05-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7161
+NC-00703,2026-05-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7178
+NC-00704,2026-05-26,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7179
+NC-00705,2026-06-02,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7183
+NC-00706,2026-06-04,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7184
+NC-00707,2026-06-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7187
+NC-00708,2026-06-17,Internal,Lot Concession/Deviation,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7192
+NC-00709,2026-06-19,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7194
+NC-00710,2026-07-23,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7217
+NC-00711,2026-08-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7232
+NC-00712,2026-08-15,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7235
+NC-00713,2026-08-16,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7236
+NC-00714,2026-09-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7254
+NC-00715,2026-09-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7257
+NC-00716,2026-09-25,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7270
+NC-00717,2026-10-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7293
+NC-00718,2026-10-28,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7298
+NC-00719,2026-11-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7303
+NC-00720,2026-11-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7304
+NC-00721,2026-11-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7309
+NC-00722,2026-11-13,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7311
+NC-00723,2026-11-26,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-005-7321
+NC-00724,2026-11-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7322
+NC-00725,2026-12-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7328
+NC-00726,2026-12-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7333
+NC-00727,2026-12-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7334
+NC-00728,2026-12-15,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-008-7339
+NC-00729,2025-07-02,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7351
+NC-00730,2025-07-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7354
+NC-00731,2025-07-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7357
+NC-00732,2025-08-03,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7376
+NC-00733,2025-08-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7377
+NC-00734,2025-08-06,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7378
+NC-00735,2025-08-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7386
+NC-00736,2025-08-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7397
+NC-00737,2025-09-01,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7401
+NC-00738,2025-09-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7407
+NC-00739,2025-09-10,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7408
+NC-00740,2025-09-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7415
+NC-00741,2025-09-23,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7416
+NC-00742,2025-10-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7444
+NC-00743,2025-11-16,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7459
+NC-00744,2025-11-27,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7466
+NC-00745,2026-01-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7501
+NC-00746,2026-02-10,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7524
+NC-00747,2026-02-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7526
+NC-00748,2026-02-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7530
+NC-00749,2026-02-25,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7534
+NC-00750,2026-02-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7535
+NC-00751,2026-03-18,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7549
+NC-00752,2026-03-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7550
+NC-00753,2026-03-30,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7557
+NC-00754,2026-04-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7571
+NC-00755,2026-04-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7576
+NC-00756,2026-04-29,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7579
+NC-00757,2026-05-01,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7582
+NC-00758,2026-05-08,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7588
+NC-00759,2026-05-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7592
+NC-00760,2026-05-21,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7598
+NC-00761,2026-05-29,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7604
+NC-00762,2026-05-30,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7605
+NC-00763,2026-06-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7609
+NC-00764,2026-06-19,Internal,Lot Rework,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7622
+NC-00765,2026-06-21,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7623
+NC-00766,2026-06-23,Internal,Lot Concession/Deviation,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7625
+NC-00767,2026-07-26,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7652
+NC-00768,2026-07-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7654
+NC-00769,2026-07-31,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7657
+NC-00770,2026-08-14,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7667
+NC-00771,2026-08-18,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7671
+NC-00772,2026-08-20,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7674
+NC-00773,2026-08-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7681
+NC-00774,2026-09-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7686
+NC-00775,2026-09-29,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7706
+NC-00776,2026-10-07,Internal,Lot Rejection,Production,  Injection Molding  ,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7715
+NC-00777,2026-10-09,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7716
+NC-00778,2026-10-27,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7731
+NC-00779,2026-11-15,Internal,Lot Rejection,Production,injection molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7745
+NC-00780,2026-11-17,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-009-7746
+NC-00781,2026-11-29,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7757
+NC-00782,2026-12-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7762
+NC-00783,2026-12-07,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7764
+NC-00784,2026-12-28,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-006-7781
+NC-00785,2025-11-05,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-7788
+NC-00786,2025-07-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2003
+NC-00787,2025-07-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2008
+NC-00788,2025-07-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2020
+NC-00789,2025-09-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2052
+NC-00790,2025-09-21,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2060
+NC-00791,2025-10-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2072
+NC-00792,2025-10-08,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2073
+NC-00793,2025-10-29,Internal,Lot Rejection,Production,  Screen Printing  ,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2094
+NC-00794,2025-11-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2096
+NC-00795,2025-11-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2103
+NC-00796,2025-11-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2110
+NC-00797,2025-11-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2114
+NC-00798,2025-11-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2123
+NC-00799,2026-01-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2158
+NC-00800,2026-02-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2169
+NC-00801,2026-02-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2183
+NC-00802,2026-03-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2188
+NC-00803,2026-03-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2189
+NC-00804,2026-03-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2190
+NC-00805,2026-03-23,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2205
+NC-00806,2026-04-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2214
+NC-00807,2026-04-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2225
+NC-00808,2026-04-23,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2230
+NC-00809,2026-04-26,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2232
+NC-00810,2026-05-15,Internal,Lot Rework,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2248
+NC-00811,2026-05-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2256
+NC-00812,2026-06-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2261
+NC-00813,2026-06-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2280
+NC-00814,2026-06-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2282
+NC-00815,2026-07-06,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2294
+NC-00816,2026-07-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2296
+NC-00817,2026-07-11,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2297
+NC-00818,2026-08-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2338
+NC-00819,2026-08-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2339
+NC-00820,2026-09-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2359
+NC-00821,2026-09-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2362
+NC-00822,2026-10-09,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2370
+NC-00823,2026-10-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2376
+NC-00824,2026-11-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2388
+NC-00825,2025-09-06,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2487
+NC-00826,2026-02-12,Internal,Lot Rework,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2623
+NC-00827,2026-02-15,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2625
+NC-00828,2026-03-02,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2636
+NC-00829,2026-07-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2742
+NC-00830,2026-07-19,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2755
+NC-00831,2026-08-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2780
+NC-00832,2026-09-06,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2791
+NC-00833,2026-09-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2806
+NC-00834,2026-11-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2844
+NC-00835,2025-07-08,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-2895
+NC-00836,2025-07-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-2910
+NC-00837,2025-09-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-2950
+NC-00838,2025-10-08,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-2969
+NC-00839,2025-10-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-2970
+NC-00840,2025-10-28,Internal,Lot Rework,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-2985
+NC-00841,2025-11-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-3004
+NC-00842,2026-03-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-3103
+NC-00843,2026-05-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-3155
+NC-00844,2026-07-07,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-3186
+NC-00845,2026-08-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-3218
+NC-00846,2026-08-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-3223
+NC-00847,2026-08-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-3227
+NC-00848,2026-12-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-021-3315
+NC-00849,2025-07-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3745
+NC-00850,2025-07-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3753
+NC-00851,2025-07-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3757
+NC-00852,2025-08-13,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3771
+NC-00853,2025-09-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3795
+NC-00854,2025-10-06,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3814
+NC-00855,2025-10-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3824
+NC-00856,2025-12-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3858
+NC-00857,2026-01-23,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3901
+NC-00858,2026-01-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3904
+NC-00859,2026-02-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3908
+NC-00860,2026-03-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3943
+NC-00861,2026-03-23,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3947
+NC-00862,2026-04-10,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3962
+NC-00863,2026-05-08,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3982
+NC-00864,2026-05-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-3992
+NC-00865,2026-05-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3996
+NC-00866,2026-05-31,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4001
+NC-00867,2026-06-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4017
+NC-00868,2026-07-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4025
+NC-00869,2026-07-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4026
+NC-00870,2026-07-09,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4030
+NC-00871,2026-07-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4034
+NC-00872,2026-07-25,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4042
+NC-00873,2026-08-02,Internal,Lot Rework,Production,  Screen Printing  ,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4050
+NC-00874,2026-08-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-4051
+NC-00875,2026-08-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-4068
+NC-00876,2026-09-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-4078
+NC-00877,2026-09-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-4089
+NC-00878,2026-10-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4108
+NC-00879,2026-10-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-027-4117
+NC-00880,2026-11-06,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-4122
+NC-00881,2026-12-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-4145
+NC-00882,2025-07-06,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4167
+NC-00883,2025-07-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4173
+NC-00884,2025-07-26,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4180
+NC-00885,2025-08-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4189
+NC-00886,2025-08-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4196
+NC-00887,2025-08-30,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4205
+NC-00888,2025-09-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4217
+NC-00889,2025-09-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4229
+NC-00890,2025-10-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4237
+NC-00891,2025-11-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4261
+NC-00892,2025-11-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4268
+NC-00893,2025-11-30,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4277
+NC-00894,2025-12-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4286
+NC-00895,2025-12-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4287
+NC-00896,2025-12-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4302
+NC-00897,2025-12-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4303
+NC-00898,2026-01-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4312
+NC-00899,2026-01-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4318
+NC-00900,2026-01-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4326
+NC-00901,2026-02-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4334
+NC-00902,2026-02-14,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4341
+NC-00903,2026-02-18,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4344
+NC-00904,2026-02-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-014-4345
+NC-00905,2026-03-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4356
+NC-00906,2026-03-30,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4371
+NC-00907,2026-04-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4377
+NC-00908,2026-04-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4386
+NC-00909,2026-04-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4398
+NC-00910,2026-05-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4400
+NC-00911,2026-05-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4404
+NC-00912,2026-05-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4408
+NC-00913,2026-05-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4416
+NC-00914,2026-05-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4417
+NC-00915,2026-05-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-014-4418
+NC-00916,2026-05-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4420
+NC-00917,2026-06-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4422
+NC-00918,2026-06-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4426
+NC-00919,2026-06-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4428
+NC-00920,2026-06-11,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4429
+NC-00921,2026-06-15,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4433
+NC-00922,2026-06-23,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4437
+NC-00923,2026-06-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4442
+NC-00924,2026-07-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4448
+NC-00925,2026-07-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4454
+NC-00926,2026-07-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4456
+NC-00927,2026-07-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4459
+NC-00928,2026-07-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4461
+NC-00929,2026-08-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4477
+NC-00930,2026-08-23,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4481
+NC-00931,2026-08-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4486
+NC-00932,2026-09-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4504
+NC-00933,2026-09-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4511
+NC-00934,2026-10-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-014-4515
+NC-00935,2026-10-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4526
+NC-00936,2026-10-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4531
+NC-00937,2026-10-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4533
+NC-00938,2026-11-03,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4537
+NC-00939,2026-11-06,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4539
+NC-00940,2026-11-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4543
+NC-00941,2026-11-14,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4544
+NC-00942,2026-12-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-011-4560
+NC-00943,2026-12-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-028-4571
+NC-00944,2026-12-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-024-4572
+NC-00945,2026-06-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-020-4858
+NC-00946,2026-12-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-020-5021
+NC-00947,2025-08-05,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5049
+NC-00948,2025-08-08,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5051
+NC-00949,2025-08-22,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-019-5064
+NC-00950,2025-09-06,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5077
+NC-00951,2025-09-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5080
+NC-00952,2025-09-15,Internal,Lot Rejection,Production,  Screen Printing  ,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5086
+NC-00953,2025-09-21,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5089
+NC-00954,2025-09-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5094
+NC-00955,2025-09-30,Internal,Lot Rework,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5095
+NC-00956,2025-10-11,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5104
+NC-00957,2025-10-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5109
+NC-00958,2025-11-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5123
+NC-00959,2025-11-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-019-5131
+NC-00960,2025-11-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5134
+NC-00961,2025-11-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5143
+NC-00962,2025-12-02,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5145
+NC-00963,2025-12-24,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5160
+NC-00964,2025-12-31,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5166
+NC-00965,2026-02-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5194
+NC-00966,2026-02-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5202
+NC-00967,2026-03-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5233
+NC-00968,2026-04-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5240
+NC-00969,2026-04-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5256
+NC-00970,2026-04-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5260
+NC-00971,2026-06-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5285
+NC-00972,2026-07-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5320
+NC-00973,2026-07-26,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5330
+NC-00974,2026-08-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5349
+NC-00975,2026-08-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5358
+NC-00976,2026-09-13,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5370
+NC-00977,2026-09-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5377
+NC-00978,2026-09-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5379
+NC-00979,2026-10-06,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5388
+NC-00980,2026-10-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5399
+NC-00981,2026-10-31,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5410
+NC-00982,2026-11-18,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5426
+NC-00983,2026-12-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-016-5439
+NC-00984,2025-07-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2010
+NC-00985,2025-10-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2071
+NC-00986,2025-10-15,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2080
+NC-00987,2025-10-17,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2082
+NC-00988,2025-10-25,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2091
+NC-00989,2025-11-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2113
+NC-00990,2025-11-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2118
+NC-00991,2025-12-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2126
+NC-00992,2026-01-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2164
+NC-00993,2026-02-08,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2173
+NC-00994,2026-02-11,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2175
+NC-00995,2026-02-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2185
+NC-00996,2026-08-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2331
+NC-00997,2026-09-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2340
+NC-00998,2026-10-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2367
+NC-00999,2026-12-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2415
+NC-01000,2026-12-09,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2416
+NC-01001,2026-12-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-001-2419
+NC-01002,2025-07-03,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2436
+NC-01003,2025-07-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2440
+NC-01004,2025-07-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2447
+NC-01005,2025-08-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2462
+NC-01006,2025-09-15,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2495
+NC-01007,2025-09-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2499
+NC-01008,2025-10-07,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2517
+NC-01009,2025-11-08,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2548
+NC-01010,2025-11-11,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2549
+NC-01011,2026-05-11,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2698
+NC-01012,2026-06-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2717
+NC-01013,2026-07-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2752
+NC-01014,2026-07-26,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2759
+NC-01015,2026-08-19,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2778
+NC-01016,2026-09-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2793
+NC-01017,2026-09-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2795
+NC-01018,2026-09-25,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2808
+NC-01019,2026-09-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-008-2811
+NC-01020,2026-10-07,Internal,Lot Concession/Deviation,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2821
+NC-01021,2026-10-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2826
+NC-01022,2026-10-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2828
+NC-01023,2026-12-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Minor,LOTE-SK-M-SOP-005-2862
+NC-01024,2026-12-23,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-005-2881
+NC-01025,2025-07-23,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-2906
+NC-01026,2025-09-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-2956
+NC-01027,2025-11-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-2992
+NC-01028,2026-02-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3089
+NC-01029,2026-03-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3091
+NC-01030,2026-03-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3105
+NC-01031,2026-04-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3122
+NC-01032,2026-04-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3127
+NC-01033,2026-05-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3143
+NC-01034,2026-05-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3147
+NC-01035,2026-06-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3179
+NC-01036,2026-07-24,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3197
+NC-01037,2026-07-31,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3203
+NC-01038,2026-08-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3206
+NC-01039,2026-08-23,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3224
+NC-01040,2026-11-17,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3287
+NC-01041,2026-12-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-003-3297
+NC-01042,2026-12-19,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-009-3309
+NC-01043,2025-07-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3323
+NC-01044,2025-07-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3328
+NC-01045,2025-07-25,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3340
+NC-01046,2025-07-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3344
+NC-01047,2025-08-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3347
+NC-01048,2025-08-06,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3350
+NC-01049,2025-08-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3361
+NC-01050,2025-08-21,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3364
+NC-01051,2025-08-24,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3366
+NC-01052,2025-09-05,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3373
+NC-01053,2025-09-20,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3385
+NC-01054,2025-10-10,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3400
+NC-01055,2025-10-15,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3405
+NC-01056,2025-10-28,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3417
+NC-01057,2025-10-31,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3419
+NC-01058,2025-11-01,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3420
+NC-01059,2025-11-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3424
+NC-01060,2025-11-11,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3426
+NC-01061,2025-11-16,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3429
+NC-01062,2025-11-17,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3430
+NC-01063,2025-12-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3441
+NC-01064,2025-12-06,Internal,Lot Rejection,Production,SCREEN PRINTING,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3444
+NC-01065,2025-12-14,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3452
+NC-01066,2026-01-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3466
+NC-01067,2026-01-14,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3475
+NC-01068,2026-01-21,Internal,Lot Rejection,Production,  Screen Printing  ,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3480
+NC-01069,2026-01-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3486
+NC-01070,2026-02-19,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3501
+NC-01071,2026-02-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3502
+NC-01072,2026-02-25,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3507
+NC-01073,2026-03-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3512
+NC-01074,2026-03-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3517
+NC-01075,2026-03-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3520
+NC-01076,2026-03-17,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3521
+NC-01077,2026-03-19,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3524
+NC-01078,2026-04-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3547
+NC-01079,2026-04-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3552
+NC-01080,2026-05-15,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3567
+NC-01081,2026-06-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3601
+NC-01082,2026-07-08,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3607
+NC-01083,2026-07-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3624
+NC-01084,2026-08-14,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3634
+NC-01085,2026-08-19,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3638
+NC-01086,2026-08-23,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3640
+NC-01087,2026-09-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3655
+NC-01088,2026-09-28,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-004-3668
+NC-01089,2026-10-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3673
+NC-01090,2026-10-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3675
+NC-01091,2026-10-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3683
+NC-01092,2026-10-22,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3687
+NC-01093,2026-10-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3693
+NC-01094,2026-11-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3699
+NC-01095,2026-12-06,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3720
+NC-01096,2026-12-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3721
+NC-01097,2026-12-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3722
+NC-01098,2026-12-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-012-3735
+NC-01099,2026-12-29,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3737
+NC-01100,2026-12-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-026-3738
+NC-01101,2025-07-16,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-3750
+NC-01102,2025-09-07,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-3793
+NC-01103,2025-11-14,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-3844
+NC-01104,2026-01-19,Internal,Lot Rejection,Production,screen printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-3897
+NC-01105,2026-01-25,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-013-3903
+NC-01106,2026-09-08,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-4074
+NC-01107,2026-09-19,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-4083
+NC-01108,2026-11-14,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-4128
+NC-01109,2026-11-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-4139
+NC-01110,2026-12-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-010-4155
+NC-01111,2025-08-02,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4185
+NC-01112,2025-08-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-014-4203
+NC-01113,2025-11-20,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-014-4270
+NC-01114,2026-07-27,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-018-4460
+NC-01115,2025-07-18,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-017-4594
+NC-01116,2025-09-20,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4642
+NC-01117,2025-09-22,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4644
+NC-01118,2025-10-12,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4657
+NC-01119,2025-11-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4676
+NC-01120,2026-05-20,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4841
+NC-01121,2026-07-01,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4876
+NC-01122,2026-09-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4931
+NC-01123,2026-09-19,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-015-4939
+NC-01124,2026-10-03,Internal,Lot Concession/Deviation,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-017-4949
+NC-01125,2026-12-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-017-5001
+NC-01126,2025-07-26,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5044
+NC-01127,2025-12-11,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5150
+NC-01128,2026-01-13,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-019-5176
+NC-01129,2026-02-09,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5196
+NC-01130,2026-03-17,Internal,Lot Rework,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-019-5226
+NC-01131,2026-05-03,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-019-5264
+NC-01132,2026-05-14,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5270
+NC-01133,2026-07-30,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5336
+NC-01134,2026-09-09,Internal,Lot Rejection,Production,  Screen Printing  ,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-022-5367
+NC-01135,2025-07-04,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00003
+NC-01136,2025-07-05,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Major,RM-PP-00004
+NC-01137,2025-07-10,External,Incoming Inspection,Supplier Quality,incoming inspection,Raw Material Non-Conformance,Major,RM-HDPE-PCR-00004
+NC-01138,2025-07-10,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PET-00004
+NC-01139,2025-07-11,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00006
+NC-01140,2025-07-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00007
+NC-01141,2025-07-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-rPET-00005
+NC-01142,2025-07-14,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-MDPE-00004
+NC-01143,2025-07-14,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00007
+NC-01144,2025-07-16,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-PCR-00004
+NC-01145,2025-07-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00011
+NC-01146,2025-07-24,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Minor,RM-PP-00013
+NC-01147,2025-07-29,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PET-00009
+NC-01148,2025-08-06,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-PCR-00013
+NC-01149,2025-08-09,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PETG-00012
+NC-01150,2025-08-28,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-LDPE-00020
+NC-01151,2025-08-28,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00019
+NC-01152,2025-08-28,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00018
+NC-01153,2025-09-03,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00020
+NC-01154,2025-09-06,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-LDPE-00024
+NC-01155,2025-09-10,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-PCR-00025
+NC-01156,2025-09-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00021
+NC-01157,2025-09-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00022
+NC-01158,2025-09-15,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00023
+NC-01159,2025-09-20,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00027
+NC-01160,2025-09-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-PCR-00028
+NC-01161,2025-09-21,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Minor,RM-PVC-00023
+NC-01162,2025-09-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00023
+NC-01163,2025-09-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00028
+NC-01164,2025-09-26,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-rPET-00028
+NC-01165,2025-09-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00025
+NC-01166,2025-10-01,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00027
+NC-01167,2025-10-08,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Major,RM-PVC-00028
+NC-01168,2025-10-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00034
+NC-01169,2025-10-15,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00030
+NC-01170,2025-10-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-PCR-00033
+NC-01171,2025-10-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00036
+NC-01172,2025-10-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00041
+NC-01173,2025-11-05,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PET-00034
+NC-01174,2025-11-05,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00039
+NC-01175,2025-11-06,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00037
+NC-01176,2025-11-08,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00041
+NC-01177,2025-11-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00044
+NC-01178,2025-11-16,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00042
+NC-01179,2025-11-17,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00043
+NC-01180,2025-11-17,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-Masterbatch-00043
+NC-01181,2025-11-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00048
+NC-01182,2025-11-28,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PET-00040
+NC-01183,2025-12-01,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00048
+NC-01184,2025-12-02,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-LDPE-00055
+NC-01185,2025-12-02,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00045
+NC-01186,2025-12-04,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00046
+NC-01187,2025-12-05,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PETG-00048
+NC-01188,2025-12-06,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00053
+NC-01189,2025-12-11,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PETG-00050
+NC-01190,2025-12-11,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00047
+NC-01191,2025-12-20,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PETG-00054
+NC-01192,2025-12-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00061
+NC-01193,2025-12-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00053
+NC-01194,2025-12-22,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00055
+NC-01195,2025-12-29,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00053
+NC-01196,2025-12-30,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-PCR-00061
+NC-01197,2025-12-31,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00057
+NC-01198,2025-12-31,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00055
+NC-01199,2026-01-03,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-MDPE-00060
+NC-01200,2026-01-03,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00056
+NC-01201,2026-01-04,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00066
+NC-01202,2026-01-10,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00059
+NC-01203,2026-01-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00066
+NC-01204,2026-01-14,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00064
+NC-01205,2026-01-15,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00070
+NC-01206,2026-01-17,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00065
+NC-01207,2026-01-26,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Major,RM-PET-00058
+NC-01208,2026-01-26,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-rPET-00067
+NC-01209,2026-01-29,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00064
+NC-01210,2026-01-29,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00063
+NC-01211,2026-01-30,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00070
+NC-01212,2026-02-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-MDPE-00072
+NC-01213,2026-02-17,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-PCR-00079
+NC-01214,2026-02-20,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00070
+NC-01215,2026-02-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00066
+NC-01216,2026-02-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00071
+NC-01217,2026-02-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00085
+NC-01218,2026-02-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00071
+NC-01219,2026-02-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00081
+NC-01220,2026-03-01,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00069
+NC-01221,2026-03-05,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Minor,RM-PP-00073
+NC-01222,2026-03-07,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00073
+NC-01223,2026-03-08,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00073
+NC-01224,2026-03-08,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00074
+NC-01225,2026-03-10,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00074
+NC-01226,2026-03-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00077
+NC-01227,2026-03-15,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00078
+NC-01228,2026-03-16,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00079
+NC-01229,2026-03-17,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00079
+NC-01230,2026-03-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00076
+NC-01231,2026-03-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00080
+NC-01232,2026-03-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PET-00076
+NC-01233,2026-03-28,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00081
+NC-01234,2026-04-07,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00092
+NC-01235,2026-04-14,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PET-00084
+NC-01236,2026-04-17,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Minor,RM-HDPE-00096
+NC-01237,2026-04-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00087
+NC-01238,2026-04-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-rPET-00096
+NC-01239,2026-04-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00089
+NC-01240,2026-04-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00091
+NC-01241,2026-04-29,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00095
+NC-01242,2026-05-04,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Minor,RM-PP-PCR-00097
+NC-01243,2026-05-05,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PETG-00094
+NC-01244,2026-05-05,External,Incoming Inspection,Supplier Quality,incoming inspection,Raw Material Non-Conformance,Major,RM-rPET-00103
+NC-01245,2026-05-06,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Major,RM-LDPE-00105
+NC-01246,2026-05-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00099
+NC-01247,2026-05-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00099
+NC-01248,2026-05-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-rPET-00109
+NC-01249,2026-05-20,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00100
+NC-01250,2026-05-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00099
+NC-01251,2026-05-25,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00102
+NC-01252,2026-05-26,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-MDPE-00103
+NC-01253,2026-05-28,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00096
+NC-01254,2026-05-29,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00103
+NC-01255,2026-05-30,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Major,RM-rPET-00110
+NC-01256,2026-06-03,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-LDPE-00114
+NC-01257,2026-06-07,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00105
+NC-01258,2026-06-09,External,Incoming Inspection,Supplier Quality,  Incoming Inspection  ,Raw Material Non-Conformance,Major,RM-PP-00107
+NC-01259,2026-06-11,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-00118
+NC-01260,2026-06-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00103
+NC-01261,2026-06-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00116
+NC-01262,2026-06-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00109
+NC-01263,2026-06-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00111
+NC-01264,2026-06-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00118
+NC-01265,2026-06-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00104
+NC-01266,2026-07-02,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-LDPE-00123
+NC-01267,2026-07-02,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00113
+NC-01268,2026-07-03,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PET-00112
+NC-01269,2026-07-11,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-MDPE-00116
+NC-01270,2026-07-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00117
+NC-01271,2026-07-19,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00122
+NC-01272,2026-07-30,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00120
+NC-01273,2026-08-04,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00123
+NC-01274,2026-08-09,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PETG-00128
+NC-01275,2026-08-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-MDPE-00129
+NC-01276,2026-08-19,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Minor,RM-Masterbatch-00119
+NC-01277,2026-08-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00133
+NC-01278,2026-08-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00118
+NC-01279,2026-09-03,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PET-00133
+NC-01280,2026-09-07,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00139
+NC-01281,2026-09-10,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-rPET-00135
+NC-01282,2026-09-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00120
+NC-01283,2026-09-19,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PETG-00145
+NC-01284,2026-09-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-PCR-00134
+NC-01285,2026-09-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00148
+NC-01286,2026-10-02,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Major,RM-LDPE-00147
+NC-01287,2026-10-09,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-Masterbatch-00132
+NC-01288,2026-10-09,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PET-00148
+NC-01289,2026-10-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00131
+NC-01290,2026-10-14,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PETG-00156
+NC-01291,2026-10-19,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-HDPE-PCR-00148
+NC-01292,2026-10-21,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00157
+NC-01293,2026-10-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-00149
+NC-01294,2026-10-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PETG-00159
+NC-01295,2026-10-24,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00137
+NC-01296,2026-10-26,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PET-00157
+NC-01297,2026-10-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00160
+NC-01298,2026-11-04,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Major,RM-PP-PCR-00145
+NC-01299,2026-11-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-HDPE-00154
+NC-01300,2026-11-17,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00142
+NC-01301,2026-11-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00168
+NC-01302,2026-11-19,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00169
+NC-01303,2026-11-19,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00143
+NC-01304,2026-11-20,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00144
+NC-01305,2026-11-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-LDPE-00162
+NC-01306,2026-11-23,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00146
+NC-01307,2026-11-25,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Minor,RM-LDPE-00163
+NC-01308,2026-11-25,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00147
+NC-01309,2026-11-27,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00172
+NC-01310,2026-12-06,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00175
+NC-01311,2026-12-12,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00153
+NC-01312,2026-12-13,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00177
+NC-01313,2026-12-18,External,Incoming Inspection,Supplier Quality,INCOMING INSPECTION,Raw Material Non-Conformance,Minor,RM-PP-00179
+NC-01314,2026-12-18,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00155
+NC-01315,2026-12-20,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PP-00180
+NC-01316,2026-12-22,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PP-00182
+NC-01317,2026-12-26,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Major,RM-PVC-00157
+NC-01318,2026-12-30,External,Incoming Inspection,Supplier Quality,Incoming Inspection,Raw Material Non-Conformance,Minor,RM-PVC-00159
+NC-01319,2025-07-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-021-2890
+NC-01320,2026-02-02,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-020-4751
+NC-01321,2025-12-29,Internal,Lot Rejection,Production,Blow Molding,In-Process Quality Deviation,Major,LOTE-M-SOP-007-2146
+NC-01322,2025-11-04,Internal,Lot Rejection,Production,Injection Molding,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6836
+NC-01323,2025-11-04,Internal,Lot Rejection,Production,INJECTION MOLDING,In-Process Quality Deviation,Major,LOTE-M-INJ-007-6836
+NC-01324,2026-03-04,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2189
+NC-01325,2025-11-16,Internal,Lot Rejection,Production,Hot Foil Stamping,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-029-3429
+NC-01326,2026-04-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2233

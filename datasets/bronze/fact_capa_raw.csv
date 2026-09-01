@@ -1,0 +1,812 @@
+﻿CAPAId,OpenDate,DueDate,CloseDate,Status,CAPAType,RelatedNCId,Area,Process,Severity,RootCauseCategory,Owner,EffectivenessCheck
+CAPA-4000,2025-08-03,2025-09-28,2025-09-07,Closed,Corrective,NC-00001,Production,Blow Molding,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4001,2025-08-16,2025-09-12,2025-09-26,Closed,Preventive,NC-00002,Production,Blow Molding,Minor,Raw Material,Carlos Mendes,Effective
+CAPA-4002,2025-09-26,2025-11-07,2025-11-04,Closed,Preventive,NC-00003,Production,Blow Molding,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4003,2025-10-28,2025-11-17,2025-12-04,Closed,Corrective,NC-00005,Production,Blow Molding,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4004,2025-11-10,2025-12-29,2025-12-27,Closed,Preventive,NC-00007,Production,Blow Molding,Major,Mold/Tooling,Patrícia Lima,Effective
+CAPA-4005,2025-11-18,2026-01-10,2025-12-10,Closed,Preventive,NC-00008,Production,Blow Molding,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4006,2025-12-04,2026-01-22,2026-01-26,Closed,Corrective,NC-00009,Production,Blow Molding,Minor,Raw Material,Carlos Mendes,Effective
+CAPA-4007,2025-12-12,2026-01-31,,Overdue,Preventive,NC-00010,Production,Blow Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4008,2025-12-22,2026-01-27,2026-01-25,Closed,Corrective,NC-00011,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Pending
+CAPA-4009,2026-01-15,2026-02-20,2026-03-07,Closed,Corrective,NC-00013,Production,Blow Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4010,2026-01-21,2026-02-28,,Overdue,Corrective,NC-00014,Production,Blow Molding,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4011,2026-03-12,2026-04-08,,Overdue,Corrective,NC-00016,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4012,2026-04-25,2026-05-15,2026-06-16,Closed,Corrective,NC-00020,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4013,2026-05-18,2026-07-11,,Overdue,Corrective,NC-00021,Production,blow molding,Major,Raw Material,Ana Silva,Pending
+CAPA-4014,2026-06-30,2026-07-27,2026-07-29,Closed,Corrective,NC-00023,Production,Blow Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4015,2026-07-12,2026-08-28,2026-07-23,Closed,Corrective,NC-00025,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4016,2026-07-14,2026-08-11,,Overdue,Preventive,NC-00027,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4017,2026-07-22,2026-08-28,2026-07-31,Closed,Preventive,NC-00028,Production,Blow Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4018,2026-07-28,2026-09-02,2026-09-02,Closed,Corrective,NC-00029,Production,Blow Molding,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4019,2026-08-08,2026-09-06,2026-08-20,Closed,Corrective,NC-00030,Production,Blow Molding,Major,Method/Procedure,Sandra Reis,Not Effective
+CAPA-4020,2026-08-14,2026-09-20,2026-09-29,Closed,Corrective,NC-00031,Production,Blow Molding,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4021,2026-09-08,2026-11-06,,Overdue,Preventive,NC-00033,Production,Blow Molding,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4022,2026-09-11,2026-10-29,2026-09-23,Closed,Preventive,NC-00034,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4023,2026-09-21,2026-10-17,2026-11-12,Closed,Corrective,NC-00035,Production,Blow Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4024,2026-10-19,2026-11-14,2026-12-02,Closed,Preventive,NC-00036,Production,Blow Molding,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4025,2026-11-14,2026-12-05,,Overdue,Preventive,NC-00037,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4026,2026-11-19,2026-12-31,2026-12-18,Closed,Corrective,NC-00038,Production,Blow Molding,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4027,2026-12-06,2027-01-06,2026-12-30,Closed,Preventive,NC-00040,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4028,2026-12-17,2027-02-11,2027-02-01,Closed,Corrective,NC-00041,Production,Blow Molding,Major,Raw Material,Sandra Reis,Effective
+CAPA-4029,2026-12-18,2027-01-30,,Open,Preventive,NC-00042,Production,Blow Molding,Major,Raw Material,Ana Silva,Effective
+CAPA-4030,2025-07-05,2025-08-07,2025-08-16,Closed,Corrective,NC-00043,Production,Blow Molding,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4031,2025-08-01,2025-09-14,2025-08-14,Closed,Corrective,NC-00044,Production,BLOW MOLDING,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4032,2025-08-22,2025-09-28,,Overdue,Preventive,NC-00045,Production,Blow Molding,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4033,2025-09-02,2025-10-20,2025-09-11,Closed,Preventive,NC-00046,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4034,2025-11-01,2025-11-24,2025-12-12,Closed,Corrective,NC-00048,Production,Blow Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4035,2025-11-16,2025-12-20,,Overdue,Preventive,NC-00049,Production,Blow Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4036,2025-12-31,2026-02-11,2026-01-09,Closed,Preventive,NC-00051,Production,Blow Molding,Major,Man (Operator),Carlos Mendes,Not Effective
+CAPA-4037,2026-01-22,2026-03-07,,Overdue,Preventive,NC-00052,Production,Blow Molding,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4038,2026-01-31,2026-03-20,2026-02-20,Closed,Corrective,NC-00054,Production,Blow Molding,Major,Raw Material,Patrícia Lima,Not Effective
+CAPA-4039,2026-06-30,2026-07-27,,Overdue,Preventive,NC-00058,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4040,2026-07-16,2026-09-07,2026-08-04,Closed,Corrective,NC-00059,Production,Blow Molding,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4041,2026-08-22,2026-10-03,2026-09-06,Closed,Preventive,NC-00061,Production,  Blow Molding  ,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4042,2026-10-04,2026-11-20,,Overdue,Preventive,NC-00062,Production,Blow Molding,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4043,2026-10-31,2026-12-22,2026-12-11,Closed,Corrective,NC-00063,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4044,2026-12-27,2027-02-23,,Open,Corrective,NC-00065,Production,Blow Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4045,2025-07-11,2025-08-24,,Overdue,Corrective,NC-00066,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4046,2025-08-01,2025-08-24,,Overdue,Corrective,NC-00069,Production,Blow Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4047,2025-08-08,2025-09-07,,Overdue,Corrective,NC-00070,Production,Blow Molding,Major,Machine/Equipment,Ana Silva,Not Effective
+CAPA-4048,2025-08-14,2025-09-13,2025-10-04,Closed,Corrective,NC-00072,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4049,2025-08-23,2025-09-17,2025-10-09,Closed,Corrective,NC-00075,Production,Blow Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4050,2025-09-11,2025-11-07,2025-10-22,Closed,Corrective,NC-00077,Production,Blow Molding,Minor,Method/Procedure,Carlos Mendes,Effective
+CAPA-4051,2025-09-15,2025-10-28,2025-09-24,Closed,Corrective,NC-00078,Production,Blow Molding,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4052,2025-09-16,2025-10-16,2025-09-27,Closed,Corrective,NC-00079,Production,Blow Molding,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4053,2025-09-20,2025-10-18,,Overdue,Preventive,NC-00080,Production,Blow Molding,Minor,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4054,2025-09-21,2025-10-13,,Overdue,Preventive,NC-00081,Production,blow molding,Minor,Method/Procedure,Patrícia Lima,Pending
+CAPA-4055,2025-09-25,2025-10-27,2025-10-06,Closed,Corrective,NC-00082,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4056,2025-10-21,2025-12-18,2025-12-10,Closed,Preventive,NC-00084,Production,Blow Molding,Minor,Method/Procedure,Elena Santos,Not Effective
+CAPA-4057,2025-11-29,2025-12-28,2025-12-20,Closed,Corrective,NC-00088,Production,Blow Molding,Major,Machine/Equipment,Patrícia Lima,Pending
+CAPA-4058,2025-12-02,2026-01-22,2026-01-14,Closed,Corrective,NC-00089,Production,Blow Molding,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4059,2025-12-06,2026-01-10,2026-01-24,Closed,Corrective,NC-00090,Production,Blow Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4060,2025-12-04,2025-12-25,2025-12-27,Closed,Preventive,NC-00091,Production,Blow Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4061,2025-12-08,2026-02-01,2026-01-26,Closed,Preventive,NC-00092,Production,Blow Molding,Minor,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4062,2025-12-29,2026-02-01,2026-02-15,Closed,Corrective,NC-00095,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4063,2026-01-04,2026-03-02,2026-01-21,Closed,Corrective,NC-00097,Production,Blow Molding,Major,Machine/Equipment,Vitor Sousa,Not Effective
+CAPA-4064,2026-01-07,2026-02-22,,Overdue,Preventive,NC-00098,Production,blow molding,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4065,2026-02-09,2026-04-02,2026-03-03,Closed,Corrective,NC-00103,Production,Blow Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4066,2026-02-23,2026-03-29,2026-03-27,Closed,Preventive,NC-00105,Production,Blow Molding,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4067,2026-02-26,2026-03-24,2026-03-29,Closed,Preventive,NC-00106,Production,Blow Molding,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4068,2026-02-25,2026-03-23,2026-04-12,Closed,Preventive,NC-00107,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4069,2026-03-11,2026-05-01,2026-04-19,Closed,Preventive,NC-00109,Production,Blow Molding,Major,Method/Procedure,Vitor Sousa,Effective
+CAPA-4070,2026-03-21,2026-05-13,2026-04-07,Closed,Corrective,NC-00110,Production,Blow Molding,Major,Method/Procedure,Sandra Reis,Not Effective
+CAPA-4071,2026-03-24,2026-05-14,,Overdue,Corrective,NC-00112,Production,Blow Molding,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4072,2026-04-07,2026-05-04,,Overdue,Corrective,NC-00113,Production,Blow Molding,Major,Raw Material,Carlos Mendes,Pending
+CAPA-4073,2026-04-27,2026-06-18,,Overdue,Preventive,NC-00114,Production,Blow Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4074,2026-04-27,2026-05-26,2026-05-05,Closed,Corrective,NC-00115,Production,Blow Molding,Major,Man (Operator),Ana Silva,Pending
+CAPA-4075,2026-04-28,2026-06-02,2026-05-26,Closed,Preventive,NC-00116,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4076,2026-05-01,2026-06-27,,Overdue,Preventive,NC-00117,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4077,2026-05-09,2026-06-17,2026-06-13,Closed,Preventive,NC-00118,Production,Blow Molding,Minor,Mold/Tooling,Carlos Mendes,Not Effective
+CAPA-4078,2026-05-09,2026-06-14,2026-06-19,Closed,Corrective,NC-00119,Production,Blow Molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4079,2026-05-21,2026-06-23,2026-07-14,Closed,Preventive,NC-00121,Production,Blow Molding,Major,Raw Material,Sandra Reis,Pending
+CAPA-4080,2026-05-30,2026-07-06,2026-06-29,Closed,Preventive,NC-00124,Production,Blow Molding,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4081,2026-06-12,2026-07-17,2026-07-19,Closed,Preventive,NC-00126,Production,Blow Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4082,2026-06-22,2026-08-19,2026-08-13,Closed,Preventive,NC-00128,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4083,2026-07-09,2026-08-26,2026-07-18,Closed,Preventive,NC-00132,Production,Blow Molding,Major,Raw Material,Elena Santos,Pending
+CAPA-4084,2026-07-15,2026-08-15,2026-09-07,Closed,Preventive,NC-00133,Production,  Blow Molding  ,Minor,Raw Material,Elena Santos,Effective
+CAPA-4085,2026-08-04,2026-09-11,2026-08-30,Closed,Preventive,NC-00134,Production,Blow Molding,Minor,Mold/Tooling,Ana Silva,Pending
+CAPA-4086,2026-08-17,2026-09-17,,Overdue,Corrective,NC-00137,Production,Blow Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4087,2026-08-15,2026-09-19,2026-09-29,Closed,Corrective,NC-00138,Production,Blow Molding,Major,Mold/Tooling,Ana Silva,Effective
+CAPA-4088,2026-08-15,2026-10-06,2026-09-13,Closed,Preventive,NC-00139,Production,BLOW MOLDING,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4089,2026-08-26,2026-10-17,2026-10-16,Closed,Corrective,NC-00140,Production,Blow Molding,Minor,Raw Material,Patrícia Lima,Effective
+CAPA-4090,2026-09-08,2026-10-10,2026-10-18,Closed,Preventive,NC-00143,Production,Blow Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4091,2026-09-06,2026-10-30,,Overdue,Corrective,NC-00144,Production,blow molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4092,2026-09-11,2026-10-27,2026-10-20,Closed,Preventive,NC-00146,Production,Blow Molding,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4093,2026-09-20,2026-10-10,2026-10-29,Closed,Corrective,NC-00147,Production,Blow Molding,Major,Machine/Equipment,Ana Silva,Pending
+CAPA-4094,2026-10-01,2026-11-07,2026-11-11,Closed,Corrective,NC-00148,Production,  Blow Molding  ,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4095,2026-10-04,2026-11-22,2026-10-19,Closed,Preventive,NC-00149,Production,  Blow Molding  ,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4096,2026-10-11,2026-11-03,2026-11-22,Closed,Corrective,NC-00152,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4097,2026-10-17,2026-12-12,2026-11-06,Closed,Corrective,NC-00154,Production,Blow Molding,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4098,2026-10-21,2026-12-06,2026-12-13,Closed,Corrective,NC-00155,Production,Blow Molding,Major,Man (Operator),Elena Santos,Pending
+CAPA-4099,2026-10-29,2026-11-21,2026-11-17,Closed,Preventive,NC-00156,Production,Blow Molding,Minor,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4100,2026-10-27,2026-12-15,2026-12-12,Closed,Preventive,NC-00157,Production,Blow Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4101,2026-11-04,2026-12-27,2026-12-26,Closed,Preventive,NC-00158,Production,Blow Molding,Minor,Machine/Equipment,Elena Santos,Effective
+CAPA-4102,2026-11-14,2026-12-08,2026-12-01,Closed,Preventive,NC-00160,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4103,2026-11-17,2026-12-14,,Overdue,Preventive,NC-00161,Production,Blow Molding,Minor,Method/Procedure,Sandra Reis,Pending
+CAPA-4104,2026-11-23,2027-01-04,2027-01-10,Closed,Corrective,NC-00162,Production,Blow Molding,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4105,2026-11-26,2026-12-31,2026-12-23,Closed,Preventive,NC-00164,Production,Blow Molding,Major,Man (Operator),Elena Santos,Pending
+CAPA-4106,2026-12-04,2027-01-15,,Open,Preventive,NC-00166,Production,BLOW MOLDING,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4107,2026-12-13,2027-01-21,,Open,Preventive,NC-00170,Production,Blow Molding,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4108,2026-12-14,2027-01-07,2027-01-29,Closed,Preventive,NC-00171,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4109,2026-12-14,2027-02-04,2027-01-28,Closed,Preventive,NC-00172,Production,Blow Molding,Major,Raw Material,Sandra Reis,Pending
+CAPA-4110,2027-01-03,2027-02-23,2027-02-21,Closed,Corrective,NC-00173,Production,Blow Molding,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4111,2025-07-28,2025-09-23,2025-08-20,Closed,Corrective,NC-00175,Production,Blow Molding,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4112,2025-09-07,2025-10-15,,Overdue,Corrective,NC-00177,Production,  Blow Molding  ,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4113,2025-10-11,2025-11-08,2025-10-21,Closed,Preventive,NC-00179,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4114,2025-10-25,2025-12-02,2025-11-15,Closed,Corrective,NC-00180,Production,Blow Molding,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4115,2025-11-05,2025-11-28,2025-12-02,Closed,Corrective,NC-00181,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4116,2026-01-29,2026-03-17,2026-02-12,Closed,Corrective,NC-00183,Production,Blow Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4117,2026-03-01,2026-04-14,,Overdue,Preventive,NC-00184,Production,Blow Molding,Major,Raw Material,Ana Silva,Effective
+CAPA-4118,2026-06-05,2026-07-06,2026-07-06,Closed,Preventive,NC-00187,Production,Blow Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4119,2026-08-20,2026-10-10,2026-09-04,Closed,Preventive,NC-00189,Production,Blow Molding,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4120,2026-11-23,2026-12-16,2027-01-08,Closed,Corrective,NC-00191,Production,Blow Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4121,2026-12-23,2027-01-24,2027-02-03,Closed,Corrective,NC-00192,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Pending
+CAPA-4122,2027-01-04,2027-01-26,2027-02-01,Closed,Preventive,NC-00193,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4123,2025-09-30,2025-11-20,2025-10-26,Closed,Preventive,NC-00194,Production,  Blow Molding  ,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4124,2025-11-21,2026-01-17,2025-11-30,Closed,Corrective,NC-00197,Production,  Blow Molding  ,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4125,2026-01-13,2026-03-06,2026-02-05,Closed,Corrective,NC-00200,Production,Blow Molding,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4126,2026-02-03,2026-03-29,2026-03-09,Closed,Corrective,NC-00201,Production,  Blow Molding  ,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4127,2026-02-04,2026-03-05,2026-02-14,Closed,Preventive,NC-00202,Production,Blow Molding,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4128,2026-02-10,2026-03-20,,Overdue,Corrective,NC-00203,Production,Blow Molding,Major,Mold/Tooling,Vitor Sousa,Pending
+CAPA-4129,2026-02-25,2026-04-07,2026-04-17,Closed,Preventive,NC-00205,Production,Blow Molding,Major,Raw Material,Sandra Reis,Pending
+CAPA-4130,2026-05-07,2026-05-30,2026-06-06,Closed,Corrective,NC-00206,Production,Blow Molding,Major,Man (Operator),Carlos Mendes,Not Effective
+CAPA-4131,2026-06-20,2026-07-25,,Overdue,Corrective,NC-00207,Production,  Blow Molding  ,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4132,2026-10-28,2026-12-05,,Overdue,Preventive,NC-00210,Production,Blow Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4133,2026-11-21,2027-01-04,,Open,Corrective,NC-00211,Production,Blow Molding,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4134,2026-12-02,2027-01-25,2027-01-14,Closed,Preventive,NC-00212,Production,Blow Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4135,2026-12-20,2027-02-04,2026-12-28,Closed,Corrective,NC-00213,Production,blow molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4136,2025-10-13,2025-12-03,2025-10-25,Closed,Corrective,NC-00215,Production,Blow Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4137,2025-10-28,2025-11-18,2025-11-12,Closed,Corrective,NC-00216,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4138,2025-11-10,2025-12-18,,Overdue,Preventive,NC-00217,Production,Blow Molding,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4139,2025-11-15,2025-12-06,2025-12-28,Closed,Preventive,NC-00218,Production,Blow Molding,Major,Machine/Equipment,Patrícia Lima,Pending
+CAPA-4140,2025-11-30,2025-12-29,2026-01-05,Closed,Preventive,NC-00219,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4141,2025-12-18,2026-01-25,2026-02-06,Closed,Preventive,NC-00220,Production,BLOW MOLDING,Major,Man (Operator),Ana Silva,Effective
+CAPA-4142,2025-12-20,2026-02-06,2026-01-20,Closed,Preventive,NC-00221,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4143,2026-02-25,2026-04-14,2026-04-01,Closed,Preventive,NC-00222,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4144,2026-03-01,2026-04-10,2026-03-26,Closed,Corrective,NC-00223,Production,Blow Molding,Major,Raw Material,Ana Silva,Pending
+CAPA-4145,2026-05-16,2026-07-12,2026-06-06,Closed,Preventive,NC-00226,Production,Blow Molding,Major,Machine/Equipment,Ana Silva,Pending
+CAPA-4146,2026-05-26,2026-06-25,2026-06-18,Closed,Corrective,NC-00227,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4147,2026-07-20,2026-08-14,2026-09-12,Closed,Preventive,NC-00228,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4148,2026-09-05,2026-11-01,2026-09-28,Closed,Corrective,NC-00230,Production,BLOW MOLDING,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4149,2026-09-13,2026-10-10,,Overdue,Preventive,NC-00232,Production,Blow Molding,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4150,2026-10-11,2026-11-10,2026-10-31,Closed,Preventive,NC-00233,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4151,2026-10-31,2026-11-21,2026-12-20,Closed,Corrective,NC-00234,Production,Blow Molding,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4152,2026-11-09,2026-12-10,2026-12-19,Closed,Corrective,NC-00236,Production,BLOW MOLDING,Major,Mold/Tooling,Ana Silva,Effective
+CAPA-4153,2026-12-17,2027-01-18,2027-01-10,Closed,Preventive,NC-00237,Production,Blow Molding,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4154,2025-10-11,2025-11-08,,Overdue,Preventive,NC-00240,Production,Blow Molding,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4155,2026-01-13,2026-03-01,2026-02-10,Closed,Corrective,NC-00242,Production,Blow Molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4156,2026-03-25,2026-04-18,2026-05-14,Closed,Corrective,NC-00244,Production,Blow Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4157,2026-05-13,2026-06-03,2026-07-05,Closed,Preventive,NC-00246,Production,blow molding,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4158,2026-05-22,2026-07-10,,Overdue,Corrective,NC-00247,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4159,2026-07-27,2026-09-06,,Overdue,Preventive,NC-00249,Production,Blow Molding,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4160,2026-09-19,2026-11-13,2026-10-06,Closed,Preventive,NC-00250,Production,  Blow Molding  ,Major,Mold/Tooling,Elena Santos,Effective
+CAPA-4161,2026-10-01,2026-11-08,2026-10-19,Closed,Preventive,NC-00251,Production,Blow Molding,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4162,2026-11-28,2027-01-17,2027-01-03,Closed,Preventive,NC-00253,Production,Blow Molding,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4163,2026-12-10,2027-01-27,,Open,Preventive,NC-00254,Production,BLOW MOLDING,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4164,2026-12-17,2027-02-08,2027-02-01,Closed,Preventive,NC-00255,Production,Blow Molding,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4165,2026-12-24,2027-02-15,,Open,Corrective,NC-00256,Production,Blow Molding,Major,Mold/Tooling,Vitor Sousa,Effective
+CAPA-4166,2025-07-07,2025-08-02,2025-08-05,Closed,Corrective,NC-00257,Production,Blow Molding,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4167,2025-08-07,2025-09-01,,Overdue,Corrective,NC-00259,Production,Blow Molding,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4168,2025-08-18,2025-10-11,2025-09-18,Closed,Corrective,NC-00260,Production,Blow Molding,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4169,2025-09-04,2025-11-01,2025-09-21,Closed,Preventive,NC-00261,Production,Blow Molding,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4170,2025-09-09,2025-10-07,2025-11-02,Closed,Preventive,NC-00262,Production,Blow Molding,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4171,2025-09-17,2025-10-13,2025-10-14,Closed,Preventive,NC-00263,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4172,2025-11-01,2025-12-01,2025-12-23,Closed,Corrective,NC-00266,Production,Blow Molding,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4173,2025-12-09,2026-01-30,,Overdue,Preventive,NC-00267,Production,Blow Molding,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4174,2026-01-01,2026-01-21,2026-02-04,Closed,Preventive,NC-00268,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4175,2026-01-04,2026-02-20,,Overdue,Corrective,NC-00269,Production,Blow Molding,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4176,2026-02-23,2026-04-03,2026-04-10,Closed,Corrective,NC-00271,Production,Blow Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4177,2026-02-23,2026-04-03,,Overdue,Corrective,NC-00272,Production,Blow Molding,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4178,2026-03-23,2026-04-13,2026-05-10,Closed,Corrective,NC-00273,Production,Blow Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4179,2026-05-13,2026-06-25,2026-06-21,Closed,Corrective,NC-00276,Production,Blow Molding,Major,Mold/Tooling,Carlos Mendes,Not Effective
+CAPA-4180,2026-06-12,2026-08-02,2026-06-23,Closed,Corrective,NC-00277,Production,Blow Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4181,2026-07-15,2026-09-06,2026-08-19,Closed,Corrective,NC-00279,Production,  Blow Molding  ,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4182,2026-08-24,2026-10-22,,Overdue,Corrective,NC-00281,Production,Blow Molding,Major,Mold/Tooling,Patrícia Lima,Effective
+CAPA-4183,2026-09-16,2026-11-01,,Overdue,Preventive,NC-00283,Production,Blow Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4184,2026-09-20,2026-10-28,,Overdue,Corrective,NC-00284,Production,Blow Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4185,2025-07-11,2025-08-20,2025-09-01,Closed,Preventive,NC-00288,Production,  Injection Molding  ,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4186,2025-07-15,2025-08-26,2025-08-26,Closed,Corrective,NC-00289,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4187,2025-07-17,2025-08-30,2025-09-05,Closed,Preventive,NC-00290,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4188,2025-07-17,2025-09-03,2025-08-15,Closed,Corrective,NC-00291,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Effective
+CAPA-4189,2025-08-02,2025-09-27,2025-08-18,Closed,Corrective,NC-00292,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4190,2025-08-09,2025-10-07,2025-09-08,Closed,Corrective,NC-00293,Production,Injection Molding,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4191,2025-08-15,2025-09-07,2025-09-15,Closed,Preventive,NC-00295,Production,Injection Molding,Major,Man (Operator),Ana Silva,Pending
+CAPA-4192,2025-08-24,2025-09-27,2025-09-23,Closed,Preventive,NC-00296,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4193,2025-08-31,2025-10-07,2025-10-11,Closed,Corrective,NC-00297,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4194,2025-09-04,2025-10-02,2025-10-09,Closed,Preventive,NC-00299,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4195,2025-10-13,2025-12-10,2025-12-03,Closed,Corrective,NC-00302,Production,Injection Molding,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4196,2025-10-15,2025-11-18,,Overdue,Preventive,NC-00303,Production,Injection Molding,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4197,2025-10-21,2025-11-26,,Overdue,Preventive,NC-00304,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4198,2025-10-21,2025-11-13,,Overdue,Corrective,NC-00305,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4199,2025-11-02,2025-12-12,,Overdue,Corrective,NC-00306,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4200,2025-11-08,2025-12-27,2025-12-19,Closed,Corrective,NC-00307,Production,Injection Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4201,2025-12-25,2026-01-19,2026-01-04,Closed,Preventive,NC-00311,Production,Injection Molding,Major,Raw Material,Elena Santos,Pending
+CAPA-4202,2026-01-28,2026-02-20,,Overdue,Corrective,NC-00315,Production,Injection Molding,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4203,2026-02-01,2026-03-14,2026-03-08,Closed,Preventive,NC-00317,Production,Injection Molding,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4204,2026-02-18,2026-03-20,,Overdue,Preventive,NC-00319,Production,  Injection Molding  ,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4205,2026-02-25,2026-04-14,,Overdue,Preventive,NC-00320,Production,Injection Molding,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4206,2026-03-01,2026-04-06,2026-04-21,Closed,Preventive,NC-00321,Production,Injection Molding,Major,Man (Operator),Ana Silva,Effective
+CAPA-4207,2026-03-15,2026-05-02,2026-04-18,Closed,Corrective,NC-00324,Production,Injection Molding,Major,Raw Material,Sandra Reis,Effective
+CAPA-4208,2026-03-17,2026-04-28,2026-05-04,Closed,Corrective,NC-00325,Production,Injection Molding,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4209,2026-03-23,2026-04-15,2026-05-12,Closed,Preventive,NC-00326,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4210,2026-03-22,2026-05-09,2026-05-03,Closed,Preventive,NC-00327,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4211,2026-03-24,2026-05-18,2026-05-02,Closed,Preventive,NC-00328,Production,  Injection Molding  ,Major,Machine/Equipment,Patrícia Lima,Pending
+CAPA-4212,2026-04-20,2026-05-21,,Overdue,Preventive,NC-00330,Production,Injection Molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4213,2026-04-28,2026-05-27,,Overdue,Corrective,NC-00331,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4214,2026-05-12,2026-06-13,2026-06-30,Closed,Corrective,NC-00333,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4215,2026-05-21,2026-06-10,2026-06-06,Closed,Corrective,NC-00335,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4216,2026-05-29,2026-06-20,2026-07-02,Closed,Corrective,NC-00336,Production,Injection Molding,Major,Method/Procedure,Patrícia Lima,Pending
+CAPA-4217,2026-07-06,2026-08-21,2026-07-24,Closed,Preventive,NC-00338,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4218,2026-07-08,2026-09-04,2026-07-16,Closed,Preventive,NC-00339,Production,Injection Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4219,2026-07-21,2026-09-05,2026-09-03,Closed,Corrective,NC-00341,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4220,2026-07-26,2026-09-01,2026-08-06,Closed,Preventive,NC-00343,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4221,2026-08-05,2026-09-15,,Overdue,Corrective,NC-00345,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4222,2026-08-09,2026-10-05,2026-09-19,Closed,Corrective,NC-00347,Production,injection molding,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4223,2026-08-23,2026-10-05,2026-10-02,Closed,Corrective,NC-00348,Production,Injection Molding,Major,Raw Material,Ana Silva,Effective
+CAPA-4224,2026-08-30,2026-10-02,2026-10-18,Closed,Preventive,NC-00350,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4225,2026-08-31,2026-09-26,2026-09-22,Closed,Corrective,NC-00351,Production,Injection Molding,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4226,2026-09-04,2026-10-18,2026-09-22,Closed,Preventive,NC-00352,Production,Injection Molding,Major,Raw Material,Ana Silva,Pending
+CAPA-4227,2026-09-26,2026-10-31,2026-10-28,Closed,Preventive,NC-00354,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4228,2026-10-01,2026-10-29,,Overdue,Corrective,NC-00355,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4229,2026-10-11,2026-11-19,2026-11-09,Closed,Preventive,NC-00356,Production,Injection Molding,Major,Man (Operator),Elena Santos,Pending
+CAPA-4230,2026-10-26,2026-12-10,2026-11-06,Closed,Corrective,NC-00357,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4231,2026-10-31,2026-12-10,2026-12-13,Closed,Preventive,NC-00358,Production,Injection Molding,Major,Raw Material,Sandra Reis,Pending
+CAPA-4232,2026-11-05,2026-12-23,,Overdue,Preventive,NC-00359,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4233,2026-11-06,2026-12-24,2026-12-10,Closed,Preventive,NC-00360,Production,Injection Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4234,2026-11-13,2026-12-12,2026-12-26,Closed,Corrective,NC-00361,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4235,2026-11-28,2027-01-26,2027-01-14,Closed,Corrective,NC-00364,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4236,2026-12-03,2027-01-10,2027-01-18,Closed,Preventive,NC-00365,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4237,2026-12-28,2027-02-10,,Open,Corrective,NC-00367,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4238,2025-07-13,2025-08-14,2025-08-02,Closed,Corrective,NC-00373,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4239,2025-07-16,2025-08-12,2025-08-24,Closed,Preventive,NC-00374,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4240,2025-08-08,2025-10-05,,Overdue,Corrective,NC-00378,Production,  Injection Molding  ,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4241,2025-08-28,2025-10-19,,Overdue,Corrective,NC-00383,Production,Injection Molding,Minor,Man (Operator),Patrícia Lima,Pending
+CAPA-4242,2025-09-05,2025-10-09,2025-10-05,Closed,Preventive,NC-00385,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4243,2025-09-29,2025-11-20,2025-11-01,Closed,Preventive,NC-00393,Production,Injection Molding,Major,Raw Material,Sandra Reis,Effective
+CAPA-4244,2025-10-05,2025-11-01,2025-11-12,Closed,Corrective,NC-00394,Production,Injection Molding,Minor,Man (Operator),Sandra Reis,Effective
+CAPA-4245,2025-10-09,2025-10-29,2025-10-22,Closed,Preventive,NC-00397,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4246,2025-10-14,2025-11-17,2025-11-02,Closed,Preventive,NC-00400,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4247,2025-10-18,2025-11-19,2025-11-10,Closed,Corrective,NC-00401,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4248,2025-10-18,2025-12-14,2025-12-01,Closed,Corrective,NC-00403,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4249,2025-10-23,2025-12-03,2025-11-01,Closed,Preventive,NC-00404,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4250,2025-10-30,2025-12-19,2025-12-04,Closed,Corrective,NC-00406,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4251,2025-10-31,2025-12-05,2025-11-26,Closed,Preventive,NC-00407,Production,Injection Molding,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4252,2025-11-06,2025-11-27,2025-11-17,Closed,Corrective,NC-00408,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4253,2025-11-05,2025-12-24,2025-12-28,Closed,Corrective,NC-00409,Production,Injection Molding,Major,Man (Operator),Ana Silva,Effective
+CAPA-4254,2025-11-05,2025-12-17,2025-12-05,Closed,Corrective,NC-00410,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4255,2025-11-13,2025-12-21,2025-12-05,Closed,Corrective,NC-00413,Production,Injection Molding,Minor,Man (Operator),Ana Silva,Pending
+CAPA-4256,2025-11-19,2025-12-21,,Overdue,Corrective,NC-00414,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4257,2025-11-27,2026-01-10,2026-01-10,Closed,Corrective,NC-00415,Production,Injection Molding,Major,Method/Procedure,Sandra Reis,Not Effective
+CAPA-4258,2025-12-13,2026-01-02,2026-01-31,Closed,Preventive,NC-00419,Production,Injection Molding,Minor,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4259,2026-01-06,2026-01-31,2026-01-19,Closed,Preventive,NC-00422,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4260,2026-01-12,2026-02-27,,Overdue,Corrective,NC-00424,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4261,2026-01-15,2026-02-16,,Overdue,Preventive,NC-00425,Production,INJECTION MOLDING,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4262,2026-01-19,2026-02-14,2026-02-04,Closed,Preventive,NC-00426,Production,Injection Molding,Major,Man (Operator),Ana Silva,Pending
+CAPA-4263,2026-01-24,2026-02-22,,Overdue,Preventive,NC-00428,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Not Effective
+CAPA-4264,2026-02-06,2026-02-28,2026-03-23,Closed,Corrective,NC-00432,Production,Injection Molding,Major,Mold/Tooling,Patrícia Lima,Pending
+CAPA-4265,2026-02-08,2026-03-18,2026-02-18,Closed,Preventive,NC-00433,Production,  Injection Molding  ,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4266,2026-03-03,2026-04-03,2026-03-12,Closed,Preventive,NC-00436,Production,  Injection Molding  ,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4267,2026-03-26,2026-05-07,2026-04-25,Closed,Corrective,NC-00439,Production,INJECTION MOLDING,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4268,2026-03-27,2026-05-19,2026-05-03,Closed,Corrective,NC-00440,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4269,2026-04-07,2026-05-26,2026-04-19,Closed,Corrective,NC-00443,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Effective
+CAPA-4270,2026-04-16,2026-06-01,,Overdue,Corrective,NC-00446,Production,Injection Molding,Minor,Machine/Equipment,Ana Silva,Effective
+CAPA-4271,2026-04-25,2026-05-29,2026-06-02,Closed,Corrective,NC-00447,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4272,2026-04-24,2026-06-16,,Overdue,Preventive,NC-00448,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4273,2026-05-03,2026-05-28,,Overdue,Preventive,NC-00449,Production,Injection Molding,Minor,Method/Procedure,Ana Silva,Not Effective
+CAPA-4274,2026-05-25,2026-07-19,2026-06-10,Closed,Corrective,NC-00454,Production,Injection Molding,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4275,2026-05-26,2026-07-24,2026-07-04,Closed,Corrective,NC-00455,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4276,2026-06-05,2026-07-08,2026-06-20,Closed,Corrective,NC-00457,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4277,2026-06-03,2026-07-25,2026-06-28,Closed,Preventive,NC-00458,Production,Injection Molding,Major,Raw Material,Sandra Reis,Pending
+CAPA-4278,2026-06-10,2026-07-30,2026-06-20,Closed,Preventive,NC-00460,Production,injection molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4279,2026-06-22,2026-07-23,2026-08-11,Closed,Corrective,NC-00462,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4280,2026-06-21,2026-08-03,2026-06-30,Closed,Corrective,NC-00463,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4281,2026-06-22,2026-07-15,,Overdue,Corrective,NC-00465,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4282,2026-06-25,2026-08-04,2026-07-28,Closed,Corrective,NC-00466,Production,Injection Molding,Major,Mold/Tooling,Vitor Sousa,Effective
+CAPA-4283,2026-07-06,2026-09-03,,Overdue,Preventive,NC-00469,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4284,2026-07-13,2026-08-19,2026-08-08,Closed,Preventive,NC-00470,Production,Injection Molding,Major,Mold/Tooling,Vitor Sousa,Effective
+CAPA-4285,2026-07-19,2026-08-12,,Overdue,Corrective,NC-00473,Production,Injection Molding,Minor,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4286,2026-08-05,2026-09-23,,Overdue,Preventive,NC-00474,Production,Injection Molding,Minor,Man (Operator),Sandra Reis,Not Effective
+CAPA-4287,2026-08-05,2026-09-23,2026-09-17,Closed,Corrective,NC-00475,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4288,2026-08-11,2026-09-20,2026-09-16,Closed,Preventive,NC-00477,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4289,2026-08-18,2026-09-13,2026-09-22,Closed,Preventive,NC-00479,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4290,2026-08-27,2026-10-22,2026-10-02,Closed,Preventive,NC-00481,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4291,2026-08-28,2026-09-30,2026-09-08,Closed,Corrective,NC-00482,Production,Injection Molding,Minor,Man (Operator),Vitor Sousa,Effective
+CAPA-4292,2026-09-02,2026-10-08,2026-09-12,Closed,Preventive,NC-00484,Production,Injection Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4293,2026-09-01,2026-10-27,2026-09-23,Closed,Corrective,NC-00485,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4294,2026-09-08,2026-10-17,,Overdue,Corrective,NC-00486,Production,Injection Molding,Minor,Machine/Equipment,Ana Silva,Effective
+CAPA-4295,2026-09-16,2026-10-26,2026-10-31,Closed,Corrective,NC-00489,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4296,2026-09-14,2026-10-08,2026-09-28,Closed,Preventive,NC-00490,Production,Injection Molding,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4297,2026-09-18,2026-10-17,2026-10-05,Closed,Corrective,NC-00491,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4298,2026-09-28,2026-11-02,2026-10-28,Closed,Corrective,NC-00494,Production,Injection Molding,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4299,2026-10-03,2026-11-16,2026-10-26,Closed,Preventive,NC-00495,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4300,2026-10-11,2026-12-03,2026-11-21,Closed,Preventive,NC-00496,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4301,2026-10-08,2026-12-05,2026-11-16,Closed,Corrective,NC-00497,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4302,2026-10-16,2026-12-10,2026-11-16,Closed,Preventive,NC-00499,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4303,2026-10-18,2026-12-03,2026-11-02,Closed,Preventive,NC-00500,Production,Injection Molding,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4304,2026-10-29,2026-12-07,2026-11-22,Closed,Preventive,NC-00502,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4305,2026-11-04,2026-12-25,,Overdue,Preventive,NC-00504,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4306,2026-11-04,2026-12-18,2026-11-18,Closed,Preventive,NC-00505,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4307,2026-11-04,2026-12-27,,Overdue,Corrective,NC-00506,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4308,2026-11-11,2026-12-15,2026-11-24,Closed,Corrective,NC-00508,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4309,2026-11-14,2026-12-12,2026-12-05,Closed,Corrective,NC-00509,Production,Injection Molding,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4310,2026-12-03,2027-01-27,2027-01-25,Closed,Corrective,NC-00513,Production,Injection Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4311,2026-12-05,2027-01-23,2026-12-15,Closed,Preventive,NC-00514,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Not Effective
+CAPA-4312,2026-12-15,2027-02-06,2027-01-17,Closed,Preventive,NC-00515,Production,INJECTION MOLDING,Major,Raw Material,Sandra Reis,Pending
+CAPA-4313,2025-07-30,2025-08-22,2025-09-18,Closed,Corrective,NC-00520,Production,Injection Molding,Major,Man (Operator),Elena Santos,Effective
+CAPA-4314,2025-07-30,2025-09-20,,Overdue,Corrective,NC-00521,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4315,2025-08-15,2025-09-05,2025-09-11,Closed,Corrective,NC-00522,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4316,2025-08-27,2025-09-22,2025-09-27,Closed,Preventive,NC-00524,Production,Injection Molding,Major,Raw Material,Elena Santos,Pending
+CAPA-4317,2025-09-17,2025-10-16,2025-10-23,Closed,Corrective,NC-00528,Production,Injection Molding,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4318,2025-10-02,2025-11-23,2025-11-14,Closed,Corrective,NC-00529,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4319,2025-10-11,2025-12-08,2025-12-03,Closed,Corrective,NC-00530,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4320,2025-10-20,2025-12-04,2025-11-04,Closed,Preventive,NC-00531,Production,Injection Molding,Major,Raw Material,Sandra Reis,Pending
+CAPA-4321,2025-11-04,2025-12-25,2025-11-29,Closed,Corrective,NC-00532,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4322,2025-11-07,2025-12-03,2025-12-23,Closed,Corrective,NC-00534,Production,Injection Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4323,2025-11-28,2026-01-02,2025-12-24,Closed,Corrective,NC-00538,Production,injection molding,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4324,2025-12-28,2026-01-27,,Overdue,Corrective,NC-00543,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4325,2026-01-04,2026-02-22,2026-02-11,Closed,Corrective,NC-00544,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4326,2026-01-10,2026-02-04,2026-02-18,Closed,Preventive,NC-00545,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4327,2026-01-26,2026-03-02,2026-02-26,Closed,Preventive,NC-00547,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4328,2026-02-04,2026-03-23,2026-03-19,Closed,Preventive,NC-00548,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4329,2026-03-02,2026-03-25,,Overdue,Corrective,NC-00551,Production,Injection Molding,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4330,2026-03-08,2026-04-20,2026-04-24,Closed,Corrective,NC-00552,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4331,2026-03-12,2026-04-10,,Overdue,Preventive,NC-00553,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4332,2026-03-17,2026-04-25,2026-03-29,Closed,Corrective,NC-00555,Production,Injection Molding,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4333,2026-04-01,2026-05-06,2026-05-24,Closed,Preventive,NC-00556,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Pending
+CAPA-4334,2026-04-02,2026-05-21,2026-04-19,Closed,Preventive,NC-00557,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4335,2026-04-22,2026-06-12,,Overdue,Preventive,NC-00559,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4336,2026-05-05,2026-06-03,2026-05-15,Closed,Corrective,NC-00560,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4337,2026-05-04,2026-05-30,,Overdue,Corrective,NC-00561,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4338,2026-05-23,2026-06-24,,Overdue,Corrective,NC-00563,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4339,2026-05-27,2026-07-16,,Overdue,Corrective,NC-00564,Production,INJECTION MOLDING,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4340,2026-06-03,2026-07-02,2026-07-07,Closed,Preventive,NC-00566,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Pending
+CAPA-4341,2026-06-14,2026-08-01,2026-08-03,Closed,Preventive,NC-00568,Production,  Injection Molding  ,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4342,2026-06-21,2026-08-12,2026-07-09,Closed,Corrective,NC-00569,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4343,2026-06-26,2026-07-24,2026-08-04,Closed,Preventive,NC-00570,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4344,2026-07-01,2026-07-21,2026-08-07,Closed,Preventive,NC-00571,Production,Injection Molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4345,2026-07-14,2026-09-08,2026-08-17,Closed,Corrective,NC-00572,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4346,2026-07-16,2026-09-08,2026-07-30,Closed,Preventive,NC-00573,Production,injection molding,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4347,2026-07-25,2026-09-13,,Overdue,Preventive,NC-00574,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4348,2026-07-27,2026-08-21,2026-09-11,Closed,Preventive,NC-00575,Production,Injection Molding,Major,Man (Operator),Elena Santos,Pending
+CAPA-4349,2026-08-08,2026-08-29,2026-09-12,Closed,Preventive,NC-00576,Production,Injection Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4350,2026-08-29,2026-10-05,2026-09-17,Closed,Preventive,NC-00578,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Effective
+CAPA-4351,2026-09-05,2026-09-25,2026-09-29,Closed,Corrective,NC-00581,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4352,2026-09-15,2026-10-05,,Overdue,Corrective,NC-00582,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4353,2026-09-25,2026-11-23,,Overdue,Preventive,NC-00583,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4354,2026-10-06,2026-11-02,2026-11-04,Closed,Preventive,NC-00584,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4355,2026-11-03,2026-12-13,2026-12-04,Closed,Corrective,NC-00586,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4356,2026-11-27,2026-12-20,2027-01-01,Closed,Corrective,NC-00588,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4357,2026-11-27,2026-12-26,2026-12-21,Closed,Corrective,NC-00589,Production,Injection Molding,Major,Man (Operator),Vitor Sousa,Pending
+CAPA-4358,2026-12-03,2027-01-08,2027-01-26,Closed,Corrective,NC-00590,Production,Injection Molding,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4359,2026-12-16,2027-01-11,,Open,Preventive,NC-00591,Production,Injection Molding,Major,Raw Material,Ana Silva,Pending
+CAPA-4360,2026-12-18,2027-01-19,,Open,Corrective,NC-00592,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4361,2025-07-30,2025-09-14,2025-08-11,Closed,Corrective,NC-00596,Production,injection molding,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4362,2025-08-16,2025-09-20,2025-09-25,Closed,Corrective,NC-00597,Production,Injection Molding,Major,Raw Material,Elena Santos,Pending
+CAPA-4363,2025-08-20,2025-09-10,2025-08-28,Closed,Corrective,NC-00598,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4364,2025-08-29,2025-10-16,2025-10-18,Closed,Corrective,NC-00601,Production,Injection Molding,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4365,2025-09-05,2025-10-02,2025-10-14,Closed,Preventive,NC-00602,Production,  Injection Molding  ,Major,Man (Operator),Ana Silva,Pending
+CAPA-4366,2025-09-10,2025-10-10,2025-10-12,Closed,Preventive,NC-00603,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4367,2025-09-18,2025-11-14,2025-11-04,Closed,Corrective,NC-00604,Production,Injection Molding,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4368,2025-09-25,2025-10-26,,Overdue,Corrective,NC-00605,Production,  Injection Molding  ,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4369,2025-10-05,2025-12-01,2025-11-08,Closed,Preventive,NC-00607,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4370,2025-11-11,2025-12-08,,Overdue,Corrective,NC-00611,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4371,2025-12-13,2026-01-22,2026-01-02,Closed,Preventive,NC-00616,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4372,2025-12-18,2026-01-29,2026-01-15,Closed,Preventive,NC-00618,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4373,2025-12-31,2026-01-28,2026-01-17,Closed,Corrective,NC-00619,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4374,2026-02-12,2026-03-30,2026-03-09,Closed,Corrective,NC-00622,Production,Injection Molding,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4375,2026-02-15,2026-04-07,2026-03-13,Closed,Preventive,NC-00623,Production,Injection Molding,Major,Raw Material,Elena Santos,Pending
+CAPA-4376,2026-02-23,2026-04-03,2026-04-17,Closed,Corrective,NC-00624,Production,Injection Molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4377,2026-03-10,2026-05-02,2026-03-23,Closed,Preventive,NC-00627,Production,  Injection Molding  ,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4378,2026-03-30,2026-05-01,2026-04-09,Closed,Preventive,NC-00630,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Effective
+CAPA-4379,2026-04-06,2026-04-30,2026-05-13,Closed,Corrective,NC-00632,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4380,2026-04-18,2026-06-14,2026-05-23,Closed,Corrective,NC-00633,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4381,2026-04-21,2026-06-19,2026-05-30,Closed,Preventive,NC-00634,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4382,2026-05-05,2026-07-01,2026-06-15,Closed,Corrective,NC-00636,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4383,2026-05-20,2026-07-14,2026-06-06,Closed,Corrective,NC-00639,Production,Injection Molding,Major,Mold/Tooling,Patrícia Lima,Effective
+CAPA-4384,2026-06-01,2026-06-23,2026-06-22,Closed,Corrective,NC-00641,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4385,2026-06-07,2026-08-04,2026-07-10,Closed,Preventive,NC-00642,Production,Injection Molding,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4386,2026-06-24,2026-07-15,2026-07-30,Closed,Preventive,NC-00643,Production,INJECTION MOLDING,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4387,2026-07-19,2026-09-06,,Overdue,Preventive,NC-00645,Production,Injection Molding,Major,Raw Material,Elena Santos,Effective
+CAPA-4388,2026-08-08,2026-09-02,2026-10-01,Closed,Corrective,NC-00648,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4389,2026-09-06,2026-10-03,2026-10-13,Closed,Corrective,NC-00651,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4390,2026-09-13,2026-10-03,2026-09-26,Closed,Corrective,NC-00652,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4391,2026-09-19,2026-10-09,2026-11-01,Closed,Corrective,NC-00654,Production,Injection Molding,Major,Method/Procedure,Sandra Reis,Not Effective
+CAPA-4392,2026-09-28,2026-11-13,,Overdue,Preventive,NC-00656,Production,  Injection Molding  ,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4393,2026-10-13,2026-12-03,2026-11-07,Closed,Corrective,NC-00660,Production,injection molding,Major,Raw Material,Ana Silva,Pending
+CAPA-4394,2026-10-18,2026-12-11,2026-12-06,Closed,Preventive,NC-00661,Production,Injection Molding,Major,Mold/Tooling,Patrícia Lima,Pending
+CAPA-4395,2026-11-01,2026-12-16,,Overdue,Preventive,NC-00663,Production,Injection Molding,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4396,2026-12-18,2027-01-07,,Open,Corrective,NC-00668,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4397,2025-07-12,2025-08-30,2025-07-22,Closed,Preventive,NC-00669,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4398,2025-07-19,2025-08-21,2025-08-08,Closed,Preventive,NC-00670,Production,Injection Molding,Major,Mold/Tooling,Carlos Mendes,Not Effective
+CAPA-4399,2025-07-22,2025-09-07,2025-08-04,Closed,Preventive,NC-00671,Production,  Injection Molding  ,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4400,2025-07-24,2025-09-14,2025-08-19,Closed,Preventive,NC-00672,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4401,2025-08-05,2025-08-30,,Overdue,Preventive,NC-00673,Production,Injection Molding,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4402,2025-08-10,2025-09-07,2025-09-19,Closed,Corrective,NC-00674,Production,Injection Molding,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4403,2025-08-17,2025-09-20,2025-08-27,Closed,Preventive,NC-00675,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4404,2025-08-16,2025-09-06,2025-08-25,Closed,Preventive,NC-00676,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4405,2025-08-19,2025-09-15,,Overdue,Preventive,NC-00677,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4406,2025-08-23,2025-09-15,2025-10-04,Closed,Corrective,NC-00678,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4407,2025-09-14,2025-10-22,2025-10-30,Closed,Corrective,NC-00680,Production,  Injection Molding  ,Major,Man (Operator),Elena Santos,Effective
+CAPA-4408,2025-09-18,2025-10-22,2025-10-31,Closed,Corrective,NC-00681,Production,injection molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4409,2025-09-21,2025-10-12,2025-11-12,Closed,Preventive,NC-00683,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4410,2025-10-16,2025-11-30,2025-11-16,Closed,Preventive,NC-00685,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4411,2025-10-27,2025-12-10,,Overdue,Preventive,NC-00688,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4412,2025-10-26,2025-12-21,2025-12-18,Closed,Preventive,NC-00689,Production,Injection Molding,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4413,2025-11-18,2025-12-28,,Overdue,Corrective,NC-00690,Production,Injection Molding,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4414,2025-12-24,2026-02-11,2026-01-10,Closed,Preventive,NC-00691,Production,Injection Molding,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4415,2026-01-16,2026-03-12,,Overdue,Preventive,NC-00692,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4416,2026-01-29,2026-02-18,2026-02-19,Closed,Preventive,NC-00693,Production,Injection Molding,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4417,2026-02-10,2026-03-31,2026-03-27,Closed,Preventive,NC-00694,Production,Injection Molding,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4418,2026-03-06,2026-04-13,,Overdue,Preventive,NC-00696,Production,Injection Molding,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4419,2026-03-15,2026-04-12,2026-03-26,Closed,Preventive,NC-00697,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4420,2026-04-02,2026-05-10,2026-05-09,Closed,Preventive,NC-00699,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4421,2026-04-18,2026-05-15,,Overdue,Corrective,NC-00700,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4422,2026-04-24,2026-05-22,,Overdue,Corrective,NC-00701,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4423,2026-05-28,2026-07-18,2026-06-12,Closed,Corrective,NC-00704,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4424,2026-06-05,2026-07-07,,Overdue,Preventive,NC-00705,Production,injection molding,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4425,2026-08-18,2026-09-30,2026-09-08,Closed,Corrective,NC-00713,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4426,2026-09-09,2026-11-06,2026-10-26,Closed,Corrective,NC-00714,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4427,2026-09-27,2026-10-29,,Overdue,Corrective,NC-00716,Production,Injection Molding,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4428,2026-10-25,2026-12-22,,Overdue,Corrective,NC-00717,Production,Injection Molding,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4429,2026-11-04,2026-12-14,2026-12-20,Closed,Corrective,NC-00719,Production,INJECTION MOLDING,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4430,2026-11-13,2027-01-11,2026-12-30,Closed,Corrective,NC-00721,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4431,2026-11-18,2027-01-15,2026-12-25,Closed,Corrective,NC-00722,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4432,2026-11-30,2027-01-15,2026-12-21,Closed,Preventive,NC-00723,Production,Injection Molding,Major,Method/Procedure,Patrícia Lima,Pending
+CAPA-4433,2026-12-06,2027-01-16,2027-01-10,Closed,Preventive,NC-00725,Production,Injection Molding,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4434,2026-12-12,2027-01-13,,Open,Corrective,NC-00726,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4435,2026-12-17,2027-02-07,2027-01-16,Closed,Corrective,NC-00728,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4436,2025-07-03,2025-08-10,,Overdue,Preventive,NC-00729,Production,Injection Molding,Major,Raw Material,Elena Santos,Pending
+CAPA-4437,2025-07-12,2025-08-16,2025-08-29,Closed,Preventive,NC-00731,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Pending
+CAPA-4438,2025-08-06,2025-10-04,2025-09-24,Closed,Preventive,NC-00732,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4439,2025-08-08,2025-09-10,2025-09-10,Closed,Preventive,NC-00733,Production,Injection Molding,Major,Man (Operator),Elena Santos,Pending
+CAPA-4440,2025-08-19,2025-09-26,2025-10-03,Closed,Preventive,NC-00735,Production,Injection Molding,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4441,2025-08-31,2025-10-02,2025-10-04,Closed,Corrective,NC-00736,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Not Effective
+CAPA-4442,2025-09-02,2025-09-23,2025-10-16,Closed,Preventive,NC-00737,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4443,2025-09-11,2025-11-09,2025-10-15,Closed,Corrective,NC-00738,Production,  Injection Molding  ,Major,Raw Material,Sandra Reis,Effective
+CAPA-4444,2025-09-13,2025-10-05,2025-11-05,Closed,Preventive,NC-00739,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4445,2025-09-24,2025-10-19,,Overdue,Preventive,NC-00741,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4446,2025-10-30,2025-12-10,,Overdue,Preventive,NC-00742,Production,injection molding,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4447,2025-11-28,2025-12-19,2025-12-27,Closed,Corrective,NC-00744,Production,Injection Molding,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4448,2026-01-11,2026-03-03,,Overdue,Preventive,NC-00745,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4449,2026-02-12,2026-03-28,,Overdue,Preventive,NC-00746,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4450,2026-02-15,2026-03-28,2026-03-01,Closed,Corrective,NC-00747,Production,  Injection Molding  ,Major,Raw Material,Ana Silva,Pending
+CAPA-4451,2026-02-25,2026-04-13,2026-03-19,Closed,Preventive,NC-00748,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4452,2026-03-01,2026-04-29,2026-03-23,Closed,Corrective,NC-00750,Production,Injection Molding,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4453,2026-03-21,2026-04-12,2026-05-04,Closed,Preventive,NC-00751,Production,Injection Molding,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4454,2026-03-21,2026-04-16,,Overdue,Corrective,NC-00752,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4455,2026-04-04,2026-04-28,2026-05-04,Closed,Preventive,NC-00753,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4456,2026-04-28,2026-05-20,2026-06-08,Closed,Preventive,NC-00755,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4457,2026-05-03,2026-05-31,2026-05-11,Closed,Preventive,NC-00756,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4458,2026-05-06,2026-06-06,2026-06-21,Closed,Preventive,NC-00757,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4459,2026-05-19,2026-06-09,,Overdue,Corrective,NC-00759,Production,Injection Molding,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4460,2026-05-26,2026-07-20,2026-06-26,Closed,Preventive,NC-00760,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4461,2026-06-04,2026-07-17,2026-07-09,Closed,Corrective,NC-00762,Production,Injection Molding,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4462,2026-06-08,2026-07-19,2026-07-16,Closed,Preventive,NC-00763,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4463,2026-06-23,2026-07-19,,Overdue,Corrective,NC-00764,Production,Injection Molding,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4464,2026-06-25,2026-08-02,2026-07-23,Closed,Corrective,NC-00765,Production,Injection Molding,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4465,2026-06-28,2026-08-04,2026-07-06,Closed,Corrective,NC-00766,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Not Effective
+CAPA-4466,2026-07-29,2026-09-13,,Overdue,Preventive,NC-00767,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Not Effective
+CAPA-4467,2026-07-30,2026-09-12,,Overdue,Preventive,NC-00768,Production,Injection Molding,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4468,2026-08-03,2026-09-05,2026-08-20,Closed,Preventive,NC-00769,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4469,2026-08-16,2026-09-23,2026-09-19,Closed,Corrective,NC-00770,Production,Injection Molding,Major,Man (Operator),Ana Silva,Effective
+CAPA-4470,2026-08-23,2026-09-21,2026-09-16,Closed,Corrective,NC-00771,Production,Injection Molding,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4471,2026-08-23,2026-10-08,,Overdue,Preventive,NC-00772,Production,Injection Molding,Major,Raw Material,Sandra Reis,Effective
+CAPA-4472,2026-09-02,2026-09-24,2026-09-28,Closed,Preventive,NC-00773,Production,Injection Molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4473,2026-09-08,2026-10-10,2026-09-16,Closed,Corrective,NC-00774,Production,Injection Molding,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4474,2026-10-04,2026-11-14,2026-10-20,Closed,Corrective,NC-00775,Production,Injection Molding,Major,Method/Procedure,Carlos Mendes,Not Effective
+CAPA-4475,2026-10-08,2026-11-26,,Overdue,Preventive,NC-00776,Production,  Injection Molding  ,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4476,2026-10-11,2026-11-04,2026-11-01,Closed,Preventive,NC-00777,Production,Injection Molding,Major,Machine/Equipment,Ana Silva,Pending
+CAPA-4477,2026-10-31,2026-12-20,2026-12-11,Closed,Corrective,NC-00778,Production,Injection Molding,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4478,2026-11-16,2026-12-20,2027-01-02,Closed,Preventive,NC-00779,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4479,2026-11-22,2026-12-25,2026-12-29,Closed,Corrective,NC-00780,Production,injection molding,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4480,2026-12-04,2027-01-05,2027-01-02,Closed,Corrective,NC-00781,Production,Injection Molding,Major,Method/Procedure,Vitor Sousa,Not Effective
+CAPA-4481,2026-12-29,2027-02-06,2027-02-03,Closed,Preventive,NC-00784,Production,Injection Molding,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4482,2025-11-09,2025-11-30,2025-12-18,Closed,Preventive,NC-00785,Production,  Injection Molding  ,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4483,2025-07-10,2025-08-21,,Overdue,Preventive,NC-00786,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4484,2025-07-14,2025-08-06,2025-08-08,Closed,Corrective,NC-00787,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4485,2025-07-28,2025-09-14,,Overdue,Corrective,NC-00788,Production,Screen Printing,Major,Method/Procedure,Carlos Mendes,Pending
+CAPA-4486,2025-09-15,2025-10-18,2025-10-13,Closed,Corrective,NC-00789,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4487,2025-11-09,2025-12-10,2025-12-13,Closed,Preventive,NC-00795,Production,Screen Printing,Major,Raw Material,Elena Santos,Pending
+CAPA-4488,2025-11-14,2025-12-11,2025-12-04,Closed,Corrective,NC-00796,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4489,2025-11-23,2026-01-16,2026-01-15,Closed,Preventive,NC-00797,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4490,2026-01-19,2026-03-11,,Overdue,Corrective,NC-00799,Production,Screen Printing,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4491,2026-03-06,2026-04-24,2026-04-22,Closed,Corrective,NC-00802,Production,screen printing,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4492,2026-03-07,2026-04-28,2026-03-31,Closed,Preventive,NC-00803,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4493,2026-03-06,2026-04-01,2026-04-12,Closed,Corrective,NC-00804,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4494,2026-03-24,2026-04-20,2026-04-24,Closed,Corrective,NC-00805,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4495,2026-04-08,2026-05-03,2026-05-25,Closed,Preventive,NC-00806,Production,Screen Printing,Major,Raw Material,Elena Santos,Pending
+CAPA-4496,2026-04-25,2026-06-22,,Overdue,Corrective,NC-00808,Production,Screen Printing,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4497,2026-04-30,2026-06-01,,Overdue,Preventive,NC-00809,Production,Screen Printing,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4498,2026-05-16,2026-07-02,2026-05-28,Closed,Preventive,NC-00810,Production,SCREEN PRINTING,Major,Machine/Equipment,Ana Silva,Pending
+CAPA-4499,2026-05-31,2026-07-29,,Overdue,Corrective,NC-00811,Production,Screen Printing,Major,Mold/Tooling,Carlos Mendes,Pending
+CAPA-4500,2026-06-04,2026-07-13,2026-07-19,Closed,Corrective,NC-00812,Production,Screen Printing,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4501,2026-06-25,2026-08-15,2026-07-07,Closed,Preventive,NC-00813,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4502,2026-06-25,2026-08-03,2026-08-07,Closed,Preventive,NC-00814,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4503,2026-07-11,2026-08-27,2026-08-19,Closed,Preventive,NC-00815,Production,Screen Printing,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4504,2026-07-12,2026-08-21,,Overdue,Preventive,NC-00817,Production,Screen Printing,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4505,2026-08-30,2026-09-21,2026-10-23,Closed,Corrective,NC-00818,Production,Screen Printing,Major,Raw Material,Sandra Reis,Pending
+CAPA-4506,2026-09-03,2026-11-01,,Overdue,Preventive,NC-00819,Production,Screen Printing,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4507,2026-09-24,2026-10-21,2026-10-03,Closed,Corrective,NC-00820,Production,Screen Printing,Major,Mold/Tooling,Patrícia Lima,Pending
+CAPA-4508,2026-10-11,2026-11-10,2026-11-22,Closed,Preventive,NC-00822,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Pending
+CAPA-4509,2026-10-21,2026-11-14,,Overdue,Corrective,NC-00823,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4510,2026-11-03,2026-11-26,,Overdue,Corrective,NC-00824,Production,Screen Printing,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4511,2025-09-10,2025-10-01,2025-10-22,Closed,Preventive,NC-00825,Production,Screen Printing,Major,Man (Operator),Ana Silva,Pending
+CAPA-4512,2026-02-20,2026-04-18,2026-03-25,Closed,Corrective,NC-00827,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4513,2026-03-03,2026-03-23,2026-03-29,Closed,Preventive,NC-00828,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4514,2026-07-08,2026-08-28,,Overdue,Corrective,NC-00829,Production,Screen Printing,Major,Raw Material,Ana Silva,Effective
+CAPA-4515,2026-07-22,2026-09-06,2026-07-31,Closed,Preventive,NC-00830,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4516,2026-08-25,2026-10-03,2026-09-14,Closed,Preventive,NC-00831,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4517,2026-09-07,2026-10-14,2026-10-22,Closed,Preventive,NC-00832,Production,  Screen Printing  ,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4518,2026-11-10,2026-12-07,2026-12-19,Closed,Corrective,NC-00834,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4519,2025-07-31,2025-08-23,2025-09-02,Closed,Preventive,NC-00836,Production,  Screen Printing  ,Major,Man (Operator),Elena Santos,Effective
+CAPA-4520,2025-09-16,2025-11-06,2025-10-19,Closed,Corrective,NC-00837,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Not Effective
+CAPA-4521,2025-10-10,2025-12-08,2025-11-18,Closed,Corrective,NC-00838,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4522,2025-10-13,2025-12-01,2025-10-28,Closed,Corrective,NC-00839,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Pending
+CAPA-4523,2025-10-30,2025-11-22,2025-12-08,Closed,Preventive,NC-00840,Production,Screen Printing,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4524,2026-03-19,2026-04-13,2026-05-12,Closed,Preventive,NC-00842,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4525,2026-06-02,2026-06-22,,Overdue,Corrective,NC-00843,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4526,2026-08-21,2026-09-28,2026-09-14,Closed,Preventive,NC-00845,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4527,2026-08-24,2026-09-25,2026-09-10,Closed,Preventive,NC-00846,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4528,2026-12-28,2027-01-27,2027-01-18,Closed,Corrective,NC-00848,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4529,2025-07-12,2025-09-08,2025-07-27,Closed,Preventive,NC-00849,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4530,2025-07-24,2025-09-15,2025-08-17,Closed,Corrective,NC-00850,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4531,2025-08-14,2025-09-25,2025-09-05,Closed,Corrective,NC-00852,Production,Screen Printing,Major,Raw Material,Ana Silva,Effective
+CAPA-4532,2025-09-14,2025-10-25,2025-10-11,Closed,Corrective,NC-00853,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4533,2025-10-07,2025-12-03,2025-11-04,Closed,Preventive,NC-00854,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4534,2026-02-05,2026-04-02,,Overdue,Corrective,NC-00859,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4535,2026-03-21,2026-04-10,2026-05-01,Closed,Corrective,NC-00860,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4536,2026-03-25,2026-05-05,2026-05-11,Closed,Preventive,NC-00861,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4537,2026-05-26,2026-06-18,,Overdue,Corrective,NC-00864,Production,Screen Printing,Major,Raw Material,Elena Santos,Effective
+CAPA-4538,2026-05-28,2026-07-06,,Overdue,Preventive,NC-00865,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4539,2026-06-01,2026-07-08,,Overdue,Preventive,NC-00866,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4540,2026-06-25,2026-08-18,,Overdue,Preventive,NC-00867,Production,SCREEN PRINTING,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4541,2026-07-08,2026-08-18,,Overdue,Preventive,NC-00868,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4542,2026-07-11,2026-08-20,2026-08-18,Closed,Corrective,NC-00870,Production,Screen Printing,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4543,2026-07-17,2026-09-11,,Overdue,Corrective,NC-00871,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4544,2026-07-27,2026-09-23,2026-08-27,Closed,Preventive,NC-00872,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4545,2026-08-03,2026-08-29,2026-09-18,Closed,Corrective,NC-00873,Production,Screen Printing,Major,Man (Operator),Ana Silva,Effective
+CAPA-4546,2026-08-30,2026-10-05,,Overdue,Preventive,NC-00875,Production,Screen Printing,Major,Raw Material,Elena Santos,Effective
+CAPA-4547,2026-09-14,2026-11-09,2026-10-05,Closed,Preventive,NC-00876,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4548,2026-11-08,2026-12-29,2026-12-22,Closed,Corrective,NC-00880,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4549,2026-12-09,2027-01-06,2027-01-28,Closed,Preventive,NC-00881,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4550,2025-07-08,2025-08-09,,Overdue,Preventive,NC-00882,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4551,2025-07-29,2025-08-26,,Overdue,Preventive,NC-00884,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Pending
+CAPA-4552,2025-08-22,2025-10-19,,Overdue,Corrective,NC-00886,Production,Screen Printing,Major,Raw Material,Elena Santos,Pending
+CAPA-4553,2025-09-02,2025-09-22,2025-10-20,Closed,Corrective,NC-00887,Production,Screen Printing,Major,Raw Material,Elena Santos,Pending
+CAPA-4554,2025-09-15,2025-10-09,2025-10-14,Closed,Preventive,NC-00888,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4555,2025-10-04,2025-12-01,2025-11-15,Closed,Corrective,NC-00889,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4556,2025-10-15,2025-11-13,2025-12-06,Closed,Preventive,NC-00890,Production,Screen Printing,Major,Mold/Tooling,Vitor Sousa,Effective
+CAPA-4557,2025-11-19,2025-12-18,2025-12-25,Closed,Corrective,NC-00892,Production,Screen Printing,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4558,2025-12-03,2026-01-06,2026-01-21,Closed,Preventive,NC-00893,Production,Screen Printing,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4559,2025-12-14,2026-01-04,2025-12-31,Closed,Preventive,NC-00894,Production,  Screen Printing  ,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4560,2025-12-30,2026-01-26,,Overdue,Corrective,NC-00896,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4561,2026-01-01,2026-01-30,2026-02-17,Closed,Corrective,NC-00897,Production,Screen Printing,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4562,2026-01-10,2026-03-10,,Overdue,Preventive,NC-00898,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4563,2026-01-20,2026-02-19,2026-02-17,Closed,Preventive,NC-00899,Production,Screen Printing,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4564,2026-02-02,2026-02-26,2026-02-13,Closed,Corrective,NC-00900,Production,Screen Printing,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4565,2026-02-06,2026-03-11,2026-03-29,Closed,Preventive,NC-00901,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4566,2026-02-19,2026-04-01,2026-03-13,Closed,Preventive,NC-00903,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4567,2026-03-12,2026-04-03,2026-03-26,Closed,Corrective,NC-00905,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4568,2026-04-03,2026-06-01,2026-04-18,Closed,Corrective,NC-00906,Production,Screen Printing,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4569,2026-04-10,2026-05-23,2026-05-15,Closed,Corrective,NC-00907,Production,Screen Printing,Major,Mold/Tooling,Elena Santos,Pending
+CAPA-4570,2026-04-21,2026-05-16,2026-05-07,Closed,Preventive,NC-00908,Production,Screen Printing,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4571,2026-05-04,2026-05-31,2026-05-31,Closed,Corrective,NC-00909,Production,Screen Printing,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4572,2026-05-20,2026-07-10,2026-06-12,Closed,Corrective,NC-00912,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4573,2026-05-29,2026-07-26,2026-07-14,Closed,Corrective,NC-00913,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Pending
+CAPA-4574,2026-05-30,2026-07-23,2026-06-30,Closed,Preventive,NC-00914,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Not Effective
+CAPA-4575,2026-06-20,2026-08-08,2026-08-06,Closed,Corrective,NC-00921,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4576,2026-06-25,2026-08-02,2026-08-09,Closed,Preventive,NC-00922,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4577,2026-07-11,2026-08-29,2026-08-06,Closed,Corrective,NC-00924,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Pending
+CAPA-4578,2026-07-26,2026-09-22,2026-08-25,Closed,Preventive,NC-00926,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4579,2026-07-28,2026-09-06,2026-08-08,Closed,Preventive,NC-00927,Production,Screen Printing,Major,Mold/Tooling,Patrícia Lima,Pending
+CAPA-4580,2026-08-27,2026-10-11,,Overdue,Corrective,NC-00930,Production,Screen Printing,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4581,2026-09-01,2026-09-30,2026-09-26,Closed,Corrective,NC-00931,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Effective
+CAPA-4582,2026-10-24,2026-12-08,,Overdue,Corrective,NC-00935,Production,Screen Printing,Major,Mold/Tooling,Vitor Sousa,Not Effective
+CAPA-4583,2026-10-31,2026-12-24,,Overdue,Corrective,NC-00936,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4584,2026-11-01,2026-12-05,,Overdue,Corrective,NC-00937,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4585,2026-11-06,2026-12-19,,Overdue,Preventive,NC-00938,Production,screen printing,Major,Raw Material,Sandra Reis,Effective
+CAPA-4586,2026-11-08,2026-12-10,2026-11-23,Closed,Corrective,NC-00939,Production,Screen Printing,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4587,2026-11-14,2027-01-10,2026-11-28,Closed,Corrective,NC-00940,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4588,2026-11-18,2027-01-14,,Open,Preventive,NC-00941,Production,Screen Printing,Major,Mold/Tooling,Vitor Sousa,Pending
+CAPA-4589,2026-12-24,2027-01-13,,Open,Corrective,NC-00944,Production,Screen Printing,Major,Method/Procedure,Vitor Sousa,Effective
+CAPA-4590,2026-06-16,2026-08-12,2026-07-02,Closed,Corrective,NC-00945,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4591,2026-12-30,2027-01-25,2027-01-28,Closed,Preventive,NC-00946,Production,Screen Printing,Major,Man (Operator),Elena Santos,Effective
+CAPA-4592,2025-08-10,2025-09-06,2025-09-14,Closed,Corrective,NC-00947,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4593,2025-08-10,2025-09-04,2025-08-19,Closed,Corrective,NC-00948,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4594,2025-08-25,2025-10-20,2025-10-05,Closed,Preventive,NC-00949,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4595,2025-09-07,2025-10-04,2025-09-27,Closed,Preventive,NC-00950,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4596,2025-09-18,2025-11-03,2025-11-02,Closed,Corrective,NC-00952,Production,Screen Printing,Major,Mold/Tooling,Vitor Sousa,Effective
+CAPA-4597,2025-09-26,2025-11-20,2025-10-13,Closed,Preventive,NC-00953,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4598,2025-09-30,2025-11-20,2025-11-03,Closed,Preventive,NC-00954,Production,Screen Printing,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4599,2025-10-03,2025-11-29,,Overdue,Preventive,NC-00955,Production,Screen Printing,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4600,2025-11-06,2026-01-03,2025-12-24,Closed,Corrective,NC-00958,Production,  Screen Printing  ,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4601,2025-11-20,2025-12-28,2025-11-30,Closed,Preventive,NC-00959,Production,SCREEN PRINTING,Major,Man (Operator),Elena Santos,Not Effective
+CAPA-4602,2025-11-19,2026-01-03,2025-11-28,Closed,Corrective,NC-00960,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4603,2025-12-05,2025-12-25,,Overdue,Preventive,NC-00962,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4604,2025-12-29,2026-02-26,2026-02-10,Closed,Preventive,NC-00963,Production,  Screen Printing  ,Major,Method/Procedure,Vitor Sousa,Not Effective
+CAPA-4605,2026-02-20,2026-03-23,2026-03-01,Closed,Preventive,NC-00966,Production,Screen Printing,Major,Mold/Tooling,Elena Santos,Effective
+CAPA-4606,2026-03-30,2026-05-14,2026-05-02,Closed,Preventive,NC-00967,Production,Screen Printing,Major,Raw Material,Elena Santos,Effective
+CAPA-4607,2026-04-07,2026-05-13,2026-04-25,Closed,Preventive,NC-00968,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Pending
+CAPA-4608,2026-04-27,2026-05-27,2026-05-08,Closed,Corrective,NC-00969,Production,Screen Printing,Major,Raw Material,Elena Santos,Pending
+CAPA-4609,2026-05-01,2026-06-18,,Overdue,Preventive,NC-00970,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4610,2026-06-05,2026-07-17,2026-07-20,Closed,Preventive,NC-00971,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Effective
+CAPA-4611,2026-07-21,2026-09-09,2026-09-11,Closed,Preventive,NC-00972,Production,Screen Printing,Major,Mold/Tooling,Ana Silva,Effective
+CAPA-4612,2026-09-24,2026-10-15,,Overdue,Preventive,NC-00977,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4613,2026-09-30,2026-11-15,2026-11-20,Closed,Corrective,NC-00978,Production,Screen Printing,Major,Method/Procedure,Carlos Mendes,Effective
+CAPA-4614,2026-10-08,2026-11-10,2026-11-18,Closed,Corrective,NC-00979,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Pending
+CAPA-4615,2026-10-20,2026-11-27,2026-11-23,Closed,Preventive,NC-00980,Production,  Screen Printing  ,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4616,2026-11-03,2026-12-18,2026-11-20,Closed,Preventive,NC-00981,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4617,2026-11-22,2027-01-15,2027-01-04,Closed,Preventive,NC-00982,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4618,2026-12-06,2027-01-21,2027-01-02,Closed,Preventive,NC-00983,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4619,2025-07-21,2025-09-01,2025-08-19,Closed,Corrective,NC-00984,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4620,2025-10-16,2025-12-01,2025-12-07,Closed,Corrective,NC-00986,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4621,2025-10-18,2025-12-04,2025-11-08,Closed,Corrective,NC-00987,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4622,2025-11-18,2026-01-01,2025-12-06,Closed,Preventive,NC-00989,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4623,2025-11-25,2025-12-23,2025-12-07,Closed,Preventive,NC-00990,Production,Screen Printing,Major,Raw Material,Ana Silva,Effective
+CAPA-4624,2025-12-07,2026-01-30,,Overdue,Preventive,NC-00991,Production,Screen Printing,Major,Mold/Tooling,Ana Silva,Not Effective
+CAPA-4625,2026-01-29,2026-02-28,2026-03-02,Closed,Corrective,NC-00992,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4626,2026-02-09,2026-04-04,2026-03-24,Closed,Preventive,NC-00993,Production,Screen Printing,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4627,2026-02-15,2026-04-05,2026-04-02,Closed,Preventive,NC-00994,Production,Screen Printing,Major,Machine/Equipment,Ana Silva,Not Effective
+CAPA-4628,2026-03-01,2026-03-22,2026-03-16,Closed,Preventive,NC-00995,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Pending
+CAPA-4629,2026-09-05,2026-09-26,2026-09-23,Closed,Preventive,NC-00997,Production,Screen Printing,Major,Raw Material,Carlos Mendes,Pending
+CAPA-4630,2026-12-14,2027-01-23,2027-01-09,Closed,Preventive,NC-01000,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Not Effective
+CAPA-4631,2026-12-13,2027-01-09,2027-01-08,Closed,Corrective,NC-01001,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4632,2025-07-08,2025-08-12,2025-07-29,Closed,Corrective,NC-01002,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4633,2025-07-11,2025-08-08,2025-07-25,Closed,Corrective,NC-01003,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Pending
+CAPA-4634,2025-08-07,2025-09-12,2025-09-15,Closed,Preventive,NC-01005,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Pending
+CAPA-4635,2025-09-19,2025-11-06,,Overdue,Corrective,NC-01006,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4636,2025-09-23,2025-11-10,2025-10-24,Closed,Preventive,NC-01007,Production,Screen Printing,Major,Man (Operator),Patrícia Lima,Pending
+CAPA-4637,2025-10-09,2025-11-14,2025-11-01,Closed,Corrective,NC-01008,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4638,2025-11-12,2025-12-16,,Overdue,Corrective,NC-01009,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4639,2025-11-12,2025-12-24,2025-12-02,Closed,Preventive,NC-01010,Production,Screen Printing,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4640,2026-05-16,2026-07-11,2026-06-26,Closed,Corrective,NC-01011,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4641,2026-07-18,2026-08-11,2026-08-10,Closed,Preventive,NC-01013,Production,Screen Printing,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4642,2026-07-28,2026-09-22,2026-09-04,Closed,Preventive,NC-01014,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Pending
+CAPA-4643,2026-08-22,2026-09-28,2026-10-07,Closed,Preventive,NC-01015,Production,Screen Printing,Major,Raw Material,Elena Santos,Effective
+CAPA-4644,2026-09-13,2026-10-18,,Overdue,Preventive,NC-01016,Production,screen printing,Major,Mold/Tooling,Patrícia Lima,Pending
+CAPA-4645,2026-09-28,2026-11-02,2026-11-13,Closed,Corrective,NC-01018,Production,Screen Printing,Major,Raw Material,Carlos Mendes,Pending
+CAPA-4646,2026-09-29,2026-11-18,2026-11-16,Closed,Corrective,NC-01019,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4647,2026-10-08,2026-11-18,2026-10-23,Closed,Preventive,NC-01020,Production,Screen Printing,Major,Man (Operator),Elena Santos,Pending
+CAPA-4648,2026-10-16,2026-11-24,,Overdue,Preventive,NC-01021,Production,Screen Printing,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4649,2026-12-03,2027-01-04,2026-12-20,Closed,Preventive,NC-01023,Production,  Screen Printing  ,Minor,Raw Material,Carlos Mendes,Not Effective
+CAPA-4650,2025-07-24,2025-08-13,2025-08-10,Closed,Preventive,NC-01025,Production,SCREEN PRINTING,Major,Man (Operator),Patrícia Lima,Not Effective
+CAPA-4651,2025-09-27,2025-10-26,2025-11-19,Closed,Corrective,NC-01026,Production,Screen Printing,Major,Man (Operator),Elena Santos,Effective
+CAPA-4652,2025-11-07,2025-11-30,,Overdue,Preventive,NC-01027,Production,Screen Printing,Major,Man (Operator),Elena Santos,Effective
+CAPA-4653,2026-03-03,2026-04-11,,Overdue,Corrective,NC-01029,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4654,2026-04-22,2026-05-31,,Overdue,Preventive,NC-01032,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4655,2026-05-15,2026-06-06,2026-06-01,Closed,Preventive,NC-01033,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4656,2026-06-30,2026-08-24,,Overdue,Preventive,NC-01035,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Pending
+CAPA-4657,2026-08-03,2026-08-23,2026-09-09,Closed,Corrective,NC-01037,Production,Screen Printing,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4658,2026-08-05,2026-09-20,2026-08-26,Closed,Corrective,NC-01038,Production,Screen Printing,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4659,2026-08-26,2026-10-11,2026-10-05,Closed,Corrective,NC-01039,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4660,2026-11-22,2027-01-11,2026-12-16,Closed,Preventive,NC-01040,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4661,2026-12-05,2027-01-31,2027-01-07,Closed,Preventive,NC-01041,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4662,2025-07-04,2025-08-15,2025-08-21,Closed,Corrective,NC-01043,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Effective
+CAPA-4663,2025-07-10,2025-08-11,2025-07-29,Closed,Preventive,NC-01044,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4664,2025-07-29,2025-08-26,2025-08-18,Closed,Corrective,NC-01045,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Pending
+CAPA-4665,2025-08-04,2025-09-04,2025-08-20,Closed,Corrective,NC-01046,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4666,2025-08-06,2025-10-02,2025-08-20,Closed,Preventive,NC-01047,Production,Screen Printing,Major,Method/Procedure,Vitor Sousa,Effective
+CAPA-4667,2025-08-09,2025-09-28,2025-08-28,Closed,Preventive,NC-01048,Production,Screen Printing,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4668,2025-08-23,2025-10-11,2025-09-04,Closed,Corrective,NC-01049,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4669,2025-08-26,2025-09-28,2025-09-08,Closed,Preventive,NC-01050,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Effective
+CAPA-4670,2025-08-28,2025-09-19,2025-09-30,Closed,Preventive,NC-01051,Production,Screen Printing,Major,Mold/Tooling,Patrícia Lima,Not Effective
+CAPA-4671,2025-09-07,2025-11-05,2025-09-16,Closed,Preventive,NC-01052,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Not Effective
+CAPA-4672,2025-10-12,2025-11-22,2025-11-19,Closed,Corrective,NC-01054,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Pending
+CAPA-4673,2025-10-16,2025-11-17,2025-11-18,Closed,Preventive,NC-01055,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4674,2025-11-03,2025-12-19,,Overdue,Corrective,NC-01057,Production,Screen Printing,Major,Man (Operator),Carlos Mendes,Effective
+CAPA-4675,2025-11-12,2025-12-27,,Overdue,Preventive,NC-01059,Production,Screen Printing,Major,Mold/Tooling,Patrícia Lima,Pending
+CAPA-4676,2025-11-13,2026-01-05,,Overdue,Preventive,NC-01060,Production,Screen Printing,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4677,2025-11-17,2025-12-23,2025-12-13,Closed,Corrective,NC-01061,Production,Screen Printing,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4678,2025-11-22,2025-12-18,2025-12-01,Closed,Preventive,NC-01062,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4679,2025-12-10,2026-01-03,,Overdue,Corrective,NC-01064,Production,Screen Printing,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4680,2025-12-18,2026-01-13,2026-01-21,Closed,Corrective,NC-01065,Production,Screen Printing,Major,Raw Material,Elena Santos,Effective
+CAPA-4681,2026-01-02,2026-02-11,2026-02-02,Closed,Corrective,NC-01066,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4682,2026-01-16,2026-03-08,2026-02-08,Closed,Corrective,NC-01067,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4683,2026-02-03,2026-03-26,2026-02-22,Closed,Corrective,NC-01069,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Not Effective
+CAPA-4684,2026-02-22,2026-04-17,2026-03-17,Closed,Corrective,NC-01071,Production,Screen Printing,Major,Mold/Tooling,Carlos Mendes,Effective
+CAPA-4685,2026-02-26,2026-04-14,,Overdue,Corrective,NC-01072,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Not Effective
+CAPA-4686,2026-03-10,2026-04-11,2026-03-30,Closed,Preventive,NC-01073,Production,Screen Printing,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4687,2026-03-17,2026-04-18,2026-05-01,Closed,Preventive,NC-01074,Production,Screen Printing,Major,Raw Material,Sandra Reis,Pending
+CAPA-4688,2026-03-20,2026-04-22,2026-04-04,Closed,Preventive,NC-01075,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4689,2026-03-19,2026-05-06,2026-04-24,Closed,Preventive,NC-01076,Production,Screen Printing,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4690,2026-03-24,2026-05-19,2026-04-09,Closed,Preventive,NC-01077,Production,Screen Printing,Major,Mold/Tooling,Ana Silva,Pending
+CAPA-4691,2026-04-21,2026-06-16,,Overdue,Preventive,NC-01078,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4692,2026-04-30,2026-05-25,2026-05-24,Closed,Preventive,NC-01079,Production,Screen Printing,Major,Raw Material,Ana Silva,Effective
+CAPA-4693,2026-05-18,2026-06-28,2026-07-08,Closed,Corrective,NC-01080,Production,Screen Printing,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4694,2026-07-01,2026-08-24,,Overdue,Corrective,NC-01081,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Not Effective
+CAPA-4695,2026-08-17,2026-10-15,2026-09-07,Closed,Preventive,NC-01084,Production,Screen Printing,Major,Machine/Equipment,Carlos Mendes,Not Effective
+CAPA-4696,2026-08-22,2026-10-04,2026-09-09,Closed,Preventive,NC-01085,Production,Screen Printing,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4697,2026-10-03,2026-10-27,,Overdue,Preventive,NC-01088,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Not Effective
+CAPA-4698,2026-10-09,2026-12-01,2026-11-24,Closed,Corrective,NC-01089,Production,Screen Printing,Major,Man (Operator),Ana Silva,Effective
+CAPA-4699,2026-11-01,2026-12-23,2026-12-16,Closed,Preventive,NC-01093,Production,Screen Printing,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4700,2026-12-07,2027-01-21,2027-01-10,Closed,Corrective,NC-01095,Production,Screen Printing,Major,Mold/Tooling,Ana Silva,Effective
+CAPA-4701,2026-12-28,2027-02-07,2027-02-19,Closed,Corrective,NC-01098,Production,Screen Printing,Major,Method/Procedure,Elena Santos,Not Effective
+CAPA-4702,2026-12-30,2027-02-04,2027-02-13,Closed,Corrective,NC-01099,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Effective
+CAPA-4703,2027-01-03,2027-02-27,2027-01-28,Closed,Corrective,NC-01100,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4704,2025-07-21,2025-09-07,2025-08-22,Closed,Corrective,NC-01101,Production,Screen Printing,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4705,2025-09-10,2025-11-01,2025-10-20,Closed,Preventive,NC-01102,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4706,2025-11-16,2025-12-25,,Overdue,Corrective,NC-01103,Production,Screen Printing,Major,Raw Material,Elena Santos,Effective
+CAPA-4707,2026-01-24,2026-02-19,,Overdue,Preventive,NC-01104,Production,screen printing,Major,Mold/Tooling,Patrícia Lima,Effective
+CAPA-4708,2026-01-28,2026-03-17,2026-02-26,Closed,Preventive,NC-01105,Production,Screen Printing,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4709,2026-09-10,2026-10-28,2026-09-30,Closed,Preventive,NC-01106,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Not Effective
+CAPA-4710,2026-11-16,2026-12-06,,Overdue,Corrective,NC-01108,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Effective
+CAPA-4711,2026-12-01,2027-01-26,2026-12-15,Closed,Preventive,NC-01109,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Not Effective
+CAPA-4712,2026-12-23,2027-01-23,2027-02-04,Closed,Preventive,NC-01110,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Not Effective
+CAPA-4713,2025-08-07,2025-09-24,2025-09-20,Closed,Preventive,NC-01111,Production,Screen Printing,Major,Raw Material,Elena Santos,Pending
+CAPA-4714,2025-08-28,2025-09-27,2025-10-17,Closed,Corrective,NC-01112,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4715,2025-11-23,2025-12-20,2025-12-16,Closed,Corrective,NC-01113,Production,Screen Printing,Major,Man (Operator),Elena Santos,Effective
+CAPA-4716,2026-07-31,2026-09-19,,Overdue,Corrective,NC-01114,Production,Screen Printing,Major,Machine/Equipment,Sandra Reis,Pending
+CAPA-4717,2025-07-22,2025-08-24,,Overdue,Preventive,NC-01115,Production,Screen Printing,Major,Machine/Equipment,Patrícia Lima,Not Effective
+CAPA-4718,2025-09-25,2025-10-17,,Overdue,Corrective,NC-01116,Production,Screen Printing,Major,Method/Procedure,Patrícia Lima,Pending
+CAPA-4719,2025-09-24,2025-10-30,,Overdue,Corrective,NC-01117,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4720,2025-10-15,2025-11-05,,Overdue,Preventive,NC-01118,Production,Screen Printing,Major,Mold/Tooling,Vitor Sousa,Pending
+CAPA-4721,2025-11-07,2026-01-02,,Overdue,Corrective,NC-01119,Production,Screen Printing,Major,Method/Procedure,Ana Silva,Not Effective
+CAPA-4722,2026-07-04,2026-09-01,2026-08-12,Closed,Preventive,NC-01121,Production,Screen Printing,Major,Mold/Tooling,Sandra Reis,Pending
+CAPA-4723,2026-09-12,2026-10-17,2026-10-30,Closed,Corrective,NC-01122,Production,Screen Printing,Major,Man (Operator),Vitor Sousa,Effective
+CAPA-4724,2026-09-20,2026-10-15,,Overdue,Preventive,NC-01123,Production,Screen Printing,Major,Method/Procedure,Vitor Sousa,Pending
+CAPA-4725,2026-10-05,2026-11-24,2026-11-22,Closed,Preventive,NC-01124,Production,Screen Printing,Major,Raw Material,Sandra Reis,Not Effective
+CAPA-4726,2025-07-27,2025-08-19,2025-09-18,Closed,Preventive,NC-01126,Production,Screen Printing,Major,Man (Operator),Ana Silva,Not Effective
+CAPA-4727,2025-12-12,2026-01-11,2026-01-31,Closed,Corrective,NC-01127,Production,Screen Printing,Major,Method/Procedure,Sandra Reis,Effective
+CAPA-4728,2026-01-14,2026-02-08,2026-02-04,Closed,Corrective,NC-01128,Production,Screen Printing,Major,Man (Operator),Sandra Reis,Pending
+CAPA-4729,2026-02-13,2026-03-07,2026-03-03,Closed,Corrective,NC-01129,Production,Screen Printing,Major,Machine/Equipment,Elena Santos,Pending
+CAPA-4730,2026-03-18,2026-04-26,2026-05-11,Closed,Preventive,NC-01130,Production,Screen Printing,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4731,2026-05-07,2026-06-15,2026-06-04,Closed,Preventive,NC-01131,Production,Screen Printing,Major,Mold/Tooling,Elena Santos,Not Effective
+CAPA-4732,2026-05-19,2026-07-14,,Overdue,Preventive,NC-01132,Production,SCREEN PRINTING,Major,Raw Material,Ana Silva,Pending
+CAPA-4733,2026-08-03,2026-09-11,2026-08-28,Closed,Preventive,NC-01133,Production,Screen Printing,Major,Machine/Equipment,Vitor Sousa,Effective
+CAPA-4734,2026-09-11,2026-10-06,2026-10-11,Closed,Corrective,NC-01134,Production,Screen Printing,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4735,2025-07-07,2025-09-01,,Overdue,Preventive,NC-01135,Supplier Quality,Incoming Inspection,Minor,Raw Material,Vitor Sousa,Pending
+CAPA-4736,2025-07-11,2025-08-01,,Overdue,Corrective,NC-01137,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4737,2025-07-14,2025-08-13,2025-07-27,Closed,Preventive,NC-01139,Supplier Quality,  Incoming Inspection  ,Minor,Raw Material,Sandra Reis,Pending
+CAPA-4738,2025-07-17,2025-08-10,2025-09-07,Closed,Corrective,NC-01140,Supplier Quality,Incoming Inspection,Major,Raw Material,Sandra Reis,Pending
+CAPA-4739,2025-07-15,2025-08-17,2025-08-08,Closed,Preventive,NC-01141,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4740,2025-07-17,2025-09-14,2025-09-05,Closed,Corrective,NC-01143,Supplier Quality,Incoming Inspection,Minor,Raw Material,Ana Silva,Effective
+CAPA-4741,2025-07-18,2025-09-03,2025-08-15,Closed,Preventive,NC-01144,Supplier Quality,Incoming Inspection,Minor,Raw Material,Elena Santos,Pending
+CAPA-4742,2025-08-01,2025-08-28,2025-09-17,Closed,Corrective,NC-01147,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4743,2025-08-13,2025-09-08,,Overdue,Preventive,NC-01149,Supplier Quality,Incoming Inspection,Minor,Raw Material,Patrícia Lima,Effective
+CAPA-4744,2025-08-29,2025-10-01,2025-10-05,Closed,Corrective,NC-01150,Supplier Quality,Incoming Inspection,Minor,Raw Material,Carlos Mendes,Effective
+CAPA-4745,2025-09-12,2025-11-05,2025-10-16,Closed,Corrective,NC-01155,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Pending
+CAPA-4746,2025-09-17,2025-10-13,,Overdue,Corrective,NC-01156,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4747,2025-09-26,2025-10-24,2025-10-30,Closed,Preventive,NC-01163,Supplier Quality,Incoming Inspection,Minor,Raw Material,Vitor Sousa,Effective
+CAPA-4748,2025-10-12,2025-11-09,2025-11-11,Closed,Preventive,NC-01167,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Pending
+CAPA-4749,2025-10-17,2025-11-13,,Overdue,Preventive,NC-01168,Supplier Quality,Incoming Inspection,Minor,Raw Material,Carlos Mendes,Pending
+CAPA-4750,2025-10-18,2025-11-21,,Overdue,Preventive,NC-01169,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Pending
+CAPA-4751,2025-10-27,2025-11-17,2025-12-07,Closed,Preventive,NC-01171,Supplier Quality,  Incoming Inspection  ,Minor,Raw Material,Patrícia Lima,Effective
+CAPA-4752,2025-11-11,2025-12-31,2025-12-07,Closed,Corrective,NC-01175,Supplier Quality,Incoming Inspection,Major,Raw Material,Vitor Sousa,Effective
+CAPA-4753,2025-11-22,2025-12-19,,Overdue,Preventive,NC-01180,Supplier Quality,Incoming Inspection,Major,Raw Material,Sandra Reis,Pending
+CAPA-4754,2025-12-04,2026-01-11,2026-01-07,Closed,Preventive,NC-01183,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Pending
+CAPA-4755,2025-12-05,2026-01-19,2025-12-22,Closed,Corrective,NC-01185,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Not Effective
+CAPA-4756,2025-12-06,2026-01-12,2026-01-09,Closed,Preventive,NC-01186,Supplier Quality,Incoming Inspection,Minor,Raw Material,Patrícia Lima,Not Effective
+CAPA-4757,2025-12-08,2026-01-19,2025-12-25,Closed,Corrective,NC-01188,Supplier Quality,Incoming Inspection,Minor,Raw Material,Carlos Mendes,Effective
+CAPA-4758,2025-12-24,2026-01-27,2026-02-16,Closed,Corrective,NC-01193,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Effective
+CAPA-4759,2026-01-02,2026-02-04,,Overdue,Preventive,NC-01196,Supplier Quality,Incoming Inspection,Major,Raw Material,Sandra Reis,Effective
+CAPA-4760,2026-01-02,2026-02-02,2026-01-16,Closed,Preventive,NC-01197,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Pending
+CAPA-4761,2026-01-04,2026-02-12,2026-02-17,Closed,Preventive,NC-01200,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4762,2026-01-16,2026-02-13,2026-02-15,Closed,Preventive,NC-01203,Supplier Quality,Incoming Inspection,Minor,Raw Material,Carlos Mendes,Pending
+CAPA-4763,2026-01-19,2026-03-07,2026-03-12,Closed,Preventive,NC-01204,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Pending
+CAPA-4764,2026-01-31,2026-03-23,2026-02-20,Closed,Corrective,NC-01208,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Not Effective
+CAPA-4765,2026-02-02,2026-02-22,2026-02-16,Closed,Corrective,NC-01210,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Effective
+CAPA-4766,2026-02-21,2026-04-13,2026-04-02,Closed,Preventive,NC-01213,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Effective
+CAPA-4767,2026-02-25,2026-04-05,2026-04-09,Closed,Preventive,NC-01214,Supplier Quality,Incoming Inspection,Minor,Raw Material,Ana Silva,Effective
+CAPA-4768,2026-02-25,2026-04-07,2026-03-27,Closed,Corrective,NC-01215,Supplier Quality,Incoming Inspection,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4769,2026-03-01,2026-04-29,,Overdue,Preventive,NC-01217,Supplier Quality,Incoming Inspection,Minor,Raw Material,Ana Silva,Not Effective
+CAPA-4770,2026-03-03,2026-04-17,2026-03-23,Closed,Preventive,NC-01220,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Effective
+CAPA-4771,2026-03-07,2026-04-11,2026-04-02,Closed,Corrective,NC-01221,Supplier Quality,Incoming Inspection,Minor,Raw Material,Sandra Reis,Effective
+CAPA-4772,2026-03-11,2026-05-06,,Overdue,Preventive,NC-01222,Supplier Quality,INCOMING INSPECTION,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4773,2026-03-20,2026-05-09,2026-04-14,Closed,Preventive,NC-01228,Supplier Quality,Incoming Inspection,Minor,Raw Material,Carlos Mendes,Effective
+CAPA-4774,2026-03-19,2026-04-24,,Overdue,Corrective,NC-01229,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Not Effective
+CAPA-4775,2026-03-29,2026-04-25,2026-05-21,Closed,Preventive,NC-01232,Supplier Quality,  Incoming Inspection  ,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4776,2026-04-01,2026-05-08,2026-04-09,Closed,Preventive,NC-01233,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Effective
+CAPA-4777,2026-04-17,2026-06-07,2026-05-31,Closed,Corrective,NC-01235,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4778,2026-04-23,2026-06-10,2026-05-25,Closed,Corrective,NC-01237,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4779,2026-05-02,2026-06-12,2026-05-14,Closed,Preventive,NC-01240,Supplier Quality,Incoming Inspection,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4780,2026-05-08,2026-05-30,2026-06-21,Closed,Corrective,NC-01243,Supplier Quality,Incoming Inspection,Major,Raw Material,Sandra Reis,Effective
+CAPA-4781,2026-05-07,2026-07-05,,Overdue,Preventive,NC-01244,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4782,2026-05-11,2026-07-01,2026-06-19,Closed,Preventive,NC-01245,Supplier Quality,INCOMING INSPECTION,Major,Raw Material,Vitor Sousa,Pending
+CAPA-4783,2026-05-19,2026-06-27,2026-06-16,Closed,Corrective,NC-01248,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Pending
+CAPA-4784,2026-05-27,2026-07-25,,Overdue,Corrective,NC-01251,Supplier Quality,INCOMING INSPECTION,Major,Raw Material,Carlos Mendes,Pending
+CAPA-4785,2026-05-30,2026-07-20,2026-07-15,Closed,Corrective,NC-01253,Supplier Quality,Incoming Inspection,Minor,Raw Material,Sandra Reis,Effective
+CAPA-4786,2026-06-03,2026-07-18,2026-06-28,Closed,Corrective,NC-01254,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Pending
+CAPA-4787,2026-06-04,2026-07-04,2026-07-04,Closed,Preventive,NC-01255,Supplier Quality,Incoming Inspection,Major,Raw Material,Vitor Sousa,Not Effective
+CAPA-4788,2026-07-07,2026-09-03,2026-07-17,Closed,Preventive,NC-01267,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Pending
+CAPA-4789,2026-07-04,2026-08-01,2026-07-16,Closed,Preventive,NC-01268,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4790,2026-07-23,2026-08-13,2026-09-12,Closed,Corrective,NC-01270,Supplier Quality,Incoming Inspection,Major,Raw Material,Ana Silva,Not Effective
+CAPA-4791,2026-08-02,2026-09-21,2026-08-13,Closed,Corrective,NC-01272,Supplier Quality,Incoming Inspection,Minor,Raw Material,Elena Santos,Effective
+CAPA-4792,2026-08-21,2026-10-11,2026-09-26,Closed,Corrective,NC-01276,Supplier Quality,Incoming Inspection,Minor,Raw Material,Patrícia Lima,Not Effective
+CAPA-4793,2026-08-28,2026-10-08,2026-10-11,Closed,Corrective,NC-01277,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4794,2026-09-17,2026-10-21,2026-10-02,Closed,Preventive,NC-01282,Supplier Quality,Incoming Inspection,Minor,Raw Material,Elena Santos,Pending
+CAPA-4795,2026-10-17,2026-12-10,2026-10-31,Closed,Preventive,NC-01290,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Pending
+CAPA-4796,2026-10-25,2026-12-21,,Overdue,Preventive,NC-01293,Supplier Quality,Incoming Inspection,Major,Raw Material,Patrícia Lima,Effective
+CAPA-4797,2026-10-29,2026-12-26,2026-12-05,Closed,Corrective,NC-01297,Supplier Quality,Incoming Inspection,Minor,Raw Material,Vitor Sousa,Not Effective
+CAPA-4798,2026-11-16,2027-01-04,2026-12-01,Closed,Corrective,NC-01299,Supplier Quality,Incoming Inspection,Major,Raw Material,Elena Santos,Not Effective
+CAPA-4799,2026-11-21,2027-01-19,2026-12-12,Closed,Corrective,NC-01301,Supplier Quality,Incoming Inspection,Major,Raw Material,Sandra Reis,Effective
+CAPA-4800,2026-11-23,2026-12-29,2027-01-03,Closed,Corrective,NC-01302,Supplier Quality,Incoming Inspection,Major,Raw Material,Carlos Mendes,Effective
+CAPA-4801,2026-11-26,2026-12-24,2026-12-10,Closed,Corrective,NC-01305,Supplier Quality,Incoming Inspection,Minor,Raw Material,Elena Santos,Effective
+CAPA-4802,2026-12-14,2027-02-10,2026-12-24,Closed,Preventive,NC-01311,Supplier Quality,  Incoming Inspection  ,Minor,Raw Material,Patrícia Lima,Not Effective
+CAPA-4803,2026-12-21,2027-02-15,2027-02-01,Closed,Preventive,NC-01314,Supplier Quality,Incoming Inspection,Minor,Raw Material,Carlos Mendes,Not Effective
+CAPA-4804,2026-12-29,2027-02-06,,Open,Corrective,NC-01317,Supplier Quality,Incoming Inspection,Major,Raw Material,Sandra Reis,Pending
+CAPA-4805,2026-02-04,2026-03-31,2026-03-26,Closed,Preventive,NC-01320,Production,Blow Molding,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4806,2025-11-06,2025-11-28,2025-12-19,Closed,Corrective,NC-01322,Production,Injection Molding,Major,Machine/Equipment,Carlos Mendes,Effective
+CAPA-4807,2025-11-07,2025-12-12,,Overdue,Preventive,NC-01323,Production,Injection Molding,Major,Machine/Equipment,Patrícia Lima,Effective
+CAPA-4808,2026-03-06,2026-04-20,2026-03-30,Closed,Corrective,NC-01324,Production,screen printing,Major,Machine/Equipment,Elena Santos,Effective
+CAPA-4809,2025-11-19,2026-01-06,2025-12-21,Closed,Corrective,NC-01325,Production,Hot Foil Stamping,Major,Machine/Equipment,Sandra Reis,Effective
+CAPA-4810,2026-05-03,2026-06-25,,Overdue,Preventive,NC-01326,Production,Screen Printing,Major,Machine/Equipment,Ana Silva,Effective
