@@ -236,8 +236,8 @@ completo na primeira célula markdown do notebook).
   87,4%, Performance 92,7%, Qualidade 97,6%) — Disponibilidade é o pilar mais fraco em todo
   processo, ou seja, parada não planejada — não velocidade nem sucata — é o maior gap estrutural
   até a classe mundial (85%).
-- **A capacidade de processo é amplamente marginal**: 0% dos 140 grupos máquina×molde×característica
-  de tampa cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
+- **A capacidade de processo é amplamente marginal**: 0% dos 190 grupos máquina×molde×característica
+  (40 de tampa + 150 de frasco) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
   (causa especial ausente), o Cpk máximo observado continua bem abaixo de 1,33 — não é "tudo capaz,
   com algumas exceções", é uma planta estatisticamente marginal como um todo, com máquinas nomeadas
   (IM-002) mensuravelmente piores que essa linha de base já modesta.
