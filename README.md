@@ -170,6 +170,7 @@ A versão pós-auditoria inclui dois artefatos destinados à leitura executiva e
 - [`docs/client_root_cause_action_plan.md`](docs/client_root_cause_action_plan.md) — relatório cliente, com cadeia de evidência, causas-raiz, contenção, correção, prevenção, KPIs e critérios de eficácia.
 - [`docs/root_cause_action_register.csv`](docs/root_cause_action_register.csv) — registro estruturado para acompanhamento das ações.
 - [`docs/technical_audit_and_methodology.md`](docs/technical_audit_and_methodology.md) — parecer técnico e limites metodológicos pós-auditoria.
+- [`docs/post_fix_independent_audit.md`](docs/post_fix_independent_audit.md) — auditoria independente que corrigiu a dupla contagem em `gold.six_big_losses_monthly` e revisou o projeto por disciplina, citando apenas números verificados no output real do notebook.
 
 A regra de governança é: **não encerrar uma causa apenas porque o KPI melhorou; é necessário demonstrar o mecanismo, a intervenção, a eficácia e o controle de recorrência.**
 

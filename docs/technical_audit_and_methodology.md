@@ -8,7 +8,7 @@ A auditoria foi estruturada como uma revisão multidisciplinar envolvendo Engenh
 
 ## Correções incorporadas
 
-1. **Six Big Losses:** perda de qualidade corrigida para `Runtime × Performance × (1 − Quality)`; evita dupla contagem com perda de velocidade.
+1. **Six Big Losses:** perda de qualidade corrigida para `Runtime × Performance × (1 − Quality)`; evita dupla contagem com perda de velocidade. *(Nota de atualização: esta correção originalmente só cobria o gráfico da Parte 4.7 — `gold.six_big_losses_monthly` carregava a fórmula antiga com dupla contagem. Ver [`post_fix_independent_audit.md`](post_fix_independent_audit.md) para a correção que unificou as duas superfícies em `lib/etl_lib.py::compute_six_big_losses`.)*
 2. **RTY:** renomeado conceitualmente como proxy/teórico, condicionado à independência e compatibilidade das populações/rotas.
 3. **TOC:** utilização de capacidade passou a ser explicitamente um **proxy para candidatura à restrição**; restrição sistémica exige confirmação por throughput/WIP/starvation/blocking.
 4. **FMEA:** caracterizada como análise FMEA simplificada/orientada por dados; não é apresentada como reprodução integral da metodologia AIAG-VDA.
