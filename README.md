@@ -1,5 +1,8 @@
 # Manufacturing Performance Analytics — Raio-X de Melhoria Contínua (Versão 01)
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-alinemeireles-35A0BA?style=flat-square&logo=linkedin&logoColor=white&labelColor=10161A)](https://www.linkedin.com/in/alinemeireles/)
+[![Quality Engineering Academy](https://img.shields.io/badge/Portfolio-Quality_Engineering_Academy-35A0BA?style=flat-square&logo=googlechrome&logoColor=white&labelColor=10161A)](https://alinealinemeireles.github.io/quality-engineering-academy/)
+
 > © 2026 Aline Meireles. Todos os direitos reservados. Este repositório é público para leitura e
 > avaliação (ex.: recrutadores, gestores de contratação, engenheiros revisando este trabalho) — ver
 > [`LICENSE`](LICENSE). Cópia, redistribuição ou reuso de qualquer parte deste conteúdo sem
