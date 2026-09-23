@@ -1,15 +1,19 @@
-﻿CustomerId,CustomerName,City,Segment,CustomerTier,State,Country,Region
-CUST-001,Bella Vitta Cosmeticos Ltda,Curitiba,Skincare,Large,PR,Brazil,Curitiba Metropolitan Area
-CUST-002,Araucaria Fragrances Ind.,Araucaria,Fragrance,Large,PR,Brazil,Curitiba Metropolitan Area
-CUST-003,Pinhais Personal Care S.A.,Pinhais,Personal Hygiene,Medium,PR,Brazil,Curitiba Metropolitan Area
-CUST-004,CIC Cosmeticos Industrial,Curitiba,Haircare,Large,PR,Brazil,Curitiba Metropolitan Area
-CUST-005,Colombo Beauty Labs,Colombo,Color Cosmetics,Medium,PR,Brazil,Curitiba Metropolitan Area
-CUST-006,Serra Verde Cosmeticos,Curitiba,Skincare,Medium,PR,Brazil,Curitiba Metropolitan Area
-CUST-007,Grupo Iguacu Higiene Pessoal,Sao Jose dos Pinhais,Personal Hygiene,Large,PR,Brazil,Curitiba Metropolitan Area
-CUST-008,NaturAllure Cosmeticos Ltda,Curitiba,Skincare,Medium,PR,Brazil,Curitiba Metropolitan Area
-CUST-009,Campo Largo Skincare Ind.,Campo Largo,Skincare,Small,PR,Brazil,Curitiba Metropolitan Area
-CUST-010,Fazenda Rio Grande Fragrancias,Fazenda Rio Grande,Fragrance,Small,PR,Brazil,Curitiba Metropolitan Area
-CUST-011,Pura Essencia Cosmeticos,Curitiba,Fragrance,Medium,PR,Brazil,Curitiba Metropolitan Area
-CUST-012,Tamandare Higiene e Beleza,Almirante Tamandare,Personal Hygiene,Small,PR,Brazil,Curitiba Metropolitan Area
-CUST-013,Piraquara Baby Care Ltda,Piraquara,Baby Care,Small,PR,Brazil,Curitiba Metropolitan Area
-CUST-014,Boqueirao Color Cosmetics,Curitiba,Color Cosmetics,Medium,PR,Brazil,Curitiba Metropolitan Area
+CustomerId,CustomerName,City,Segment,CustomerTier,State,Country,Region
+CUST-001,Bela Vita Cosmeticos Lda,Marinha Grande,Skincare,Large,LEI,Portugal,Iberian Peninsula
+CUST-002,Atlantico Fragrancias Lda,Leiria,Fragrance,Large,LEI,Portugal,Iberian Peninsula
+CUST-003,Nazare Cuidados Pessoais S.A.,Nazare,Personal Hygiene,Medium,LEI,Portugal,Iberian Peninsula
+CUST-004,Lusitana Cosmeticos Industrial,Leiria,Haircare,Large,LEI,Portugal,Iberian Peninsula
+CUST-005,Obidos Beauty Labs,Obidos,Color Cosmetics,Medium,LEI,Portugal,Iberian Peninsula
+CUST-006,Serra d'Aire Cosmeticos,Marinha Grande,Skincare,Medium,LEI,Portugal,Iberian Peninsula
+CUST-007,Grupo Tejo Higiene Pessoal,Lisboa,Personal Hygiene,Large,LIS,Portugal,Iberian Peninsula
+CUST-008,NaturAllure Cosmeticos Lda,Sintra,Skincare,Medium,LIS,Portugal,Iberian Peninsula
+CUST-009,Costa Brava Skincare Ind.,Girona,Skincare,Small,GI,Spain,Iberian Peninsula
+CUST-010,Barcino Fragancias S.L.,Barcelona,Fragrance,Small,B,Spain,Iberian Peninsula
+CUST-011,Provence Essence Cosmetiques,Grasse,Fragrance,Medium,PACA,France,Rest of Europe
+CUST-012,Milano Bellezza Group,Milano,Personal Hygiene,Small,MI,Italy,Rest of Europe
+CUST-013,BabyCare Rheinland GmbH,Koln,Baby Care,Small,NRW,Germany,Rest of Europe
+CUST-014,Krakow Color Cosmetics,Krakow,Color Cosmetics,Medium,MAL,Poland,Rest of Europe
+CUST-015,NutriBoas Embalagens Alimentares Lda,Leiria,Food Packaging,Medium,LEI,Portugal,Iberian Peninsula
+CUST-016,Iberconserva Foods S.A.,Porto,Food Packaging,Large,POR,Portugal,Iberian Peninsula
+CUST-017,FarmaPack Iberica S.L.,Madrid,Pharmaceutical,Large,M,Spain,Iberian Peninsula
+CUST-018,Rheinland MedPack GmbH,Frankfurt,Pharmaceutical,Medium,HE,Germany,Rest of Europe

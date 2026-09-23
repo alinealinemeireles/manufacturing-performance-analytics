@@ -207,3 +207,5 @@ CC-20204,2026-05-14,CUST-001,Bottle,Blow Molding,FR-002-HDPE-PCR-300,WO-6126,261
 CC-20205,2026-10-24,CUST-013,Bottle,Blow Molding,FR-019-PP-750,WO-7230,2640311080723073,Missing or Illegible Label,Minor,15,Closed,2026-10-28,
 CC-20206,2026-12-27,CUST-008,Bottle,Blow Molding,FR-018-PET-600,WO-5725,2651131060572584,Missing or Illegible Label,Minor,12,Closed,2027-01-06,
 CC-20207,2026-11-22,CUST-013,Bottle,Blow Molding,FR-002-HDPE-PCR-300,WO-2523,2645311020252326,Late Delivery,Minor,38,Open,,
+CC-20208,2026-09-02,CUST-017,Bottle,Blow Molding,FP-032-PP-PG-100,,,Weight Out of Specification,Major,40,Closed,2026-09-20,
+CC-20209,2026-11-18,CUST-018,Cap,Injection Molding,TE-012-PP-PG-24410,,,Tamper Band Separation,Critical,15,Open,,

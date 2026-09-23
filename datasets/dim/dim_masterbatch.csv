@@ -131,3 +131,18 @@ TF-008-HDPE-28410,Cap,M-INJ-008,HDPE,COR-004,Emerald Green,Pantone 3415 C,Green 
 TF-009-PP-28415,Cap,M-INJ-009,PP,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
 TF-009-PP-PCR-28415,Cap,M-INJ-009,PP-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
 TF-009-HDPE-28415,Cap,M-INJ-009,HDPE,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FA-030-HDPE-FG-1000,Bottle,M-SOP-030,HDPE-FG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FA-030-PP-FG-1000,Bottle,M-SOP-030,PP-FG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FA-031-HDPE-FG-500,Bottle,M-SOP-031,HDPE-FG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FA-031-PP-FG-500,Bottle,M-SOP-031,PP-FG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FP-032-PP-PG-100,Bottle,M-SOP-032,PP-PG,COR-009,Pharma White,Pantone Cool Gray 1 C,Pharma Masterbatch,0.02
+FP-032-PET-PG-100,Bottle,M-SOP-032,PET-PG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FP-033-PP-PG-250,Bottle,M-SOP-033,PP-PG,COR-009,Pharma White,Pantone Cool Gray 1 C,Pharma Masterbatch,0.02
+FP-033-PET-PG-250,Bottle,M-SOP-033,PET-PG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+PT-010-PP-050,Bottle,M-INJ-010,PP,COR-001,Opaque White,Pantone White,Opaque Masterbatch,0.02
+PT-010-PP-PG-050,Bottle,M-INJ-010,PP-PG,COR-009,Pharma White,Pantone Cool Gray 1 C,Pharma Masterbatch,0.02
+PT-011-PP-100,Bottle,M-INJ-011,PP,COR-001,Opaque White,Pantone White,Opaque Masterbatch,0.02
+PT-011-PP-PG-100,Bottle,M-INJ-011,PP-PG,COR-009,Pharma White,Pantone Cool Gray 1 C,Pharma Masterbatch,0.02
+TE-012-PP-PG-24410,Cap,M-INJ-012,PP-PG,COR-009,Pharma White,Pantone Cool Gray 1 C,Pharma Masterbatch,0.02
+TP-013-PP-070,Cap,M-INJ-013,PP,COR-001,Opaque White,Pantone White,Opaque Masterbatch,0.02
+TP-013-PP-PG-070,Cap,M-INJ-013,PP-PG,COR-009,Pharma White,Pantone Cool Gray 1 C,Pharma Masterbatch,0.02

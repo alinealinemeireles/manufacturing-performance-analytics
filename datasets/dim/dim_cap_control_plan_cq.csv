@@ -9,3 +9,4 @@ Injection Molding,Production,Flash,Major,Attribute,Absent,Visual,D65 Light Booth
 Injection Molding,Production,Short Shot,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Pressure
 Injection Molding,Production,Stain,Minor,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Process
 Injection Molding,Production,Color,Minor,Attribute,Standard,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Change Masterbatch Lot
+Injection Molding,Production,Tamper Band Separation,Critical,Attribute,No separation under 5N axial pull,Pull Test,Tamper Band Tester,21 CFR 211.132,II,0.1,Per lot,Per lot,Auto,Auto,0,1,Laboratory,Block Lot

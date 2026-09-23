@@ -810,3 +810,5 @@ CAPA-4807,2025-11-07,2025-12-12,,Overdue,Preventive,NC-01323,Production,Injectio
 CAPA-4808,2026-03-06,2026-04-20,2026-03-30,Closed,Corrective,NC-01324,Production,screen printing,Major,Machine/Equipment,Elena Santos,Effective
 CAPA-4809,2025-11-19,2026-01-06,2025-12-21,Closed,Corrective,NC-01325,Production,Hot Foil Stamping,Major,Machine/Equipment,Sandra Reis,Effective
 CAPA-4810,2026-05-03,2026-06-25,,Overdue,Preventive,NC-01326,Production,Screen Printing,Major,Machine/Equipment,Ana Silva,Effective
+CAPA-4811,2026-08-07,2026-09-04,2026-08-25,Closed,Corrective,NC-01327,Quality,Blow Molding,Major,Raw Material,Diogo Ferreira,Effective
+CAPA-4812,2026-11-19,2026-12-17,,Open,Corrective,NC-01328,Production,Injection Molding,Critical,Tooling / Mold Wear,Rui Fonseca,

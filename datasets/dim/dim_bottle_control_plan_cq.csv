@@ -12,3 +12,7 @@ Blow Molding,Production,Stain,Minor,Attribute,Absent,Visual,D65 Light Booth,ISO 
 Blow Molding,Production,Transparency,Minor,Attribute,Per standard sample,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Adjust Raw Material
 Blow Molding,Production,Color,Minor,Attribute,Master standard,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Adjust Masterbatch
 Blow Molding,Production,Burr,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Closure
+Blow Molding,Production,Migration Test (Food Contact),Major,Attribute,Compliant with Regulation (EU) 10/2011,Migration Cell Test,Migration Test Cell,Regulamento (UE) 10/2011 / EN 1186-3:2022,II,1.5,Per lot,Per lot,Auto,Auto,ver tabela,ver tabela,Laboratory,Block Lot
+Injection Molding,Production,Mouth Diameter,Critical,Variable,Per drawing,Go/No-Go,Gauge,ISO 3951,—,—,Every 1 h,Production run,—,10 pieces,—,—,Quality,Adjust Mold
+Injection Molding,Production,Drop Test,Critical,Attribute,No cracking/leakage,Drop Test,ASTM D2463 Drop Rig,ASTM D2463-23,II,0.65,Per lot,Per lot,Auto,Auto,ver tabela,ver tabela,Laboratory,Block Lot
+Injection Molding,Production,Stack Load,Major,Variable,Per technical data sheet,Compression Test,Universal Testing Machine,ASTM D642,—,—,Per lot,Lot,—,5 pieces,—,—,Laboratory,Adjust Process

@@ -1,5 +1,11 @@
 # Auditoria Técnica Pós-Correção — Manufacturing Performance Analytics
 
+> **Nota (expansão de portfólio, 2026-09-23):** esta auditoria cobre exclusivamente o dataset
+> Versão 00 original (18 máquinas, só cosméticos). A expansão de portfólio documentada em
+> [`simulation_storylines.md`](simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)
+> foi feita de forma estritamente aditiva e não altera nenhum achado abaixo. (A "versão 01" citada
+> a seguir refere-se à correção pós-auditoria do notebook, não a esta expansão.)
+
 ## Parecer
 
 **Aprovado com correções incorporadas — versão 01.**

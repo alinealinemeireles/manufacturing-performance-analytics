@@ -103,7 +103,7 @@
 # qualquer projeto de melhoria contínua é um retrato de alto nível do processo — o
 # SIPOC (Suppliers, Inputs, Process, Outputs, Customers) — seguido de uma leitura
 # qualitativa do problema. Os números que fundamentam essa leitura (baseline, meta,
-# oportunidade em R$) só existem depois que o data warehouse estiver montado — por
+# oportunidade em €) só existem depois que o data warehouse estiver montado — por
 # isso o Project Charter quantificado aparece mais adiante, na Parte 3B, logo após o
 # warehouse estar pronto, e não aqui.
 #
@@ -116,7 +116,7 @@
 # causas-raiz conhecidas e documentadas em `docs/simulation_storylines.md`, permitindo
 # conferir cada achado deste notebook contra uma verdade de referência. Não é extraído
 # de uma fábrica real, e nenhuma conclusão deste notebook depende de os meses mais
-# recentes já terem "acontecido" no calendário real; valores absolutos (R$, OEE%, Cpk)
+# recentes já terem "acontecido" no calendário real; valores absolutos (€, OEE%, Cpk)
 # devem ser lidos nesse contexto de validação metodológica, não como benchmark de uma
 # planta real. Esta nota é a única vez que este ponto é explicado em detalhe — o resto
 # do notebook cita `docs/simulation_storylines.md` quando relevante, sem repeti-lo.
@@ -926,7 +926,7 @@ IF OBJECT_ID('dbo.fact_cap_inspection_variable_cq_processed', 'U') IS NOT NULL D
     CREATE TABLE dbo.fact_cap_inspection_variable_cq_processed (
         ProductBatch NVARCHAR(38), WorkOrder NVARCHAR(16), ProductionDate DATE,
         Shift NVARCHAR(16), MachineId NVARCHAR(16), MoldId NVARCHAR(18),
-        CapId NVARCHAR(38), Material NVARCHAR(16), CapType NVARCHAR(18),
+        CapId NVARCHAR(38), Material NVARCHAR(16), CapType NVARCHAR(32),
         Characteristic NVARCHAR(16), Equipment NVARCHAR(26), Standard NVARCHAR(16),
         Unit NVARCHAR(16), InspectionDateTime DATETIME2, SampleGroup BIGINT,
         LSL FLOAT, Nominal FLOAT, USL FLOAT, M1 FLOAT, M2 FLOAT, M3 FLOAT, M4 FLOAT,
@@ -956,8 +956,8 @@ IF OBJECT_ID('dbo.fact_cap_attribute_inspection_cq_processed', 'U') IS NOT NULL 
     CREATE TABLE dbo.fact_cap_attribute_inspection_cq_processed (
         ProductBatch NVARCHAR(38), WorkOrder NVARCHAR(16), ProductionDate DATE,
         Shift NVARCHAR(16), MachineId NVARCHAR(16), MoldId NVARCHAR(18),
-        CapId NVARCHAR(38), Material NVARCHAR(16), CapType NVARCHAR(18),
-        Characteristic NVARCHAR(16), Class NVARCHAR(16), AQL FLOAT,
+        CapId NVARCHAR(38), Material NVARCHAR(16), CapType NVARCHAR(32),
+        Characteristic NVARCHAR(24), Class NVARCHAR(16), AQL FLOAT,
         Standard NVARCHAR(16), InspectionLevel NVARCHAR(16), LotSize BIGINT,
         CodeLetter NVARCHAR(16), SampleSize BIGINT, AcceptanceNumber BIGINT,
         RejectionNumber BIGINT, DefectsFound BIGINT, LotDecision NVARCHAR(16),
@@ -1000,7 +1000,7 @@ IF OBJECT_ID('dbo.fact_cap_disposition_lot_cq_processed', 'U') IS NOT NULL DROP 
     CREATE TABLE dbo.fact_cap_disposition_lot_cq_processed (
         ProductBatch NVARCHAR(38), WorkOrder NVARCHAR(16), ProductionDate DATE,
         Shift NVARCHAR(16), MachineId NVARCHAR(16), MoldId NVARCHAR(18),
-        CapId NVARCHAR(38), Material NVARCHAR(16), CapType NVARCHAR(18),
+        CapId NVARCHAR(38), Material NVARCHAR(16), CapType NVARCHAR(32),
         LotSize BIGINT, CodeLetter NVARCHAR(16), SampleSize BIGINT,
         CriticalDefects BIGINT, MajorDefects BIGINT, MinorDefects BIGINT,
         TotalSampleDefects BIGINT, VariablesDecision NVARCHAR(46),
@@ -1030,7 +1030,7 @@ IF OBJECT_ID('dbo.fact_sales_processed', 'U') IS NOT NULL DROP TABLE dbo.fact_sa
         SalesOrderId NVARCHAR(16), [Date] DATE, CustomerId NVARCHAR(16),
         ProductFamily NVARCHAR(16), Process NVARCHAR(34), ProductId NVARCHAR(40),
         WorkOrder NVARCHAR(16), LotId NVARCHAR(20), MachineId NVARCHAR(16),
-        ShippedQty BIGINT, UnitPriceBRL FLOAT, TotalValueBRL FLOAT, ISOWeek BIGINT,
+        ShippedQty BIGINT, UnitPriceEUR FLOAT, TotalValueEUR FLOAT, ISOWeek BIGINT,
         ISOWeekday BIGINT, [Month] NVARCHAR(16)
     );
 GO
@@ -1152,9 +1152,9 @@ GO
 
 IF OBJECT_ID('dbo.dim_bottle_control_plan_cq', 'U') IS NOT NULL DROP TABLE dbo.dim_bottle_control_plan_cq;
     CREATE TABLE dbo.dim_bottle_control_plan_cq (
-        Process NVARCHAR(16), Operation NVARCHAR(16), Characteristic NVARCHAR(20),
+        Process NVARCHAR(20), Operation NVARCHAR(16), Characteristic NVARCHAR(32),
         Class NVARCHAR(16), InspectionType NVARCHAR(16), Specification NVARCHAR(40),
-        Method NVARCHAR(20), Equipment NVARCHAR(26), Standard NVARCHAR(16),
+        Method NVARCHAR(20), Equipment NVARCHAR(26), Standard NVARCHAR(48),
         ISOLevel NVARCHAR(8), AQL NVARCHAR(8), Frequency NVARCHAR(24),
         LotSize NVARCHAR(24), ISOCode NVARCHAR(8), SampleSize NVARCHAR(16),
         AcceptanceNumber NVARCHAR(16), RejectionNumber NVARCHAR(16), Owner NVARCHAR(16),
@@ -1164,7 +1164,7 @@ GO
 
 IF OBJECT_ID('dbo.dim_cap_control_plan_cq', 'U') IS NOT NULL DROP TABLE dbo.dim_cap_control_plan_cq;
     CREATE TABLE dbo.dim_cap_control_plan_cq (
-        Process NVARCHAR(20), Operation NVARCHAR(16), Characteristic NVARCHAR(16),
+        Process NVARCHAR(20), Operation NVARCHAR(16), Characteristic NVARCHAR(24),
         Class NVARCHAR(16), InspectionType NVARCHAR(16), Specification NVARCHAR(40),
         Method NVARCHAR(20), Equipment NVARCHAR(26), Standard NVARCHAR(16),
         ISOLevel NVARCHAR(8), AQL NVARCHAR(8), Frequency NVARCHAR(24),
@@ -1205,7 +1205,7 @@ GO
 
 IF OBJECT_ID('dbo.dim_cap', 'U') IS NOT NULL DROP TABLE dbo.dim_cap;
     CREATE TABLE dbo.dim_cap (
-        CapId NVARCHAR(38), ItemDescription NVARCHAR(60), OpeningType NVARCHAR(16),
+        CapId NVARCHAR(38), ItemDescription NVARCHAR(60), OpeningType NVARCHAR(32),
         MoldId NVARCHAR(18), OuterDiameterMm FLOAT, HeightMm FLOAT, Material NVARCHAR(16),
         MinWeightG FLOAT, MaxWeightG FLOAT, MinThicknessMm FLOAT, MaxThicknessMm FLOAT,
         ThreadType NVARCHAR(16), ThreadDiameterMm BIGINT, FiodaRosca BIGINT,
@@ -1888,7 +1888,7 @@ print("\nParte 3 completa — warehouse pronto para as Partes 4 em diante.")
 # ---
 #
 # > **BQ-072.** *Escreva um Project Charter a partir da linha de base de 18 meses —
-# > meta e oportunidade em R$.*
+# > meta e oportunidade em €.*
 #
 # **Papel: Gerente da Qualidade, fechando a fase Definir do DMAIC.** Agora que o
 # warehouse existe, a leitura qualitativa da Parte 0 vira número. Nada aqui é
@@ -1919,22 +1919,22 @@ fig.tight_layout(); fig.savefig(REPORTS_DIR / "03_01_charter_baseline_trends.png
 #
 # Toda quantia abaixo é uma **premissa declarada**, não dado real de contabilidade da
 # planta — este projeto não tem um livro-razão de custos real. O que importa é a
-# **forma** da distribuição (qual categoria domina), não o total exato em R$.
+# **forma** da distribuição (qual categoria domina), não o total exato em €.
 
 # %%
-ASSUMED_COST_PER_APPRAISAL_SAMPLE_BRL = 0.15
-ASSUMED_SCRAP_COST_PER_UNIT_BRL = 0.05
-ASSUMED_COMPLAINT_COST_BRL = {"Critical": 5000, "Major": 1500, "Minor": 300}
-ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_BRL = 2000
+ASSUMED_COST_PER_APPRAISAL_SAMPLE_EUR = 0.15
+ASSUMED_SCRAP_COST_PER_UNIT_EUR = 0.05
+ASSUMED_COMPLAINT_COST_EUR = {"Critical": 5000, "Major": 1500, "Minor": 300}
+ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_EUR = 2000
 
 production_rej = pd.read_sql("SELECT RejectedQty FROM silver.fact_production", engine)
 complaints_sev = pd.read_sql("SELECT Severity FROM silver.fact_customer_complaints", engine)
-# `.map(ASSUMED_COMPLAINT_COST_BRL)` devolve NaN, silenciosamente, para qualquer Severity
+# `.map(ASSUMED_COMPLAINT_COST_EUR)` devolve NaN, silenciosamente, para qualquer Severity
 # fora das 3 chaves declaradas -- e `.sum()` ignora NaN, então uma categoria de severidade
 # nova/inesperada subestimaria o custo de Falha Externa sem nenhum aviso. Checado aqui,
-# uma vez, para todo uso de `ASSUMED_COMPLAINT_COST_BRL` no notebook.
-_unmapped_severities = set(complaints_sev["Severity"].unique()) - set(ASSUMED_COMPLAINT_COST_BRL)
-assert not _unmapped_severities, f"Severity sem custo mapeado em ASSUMED_COMPLAINT_COST_BRL: {_unmapped_severities}"
+# uma vez, para todo uso de `ASSUMED_COMPLAINT_COST_EUR` no notebook.
+_unmapped_severities = set(complaints_sev["Severity"].unique()) - set(ASSUMED_COMPLAINT_COST_EUR)
+assert not _unmapped_severities, f"Severity sem custo mapeado em ASSUMED_COMPLAINT_COST_EUR: {_unmapped_severities}"
 n_appraisal_samples = (
     pd.read_sql("SELECT SUM(CAST(SampleSize AS BIGINT)) AS n FROM silver.fact_bottle_attribute_inspection_cq", engine)["n"][0]
     + pd.read_sql("SELECT SUM(CAST(SampleSize AS BIGINT)) AS n FROM silver.fact_cap_attribute_inspection_cq", engine)["n"][0]
@@ -1944,21 +1944,21 @@ n_control_plan_lines = sum(pd.read_sql(f"SELECT COUNT(*) AS n FROM silver.{t}", 
                             for t in ["dim_bottle_control_plan_cq", "dim_cap_control_plan_cq", "dim_ink_control_plan_cq"])
 
 coq = pd.Series({
-    "Prevenção": n_control_plan_lines * ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_BRL,
-    "Avaliação": n_appraisal_samples * ASSUMED_COST_PER_APPRAISAL_SAMPLE_BRL,
-    "Falha Interna": production_rej["RejectedQty"].sum() * ASSUMED_SCRAP_COST_PER_UNIT_BRL,
-    "Falha Externa": complaints_sev["Severity"].map(ASSUMED_COMPLAINT_COST_BRL).sum(),
+    "Prevenção": n_control_plan_lines * ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_EUR,
+    "Avaliação": n_appraisal_samples * ASSUMED_COST_PER_APPRAISAL_SAMPLE_EUR,
+    "Falha Interna": production_rej["RejectedQty"].sum() * ASSUMED_SCRAP_COST_PER_UNIT_EUR,
+    "Falha Externa": complaints_sev["Severity"].map(ASSUMED_COMPLAINT_COST_EUR).sum(),
 })
 coq_total = coq.sum()
-print(f"Custo da Qualidade ilustrativo total (18 meses): R$ {coq_total:,.0f}")
+print(f"Custo da Qualidade ilustrativo total (18 meses): € {coq_total:,.0f}")
 for bucket, value in coq.sort_values(ascending=False).items():
-    print(f"  {bucket:16s} R$ {value:>12,.0f}  ({100 * value / coq_total:5.1f}%)")
+    print(f"  {bucket:16s} € {value:>12,.0f}  ({100 * value / coq_total:5.1f}%)")
 
 fig, ax = plt.subplots(figsize=(8, 5))
 coq.sort_values().plot(kind="barh", ax=ax, color=["#27ae60", "#2980b9", "#e67e22", "#c0392b"])
-ax.set_xlabel("R$ ilustrativo"); ax.set_title(f"Modelo ilustrativo de Custo da Qualidade — 18 meses (total ≈ R$ {coq_total:,.0f})")
+ax.set_xlabel("€ ilustrativo"); ax.set_title(f"Modelo ilustrativo de Custo da Qualidade — 18 meses (total ≈ € {coq_total:,.0f})")
 for i, v in enumerate(coq.sort_values()):
-    ax.text(v, i, f" R$ {v:,.0f}", va="center", fontsize=9)
+    ax.text(v, i, f" € {v:,.0f}", va="center", fontsize=9)
 fig.tight_layout(); fig.savefig(REPORTS_DIR / "03_02_charter_cost_of_quality.png"); plt.show()
 
 # %% [markdown]
@@ -1971,7 +1971,7 @@ problem_statement = (
     f"de 85% usada aqui apenas como referência externa de contexto, não como meta universal. O First Pass Yield ficou "
     f"em {100*kpi_avg['FPY']:.1f}%, ou seja, aproximadamente 1 em cada "
     f"{1/(1-kpi_avg['FPY']):.0f} lotes falha na inspeção na primeira tentativa. O Custo da Qualidade "
-    f"ilustrativo soma aproximadamente R$ {coq_total:,.0f} no período, dominado por esforço de "
+    f"ilustrativo soma aproximadamente € {coq_total:,.0f} no período, dominado por esforço de "
     f"inspeção, não pelas falhas em si. Nenhum dos três números mostra tendência clara e sustentada "
     f"de melhora ao longo dos 18 meses — a planta não está numa trajetória que resolve isso sozinha."
 )
@@ -1987,20 +1987,20 @@ current_scrap_cost = coq["Falha Interna"]
 fpy_gap_closed_fraction = (fpy_target - kpi_avg["FPY"]) / (1 - kpi_avg["FPY"])
 estimated_scrap_reduction = current_scrap_cost * fpy_gap_closed_fraction
 print(f"\nRedução estimada de Falha Interna se a meta de FPY for atingida: "
-      f"R$ {estimated_scrap_reduction:,.0f} em um período comparável de 18 meses "
+      f"€ {estimated_scrap_reduction:,.0f} em um período comparável de 18 meses "
       "(piso conservador — exclui qualquer redução de Avaliação e qualquer ganho de Falha Externa).")
 
 # %%
 answer(f"**Baseline**: OEE {100*kpi_avg['OEE']:.1f}%, FPY {100*kpi_avg['FPY']:.1f}%, Custo da "
-       f"Qualidade ilustrativo R$ {coq_total:,.0f} em 18 meses. **Meta (12 meses)**: OEE → "
-       f"{100*oee_target:.1f}%, FPY → {100*fpy_target:.1f}%. **Oportunidade estimada**: R$ "
+       f"Qualidade ilustrativo € {coq_total:,.0f} em 18 meses. **Meta (12 meses)**: OEE → "
+       f"{100*oee_target:.1f}%, FPY → {100*fpy_target:.1f}%. **Oportunidade estimada**: € "
        f"{estimated_scrap_reduction:,.0f} em redução de Falha Interna, piso conservador. Esta é a régua "
        "contra a qual a Parte 12 mede a recomendação final.")
 
 charter_summary = {
-    "baseline": kpi_avg.round(4).to_dict(), "cost_of_quality_brl": coq.round(0).to_dict(),
-    "cost_of_quality_total_brl": round(float(coq_total), 0), "oee_target": round(float(oee_target), 4),
-    "fpy_target": round(float(fpy_target), 4), "estimated_scrap_reduction_brl": round(float(estimated_scrap_reduction), 0),
+    "baseline": kpi_avg.round(4).to_dict(), "cost_of_quality_eur": coq.round(0).to_dict(),
+    "cost_of_quality_total_eur": round(float(coq_total), 0), "oee_target": round(float(oee_target), 4),
+    "fpy_target": round(float(fpy_target), 4), "estimated_scrap_reduction_eur": round(float(estimated_scrap_reduction), 0),
 }
 with open(PROCESSED_DIR / "charter_summary.json", "w", encoding="utf-8") as f:
     json.dump(charter_summary, f, indent=2)
@@ -2295,15 +2295,15 @@ benchmark_machines = reliability[reliability["Quadrante"] == "Benchmark (MTBF al
 # perdido, que já está em Falha Interna na Parte 3B) evita dupla contagem.
 
 # %%
-ASSUMED_DOWNTIME_COST_PER_HOUR_BRL = 350.0
+ASSUMED_DOWNTIME_COST_PER_HOUR_EUR = 350.0
 unplanned_hours_by_machine = failures.groupby("MachineId")["DowntimeDurationMin"].sum() / 60
-downtime_cost_by_machine = (unplanned_hours_by_machine * ASSUMED_DOWNTIME_COST_PER_HOUR_BRL).sort_values(ascending=False)
-print(f"Custo de indisponibilidade não planejada, ilustrativo (R$ {ASSUMED_DOWNTIME_COST_PER_HOUR_BRL:.0f}/h), 18 meses:")
+downtime_cost_by_machine = (unplanned_hours_by_machine * ASSUMED_DOWNTIME_COST_PER_HOUR_EUR).sort_values(ascending=False)
+print(f"Custo de indisponibilidade não planejada, ilustrativo (€ {ASSUMED_DOWNTIME_COST_PER_HOUR_EUR:.0f}/h), 18 meses:")
 print(downtime_cost_by_machine.round(0))
 
 fig, ax = plt.subplots(figsize=(9, 6))
 downtime_cost_by_machine.sort_values().plot(kind="barh", ax=ax, color=PALETTE[3])
-ax.set_xlabel("R$ ilustrativo"); ax.set_title("Custo de indisponibilidade não planejada por máquina (ilustrativo)")
+ax.set_xlabel("€ ilustrativo"); ax.set_title("Custo de indisponibilidade não planejada por máquina (ilustrativo)")
 fig.tight_layout(); fig.savefig(REPORTS_DIR / "04_05c_downtime_cost_by_machine.png"); plt.show()
 
 # %% [markdown]
@@ -4675,10 +4675,10 @@ answer(f"Em termos de FMEA: **Ocorrência** cai de {occ_before:.1f} para {occ_af
 # recriar um novo número — assim os dois nunca divergem silenciosamente.
 
 # %%
-ASSUMED_COST_PER_APPRAISAL_SAMPLE_BRL = 0.15
-ASSUMED_SCRAP_COST_PER_UNIT_BRL = 0.05
-ASSUMED_COMPLAINT_COST_BRL = {"Critical": 5000, "Major": 1500, "Minor": 300}
-ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_BRL = 2000
+ASSUMED_COST_PER_APPRAISAL_SAMPLE_EUR = 0.15
+ASSUMED_SCRAP_COST_PER_UNIT_EUR = 0.05
+ASSUMED_COMPLAINT_COST_EUR = {"Critical": 5000, "Major": 1500, "Minor": 300}
+ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_EUR = 2000
 
 n_appraisal_samples6 = (
     pd.read_sql("SELECT SUM(CAST(SampleSize AS BIGINT)) AS n FROM silver.fact_bottle_attribute_inspection_cq", engine)["n"][0]
@@ -4690,34 +4690,34 @@ n_control_plan_lines6 = sum(pd.read_sql(f"SELECT COUNT(*) AS n FROM silver.{t}",
 
 coq_monthly_frames = []
 for month, group in complaints6.assign(Month=complaints6["Date"].astype("datetime64[ns]").dt.to_period("M").astype(str)).groupby("Month"):
-    coq_monthly_frames.append({"Month": month, "ExternalFailureBRL": group["Severity"].map(ASSUMED_COMPLAINT_COST_BRL).sum()})
-external_failure_monthly = pd.DataFrame(coq_monthly_frames).set_index("Month")["ExternalFailureBRL"]
+    coq_monthly_frames.append({"Month": month, "ExternalFailureEUR": group["Severity"].map(ASSUMED_COMPLAINT_COST_EUR).sum()})
+external_failure_monthly = pd.DataFrame(coq_monthly_frames).set_index("Month")["ExternalFailureEUR"]
 
 production6_monthly = pd.read_sql("SELECT [Date], RejectedQty FROM silver.fact_production", engine, parse_dates=["Date"])
 production6_monthly["Month"] = production6_monthly["Date"].dt.to_period("M").astype(str)
-internal_failure_monthly = production6_monthly.groupby("Month")["RejectedQty"].sum() * ASSUMED_SCRAP_COST_PER_UNIT_BRL
+internal_failure_monthly = production6_monthly.groupby("Month")["RejectedQty"].sum() * ASSUMED_SCRAP_COST_PER_UNIT_EUR
 
 coq_trend = pd.DataFrame({"FalhaInterna": internal_failure_monthly, "FalhaExterna": external_failure_monthly}).dropna()
 fig, ax = plt.subplots(figsize=(11, 5))
 coq_trend.plot(ax=ax, marker="o")
-ax.set_ylabel("R$ (ilustrativo)"); ax.set_title("Falha Interna vs. Falha Externa, por mês (ilustrativo)")
+ax.set_ylabel("€ (ilustrativo)"); ax.set_title("Falha Interna vs. Falha Externa, por mês (ilustrativo)")
 fig.tight_layout(); fig.savefig(REPORTS_DIR / "06_02_coq_monthly_trend.png"); plt.show()
 
 coq6 = pd.Series({
-    "Prevenção": n_control_plan_lines6 * ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_BRL,
-    "Avaliação": n_appraisal_samples6 * ASSUMED_COST_PER_APPRAISAL_SAMPLE_BRL,
+    "Prevenção": n_control_plan_lines6 * ASSUMED_PREVENTION_COST_PER_CONTROL_PLAN_LINE_EUR,
+    "Avaliação": n_appraisal_samples6 * ASSUMED_COST_PER_APPRAISAL_SAMPLE_EUR,
     "Falha Interna": internal_failure_monthly.sum(),
     "Falha Externa": external_failure_monthly.sum(),
 })
 coq6_total = coq6.sum()
-print((coq6 / 1000).round(1).rename("R$ mil (ilustrativo)"))
+print((coq6 / 1000).round(1).rename("€ mil (ilustrativo)"))
 months_external_above_internal = (coq_trend["FalhaExterna"] > coq_trend["FalhaInterna"]).mean()
 
 answer(f"**Avaliação domina** ({100*coq6['Avaliação']/coq6_total:.1f}% do total ilustrativo) — a planta gasta "
        "mais checando por defeitos do que pagando por eles depois. Isso por si só não é ruim (é o que está "
        f"pegando o problema antes do cliente), mas o argumento '10x mais barato pegar a montante' **não se "
-       f"sustenta limpo aqui**: Falha Externa (R$ {coq6['Falha Externa']:,.0f}) excede Falha Interna "
-       f"(R$ {coq6['Falha Interna']:,.0f}) — o oposto do padrão clássico de custo da qualidade, e um sinal de "
+       f"sustenta limpo aqui**: Falha Externa (€ {coq6['Falha Externa']:,.0f}) excede Falha Interna "
+       f"(€ {coq6['Falha Interna']:,.0f}) — o oposto do padrão clássico de custo da qualidade, e um sinal de "
        f"alerta, não de tranquilidade: em {100*months_external_above_internal:.0f}% dos meses observados, o "
        "custo de Falha Externa supera o de Falha Interna, o que sugere que a amostragem AQL está deixando uma "
        "fração de defeitos escapar até o cliente com mais frequência do que o padrão 'pegar internamente' "
@@ -4726,15 +4726,15 @@ answer(f"**Avaliação domina** ({100*coq6['Avaliação']/coq6_total:.1f}% do to
 # %% [markdown]
 # ### Benchmark: Custo da Qualidade como % do faturamento
 #
-# CoQ em R$ absoluto (acima) não diz se R$ 2 milhões é muito ou pouco para esta
+# CoQ em € absoluto (acima) não diz se € 2 milhões é muito ou pouco para esta
 # fábrica — a leitura clássica de Custo da Qualidade sempre compara contra o
 # faturamento do mesmo período (benchmark de mercado: **<10%** é considerado boa
 # prática, **15-20%** é média de indústria, **>30%** é crítico — Juran/Feigenbaum).
-# `sales` (Parte 4, `TotalValueBRL`) já tem o faturamento da mesma janela —
+# `sales` (Parte 4, `TotalValueEUR`) já tem o faturamento da mesma janela —
 # reaproveitado aqui, não recalculado.
 
 # %%
-total_revenue6 = sales["TotalValueBRL"].sum()
+total_revenue6 = sales["TotalValueEUR"].sum()
 coq_pct_revenue6 = 100 * coq6_total / total_revenue6
 if coq_pct_revenue6 < 10:
     coq_benchmark_verdict6 = "boa prática (<10%)"
@@ -4742,13 +4742,13 @@ elif coq_pct_revenue6 < 20:
     coq_benchmark_verdict6 = "média de indústria (15-20%)"
 else:
     coq_benchmark_verdict6 = "crítico (>30%) ou acima da média de indústria"
-print(f"Faturamento total (18 meses, ilustrativo): R$ {total_revenue6:,.0f}")
-print(f"CoQ total (ilustrativo): R$ {coq6_total:,.0f} = {coq_pct_revenue6:.1f}% do faturamento -> {coq_benchmark_verdict6}")
+print(f"Faturamento total (18 meses, ilustrativo): € {total_revenue6:,.0f}")
+print(f"CoQ total (ilustrativo): € {coq6_total:,.0f} = {coq_pct_revenue6:.1f}% do faturamento -> {coq_benchmark_verdict6}")
 
-answer(f"CoQ total = {coq_pct_revenue6:.1f}% do faturamento (R$ {coq6_total:,.0f} de R$ "
+answer(f"CoQ total = {coq_pct_revenue6:.1f}% do faturamento (€ {coq6_total:,.0f} de € "
        f"{total_revenue6:,.0f}) — na faixa de **{coq_benchmark_verdict6}**. **Ressalva que já vale para todo o "
        "restante desta seção**: tanto o numerador (CoQ, premissas de custo unitário ilustrativas — Parte 3B) "
-       "quanto o denominador (faturamento, `UnitPriceBRL`) vêm de premissas declaradas, não de "
+       "quanto o denominador (faturamento, `UnitPriceEUR`) vêm de premissas declaradas, não de "
        "dados reais de contabilidade — o valor desta razão está na ORDEM DE GRANDEZA e na comparação relativa "
        "entre categorias (Avaliação vs. Falha Externa, acima), não no percentual absoluto como número de "
        "investimento.")
@@ -5210,42 +5210,42 @@ answer(f"O sinal é **real, mas fraco**: ordens ligadas a reclamação têm Reje
 # > *Quais são os eventos responsáveis por 80% da perda financeira/operacional? Impacto
 # > = sucata + retrabalho + downtime + reclamações, por máquina.*
 #
-# Reaproveita as premissas de custo já declaradas (`ASSUMED_SCRAP_COST_PER_UNIT_BRL`,
-# `ASSUMED_COMPLAINT_COST_BRL` da Parte 3B; `ASSUMED_DOWNTIME_COST_PER_HOUR_BRL` da
+# Reaproveita as premissas de custo já declaradas (`ASSUMED_SCRAP_COST_PER_UNIT_EUR`,
+# `ASSUMED_COMPLAINT_COST_EUR` da Parte 3B; `ASSUMED_DOWNTIME_COST_PER_HOUR_EUR` da
 # Parte 4.6b) — nenhum preço novo inventado aqui, só a mesma régua ilustrativa somada
 # por máquina em vez de por categoria isolada.
 
 # %%
-scrap_loss_by_machine = (production.groupby("MachineId")["RejectedQty"].sum() * ASSUMED_SCRAP_COST_PER_UNIT_BRL).rename("SucataBRL")
-downtime_loss_by_machine = downtime_cost_by_machine.rename("IndisponibilidadeBRL")
+scrap_loss_by_machine = (production.groupby("MachineId")["RejectedQty"].sum() * ASSUMED_SCRAP_COST_PER_UNIT_EUR).rename("SucataEUR")
+downtime_loss_by_machine = downtime_cost_by_machine.rename("IndisponibilidadeEUR")
 complaints_with_machine = complaints6.merge(production[["WorkOrder", "MachineId"]].drop_duplicates(), on="WorkOrder", how="left")
 complaint_loss_by_machine = complaints_with_machine.groupby("MachineId")["Severity"].apply(
-    lambda s: s.map(ASSUMED_COMPLAINT_COST_BRL).sum()).rename("ReclamacaoBRL")
+    lambda s: s.map(ASSUMED_COMPLAINT_COST_EUR).sum()).rename("ReclamacaoEUR")
 
-loss_tree = pd.DataFrame({"SucataBRL": scrap_loss_by_machine, "IndisponibilidadeBRL": downtime_loss_by_machine,
-                           "ReclamacaoBRL": complaint_loss_by_machine}).fillna(0)
-loss_tree["TotalBRL"] = loss_tree.sum(axis=1)
-loss_tree = loss_tree.sort_values("TotalBRL", ascending=False)
-loss_tree["CumPct"] = 100 * loss_tree["TotalBRL"].cumsum() / loss_tree["TotalBRL"].sum()
+loss_tree = pd.DataFrame({"SucataEUR": scrap_loss_by_machine, "IndisponibilidadeEUR": downtime_loss_by_machine,
+                           "ReclamacaoEUR": complaint_loss_by_machine}).fillna(0)
+loss_tree["TotalEUR"] = loss_tree.sum(axis=1)
+loss_tree = loss_tree.sort_values("TotalEUR", ascending=False)
+loss_tree["CumPct"] = 100 * loss_tree["TotalEUR"].cumsum() / loss_tree["TotalEUR"].sum()
 n_machines_to_80 = (loss_tree["CumPct"] <= 80).sum() + 1
 print(f"{n_machines_to_80} de {len(loss_tree)} máquinas respondem por 80% da perda financeira ilustrativa total.")
 print(loss_tree.round(0))
 
 fig, ax = plt.subplots(figsize=(10, 7))
-loss_tree.sort_values("TotalBRL")[["SucataBRL", "IndisponibilidadeBRL", "ReclamacaoBRL"]].plot(
+loss_tree.sort_values("TotalEUR")[["SucataEUR", "IndisponibilidadeEUR", "ReclamacaoEUR"]].plot(
     kind="barh", stacked=True, ax=ax, color=["#c0392b", "#e67e22", "#8e44ad"])
-ax.set_xlabel("R$ ilustrativo (18 meses)"); ax.set_title("Manufacturing Loss Pareto — sucata + indisponibilidade + reclamação, por máquina")
+ax.set_xlabel("€ ilustrativo (18 meses)"); ax.set_title("Manufacturing Loss Pareto — sucata + indisponibilidade + reclamação, por máquina")
 fig.tight_layout(); fig.savefig(REPORTS_DIR / "06_10_manufacturing_loss_pareto.png"); plt.show()
 
 top_loss_machine = loss_tree.index[0]
-dominant_category = loss_tree.loc[top_loss_machine, ["SucataBRL", "IndisponibilidadeBRL", "ReclamacaoBRL"]].idxmax()
+dominant_category = loss_tree.loc[top_loss_machine, ["SucataEUR", "IndisponibilidadeEUR", "ReclamacaoEUR"]].idxmax()
 answer(f"**{n_machines_to_80} máquinas** já respondem por 80% da perda financeira ilustrativa combinada "
        f"(sucata + indisponibilidade + reclamação) — uma priorização muito mais acionável para a gestão do que "
-       f"três Paretos separados por categoria. **{top_loss_machine}** lidera com R$ {loss_tree.loc[top_loss_machine, 'TotalBRL']:,.0f}, "
-       f"dominado por **{dominant_category}**. Nota honesta sobre os valores em R$: são construídos com as "
+       f"três Paretos separados por categoria. **{top_loss_machine}** lidera com € {loss_tree.loc[top_loss_machine, 'TotalEUR']:,.0f}, "
+       f"dominado por **{dominant_category}**. Nota honesta sobre os valores em €: são construídos com as "
        "mesmas premissas ilustrativas já declaradas alhures (Partes 3B e 4.6b), não um livro-razão real — o que "
        "importa é a ordem de prioridade entre máquinas e a categoria dominante em cada uma, não o valor exato "
-       "em reais.")
+       "em euros.")
 
 print("\nParte 6 completa.")
 
@@ -5494,11 +5494,11 @@ print(redo_from_warehouse7[["Process", "MachineId", "WorkOrder", "RedoOfBatch", 
 
 total_redo_hours7 = redo_from_warehouse7["RunTimeHours"].sum()
 total_redo_units7 = redo_from_warehouse7["PlannedQty"].sum()
-hidden_factory_cost7 = total_redo_units7 * ASSUMED_SCRAP_COST_PER_UNIT_BRL
+hidden_factory_cost7 = total_redo_units7 * ASSUMED_SCRAP_COST_PER_UNIT_EUR
 hidden_factory_share7 = hidden_factory_cost7 / coq6_total
 print(f"\nMáquina-horas totais consumidas pelas refações: {total_redo_hours7:.1f}h")
 print(f"Unidades totais produzidas só para repor lotes rejeitados: {total_redo_units7:,.0f}")
-print(f"Custo material estimado: R$ {hidden_factory_cost7:,.0f} ({100*hidden_factory_share7:.1f}% do Custo da "
+print(f"Custo material estimado: € {hidden_factory_cost7:,.0f} ({100*hidden_factory_share7:.1f}% do Custo da "
       "Qualidade total ilustrativo da Parte 6)")
 
 # %% [markdown]
@@ -5527,7 +5527,7 @@ print(f"Lotes liberados sob desvio (concessão do MRB): {len(deviation_lots7)}")
 answer(f"Sim, e a fábrica escondida tem duas camadas bem diferentes em tamanho. **A mais dramática**: "
        f"{len(redo_from_warehouse7)} episódios de refação de lote completo, consumindo {total_redo_hours7:.0f} "
        f"máquina-horas e {total_redo_units7:,.0f} unidades extras — em custo de material isolado "
-       f"(R$ {hidden_factory_cost7:,.0f}), só {100*hidden_factory_share7:.1f}% do Custo da Qualidade total "
+       f"(€ {hidden_factory_cost7:,.0f}), só {100*hidden_factory_share7:.1f}% do Custo da Qualidade total "
        "ilustrativo (Parte 6), não o achado principal deste projeto sozinho. **A mais comum, e antes "
        f"completamente invisível**: {len(rework_lots7) + len(deviation_lots7)} lotes ({len(rework_lots7)} "
        f"retrabalhados + {len(deviation_lots7)} liberados sob desvio) que nunca aparecem como sucata (embarcam) "
@@ -5665,7 +5665,7 @@ summary7 = {
     "plantwide_avg_capacity_utilization": plantwide_avg7.round(3).to_dict(),
     "months_as_constraint_by_process": constraint_counts7.to_dict(),
     "n_redo_episodes": len(redo_from_warehouse7),
-    "hidden_factory_cost_brl": round(float(hidden_factory_cost7), 0),
+    "hidden_factory_cost_eur": round(float(hidden_factory_cost7), 0),
 }
 with open(PROCESSED_DIR / "toc_kaizen_summary.json", "w", encoding="utf-8") as f:
     json.dump(summary7, f, indent=2, default=str)
@@ -7555,8 +7555,8 @@ ml.show_classification_report(ylq_test11, lq_model11.predict(Xlq_test11), class_
 # deste projeto (Parte 3B/6), não dados reais de contabilidade.
 
 # %%
-FALSE_POSITIVE_COST_LOT_BRL = ASSUMED_COST_PER_APPRAISAL_SAMPLE_BRL * 50  # reter um lote bom p/ reinspeção
-FALSE_NEGATIVE_COST_LOT_BRL = float(np.mean(list(ASSUMED_COMPLAINT_COST_BRL.values())))  # liberar um lote ruim
+FALSE_POSITIVE_COST_LOT_EUR = ASSUMED_COST_PER_APPRAISAL_SAMPLE_EUR * 50  # reter um lote bom p/ reinspeção
+FALSE_NEGATIVE_COST_LOT_EUR = float(np.mean(list(ASSUMED_COMPLAINT_COST_EUR.values())))  # liberar um lote ruim
 lq_proba_for_threshold11 = lq_model11.predict_proba(Xlq_test11)[:, 1]
 lq_pr_auc11 = ml.classification_metrics(ylq_test11, lq_model11.predict(Xlq_test11), probability=lq_proba_for_threshold11)["PR_AUC"]
 # O limiar é escolhido varrendo uma fatia de VALIDAÇÃO (dentro de Xlq_train11), não o
@@ -7564,11 +7564,11 @@ lq_pr_auc11 = ml.classification_metrics(ylq_test11, lq_model11.predict(Xlq_test1
 # mesmo, o mesmo problema de contaminação que a seleção de algoritmo em
 # tune_classification_models já resolve.
 lq_econ11 = ml.economic_threshold_val_test(lq_model11, Xlq_train11, ylq_train11, Xlq_test11, ylq_test11,
-                                            FALSE_POSITIVE_COST_LOT_BRL, FALSE_NEGATIVE_COST_LOT_BRL)
+                                            FALSE_POSITIVE_COST_LOT_EUR, FALSE_NEGATIVE_COST_LOT_EUR)
 print(f"PR-AUC = {lq_pr_auc11:.3f} (ROC-AUC = {lq_comparison11.loc[lq_best11, 'ROC_AUC']:.3f})")
 print(f"Limiar escolhido em validação = {lq_econ11['best_threshold']:.2f} ({lq_econ11['best_threshold_chosen_on']})")
-print(f"Limiar 0,5 (padrão): custo esperado no conjunto de teste = R$ {lq_econ11['cost_at_0_5']:,.0f}")
-print(f"Limiar ótimo (custo-mínimo) = {lq_econ11['best_threshold']:.2f}: custo esperado = R$ {lq_econ11['best_cost']:,.0f} "
+print(f"Limiar 0,5 (padrão): custo esperado no conjunto de teste = € {lq_econ11['cost_at_0_5']:,.0f}")
+print(f"Limiar ótimo (custo-mínimo) = {lq_econ11['best_threshold']:.2f}: custo esperado = € {lq_econ11['best_cost']:,.0f} "
       f"({100*(1 - lq_econ11['best_cost']/max(lq_econ11['cost_at_0_5'], 1e-9)):.0f}% menor)")
 _lq_pct_flagged = 100 * lq_econ11['n_flagged'] / lq_econ11['n_test']
 print(f"Impacto operacional no teste ({lq_econ11['n_test']:,} lotes): {lq_econ11['n_flagged']:,} "
@@ -7579,13 +7579,13 @@ print(f"Impacto operacional no teste ({lq_econ11['n_test']:,} lotes): {lq_econ11
       "Qualidade que este limiar geraria.")
 answer(f"PR-AUC = {lq_pr_auc11:.3f} confirma o mesmo diagnóstico do ROC-AUC (poder preditivo real, mas modesto) "
        "sem o otimismo que desbalanceamento de classe injeta no ROC-AUC sozinho. Sob os custos assimétricos "
-       f"ilustrativos assumidos (reter lote bom: R$ {FALSE_POSITIVE_COST_LOT_BRL:.0f}; liberar lote ruim: R$ "
-       f"{FALSE_NEGATIVE_COST_LOT_BRL:,.0f}), o limiar de decisão custo-mínimo "
+       f"ilustrativos assumidos (reter lote bom: € {FALSE_POSITIVE_COST_LOT_EUR:.0f}; liberar lote ruim: € "
+       f"{FALSE_NEGATIVE_COST_LOT_EUR:,.0f}), o limiar de decisão custo-mínimo "
        f"({lq_econ11['best_threshold']:.2f}) fica {'abaixo' if lq_econ11['best_threshold'] < 0.5 else 'acima'} de "
        "0,5 — o sentido esperado quando liberar um lote ruim custa muito mais que reter um bom por engano: o "
        "modelo deveria pender para reter mais lotes na dúvida, não para a precisão simétrica que o limiar padrão "
        f"assume implicitamente. **Ressalva sobre o tamanho do efeito**: a razão de custo assumida aqui "
-       f"(~{FALSE_NEGATIVE_COST_LOT_BRL/FALSE_POSITIVE_COST_LOT_BRL:.0f}x) é grande o suficiente para empurrar o "
+       f"(~{FALSE_NEGATIVE_COST_LOT_EUR/FALSE_POSITIVE_COST_LOT_EUR:.0f}x) é grande o suficiente para empurrar o "
        f"limiar ótimo para perto de {lq_econ11['best_threshold']:.2f} — na prática, perto de reter quase todo "
        "lote que o modelo julgue minimamente arriscado. Isso é matematicamente consistente com os custos "
        "assumidos, mas um limiar tão extremo também é o tipo de resultado que merece uma checagem de "
@@ -7663,21 +7663,21 @@ ml.show_classification_report(ypm_test11, pm_model11.predict(Xpm_test11), class_
 # aplicada aqui: um falso positivo custa uma PM desnecessária (poucas horas de parada
 # planejada); um falso negativo custa uma falha não planejada real (mais horas de
 # parada, e menos previsível para a produção se ajustar em volta). Reaproveita
-# `ASSUMED_DOWNTIME_COST_PER_HOUR_BRL` (Parte 4.6b) para os dois lados, só variando as
+# `ASSUMED_DOWNTIME_COST_PER_HOUR_EUR` (Parte 4.6b) para os dois lados, só variando as
 # horas assumidas de cada tipo de evento -- ilustrativo, não medido.
 
 # %%
-FALSE_POSITIVE_COST_PM_BRL = 2 * ASSUMED_DOWNTIME_COST_PER_HOUR_BRL  # PM extra desnecessária
-FALSE_NEGATIVE_COST_PM_BRL = 8 * ASSUMED_DOWNTIME_COST_PER_HOUR_BRL  # falha não planejada real
+FALSE_POSITIVE_COST_PM_EUR = 2 * ASSUMED_DOWNTIME_COST_PER_HOUR_EUR  # PM extra desnecessária
+FALSE_NEGATIVE_COST_PM_EUR = 8 * ASSUMED_DOWNTIME_COST_PER_HOUR_EUR  # falha não planejada real
 pm_proba_for_threshold11 = pm_model11.predict_proba(Xpm_test11)[:, 1]
 pm_pr_auc11 = ml.classification_metrics(ypm_test11, pm_model11.predict(Xpm_test11), probability=pm_proba_for_threshold11)["PR_AUC"]
 # Mesmo cuidado da 11.2: limiar escolhido em validação (dentro de Xpm_train11), não no teste.
 pm_econ11 = ml.economic_threshold_val_test(pm_model11, Xpm_train11, ypm_train11, Xpm_test11, ypm_test11,
-                                            FALSE_POSITIVE_COST_PM_BRL, FALSE_NEGATIVE_COST_PM_BRL)
+                                            FALSE_POSITIVE_COST_PM_EUR, FALSE_NEGATIVE_COST_PM_EUR)
 print(f"PR-AUC = {pm_pr_auc11:.3f} (ROC-AUC = {pm_comparison11.loc[pm_best11, 'ROC_AUC']:.3f})")
 print(f"Limiar escolhido em validação = {pm_econ11['best_threshold']:.2f} ({pm_econ11['best_threshold_chosen_on']})")
-print(f"Limiar 0,5 (padrão): custo esperado no conjunto de teste = R$ {pm_econ11['cost_at_0_5']:,.0f}")
-print(f"Limiar ótimo (custo-mínimo) = {pm_econ11['best_threshold']:.2f}: custo esperado = R$ {pm_econ11['best_cost']:,.0f} "
+print(f"Limiar 0,5 (padrão): custo esperado no conjunto de teste = € {pm_econ11['cost_at_0_5']:,.0f}")
+print(f"Limiar ótimo (custo-mínimo) = {pm_econ11['best_threshold']:.2f}: custo esperado = € {pm_econ11['best_cost']:,.0f} "
       f"({100*(1 - pm_econ11['best_cost']/max(pm_econ11['cost_at_0_5'], 1e-9)):.0f}% menor)")
 _pm_pct_flagged = 100 * pm_econ11['n_flagged'] / pm_econ11['n_test']
 print(f"Impacto operacional no teste ({pm_econ11['n_test']:,} máquina-dias): {pm_econ11['n_flagged']:,} "
@@ -7843,7 +7843,7 @@ print("\nParte 11 completa — todos os seis modelos de ML treinados, avaliados,
 # **Papel: todo o time virtual, reportando o raio-X completo.** Fecha o notebook
 # respondendo as 8 perguntas gerais juntas, citando a evidência de cada Parte anterior,
 # e recomenda **uma única iniciativa de melhoria** para financiar — com prova, impacto
-# em R$ e controle — em vez de uma lista de possibilidades sem prioridade. Nada aqui é
+# em € e controle — em vez de uma lista de possibilidades sem prioridade. Nada aqui é
 # novo cálculo: cada número é lido de volta dos resumos que as Partes anteriores já
 # salvaram, para que este fechamento nunca divirja silenciosamente do que já foi
 # provado.
@@ -7988,7 +7988,7 @@ marginal, não "capaz com algumas exceções".
 **5 — Principais perdas e onde priorizar**: Quebras (falha não planejada) domina as Seis Grandes Perdas em
 agregado, mas a categoria dominante muda por processo (Parte 4) — não existe uma única correção de planta
 inteira. Custo da Qualidade (Parte 3B/6): Avaliação domina
-(R$ {charter_s['cost_of_quality_brl']['Avaliação']:,.0f}, {100*charter_s['cost_of_quality_brl']['Avaliação']/charter_s['cost_of_quality_total_brl']:.1f}%
+(€ {charter_s['cost_of_quality_eur']['Avaliação']:,.0f}, {100*charter_s['cost_of_quality_eur']['Avaliação']/charter_s['cost_of_quality_total_eur']:.1f}%
 do total), e Falha Externa excede Falha Interna — um sinal de alerta sobre a proteção real da amostragem AQL,
 não uma tranquilidade.
 
@@ -8125,19 +8125,19 @@ answer(f"As três máquinas de maior risco combinado, sob os pesos declarados, s
 # qualquer natureza) é maior" — pergunta distinta da 6.10.
 
 # %%
-coq_by_machine = pd.DataFrame({"SucataBRL": scrap_loss_by_machine, "ReclamacaoBRL": complaint_loss_by_machine}).fillna(0)
-coq_by_machine["TotalBRL"] = coq_by_machine.sum(axis=1)
-coq_by_machine = coq_by_machine.sort_values("TotalBRL", ascending=False)
+coq_by_machine = pd.DataFrame({"SucataEUR": scrap_loss_by_machine, "ReclamacaoEUR": complaint_loss_by_machine}).fillna(0)
+coq_by_machine["TotalEUR"] = coq_by_machine.sum(axis=1)
+coq_by_machine = coq_by_machine.sort_values("TotalEUR", ascending=False)
 print(coq_by_machine.round(0))
 
 fig, ax = plt.subplots(figsize=(9, 7))
-coq_by_machine.sort_values("TotalBRL")[["SucataBRL", "ReclamacaoBRL"]].plot(kind="barh", stacked=True, ax=ax, color=["#e67e22", "#8e44ad"])
-ax.set_xlabel("R$ ilustrativo (18 meses)"); ax.set_title("Modelo ilustrativo de custo da não-qualidade por máquina (sucata + reclamação)")
+coq_by_machine.sort_values("TotalEUR")[["SucataEUR", "ReclamacaoEUR"]].plot(kind="barh", stacked=True, ax=ax, color=["#e67e22", "#8e44ad"])
+ax.set_xlabel("€ ilustrativo (18 meses)"); ax.set_title("Modelo ilustrativo de custo da não-qualidade por máquina (sucata + reclamação)")
 fig.tight_layout(); fig.savefig(REPORTS_DIR / "12_01c_cost_of_nonquality_by_machine.png"); plt.show()
 
 top_coq_machine = coq_by_machine.index[0]
 answer(f"**{top_coq_machine}** concentra o maior custo de não-qualidade ilustrativo "
-       f"(R$ {coq_by_machine.loc[top_coq_machine, 'TotalBRL']:,.0f} em 18 meses). Comparado à Seção 6.10 (que "
+       f"(€ {coq_by_machine.loc[top_coq_machine, 'TotalEUR']:,.0f} em 18 meses). Comparado à Seção 6.10 (que "
        "inclui indisponibilidade), o ranking de custo PURAMENTE de qualidade pode diferir — uma máquina com "
        "muita quebra mas poucos defeitos sobe no ranking de perda total e desce aqui, e vice-versa. Usar os "
        "dois lados a lado evita otimizar um investimento de manutenção para um problema que é, na verdade, de "
@@ -8148,7 +8148,7 @@ answer(f"**{top_coq_machine}** concentra o maior custo de não-qualidade ilustra
 #
 # > **BQ-078.** *Pick one funded improvement initiative — evidence, $ impact,
 # > control.* Traduzindo: escolha uma única iniciativa de melhoria para financiar,
-# > com evidência, impacto em R$ e controle.
+# > com evidência, impacto em € e controle.
 #
 # **A cadeia de evidência para IM-002 — não um palpite**: quatro Partes independentes,
 # cada uma respondendo uma pergunta diferente, convergem na mesma máquina.
@@ -8194,7 +8194,7 @@ display(Markdown(f"""
 # %%
 im002_volume12 = pd.read_sql("SELECT SUM(ProducedQty) AS total FROM silver.fact_production WHERE MachineId = 'IM-002'", engine)["total"].iloc[0]
 date_range12 = pd.read_sql("SELECT MIN([Date]) AS MinDate, MAX([Date]) AS MaxDate FROM silver.fact_production", engine, parse_dates=["MinDate", "MaxDate"]).iloc[0]
-ASSUMED_SCRAP_COST_PER_UNIT_BRL_12 = 0.05
+ASSUMED_SCRAP_COST_PER_UNIT_EUR_12 = 0.05
 baseline_rate12 = dmaic_s["problem_baseline_rate"]
 optimal_rate12 = aqt_s["doe_best_corner_rate"]
 units_saved12 = im002_volume12 * (baseline_rate12 - optimal_rate12)
@@ -8202,34 +8202,34 @@ units_saved12 = im002_volume12 * (baseline_rate12 - optimal_rate12)
 # grandezas são reportadas separadamente: a economia do período coberto pelos dados,
 # e uma anualização linear explícita usando o número real de meses do dataset.
 months_span12 = (date_range12["MaxDate"] - date_range12["MinDate"]).days / 30.4375
-potential_savings_period12 = units_saved12 * ASSUMED_SCRAP_COST_PER_UNIT_BRL_12
+potential_savings_period12 = units_saved12 * ASSUMED_SCRAP_COST_PER_UNIT_EUR_12
 potential_savings_annual12 = potential_savings_period12 * (12 / months_span12)
-share_of_coq12 = potential_savings_period12 / charter_s["cost_of_quality_total_brl"]
+share_of_coq12 = potential_savings_period12 / charter_s["cost_of_quality_total_eur"]
 
 print(f"Volume de produção da IM-002 ({months_span12:.1f} meses): {im002_volume12:,.0f} unidades")
 print(f"Taxa Short Shot: {100*baseline_rate12:.2f}% linha de base -> {100*optimal_rate12:.2f}% no melhor vértice do DOE (Cenário B, experimental)")
 print(f"Unidades que NÃO seriam rejeitadas Short Shot se a taxa do DOE se sustentasse fora do experimento: {units_saved12:,.0f}")
-print(f"Cenário de economia potencial no período coberto pelos dados ({months_span12:.1f} meses), condicionado à confirmação: R$ {potential_savings_period12:,.0f}")
-print(f"Anualização linear do mesmo cenário (não é o mesmo número, é uma projeção): R$ {potential_savings_annual12:,.0f}/ano")
+print(f"Cenário de economia potencial no período coberto pelos dados ({months_span12:.1f} meses), condicionado à confirmação: € {potential_savings_period12:,.0f}")
+print(f"Anualização linear do mesmo cenário (não é o mesmo número, é uma projeção): € {potential_savings_annual12:,.0f}/ano")
 print(f"Fatia do Custo da Qualidade total da planta (base: valor do período, não anualizado): {100*share_of_coq12:.1f}%")
 
 display(Markdown(f"""
-**Um problema honesto com este número, que vale registrar em vez de suavizar**: o cenário de R$ {potential_savings_period12:,.0f}
-(no período de {months_span12:.1f} meses coberto pelos dados; ~R$ {potential_savings_annual12:,.0f}/ano numa
+**Um problema honesto com este número, que vale registrar em vez de suavizar**: o cenário de € {potential_savings_period12:,.0f}
+(no período de {months_span12:.1f} meses coberto pelos dados; ~€ {potential_savings_annual12:,.0f}/ano numa
 anualização linear simples — os dois números NÃO são o mesmo e não devem ser trocados um pelo outro) já é pequeno
 por construção — bem abaixo de 1% do Custo da Qualidade total da planta — **e ainda depende de uma corrida de
 confirmação que este projeto não executou**; até lá, é um teto otimista, não um piso garantido. Uma recomendação
 que apresentasse *só* este número como "a economia" estaria vendendo mais certeza do que os dados sustentam — é
 uma correção bem-provada estatisticamente, mas financeiramente pequena e ainda experimental. O número muito maior
 que já está nos próprios dados deste projeto é o balde de **Avaliação** da Parte 3B/6 —
-R$ {charter_s['cost_of_quality_brl']['Avaliação']:,.0f},
-{100*charter_s['cost_of_quality_brl']['Avaliação']/charter_s['cost_of_quality_total_brl']:.1f}% do Custo da
-Qualidade total — quase {charter_s['cost_of_quality_brl']['Avaliação']/potential_savings_period12:,.0f}x o
+€ {charter_s['cost_of_quality_eur']['Avaliação']:,.0f},
+{100*charter_s['cost_of_quality_eur']['Avaliação']/charter_s['cost_of_quality_total_eur']:.1f}% do Custo da
+Qualidade total — quase {charter_s['cost_of_quality_eur']['Avaliação']/potential_savings_period12:,.0f}x o
 tamanho do cenário de IM-002 no mesmo período. Honestidade exige dizer as coisas ao mesmo tempo:
 IM-002 é a iniciativa **mais bem provada** deste raio-X (experimento real, mecanismo confirmado, baixo risco,
 rápida de testar); o gasto de Avaliação é o **maior número**, e este notebook ainda não respondeu se é
 superproteção ou dinheiro bem gasto (a pergunta continua aberta — Parte 5, BQ-009) — recomendar um corte num
-gasto de R$ 2M+ sem antes responder isso seria irresponsável, então fica nomeado aqui como a próxima
+gasto de € 2M+ sem antes responder isso seria irresponsável, então fica nomeado aqui como a próxima
 investigação, não embutido no número deste trimestre.
 """))
 
@@ -8257,7 +8257,7 @@ formalizados como padrão operacional; até lá, a condição atual permanece o 
    uma linha de detecção antecipada, não só a amostragem reativa que já existe.
 
 **Também evidenciado, mas não a recomendação principal**: os {toc_s['n_redo_episodes']} episódios de
-refação de lote completo (Parte 7) somam só R$ {toc_s['hidden_factory_cost_brl']:,.0f} em custo de material —
+refação de lote completo (Parte 7) somam só € {toc_s['hidden_factory_cost_eur']:,.0f} em custo de material —
 real, mas cada um já tem causa-raiz nomeada em outra Parte deste notebook; corrigir essas causas individuais
 (incluindo a de IM-002 aqui) já resolve a fábrica escondida junto, sem precisar de uma iniciativa separada. A
 lacuna de amostragem encontrada na Parte 6 (rastreabilidade de reclamação — cobertura de amostra de ~3% do lote
