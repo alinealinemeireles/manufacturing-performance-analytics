@@ -256,8 +256,8 @@ originais.)*
   4 máquinas novas ainda em ramp-up, com Performance mais baixa enquanto operadores e processos se
   estabilizam) — Disponibilidade é o pilar mais fraco em todo processo, ou seja, parada não
   planejada — não velocidade nem sucata — é o maior gap estrutural até a classe mundial (85%).
-- **A capacidade de processo é amplamente marginal**: 0% dos 218 grupos máquina×molde×característica
-  (48 de tampa + 170 de frasco; eram 190 grupos — 40+150 — nas 18 máquinas originais) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
+- **A capacidade de processo é amplamente marginal**: 0% dos 226 grupos máquina×molde×característica
+  (48 de tampa + 178 de frasco/pote; eram 190 grupos — 40+150 — nas 18 máquinas originais) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
   (causa especial ausente), o Cpk máximo observado continua bem abaixo de 1,33 — não é "tudo capaz,
   com algumas exceções", é uma planta estatisticamente marginal como um todo, com máquinas nomeadas
   (IM-002) mensuravelmente piores que essa linha de base já modesta.

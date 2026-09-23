@@ -3735,3 +3735,147 @@ LOTE-M-SOP-030-3066,WO-16349,2026-12-27,Shift 3,ISBM-009,M-SOP-030,FA-030-HDPE-F
 LOTE-M-SOP-031-3065,WO-16350,2026-12-28,Shift 2,ISBM-009,M-SOP-031,FA-031-PP-FG-500,21141,M,315,0,4,6,10,Conforming,Approved,Approved,Approved - First Pass,2026-12-29 22:47:00.900,—,Ana Silva
 LOTE-M-SOP-030-3067,WO-16351,2026-12-29,Shift 2,ISBM-009,M-SOP-030,FA-030-PP-FG-1000,559,L,200,0,6,0,6,Conforming,Approved,Approved,Approved - First Pass,2026-12-31 01:33:07.548,—,Beatriz Costa
 LOTE-M-SOP-031-3066,WO-16352,2026-12-30,shift 1,ISBM-009,M-SOP-031,FA-031-HDPE-FG-500,4302,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-12-31 10:29:38.209,—,Elena Santos
+LOTE-M-INJ-010-3000,WO-16611,2026-07-06,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,31105,M,315,0,1,8,9,Conforming,Approved,Approved,Approved - First Pass,2026-07-07 21:13:35.477,—,Carlos Mendes
+LOTE-M-INJ-010-3001,WO-16612,2026-07-07,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,8527,L,200,0,0,3,3,Conforming,Approved,Approved,Approved - First Pass,2026-07-08 20:32:47.257,—,Beatriz Costa
+LOTE-M-INJ-011-3000,WO-16614,2026-07-08,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,10905,M,315,0,1,2,3,Conforming,Approved,Approved,Approved - First Pass,2026-07-09 22:57:35.693,—,Elena Santos
+LOTE-M-INJ-011-3001,WO-16617,2026-07-11,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,31174,M,315,0,1,9,10,Conforming,Approved,Approved,Approved - First Pass,2026-07-12 07:08:22.667,—,Carlos Mendes
+LOTE-M-INJ-010-3002,WO-16620,2026-07-13,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,35370,M,315,0,1,7,8,Conforming,Approved,Approved,Approved - First Pass,2026-07-14 09:38:23.879,—,Beatriz Costa
+LOTE-M-INJ-010-3003,WO-16621,2026-07-13,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,17924,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-07-15 11:17:06.242,—,Beatriz Costa
+LOTE-M-INJ-011-3002,WO-16624,2026-07-15,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,19563,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-07-16 19:26:02.328,—,Ana Silva
+LOTE-M-INJ-011-3003,WO-16627,2026-07-17,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,24346,M,315,0,2,8,10,Conforming,Approved,Approved,Approved - First Pass,2026-07-18 20:44:14.150,—,Carlos Mendes
+LOTE-M-INJ-010-3004,WO-16630,2026-07-19,SHIFT 1,IM-007,M-INJ-010,PT-010-PP-050,29789,M,315,0,7,5,12,Conforming,Approved,Approved,Approved - First Pass,2026-07-20 16:03:51.406,—,Carlos Mendes
+LOTE-M-INJ-010-3005,WO-16633,2026-07-21,  Shift 3  ,IM-007,M-INJ-010,PT-010-PP-PG-050,26295,M,315,0,6,2,8,Conforming,Approved,Approved,Approved - First Pass,2026-07-22 09:27:58.500,—,Carlos Mendes
+LOTE-M-INJ-011-3004,WO-16635,2026-07-22,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,15862,M,315,0,0,3,3,Conforming,Approved,Approved,Approved - First Pass,2026-07-22 21:08:18.425,—,Diogo Ferreira
+LOTE-M-INJ-011-3005,WO-16637,2026-07-23,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,15990,M,315,1,2,1,4,Conforming,Rejected,Rejected,Rejected - Segregated,2026-07-24 08:17:23.438,Thread:1(Re=1),Ana Silva
+LOTE-M-INJ-010-3006,WO-16640,2026-07-25,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,29628,M,315,0,1,13,14,Conforming,Approved,Approved,Approved - First Pass,2026-07-26 11:51:07.707,—,Elena Santos
+LOTE-M-INJ-010-3007,WO-16641,2026-07-25,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,5915,L,200,0,2,0,2,Conforming,Approved,Approved,Approved - First Pass,2026-07-26 16:00:03.113,—,Ana Silva
+LOTE-M-INJ-011-3006,WO-16642,2026-07-26,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,15632,M,315,0,2,0,2,Conforming,Approved,Approved,Approved - First Pass,2026-07-27 20:26:14.376,—,Beatriz Costa
+LOTE-M-INJ-011-3007,WO-16643,2026-07-27,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,12546,M,315,0,2,3,5,Conforming,Approved,Approved,Approved - First Pass,2026-07-28 13:44:30.719,—,Carlos Mendes
+LOTE-M-INJ-010-3008,WO-16645,2026-07-29,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,19302,M,315,0,2,6,8,Conforming,Approved,Approved,Approved - First Pass,2026-07-29 20:37:56.145,—,Elena Santos
+LOTE-M-INJ-010-3009,WO-16647,2026-07-30,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,22254,M,315,0,2,5,7,Conforming,Approved,Approved,Approved - First Pass,2026-07-31 01:15:06.651,—,Elena Santos
+LOTE-M-INJ-011-3008,WO-16648,2026-07-30,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,3374,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-07-31 15:17:49.391,—,Elena Santos
+LOTE-M-INJ-011-3009,WO-16649,2026-07-31,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,9595,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-08-02 00:24:38.940,—,Diogo Ferreira
+LOTE-M-INJ-010-3010,WO-16651,2026-08-01,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,19096,M,315,0,0,4,4,Conforming,Approved,Approved,Approved - First Pass,2026-08-03 05:40:04.370,—,Carlos Mendes
+LOTE-M-INJ-010-3011,WO-16652,2026-08-02,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,9413,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-08-03 15:16:26.409,—,Elena Santos
+LOTE-M-INJ-011-3010,WO-16655,2026-08-04,  Shift 2  ,IM-007,M-INJ-011,PT-011-PP-100,32725,M,315,0,5,5,10,Conforming,Approved,Approved,Approved - First Pass,2026-08-05 15:21:17.277,—,Beatriz Costa
+LOTE-M-INJ-011-3011,WO-16657,2026-08-05,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,18810,M,315,0,6,9,15,Conforming,Approved,Approved,Approved - First Pass,2026-08-07 05:10:28.409,—,Beatriz Costa
+LOTE-M-INJ-010-3012,WO-16660,2026-08-07,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,28666,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-08-09 08:48:39.948,—,Ana Silva
+LOTE-M-INJ-010-3013,WO-16662,2026-08-09,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,19686,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-08-10 01:03:31.658,—,Diogo Ferreira
+LOTE-M-INJ-011-3012,WO-16664,2026-08-10,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,23246,M,315,1,2,5,8,Conforming,Rejected,Rejected,Rejected - Segregated,2026-08-11 16:00:18.980,Sealing:1(Re=1),Beatriz Costa
+LOTE-M-INJ-011-3013,WO-16667,2026-08-12,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,36596,M,315,0,7,10,17,Conforming,Approved,Approved,Approved - First Pass,2026-08-14 04:33:10.758,—,Carlos Mendes
+LOTE-M-INJ-010-3014,WO-16668,2026-08-13,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,7467,L,200,0,0,1,1,Conforming,Approved,Approved,Approved - First Pass,2026-08-14 01:59:06.319,—,Diogo Ferreira
+LOTE-M-INJ-010-3015,WO-16671,2026-08-15,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,24909,M,315,1,3,8,12,Conforming,Rejected,Rejected,Rejected - Segregated,2026-08-16 04:56:05.494,—,Carlos Mendes
+LOTE-M-INJ-011-3014,WO-16673,2026-08-16,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,11666,M,315,1,2,1,4,Conforming,Rejected,Rejected,Rejected - Segregated,2026-08-17 21:51:32.062,—,Beatriz Costa
+LOTE-M-INJ-010-3016,WO-16675,2026-08-17,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,10201,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-08-18 05:09:26.123,—,Carlos Mendes
+LOTE-M-INJ-011-3015,WO-16674,2026-08-17,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,9726,L,200,0,0,4,4,Conforming,Approved,Approved,Approved - First Pass,2026-08-18 21:39:57.416,—,Diogo Ferreira
+LOTE-M-INJ-010-3017,WO-16676,2026-08-18,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,10214,M,315,0,0,4,4,Conforming,Approved,Approved,Approved - First Pass,2026-08-19 07:23:21.512,—,Ana Silva
+LOTE-M-INJ-011-3016,WO-16679,2026-08-20,shift 1,IM-007,M-INJ-011,PT-011-PP-100,32252,M,315,0,0,12,12,Conforming,Approved,Approved,Approved - First Pass,2026-08-21 14:52:02.063,—,Beatriz Costa
+LOTE-M-INJ-011-3017,WO-16680,2026-08-21,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,6436,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-08-21 16:55:03.530,—,Ana Silva
+LOTE-M-INJ-010-3018,WO-16681,2026-08-21,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,7310,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-08-23 01:17:01.109,—,Diogo Ferreira
+LOTE-M-INJ-010-3019,WO-16682,2026-08-22,SHIFT 1,IM-007,M-INJ-010,PT-010-PP-PG-050,4330,L,200,0,0,1,1,Conforming,Approved,Approved,Approved - First Pass,2026-08-23 01:50:25.295,—,Carlos Mendes
+LOTE-M-INJ-011-3018,WO-16683,2026-08-22,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,7018,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-08-23 21:07:24.934,—,Ana Silva
+LOTE-M-INJ-011-3019,WO-16685,2026-08-24,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,19065,M,315,0,4,1,5,Conforming,Approved,Approved,Approved - First Pass,2026-08-25 16:24:14.973,—,Diogo Ferreira
+LOTE-M-INJ-010-3020,WO-16688,2026-08-26,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,28389,M,315,0,1,3,4,Conforming,Approved,Approved,Approved - First Pass,2026-08-27 10:57:09.632,—,Ana Silva
+LOTE-M-INJ-010-3021,WO-16689,2026-08-26,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,8805,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-08-27 18:15:47.725,—,Carlos Mendes
+LOTE-M-INJ-011-3020,WO-16690,2026-08-27,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,13037,M,315,0,0,3,3,Conforming,Approved,Approved,Approved - First Pass,2026-08-28 22:59:21.473,—,Ana Silva
+LOTE-M-INJ-011-3021,WO-16693,2026-08-29,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,23346,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-08-30 02:03:26.707,—,Diogo Ferreira
+LOTE-M-INJ-010-3022,WO-16695,2026-08-30,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,25959,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-08-31 15:51:35.084,—,Elena Santos
+LOTE-M-INJ-010-3023,WO-16697,2026-09-01,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,29106,M,315,0,1,8,9,Conforming,Approved,Approved,Approved - First Pass,2026-09-02 21:55:41.054,—,Diogo Ferreira
+LOTE-M-INJ-011-3022,WO-16698,2026-09-02,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,9716,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-09-03 16:32:37.416,—,Carlos Mendes
+LOTE-M-INJ-011-3023,WO-16700,2026-09-03,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,18550,M,315,0,3,4,7,Conforming,Approved,Approved,Approved - First Pass,2026-09-04 12:14:03.540,—,Carlos Mendes
+LOTE-M-INJ-010-3024,WO-16701,2026-09-04,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,10532,M,315,1,2,0,3,Conforming,Rejected,Rejected,Rejected - Segregated,2026-09-05 06:10:24.324,Thread:1(Re=1),Carlos Mendes
+LOTE-M-INJ-010-3025,WO-16702,2026-09-04,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,16760,M,315,0,1,2,3,Conforming,Approved,Approved,Approved - First Pass,2026-09-05 23:14:52.109,—,Diogo Ferreira
+LOTE-M-INJ-011-3024,WO-16704,2026-09-06,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,14274,M,315,0,1,1,2,Conforming,Approved,Approved,Approved - First Pass,2026-09-07 11:57:49.403,—,Ana Silva
+LOTE-M-INJ-011-3025,WO-16707,2026-09-08,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,31133,M,315,1,0,6,7,Conforming,Rejected,Rejected,Rejected - Segregated,2026-09-09 19:14:11.902,Sealing:1(Re=1),Ana Silva
+LOTE-M-INJ-010-3026,WO-16710,2026-09-10,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,29174,M,315,0,1,4,5,Conforming,Approved,Approved,Approved - First Pass,2026-09-11 18:55:57.381,—,Diogo Ferreira
+LOTE-M-INJ-010-3027,WO-16711,2026-09-11,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,10005,M,315,0,3,4,7,Conforming,Approved,Approved,Approved - First Pass,2026-09-11 23:21:56.768,—,Elena Santos
+LOTE-M-INJ-011-3026,WO-16712,2026-09-11,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,2573,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-09-13 00:14:10.694,—,Beatriz Costa
+LOTE-M-INJ-011-3027,WO-16713,2026-09-12,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,8064,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-09-13 21:21:04.618,—,Elena Santos
+LOTE-M-INJ-010-3028,WO-16715,2026-09-14,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,15460,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-09-15 13:53:39.531,—,Beatriz Costa
+LOTE-M-INJ-010-3029,WO-16718,2026-09-16,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,30868,M,315,0,4,11,15,Conforming,Approved,Approved,Approved - First Pass,2026-09-17 16:18:09.031,—,Diogo Ferreira
+LOTE-M-INJ-011-3028,WO-16721,2026-09-18,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,29033,M,315,0,2,6,8,Conforming,Approved,Approved,Approved - First Pass,2026-09-20 02:46:25.538,—,Diogo Ferreira
+LOTE-M-INJ-011-3029,WO-16722,2026-09-19,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,9846,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-09-20 16:41:24.630,—,Carlos Mendes
+LOTE-M-INJ-010-3030,WO-16723,2026-09-20,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,12891,M,315,0,2,3,5,Conforming,Approved,Approved,Approved - First Pass,2026-09-21 07:58:32.730,—,Carlos Mendes
+LOTE-M-INJ-010-3031,WO-16724,2026-09-21,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,15237,M,315,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-09-22 15:25:07.655,—,Ana Silva
+LOTE-M-INJ-011-3030,WO-16727,2026-09-23,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,22919,M,315,0,0,6,6,Conforming,Approved,Approved,Approved - First Pass,2026-09-24 16:09:03.195,—,Elena Santos
+LOTE-M-INJ-011-3031,WO-16728,2026-09-23,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,12228,M,315,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-09-24 21:13:36.000,—,Elena Santos
+LOTE-M-INJ-010-3032,WO-16730,2026-09-25,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,16844,M,315,1,4,6,11,Conforming,Rejected,Rejected,Rejected - Segregated,2026-09-26 22:09:25.544,Sealing:1(Re=1),Carlos Mendes
+LOTE-M-INJ-010-3033,WO-16731,2026-09-26,  Shift 3  ,IM-007,M-INJ-010,PT-010-PP-PG-050,12158,M,315,0,2,1,3,Conforming,Approved,Approved,Approved - First Pass,2026-09-27 15:04:08.490,—,Ana Silva
+LOTE-M-INJ-011-3032,WO-16733,2026-09-28,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,19166,M,315,0,3,3,6,Conforming,Approved,Approved,Approved - First Pass,2026-09-29 01:56:43.697,—,Elena Santos
+LOTE-M-INJ-011-3033,WO-16735,2026-09-29,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,12418,M,315,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-09-30 13:22:48.217,—,Ana Silva
+LOTE-M-INJ-010-3034,WO-16736,2026-09-30,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,8009,L,200,0,1,3,4,Conforming,Approved,Approved,Approved - First Pass,2026-10-01 02:14:11.995,—,Ana Silva
+LOTE-M-INJ-010-3035,WO-16739,2026-10-02,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,31126,M,315,0,6,9,15,Conforming,Approved,Approved,Approved - First Pass,2026-10-03 08:41:50.597,—,Ana Silva
+LOTE-M-INJ-011-3034,WO-16741,2026-10-04,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,22409,M,315,0,2,7,9,Conforming,Approved,Approved,Approved - First Pass,2026-10-04 20:24:21.508,—,Ana Silva
+LOTE-M-INJ-011-3035,WO-16742,2026-10-04,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,8451,L,200,0,2,6,8,Conforming,Approved,Approved,Approved - First Pass,2026-10-05 13:46:05.264,—,Diogo Ferreira
+LOTE-M-INJ-010-3036,WO-16744,2026-10-06,SHIFT 3,IM-007,M-INJ-010,PT-010-PP-050,22949,M,315,0,1,3,4,Conforming,Approved,Approved,Approved - First Pass,2026-10-07 01:32:58.213,—,Elena Santos
+LOTE-M-INJ-010-3037,WO-16745,2026-10-06,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,8954,L,200,0,0,1,1,Conforming,Approved,Approved,Approved - First Pass,2026-10-08 03:42:00.734,—,Beatriz Costa
+LOTE-M-INJ-011-3036,WO-16747,2026-10-08,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,20763,M,315,0,2,6,8,Conforming,Approved,Approved,Approved - First Pass,2026-10-09 03:29:54.645,—,Carlos Mendes
+LOTE-M-INJ-011-3037,WO-16748,2026-10-08,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,7930,L,200,0,3,5,8,Conforming,Approved,Approved,Approved - First Pass,2026-10-09 17:55:58.195,—,Elena Santos
+LOTE-M-INJ-010-3038,WO-16750,2026-10-10,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,18164,M,315,0,2,1,3,Conforming,Approved,Approved,Approved - First Pass,2026-10-11 13:02:40.056,—,Carlos Mendes
+LOTE-M-INJ-010-3039,WO-16751,2026-10-10,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,8798,L,200,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-10-11 18:56:16.720,—,Carlos Mendes
+LOTE-M-INJ-011-3038,WO-16752,2026-10-11,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,8479,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-10-12 18:50:42.972,—,Diogo Ferreira
+LOTE-M-INJ-011-3039,WO-16754,2026-10-12,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,24289,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-10-13 18:57:00.242,—,Elena Santos
+LOTE-M-INJ-010-3040,WO-16757,2026-10-14,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,23451,M,315,0,4,4,8,Conforming,Approved,Approved,Approved - First Pass,2026-10-15 04:08:38.309,—,Carlos Mendes
+LOTE-M-INJ-010-3041,WO-16756,2026-10-14,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,5779,L,200,0,2,1,3,Conforming,Approved,Approved,Approved - First Pass,2026-10-15 22:42:34.932,—,Beatriz Costa
+LOTE-M-INJ-011-3040,WO-16759,2026-10-16,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,25061,M,315,0,4,10,14,Conforming,Approved,Approved,Approved - First Pass,2026-10-16 23:11:39.149,—,Beatriz Costa
+LOTE-M-INJ-011-3041,WO-16760,2026-10-16,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,5762,L,200,0,0,1,1,Conforming,Approved,Approved,Approved - First Pass,2026-10-18 00:29:02.336,—,Beatriz Costa
+LOTE-M-INJ-010-3042,WO-16762,2026-10-17,  Shift 2  ,IM-007,M-INJ-010,PT-010-PP-050,16055,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-10-19 09:13:12.160,—,Ana Silva
+LOTE-M-INJ-010-3043,WO-16763,2026-10-18,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,9391,L,200,0,1,2,3,Conforming,Approved,Approved,Approved - First Pass,2026-10-20 01:36:30.665,—,Ana Silva
+LOTE-M-INJ-011-3042,WO-16765,2026-10-19,  Shift 2  ,IM-007,M-INJ-011,PT-011-PP-100,15482,M,315,0,0,4,4,Conforming,Approved,Approved,Approved - First Pass,2026-10-20 19:59:00.031,—,Carlos Mendes
+LOTE-M-INJ-011-3043,WO-16767,2026-10-21,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,25286,M,315,1,0,9,10,Conforming,Rejected,Rejected,Rejected - Segregated,2026-10-22 07:35:55.470,Sealing:1(Re=1),Carlos Mendes
+LOTE-M-INJ-010-3044,WO-16770,2026-10-22,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,26655,M,315,0,2,11,13,Conforming,Approved,Approved,Approved - First Pass,2026-10-24 07:38:33.485,—,Elena Santos
+LOTE-M-INJ-010-3045,WO-16773,2026-10-24,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,17135,M,315,0,1,7,8,Conforming,Approved,Approved,Approved - First Pass,2026-10-25 06:35:33.775,—,Diogo Ferreira
+LOTE-M-INJ-011-3044,WO-16774,2026-10-25,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,22366,M,315,0,1,5,6,Conforming,Approved,Approved,Approved - First Pass,2026-10-26 11:57:00.047,—,Elena Santos
+LOTE-M-INJ-011-3045,WO-16777,2026-10-27,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,31237,M,315,0,2,2,4,Conforming,Approved,Approved,Approved - First Pass,2026-10-28 07:18:18.026,—,Carlos Mendes
+LOTE-M-INJ-010-3046,WO-16778,2026-10-28,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,10484,M,315,2,1,1,4,Conforming,Rejected,Rejected,Rejected - Segregated,2026-10-28 21:35:56.746,—,Diogo Ferreira
+LOTE-M-INJ-010-3047,WO-16779,2026-10-28,SHIFT 2,IM-007,M-INJ-010,PT-010-PP-PG-050,11696,M,315,0,1,11,12,Conforming,Approved,Approved,Approved - First Pass,2026-10-30 01:16:44.033,—,Carlos Mendes
+LOTE-M-INJ-011-3046,WO-16780,2026-10-29,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,14468,M,315,0,1,2,3,Conforming,Approved,Approved,Approved - First Pass,2026-10-30 12:55:00.768,—,Diogo Ferreira
+LOTE-M-INJ-011-3047,WO-16783,2026-10-31,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,32568,M,315,0,5,4,9,Conforming,Approved,Approved,Approved - First Pass,2026-11-01 09:37:14.107,—,Ana Silva
+LOTE-M-INJ-010-3048,WO-16784,2026-11-01,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,11126,M,315,0,3,2,5,Conforming,Approved,Approved,Approved - First Pass,2026-11-02 06:21:06.942,—,Elena Santos
+LOTE-M-INJ-010-3049,WO-16786,2026-11-03,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,20942,M,315,1,3,9,13,Conforming,Rejected,Rejected,Rejected - Segregated,2026-11-03 22:56:09.298,Sealing:1(Re=1),Ana Silva
+LOTE-M-INJ-011-3048,WO-16790,2026-11-05,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,33917,M,315,2,4,16,22,Conforming,Rejected,Rejected,Rejected - Segregated,2026-11-06 09:04:42.931,Thread:1(Re=1),Beatriz Costa
+LOTE-M-INJ-011-3049,WO-16789,2026-11-05,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,11711,M,315,0,1,2,3,Conforming,Approved,Approved,Approved - First Pass,2026-11-07 07:21:14.055,—,Diogo Ferreira
+LOTE-M-INJ-010-3050,WO-16791,2026-11-06,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,12834,M,315,0,3,7,10,Conforming,Approved,Approved,Approved - First Pass,2026-11-08 01:00:57.267,—,Diogo Ferreira
+LOTE-M-INJ-010-3051,WO-16794,2026-11-08,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,32221,M,315,0,1,6,7,Conforming,Approved,Approved,Approved - First Pass,2026-11-09 11:09:29.500,—,Ana Silva
+LOTE-M-INJ-011-3050,WO-16796,2026-11-10,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,21188,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-11-10 18:37:58.297,—,Ana Silva
+LOTE-M-INJ-011-3051,WO-16797,2026-11-10,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,14371,M,315,2,3,3,8,Conforming,Rejected,Rejected,Rejected - Segregated,2026-11-11 18:45:22.354,Sealing:2(Re=1),Diogo Ferreira
+LOTE-M-INJ-010-3052,WO-16799,2026-11-11,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,18860,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-11-12 15:09:55.835,—,Carlos Mendes
+LOTE-M-INJ-010-3053,WO-16802,2026-11-13,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,31227,M,315,1,2,14,17,Conforming,Rejected,Rejected,Rejected - Segregated,2026-11-14 16:30:35.353,Sealing:1(Re=1),Carlos Mendes
+LOTE-M-INJ-011-3053,WO-16804,2026-11-14,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,4454,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-11-15 05:17:02.747,—,Diogo Ferreira
+LOTE-M-INJ-011-3052,WO-16805,2026-11-15,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,24627,M,315,0,1,5,6,Conforming,Approved,Approved,Approved - First Pass,2026-11-16 17:31:45.308,—,Carlos Mendes
+LOTE-M-INJ-010-3054,WO-16806,2026-11-16,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,9988,L,200,0,2,1,3,Conforming,Approved,Approved,Approved - First Pass,2026-11-17 17:00:02.287,—,Elena Santos
+LOTE-M-INJ-010-3055,WO-16808,2026-11-17,Shift 2,IM-007,M-INJ-010,PT-010-PP-PG-050,21226,M,315,0,6,8,14,Conforming,Approved,Approved,Approved - First Pass,2026-11-19 00:36:32.834,—,Elena Santos
+LOTE-M-INJ-011-3054,WO-16810,2026-11-18,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,13403,M,315,0,1,7,8,Conforming,Approved,Approved,Approved - First Pass,2026-11-19 16:41:55.286,—,Carlos Mendes
+LOTE-M-INJ-011-3055,WO-16813,2026-11-20,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,22240,M,315,0,2,3,5,Conforming,Approved,Approved,Approved - First Pass,2026-11-21 10:50:57.372,—,Diogo Ferreira
+LOTE-M-INJ-010-3056,WO-16814,2026-11-21,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,6286,L,200,0,1,1,2,Conforming,Approved,Approved,Approved - First Pass,2026-11-22 00:25:50.904,—,Carlos Mendes
+LOTE-M-INJ-010-3057,WO-16817,2026-11-23,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,24587,M,315,0,2,4,6,Conforming,Approved,Approved,Approved - First Pass,2026-11-24 07:27:52.686,—,Ana Silva
+LOTE-M-INJ-011-3056,WO-16820,2026-11-24,Shift 2,IM-007,M-INJ-011,PT-011-PP-100,31487,M,315,0,5,10,15,Conforming,Approved,Approved,Approved - First Pass,2026-11-25 18:15:29.497,—,Ana Silva
+LOTE-M-INJ-011-3057,WO-16823,2026-11-26,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,18416,M,315,2,2,8,12,Conforming,Rejected,Rejected,Rejected - Segregated,2026-11-27 02:14:42.421,Thread:2(Re=1),Ana Silva
+LOTE-M-INJ-010-3058,WO-16825,2026-11-28,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,28459,M,315,1,5,9,15,Conforming,Rejected,Rejected,Rejected - Segregated,2026-11-29 11:53:37.591,Sealing:1(Re=1),Ana Silva
+LOTE-M-INJ-010-3059,WO-16826,2026-11-28,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,15239,M,315,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-11-29 20:49:41.464,—,Carlos Mendes
+LOTE-M-INJ-011-3058,WO-16828,2026-11-30,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,18564,M,315,0,1,9,10,Conforming,Approved,Approved,Approved - First Pass,2026-12-01 06:31:51.766,—,Beatriz Costa
+LOTE-M-INJ-011-3059,WO-16829,2026-12-01,  Shift 3  ,IM-007,M-INJ-011,PT-011-PP-PG-100,14454,M,315,0,0,7,7,Conforming,Approved,Approved,Approved - First Pass,2026-12-02 15:13:57.059,—,Beatriz Costa
+LOTE-M-INJ-010-3061,WO-16831,2026-12-02,Shift 3,IM-007,M-INJ-010,PT-010-PP-PG-050,9620,L,200,0,1,0,1,Conforming,Approved,Approved,Approved - First Pass,2026-12-03 07:03:59.192,—,Beatriz Costa
+LOTE-M-INJ-010-3060,WO-16832,2026-12-03,shift 1,IM-007,M-INJ-010,PT-010-PP-050,14217,M,315,0,0,2,2,Conforming,Approved,Approved,Approved - First Pass,2026-12-04 12:50:40.830,—,Elena Santos
+LOTE-M-INJ-011-3060,WO-16835,2026-12-04,SHIFT 3,IM-007,M-INJ-011,PT-011-PP-100,23024,M,315,1,5,3,9,Conforming,Rejected,Rejected,Rejected - Segregated,2026-12-06 15:57:47.686,Sealing:1(Re=1),Carlos Mendes
+LOTE-M-INJ-011-3061,WO-16836,2026-12-06,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,14516,M,315,0,0,4,4,Conforming,Approved,Approved,Approved - First Pass,2026-12-07 17:00:37.289,—,Diogo Ferreira
+LOTE-M-INJ-010-3062,WO-16838,2026-12-07,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,16924,M,315,0,0,8,8,Conforming,Approved,Approved,Approved - First Pass,2026-12-08 11:45:56.160,—,Diogo Ferreira
+LOTE-M-INJ-011-3062,WO-16840,2026-12-08,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,14084,M,315,0,1,1,2,Conforming,Approved,Approved,Approved - First Pass,2026-12-08 21:38:37.722,—,Ana Silva
+LOTE-M-INJ-010-3063,WO-16841,2026-12-09,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,12061,M,315,0,1,6,7,Conforming,Approved,Approved,Approved - First Pass,2026-12-10 11:50:14.894,—,Elena Santos
+LOTE-M-INJ-011-3063,WO-16842,2026-12-09,Shift 2,IM-007,M-INJ-011,PT-011-PP-PG-100,10183,M,315,1,0,2,3,Conforming,Rejected,Rejected,Rejected - Segregated,2026-12-10 12:44:58.143,Sealing:1(Re=1),Ana Silva
+LOTE-M-INJ-010-3064,WO-16843,2026-12-10,Shift 1,IM-007,M-INJ-010,PT-010-PP-050,6851,L,200,1,0,1,2,Conforming,Rejected,Rejected,Rejected - Segregated,2026-12-11 16:33:46.273,Sealing:1(Re=1),Diogo Ferreira
+LOTE-M-INJ-010-3065,WO-16844,2026-12-11,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,3919,L,200,0,0,3,3,Conforming,Approved,Approved,Approved - First Pass,2026-12-11 22:26:56.890,—,Diogo Ferreira
+LOTE-M-INJ-011-3064,WO-16846,2026-12-12,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,14353,M,315,0,2,1,3,Conforming,Approved,Approved,Approved - First Pass,2026-12-13 14:39:40.013,—,Elena Santos
+LOTE-M-INJ-011-3065,WO-16847,2026-12-13,Shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,4692,L,200,0,0,0,0,Conforming,Approved,Approved,Approved - First Pass,2026-12-14 20:15:56.872,—,Carlos Mendes
+LOTE-M-INJ-010-3066,WO-16849,2026-12-14,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,14373,M,315,0,2,4,6,Conforming,Approved,Approved,Approved - First Pass,2026-12-15 23:29:32.208,—,Carlos Mendes
+LOTE-M-INJ-010-3067,WO-16850,2026-12-15,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,10315,M,315,1,2,5,8,Conforming,Rejected,Rejected,Rejected - Segregated,2026-12-16 09:48:20.029,Thread:1(Re=1),Carlos Mendes
+LOTE-M-INJ-011-3066,WO-16851,2026-12-16,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,13584,M,315,0,2,9,11,Conforming,Approved,Approved,Approved - First Pass,2026-12-17 20:31:04.348,—,Ana Silva
+LOTE-M-INJ-011-3067,WO-16852,2026-12-17,shift 3,IM-007,M-INJ-011,PT-011-PP-PG-100,10859,M,315,0,0,6,6,Conforming,Approved,Approved,Approved - First Pass,2026-12-18 07:56:28.469,—,Carlos Mendes
+LOTE-M-INJ-010-3068,WO-16856,2026-12-19,Shift 3,IM-007,M-INJ-010,PT-010-PP-050,27667,M,315,0,1,11,12,Conforming,Approved,Approved,Approved - First Pass,2026-12-20 02:15:37.256,—,Carlos Mendes
+LOTE-M-INJ-010-3069,WO-16857,2026-12-20,  Shift 2  ,IM-007,M-INJ-010,PT-010-PP-PG-050,16816,M,315,0,3,5,8,Conforming,Approved,Approved,Approved - First Pass,2026-12-21 23:24:07.376,—,Beatriz Costa
+LOTE-M-INJ-011-3068,WO-16860,2026-12-23,Shift 3,IM-007,M-INJ-011,PT-011-PP-100,40841,M,315,0,1,2,3,Conforming,Approved,Approved,Approved - First Pass,2026-12-24 00:28:41.270,—,Ana Silva
+LOTE-M-INJ-011-3069,WO-16862,2026-12-24,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,20570,M,315,0,1,3,4,Conforming,Approved,Approved,Approved - First Pass,2026-12-25 06:26:00.161,—,Ana Silva
+LOTE-M-INJ-010-3070,WO-16864,2026-12-25,Shift 2,IM-007,M-INJ-010,PT-010-PP-050,22486,M,315,0,0,6,6,Conforming,Approved,Approved,Approved - First Pass,2026-12-27 00:27:22.303,—,Elena Santos
+LOTE-M-INJ-010-3071,WO-16867,2026-12-27,Shift 1,IM-007,M-INJ-010,PT-010-PP-PG-050,24597,M,315,0,1,8,9,Conforming,Approved,Approved,Approved - First Pass,2026-12-28 20:00:02.386,—,Carlos Mendes
+LOTE-M-INJ-011-3070,WO-16870,2026-12-29,Shift 1,IM-007,M-INJ-011,PT-011-PP-100,25148,M,315,0,3,5,8,Conforming,Approved,Approved,Approved - First Pass,2026-12-31 04:16:57.301,—,Beatriz Costa
+LOTE-M-INJ-011-3071,WO-16871,2026-12-30,Shift 1,IM-007,M-INJ-011,PT-011-PP-PG-100,9867,L,200,0,0,3,3,Conforming,Approved,Approved,Approved - First Pass,2026-12-31 18:36:23.995,—,Ana Silva

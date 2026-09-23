@@ -1328,3 +1328,4 @@ NC-01325,2025-11-16,Internal,Lot Rejection,Production,Hot Foil Stamping,Decorati
 NC-01326,2026-04-29,Internal,Lot Rejection,Production,Screen Printing,Decoration Quality Deviation,Major,LOTE-SK-M-SOP-007-2233
 NC-01327,2026-08-06,Internal,Incoming Inspection,Quality,Blow Molding,Raw Material Deviation,Major,RM-PP-PG-00002
 NC-01328,2026-11-18,Internal,Customer Complaint,Production,Injection Molding,Mold Wear,Critical,M-INJ-012
+NC-01329,2026-10-01,External,Customer Audit,Quality,Injection Molding,Proactive Sampling Tightening,Minor,CUST-015

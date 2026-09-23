@@ -88,7 +88,7 @@ NEW_MACHINES = {
 # Blow-Molding maintenance already staffed (Sandra Reis et al.) -> reused as-is.
 BLOW_MOLDING_TECHS = [
     ("Sandra Reis", "Mechanical"), ("Hugo Marques", "Mechanical"),
-    ("Patricia Lima", "Mechanical"), ("Jose Pinto", "Mechanical"),
+    ("Patrícia Lima", "Mechanical"), ("José Pinto", "Mechanical"),
     ("Vitor Sousa", "Electrical"), ("Camila Duarte", "Electrical"),
 ]
 # Injection Molding gets its first-ever named maintenance staff (new machines only).
@@ -228,7 +228,7 @@ def build_dim_customer_rows():
     rows = [
         ("CUST-015", "NutriBoas Embalagens Alimentares Lda", "Leiria", "Food Packaging", "Medium", "LEI", "Portugal", "Iberian Peninsula"),
         ("CUST-016", "Iberconserva Foods S.A.", "Porto", "Food Packaging", "Large", "POR", "Portugal", "Iberian Peninsula"),
-        ("CUST-017", "FarmaPack Iberica S.L.", "Madrid", "Pharmaceutical", "Large", "M", "Spain", "Iberian Peninsula"),
+        ("CUST-017", "FarmaPack Ibérica S.L.", "Madrid", "Pharmaceutical", "Large", "M", "Spain", "Iberian Peninsula"),
         ("CUST-018", "Rheinland MedPack GmbH", "Frankfurt", "Pharmaceutical", "Medium", "HE", "Germany", "Rest of Europe"),
     ]
     cols = ["CustomerId", "CustomerName", "City", "Segment", "CustomerTier", "State", "Country", "Region"]
@@ -237,8 +237,8 @@ def build_dim_customer_rows():
 
 def build_dim_supplier_rows():
     rows = [
-        ("SUP-009", "FarmaResin Especialidades Ltda", "Brazil", "Sao Paulo", "PP-PG, PET-PG", "Tier 2", 1, "Spot Purchase"),
-        ("SUP-010", "NutriPolimeros Iberia S.A.", "Spain", "Valencia", "HDPE-FG, PP-FG", "Tier 1", 1, "Annual Contract"),
+        ("SUP-009", "FarmaResin Especialidades Ltda", "Brazil", "São Paulo", "PP-PG, PET-PG", "Tier 2", 1, "Spot Purchase"),
+        ("SUP-010", "NutriPolímeros Ibéria S.A.", "Spain", "Valencia", "HDPE-FG, PP-FG", "Tier 1", 1, "Annual Contract"),
     ]
     cols = ["SupplierId", "SupplierName", "Country", "HeadquartersCity", "MaterialsSupplied", "SupplierTier", "YearsAsSupplier", "ContractType"]
     return pd.DataFrame(rows, columns=cols)

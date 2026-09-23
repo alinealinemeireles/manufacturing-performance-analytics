@@ -8361,7 +8361,11 @@ display(root_cause_register[["ID", "Problema", "Local", "Causa_Raiz_Referencia",
 
 # Matriz executiva: prioridade baseada em força da evidência + impacto + possibilidade de confirmação rápida.
 # Não é um score estatístico; é uma ferramenta de gestão para ordenar a sequência de execução.
-priority_order = ["RC-05", "RC-01", "RC-07", "RC-12", "RC-11", "RC-06", "RC-02", "RC-04", "RC-03", "RC-10", "RC-08", "RC-09", "RC-13", "RC-14"]
+priority_order = ["RC-05", "RC-01", "RC-07", "RC-12", "RC-11", "RC-06", "RC-02", "RC-04", "RC-03", "RC-10",
+                   "RC-08", "RC-09", "RC-13", "RC-14",
+                   # Expansão de portfólio (2026-09-23): RC-19 primeiro por ser o único achado ainda
+                   # ABERTO (sem reforma); os demais são de linha nova, já convergindo/resolvidos.
+                   "RC-19", "RC-17", "RC-16", "RC-15", "RC-18", "RC-20"]
 priority_rank = {rid: i + 1 for i, rid in enumerate(priority_order)}
 root_cause_register["Prioridade"] = root_cause_register["ID"].map(priority_rank)
 root_cause_register = root_cause_register.sort_values("Prioridade")
