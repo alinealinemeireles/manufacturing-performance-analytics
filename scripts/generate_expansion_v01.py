@@ -180,8 +180,8 @@ def build_dim_machine_profile_rows():
 def build_dim_machine_setup_rows():
     # (MoldId, MachineId, Product, Cavities, RatedCapacityPerDay, RatedCapacityPerHour, CyclesPerHour, IdealCycleTimeSec)
     rows = [
-        ("M-SOP-030", "ISBM-009", "Frasco Alimenticio Redondo, 1000 ml", 6, "~11.500 bottles/day", "~475 bottles/h", 75, 48.0),
-        ("M-SOP-031", "ISBM-009", "Frasco Alimenticio Oval, 500 ml", 8, "~15.400 bottles/day", "~650 bottles/h", 75, 48.0),
+        ("M-SOP-030", "ISBM-009", "Frasco Alimentício Redondo, 1000 ml", 6, "~11.500 bottles/day", "~475 bottles/h", 75, 48.0),
+        ("M-SOP-031", "ISBM-009", "Frasco Alimentício Oval, 500 ml", 8, "~15.400 bottles/day", "~650 bottles/h", 75, 48.0),
         ("M-SOP-032", "ISBM-010", "Frasco Farma Redondo, 100 ml", 8, "~15.400 bottles/day", "~650 bottles/h", 75, 48.0),
         ("M-SOP-033", "ISBM-010", "Frasco Farma Redondo, 250 ml", 8, "~15.400 bottles/day", "~650 bottles/h", 75, 48.0),
         ("M-INJ-010", "IM-007", "Pote Creme, 50 g", 16, "~20.500 pieces/day", "~850 pieces/h", 50, 72.0),

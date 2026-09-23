@@ -107,7 +107,7 @@ para as novas causas-raiz documentadas nessa expansão.
   expansão de portfólio cobrem a partir de 2026-07-06 dentro dessa mesma janela)
 - **Escala**: 4 processos, 22 máquinas (18 na Versão 00 original + 4 novas na expansão de
   portfólio — 2 Blow Molding, 2 Injection Molding), 3 turnos, dezenas de milhões de unidades
-  produzidas (somadas em ~16.100 ordens de produção, pós-reexecução do notebook após a expansão)
+  produzidas (somadas em ~16.400 ordens de produção, pós-reexecução do notebook após a expansão)
 - **Tabelas**: 22 tabelas fato brutas + 15 dimensões; além das camadas Silver/Gold, o projeto mantém saídas de Machine Learning.
   A contagem física final deve ser lida a partir do DDL/warehouse gerado pelo notebook, evitando que a documentação
   fique defasada quando uma tabela analítica é acrescentada., cobrindo produção, parada, controle
@@ -251,13 +251,13 @@ documento e em `docs/post_fix_independent_audit.md` continuam válidos como publ
 totais agregados de planta abaixo mudaram, porque agora somam as 4 máquinas novas junto com as 18
 originais.)*
 
-- **OEE de planta ≈ 77,6%** (agregação ponderada por tempo/capacidade/unidades — Disponibilidade
-  87,4%, Performance 91,0%, Qualidade 97,6%; era 79,1% nas 18 máquinas originais — a queda vem das
+- **OEE de planta ≈ 78,2%** (agregação ponderada por tempo/capacidade/unidades — Disponibilidade
+  87,6%, Performance 91,4%, Qualidade 97,7%; era 79,1% nas 18 máquinas originais — a queda vem das
   4 máquinas novas ainda em ramp-up, com Performance mais baixa enquanto operadores e processos se
   estabilizam) — Disponibilidade é o pilar mais fraco em todo processo, ou seja, parada não
   planejada — não velocidade nem sucata — é o maior gap estrutural até a classe mundial (85%).
-- **A capacidade de processo é amplamente marginal**: 0% dos 226 grupos máquina×molde×característica
-  (48 de tampa + 178 de frasco/pote; eram 190 grupos — 40+150 — nas 18 máquinas originais) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
+- **A capacidade de processo é amplamente marginal**: 0% dos 230 grupos máquina×molde×característica
+  (52 de tampa + 178 de frasco/pote; eram 190 grupos — 40+150 — nas 18 máquinas originais) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
   (causa especial ausente), o Cpk máximo observado continua bem abaixo de 1,33 — não é "tudo capaz,
   com algumas exceções", é uma planta estatisticamente marginal como um todo, com máquinas nomeadas
   (IM-002) mensuravelmente piores que essa linha de base já modesta.

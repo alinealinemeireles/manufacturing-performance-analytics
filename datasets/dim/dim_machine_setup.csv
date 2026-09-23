@@ -89,11 +89,12 @@ SK-FR-028-HDPE-5000-1C,SS-001,Screen print - FR-028-HDPE-5000,1,~12.400 bottles/
 SK-FR-028-HDPE-5000-1C,SS-002,Screen print - FR-028-HDPE-5000,1,~12.400 bottles/day,~620 bottles/h,620,5.8
 RS-HF-001,HF-001,Hot foil ribbon tool,1,~10.400 bottles/day,~520 bottles/h,520,6.9
 RS-HF-002,HF-002,Hot foil ribbon tool,1,~10.400 bottles/day,~520 bottles/h,520,6.9
-M-SOP-030,ISBM-009,"Frasco Alimenticio Redondo, 1000 ml",6,~11.500 bottles/day,~475 bottles/h,75,48.0
-M-SOP-031,ISBM-009,"Frasco Alimenticio Oval, 500 ml",8,~15.400 bottles/day,~650 bottles/h,75,48.0
+M-SOP-030,ISBM-009,"Frasco Alimentício Redondo, 1000 ml",6,~11.500 bottles/day,~475 bottles/h,75,48.0
+M-SOP-031,ISBM-009,"Frasco Alimentício Oval, 500 ml",8,~15.400 bottles/day,~650 bottles/h,75,48.0
 M-SOP-032,ISBM-010,"Frasco Farma Redondo, 100 ml",8,~15.400 bottles/day,~650 bottles/h,75,48.0
 M-SOP-033,ISBM-010,"Frasco Farma Redondo, 250 ml",8,~15.400 bottles/day,~650 bottles/h,75,48.0
 M-INJ-010,IM-007,"Pote Creme, 50 g",16,~20.500 pieces/day,~850 pieces/h,50,72.0
 M-INJ-011,IM-007,"Pote Creme, 100 g",16,~20.500 pieces/day,~850 pieces/h,50,72.0
 M-INJ-012,IM-008,Tampa Farma Lacre 24/410,24,~30.800 pieces/day,~1275 pieces/h,50,72.0
 M-INJ-013,IM-008,Tampa de Pote 70mm,16,~20.500 pieces/day,~850 pieces/h,50,72.0
+M-INJ-014,IM-008,Tampa Rosca Alimenticia 28/410,24,~30.800 pieces/day,~1275 pieces/h,50,72.0
