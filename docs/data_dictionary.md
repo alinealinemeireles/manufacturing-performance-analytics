@@ -1,5 +1,15 @@
 # Data Dictionary & Traceability Reference
 
+> **Portfolio expansion note (added 2026-09-23):** `ProductId`/`BottleId`/`CapId` values now also
+> include the prefixes `FA-` (food bottles), `FP-` (pharma bottles), `PT-` (cream pots), `TE-`
+> (tamper-evident pharma caps) and `TP-` (pot lids), alongside the original `FR-`/`TR-`/`TF-`.
+> `ProductType` stays `Bottle`/`Cap` as before (pots are `Bottle`-typed, injection-molded). New
+> control-plan `Characteristic` values: `Mouth Diameter`, `Drop Test`, `Stack Load`, `Migration
+> Test (Food Contact)` (bottle control plan) and `Tamper Band Separation` (cap control plan) — see
+> `docs/simulation_storylines.md` §"Portfolio expansion storylines" for the real ISO/ASTM/FDA/USP
+> standards cited against each, and `scripts/generate_expansion_v01.py` for how the new rows were
+> generated (additive-only, verified against the pre-expansion files).
+
 Quick-reference companion to the main README. See `lib/etl_lib.py` for the authoritative,
 documented implementation of everything below, and Parte 3 of
 `manufacturing_performance_analytics.ipynb` for the exact column list and type of every table in

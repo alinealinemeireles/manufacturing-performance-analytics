@@ -1,5 +1,10 @@
 # Auditoria Independente Pós-Correção — Six Big Losses e Revisão Multidisciplinar
 
+> **Nota (expansão de portfólio, 2026-09-23):** esta auditoria cobre exclusivamente o dataset
+> Versão 00 original (18 máquinas, só cosméticos). A expansão de portfólio documentada em
+> [`simulation_storylines.md`](simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)
+> foi feita de forma estritamente aditiva e não altera nenhum achado abaixo.
+
 **Projeto:** Manufacturing Performance Analytics
 **Escopo desta auditoria:** correção de um bug confirmado em `gold.six_big_losses_monthly`, mais uma revisão multidisciplinar independente do projeto inteiro (Engenharia da Qualidade, Engenharia Industrial, Manutenção, Lean, Six Sigma, Engenharia de Dados, Ciência de Dados), com uma regra dura de evidência: **todo número citado abaixo foi localizado no output real e executado do notebook (`manufacturing_performance_analytics.ipynb`, reexecutado do início ao fim, 420 células, 0 erros) ou em consulta SQL direta ao warehouse — nunca de memória ou aproximação.** Onde um número não pôde ser verificado, isso é declarado explicitamente em vez de estimado.
 
@@ -67,7 +72,7 @@ Métrica real de teste por modelo, do resumo consolidado do próprio notebook (c
 | Qualidade de lote | LogisticRegression | ROC-AUC=0,689 |
 | Manutenção preditiva | LogisticRegression | ROC-AUC=0,593 |
 
-Auditoria de vazamento (BQ-079, células 390-391): remover as features vazadas (`ActualCycleTimeSec`, `Availability`) do modelo de sucata muda R² de 0,587 para 0,588 — diferença desprezível; essas features já tinham correlação quase nula com o alvo (-0,027 e 0,009). Divulgação honesta de trade-off de custo (célula 384): no threshold de validação ótimo (0,01) para o modelo de qualidade de lote, o custo esperado cai 98% (R$419.378 → R$10.388), mas exige reinspecionar 100% dos 1.575 lotes de teste (1.385 falsos positivos) para zerar falsos negativos — não é um ganho "de graça".
+Auditoria de vazamento (BQ-079, células 390-391): remover as features vazadas (`ActualCycleTimeSec`, `Availability`) do modelo de sucata muda R² de 0,587 para 0,588 — diferença desprezível; essas features já tinham correlação quase nula com o alvo (-0,027 e 0,009). Divulgação honesta de trade-off de custo (célula 384): no threshold de validação ótimo (0,01) para o modelo de qualidade de lote, o custo esperado cai 98% (€419.378 → €10.388), mas exige reinspecionar 100% dos 1.575 lotes de teste (1.385 falsos positivos) para zerar falsos negativos — não é um ganho "de graça".
 
 ### Engenharia de Dados
 

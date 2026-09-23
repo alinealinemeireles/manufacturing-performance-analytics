@@ -19,7 +19,8 @@ O objetivo não é apenas responder **"o que aconteceu?"**, mas avançar sistema
 `Manutenção e Confiabilidade` · `Estatística` · `Engenharia de Dados` · `Ciência de Dados`
 
 **Projeto de análise de dados e engenharia da qualidade** para uma fábrica de embalagens
-plásticas (frascos soprados, tampas injetadas, decoração por serigrafia e hot stamping). Não é um
+plásticas (frascos e potes para cosméticos, alimentos e farmacêutico, tampas injetadas — incluindo
+tampas com selo de violação —, decoração por serigrafia e hot stamping). Não é um
 exercício de treinamento nem um trabalho de consultoria — é um projeto integrador de **melhoria
 contínua**: um time virtual multidisciplinar (Engenharia da Qualidade, Melhoria Contínua,
 Engenharia Industrial, Manutenção, Lean Manufacturing, Six Sigma, Estatística, Ciência de Dados,
@@ -91,12 +92,22 @@ reformado, um operador com alta variabilidade mas sem viés, um fornecedor despr
 ruim, episódios completos de refação de lote, e mais), documentadas de ponta a ponta em
 [`docs/simulation_storylines.md`](docs/simulation_storylines.md) — permitindo conferir cada achado
 do notebook contra uma verdade de referência conhecida. Não é extraído de uma fábrica real; valores
-absolutos (R$, OEE%, Cpk) devem ser lidos nesse contexto de validação metodológica, não como
+absolutos (€, OEE%, Cpk) devem ser lidos nesse contexto de validação metodológica, não como
 benchmark de uma planta real.
 
-- **Período**: 18 meses, 2025-07-01 a 2026-12-30
-- **Escala**: 4 processos, 18 máquinas, 3 turnos, dezenas de milhões de unidades produzidas
-  (somadas em ~17.000 ordens de produção)
+A partir de 2026-07-06, o portfólio foi ampliado de forma **estritamente aditiva** (não confundir
+com a "Versão 01" da Seção 13 abaixo, que se refere à auditoria pós-correção do notebook — esta é
+uma expansão de dado, feita por cima dela): além de embalagens de cosméticos, a fábrica passa a
+produzir frascos e potes para os segmentos alimentício e farmacêutico, em 4 máquinas novas — sem
+alterar nenhuma linha do dataset Versão 00 original. Ver
+[`docs/simulation_storylines.md`](docs/simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)
+para as novas causas-raiz documentadas nessa expansão.
+
+- **Período**: 18 meses, 2025-07-01 a 2026-12-30 (dados de produção das 4 máquinas/linhas novas da
+  expansão de portfólio cobrem a partir de 2026-07-06 dentro dessa mesma janela)
+- **Escala**: 4 processos, 22 máquinas (18 na Versão 00 original + 4 novas na expansão de
+  portfólio — 2 Blow Molding, 2 Injection Molding), 3 turnos, dezenas de milhões de unidades
+  produzidas (somadas em ~16.100 ordens de produção, pós-reexecução do notebook após a expansão)
 - **Tabelas**: 22 tabelas fato brutas + 15 dimensões; além das camadas Silver/Gold, o projeto mantém saídas de Machine Learning.
   A contagem física final deve ser lida a partir do DDL/warehouse gerado pelo notebook, evitando que a documentação
   fique defasada quando uma tabela analítica é acrescentada., cobrindo produção, parada, controle
@@ -204,7 +215,7 @@ A regra de governança é: **não encerrar uma causa apenas porque o KPI melhoro
 | 1 | Importar e diagnosticar os dados brutos | Engenheiro(a) de Dados |
 | 2 | Limpeza dos dados (Python): produção, paradas, QC, QA | Engenheiro(a) de Processo/Dados |
 | 3 | Warehouse SQL Server: schema, DDL, carga, views 52 semanas, camada gold | Engenheiro(a) de Dados |
-| 3B | Project Charter: baseline, meta, oportunidade em R$ (BQ-072) | Gerente da Qualidade |
+| 3B | Project Charter: baseline, meta, oportunidade em € (BQ-072) | Gerente da Qualidade |
 | 4 | Raio-X operacional: OEE (planta, processo, máquina×produto×turno), TPM/Six Big Losses (5 categorias mensuráveis + 1 lacuna de dado), MTBF/MTTR por máquina, matriz de criticidade MTBF×MTTR, custo de indisponibilidade, efetividade de manutenção preventiva, confiabilidade Weibull, utilização, velocidade real vs. ideal, microparadas, VSM (BQ-073), SMED (BQ-074) | Eng. de Processo / Lean / Manutenção |
 | 5 | Controle estatístico de processo e capacidade: X-barra/R, Western Electric, Cp/Cpk/Pp/Ppk/Cpm, ANOVA com blocking, Bartlett, AQL, viés de inspetor, FPY, yield, fluxo de qualidade, hotspots de defeito, Machine Effect vs. Product Mix, benchmark interno, OEE escondendo deterioração | Engenheiro(a) da Qualidade / Black Belt |
 | 6 | Garantia da qualidade: CPMU, scorecard de fornecedor, Fornecedor→Material→Qualidade a jusante, CAPA, NC→CAPA→Recorrência, Custo da Qualidade, Manufacturing Loss Pareto, rastreabilidade (BQ-075), sinal interno associado a reclamação (Seção 6.9; teste formal de indicador antecedente fica na Parte 10) | Eng. da Qualidade de Fornecedores/Clientes |
@@ -234,14 +245,19 @@ completo na primeira célula markdown do notebook).
 
 ## 7. Principais resultados
 
-*(Da Parte 12, com base no dataset Versão 00, 18 meses.)*
+*(Da Parte 12. Recalculado após a expansão de portfólio de 2026-07-06 — 22 máquinas, 4 processos
+(Seção 2/`docs/simulation_storylines.md`). Todos os achados por máquina/storyline nomeados neste
+documento e em `docs/post_fix_independent_audit.md` continuam válidos como publicados — só os
+totais agregados de planta abaixo mudaram, porque agora somam as 4 máquinas novas junto com as 18
+originais.)*
 
-- **OEE de planta ≈ 79,1%** (agregação ponderada por tempo/capacidade/unidades — Disponibilidade
-  87,4%, Performance 92,7%, Qualidade 97,6%) — Disponibilidade é o pilar mais fraco em todo
-  processo, ou seja, parada não planejada — não velocidade nem sucata — é o maior gap estrutural
-  até a classe mundial (85%).
-- **A capacidade de processo é amplamente marginal**: 0% dos 190 grupos máquina×molde×característica
-  (40 de tampa + 150 de frasco) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
+- **OEE de planta ≈ 77,6%** (agregação ponderada por tempo/capacidade/unidades — Disponibilidade
+  87,4%, Performance 91,0%, Qualidade 97,6%; era 79,1% nas 18 máquinas originais — a queda vem das
+  4 máquinas novas ainda em ramp-up, com Performance mais baixa enquanto operadores e processos se
+  estabilizam) — Disponibilidade é o pilar mais fraco em todo processo, ou seja, parada não
+  planejada — não velocidade nem sucata — é o maior gap estrutural até a classe mundial (85%).
+- **A capacidade de processo é amplamente marginal**: 0% dos 218 grupos máquina×molde×característica
+  (48 de tampa + 170 de frasco; eram 190 grupos — 40+150 — nas 18 máquinas originais) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
   (causa especial ausente), o Cpk máximo observado continua bem abaixo de 1,33 — não é "tudo capaz,
   com algumas exceções", é uma planta estatisticamente marginal como um todo, com máquinas nomeadas
   (IM-002) mensuravelmente piores que essa linha de base já modesta.
@@ -285,7 +301,7 @@ completo na primeira célula markdown do notebook).
   executar uma corrida de confirmação da condição identificada por um estudo DOE fatorial (Parte 9)
   na IM-002 e, se confirmada, formalizá-la como novo padrão operacional — com controle via
   monitoramento SPC reforçado (Parte 5) e atualização do plano de controle (Parte 9) — pequena em
-  R$ isolada, mas a iniciativa mais bem provada deste raio-X.
+  € isolada, mas a iniciativa mais bem provada deste raio-X.
 
 ## 8. Limitações
 
@@ -305,7 +321,7 @@ completo na primeira célula markdown do notebook).
   Parte 10 decompõe sazonalidade semanal com confiança, mas não anual).
 - A decomposição de Custo da Qualidade (Parte 3B/6) usa custos unitários declarados,
   ilustrativos, não dados reais de contabilidade — a *forma* da distribuição é o achado legítimo,
-  não os valores absolutos em R$.
+  não os valores absolutos em €.
 - Um dashboard de BI está fora do escopo desta fase — este projeto entrega o notebook (a análise
   completa) e o warehouse; uma camada de dashboard é uma decisão para uma fase posterior.
 
@@ -322,7 +338,7 @@ completo na primeira célula markdown do notebook).
 - **Weibull**: calcular o tempo entre falhas a partir de `RunTimeHours` (horas efetivas de operação)
   em vez de tempo de calendário, para uma forma (β) mais precisa.
 - **Custo da Qualidade**: integrar dados financeiros reais, ou ao menos uma taxa de custo-máquina/
-  hora real, para que o ROI de melhorias possa ser calculado com precisão (hoje os valores em R$ são
+  hora real, para que o ROI de melhorias possa ser calculado com precisão (hoje os valores em € são
   ilustrativos, ver Seção 8).
 - **Six Big Losses**: implementar captura de dado para a perda de "startup/yield", hoje não
   mensurável, fechando a lacuna do framework.

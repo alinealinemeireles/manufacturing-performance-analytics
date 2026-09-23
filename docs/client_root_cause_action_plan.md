@@ -1,5 +1,11 @@
 # Relatório Executivo ao Cliente — Diagnóstico de Causas-Raiz e Plano de Ação
 
+> **Nota (expansão de portfólio, 2026-09-23):** este relatório cobre exclusivamente o dataset
+> Versão 00 original (18 máquinas, só cosméticos). A expansão de portfólio documentada em
+> [`simulation_storylines.md`](simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)
+> foi feita de forma estritamente aditiva e não altera nenhum achado abaixo. (Não confundir com a
+> "Versão 01" citada logo abaixo, que se refere à auditoria pós-correção do notebook.)
+
 **Projeto:** Manufacturing Performance Analytics  
 **Versão:** 01 — pós-auditoria multidisciplinar  
 **Escopo:** Qualidade, Produção, Lean, Six Sigma, Manutenção/Confiabilidade, Engenharia de Dados e Ciência de Dados
@@ -405,7 +411,7 @@ precisa ser rastreável de forma consistente.
 
 # 15. Custo da Qualidade — decisão financeira
 
-O valor de aproximadamente **R$ 2,52 milhões** é um **modelo ilustrativo sob premissas de custo**, não custo contabilístico da fábrica.
+O valor de aproximadamente **€ 2,52 milhões** é um **modelo ilustrativo sob premissas de custo**, não custo contabilístico da fábrica.
 
 O número de Avaliação é grande porque o projeto usa o volume de amostragem como proxy de custo.
 

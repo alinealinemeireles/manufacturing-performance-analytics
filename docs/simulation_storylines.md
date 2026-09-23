@@ -48,10 +48,53 @@ obviously-broken column.
 
 | Story | Where | Mechanism |
 |---|---|---|
-| Seasonal demand peak | Sep-Nov 2025 and Sep-Nov 2026, all processes | A ~15% line-speed bump during these windows (Brazilian cosmetics/personal-care restocking season) raises throughput and speed-sensitive defects together — visible as a small seasonal bump in reject rate that recurs both years. |
+| Seasonal demand peak | Sep-Nov 2025 and Sep-Nov 2026, all processes | A ~15% line-speed bump during these windows (Iberian/European cosmetics and personal-care pre-Christmas restocking season) raises throughput and speed-sensitive defects together — visible as a small seasonal bump in reject rate that recurs both years. |
 | HDPE-PCR supplier transition | **2026-05-01 to 2026-06-15**, material HDPE-PCR | Primary supplier shifts from SUP-001 to SUP-004 (sustainability-driven resourcing); SUP-004 runs at 22% off-spec during the transition window before settling to baseline — a classic "new supplier growing pains" pattern in `fact_raw_material_lot_disposition_raw`. |
 | One-week contamination event | **2026-02-02 to 2026-02-09**, Blow Molding, tied to one masterbatch/`ColorId` | A `Black Specks` defect spike (~1.5x baseline) cascades into one of the 8 redo episodes (machine ISBM-008) plus a small nonconformance/CAPA cluster. |
 | New-product-launch learning curve | **FR-011-PET-400**, **FR-012-PET-400**, launched 2026-04-06 | Elevated defect probability at launch (+80%) that decays back to baseline over roughly the first 6 weeks — a textbook Lean "learning curve" for a new SKU. |
+
+## Portfolio expansion storylines (additive — added 2026-09-23)
+
+**Scope note (read this first):** everything above this section describes the original, frozen
+Versão 00 dataset (18 months, 4 processes, 18 machines, cosmetics-only portfolio) exactly as it
+was validated and audited — none of it changed. (This portfolio expansion is unrelated to, and
+does not renumber, the "Versão 01" of `README.md` §13 / `docs/technical_audit_and_methodology.md`,
+which refers to the post-fix multidisciplinary audit of the notebook itself.) This section
+documents a strictly **additive** expansion: 4 brand-new machines (`ISBM-009`, `ISBM-010`, `IM-007`, `IM-008`), ~15 new product SKUs
+(food/pharma bottles, cream pots, a tamper-evident cap, a pot lid — prefixes `FA-`, `FP-`, `PT-`,
+`TE-`, `TP-`), 2 new suppliers (`SUP-009`, `SUP-010`), 4 new customers (`CUST-015`-`CUST-018`,
+segments `Food Packaging`/`Pharmaceutical`), and ~6 new employees, all commissioned on
+**2026-07-06** and running through the end of the frozen window (**2026-12-30**, ~25 weeks). Every
+row in every table added here is a *new* row, appended to the same 22 `datasets/bronze/*.csv`
+files (proven byte-identical for all pre-existing rows by
+`scripts/generate_expansion_v01.py`'s own additivity check) — no existing machine, product,
+supplier, operator, or storyline above is touched, and every finding already published in
+`docs/post_fix_independent_audit.md` / `docs/client_root_cause_action_plan.md` /
+`docs/technical_audit_and_methodology.md` remains exactly as valid as when it was written.
+
+Generation method: each new machine clones a real analogous work order / QC lot / downtime event
+from a clean, non-storyline **donor machine** in the *same* trailing date window (e.g. `ISBM-009`
+clones from `ISBM-006`), remaps identifiers, and then biases probabilities for the specific
+entity+window each story below lives on — the same "specific, named root cause with a consistent
+signature across tables" philosophy as the original 18 storylines, not independent per-row
+randomness.
+
+| # | Story | Lives on | Mechanism | Where to find it | Deliberate contrast with an existing storyline |
+|---|---|---|---|---|---|
+| A | New-line learning curve | `ISBM-009`, product `FA-030-HDPE-FG-1000`/`FA-030-PP-FG-1000`, **2026-07-06 to 2026-08-24** (7 weeks) | Attribute-defect probability starts ~70% above the (stable, full-history) baseline rate for that characteristic and decays linearly back to baseline over 7 weeks | `fact_bottle_attribute_inspection_cq_raw`, filter `MachineId=ISBM-009, BottleId` starts with `FA-030` — defect rate ≈0.85% in the launch window vs ≈0.60% after (≈+41%, matches the decaying-average multiplier) | Same family as the Versão 00 bonus "new-product learning curve" (`FR-011`/`FR-012`), but this time it is a new *machine* and a new *product* launching together — a compounding case |
+| B | Infant mortality (new-equipment downtime) | `IM-007`, commissioned 2026-07-06, elevated window **2026-07-06 to 2026-08-31** (8 weeks) | Extra unplanned stoppages on top of the cloned baseline, tagged with electrical/commissioning-specific reasons (`Electrical Fault - Commissioning`, `Controller Calibration`, `PLC/HMI Fault`, `Sensor Wiring Fault`), scaled to ~2x the machine's own baseline weekly rate at week 0 and decaying to zero by week 8 | `fact_downtime_raw`, `MachineId=IM-007`, `PlannedStoppage=No` — weekly count runs ≈190-200/week in weeks 0-3, falling to the ≈65-95/week baseline by week 8 | Direct bathtub-curve contrast to `ISBM-005` (Versão 00 story #6, aging hydraulics / wear-out tail): same shape of finding (uptime problem, not quality), opposite cause (infant mortality vs. wear-out) |
+| C | New pharma-grade resin supplier, early quality escape | `SUP-009` (new, `Spot Purchase`, 1 year as supplier — same risk profile that already makes `SUP-005` risky) feeding `ISBM-010`/`FP-032-*` products, window **2026-08-01 to 2026-09-15** | Incoming-lot reject rate ~20-25% during the window vs. a single-digit baseline outside it; the off-spec resin also widens `Weight`/`Thickness` variable spread on `FP-032` bottles produced on `ISBM-010` in that window | `fact_raw_material_lot_disposition_raw`, `SupplierId=SUP-009` — reject rate ≈25% in-window vs ≈6% outside it. `fact_bottle_inspection_variables_cq_raw`, `MachineId=ISBM-010, BottleId` starts with `FP-032`, `Characteristic` in `{Weight,Thickness}` — `RangeR` wider in-window | Same "growing pains" shape as the Versão 00 bonus HDPE-PCR/`SUP-004` transition, but for a pharma-grade material; `SUP-010` (also new, `Annual Contract`, food-grade) stays clean the entire window — not everything new comes with a defect |
+| D | Operator training-curve bias, new line | `OP-SOP-006` (new operator) on `ISBM-010`, window **2026-08-01 to 2026-09-05** (5 weeks post-commissioning) | A mean-shift bias (~1.5σ-equivalent, no extra spread) on `Weight`/`Thickness` measurements only for this operator's lots in the window, fading afterward | `fact_bottle_inspection_variables_cq_raw` joined to `fact_production_raw.OperatorId` — normalized deviation `(XBar-Nominal)/(USL-LSL)` ≈+0.24 for `OP-SOP-006` in-window vs ≈0.00 for `OP-SOP-004` in-window and ≈0.00 for both operators outside the window | Direct teaching contrast to `OP-INJ-003` (Versão 00 story #10: variance without bias, permanent): this one is bias without excess variance, and it fades with experience instead of persisting |
+| E | Tamper-evidence mold wear, pharma caps | Mold `M-INJ-012` (product `TE-012-PP-PG-24410`) on `IM-008`, from commissioning **2026-07-06** through the end of the frozen window, **not yet refurbished** | `Tamper Band Separation` defect probability climbs roughly linearly from ~2% at launch to ~5% by 2026-12-30 as cumulative units run on the new mold | `fact_cap_attribute_inspection_cq_raw`, `MachineId=IM-008, Characteristic=Tamper Band Separation` — monthly rate ≈2.7% (Jul) rising to ≈5.3% (Dec); matching `fact_nonconformance_raw`/`fact_capa_raw` rows dated 2026-11-18/19 (`RelatedRecordId=M-INJ-012`, `CAPAType=Corrective`, still `Open` at period end) | Contrast to `M-SOP-007` (Versão 00 story #12, already refurbished 2026-06-15): this one is left **open/unresolved** within the frozen window, an ongoing finding rather than a resolved one |
+
+Two rows of narrative evidence were also added by hand (not proportionally cloned, since these are
+rare events): a customer complaint (`CC-...`) from `CUST-017` about `FP-032-PP-PG-100` weight
+during Storyline C's window, and one from `CUST-018` about `TE-012-PP-PG-24410` tamper-band
+separation tied to Storyline E; a matching `SC-...` supplier complaint against `SUP-009`; and the
+`NC-...`/`CAPA-...` pair referenced in Storyline E above.
+
+No new full-lot reject-and-redo episode was created — the original "8 of 8 episodes" reference in
+the notebook's Parte 9 stays accurate as written.
 
 ## Two data-model notes
 

@@ -40,3 +40,14 @@ Masterbatch,Carrier Resin MFI,ASTM D1238,Melt Indexer,g/10min,2.0,3.0,4.5,Variab
 Masterbatch,Pigment Dispersion,ASTM D2663 (Method A),Microscopy,rating 1-5,3.5,4.5,5.0,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
 Masterbatch,Color / Appearance (Delta E),ASTM D2244,Colorimeter,dE,0.0,0.7,1.8,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
 Masterbatch,Moisture Content,ASTM D6980 / ISO 15512,Karl Fischer Titration,ppm,0.0,80.0,150.0,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+HDPE-FG,Melt Flow Index,ASTM D1238 / ISO 1133-1,Melt Indexer,g/10min,0.25,0.35,0.45,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+HDPE-FG,Density,ASTM D792 / ISO 1183-1,Density Column,g/cm3,0.95,0.954,0.958,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+HDPE-FG,Overall Migration (Food Contact),Regulamento (UE) 10/2011 / EN 1186-3:2022,Migration Cell Test,mg/dm2,0.0,3.0,10.0,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PP-FG,Melt Flow Index,ASTM D1238 / ISO 1133-1,Melt Indexer,g/10min,2.0,3.0,4.5,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PP-FG,Density,ASTM D792 / ISO 1183-1,Density Column,g/cm3,0.9,0.905,0.91,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PP-FG,Overall Migration (Food Contact),Regulamento (UE) 10/2011 / EN 1186-3:2022,Migration Cell Test,mg/dm2,0.0,3.0,10.0,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PP-PG,Melt Flow Index,ASTM D1238 / ISO 1133-1,Melt Indexer,g/10min,2.0,3.0,4.5,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PP-PG,Density,ASTM D792 / ISO 1183-1,Density Column,g/cm3,0.9,0.905,0.91,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PP-PG,Biological Reactivity (USP <661.1>),"USP <661.1> Plastic Materials of Construction, Class VI",Extractables Panel,pass/fail,,,,Attribute,Annual Qualification,1 study,Reject Lot
+PET-PG,Intrinsic Viscosity,ASTM D4603 / ISO 1628-5,Viscometer,dL/g,0.72,0.8,0.86,Variable,Per incoming lot,3 readings,Quarantine & Notify Supplier
+PET-PG,Biological Reactivity (USP <661.1>),"USP <661.1> Plastic Materials of Construction, Class VI",Extractables Panel,pass/fail,,,,Attribute,Annual Qualification,1 study,Reject Lot
