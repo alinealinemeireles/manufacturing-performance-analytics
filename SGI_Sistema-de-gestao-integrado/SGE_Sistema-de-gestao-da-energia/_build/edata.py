@@ -70,8 +70,9 @@ def campanha():
     for mid, proc, ano, tec in MAQUINAS:
         idade = 2026 - ano
         if proc == "INJ":
-            rel = {"Injetora hidráulica de bomba fixa": 1.38, "Injetora servo-hidráulica": 0.92, "Injetora totalmente elétrica": 0.70}[tec]
-            esp = {"Injetora hidráulica de bomba fixa": 0.72, "Injetora servo-hidráulica": 0.42, "Injetora totalmente elétrica": 0.22}[tec]
+            base = tec.split(" (")[0]  # nota entre parênteses (ex.: linha dedicada) não altera a tecnologia
+            rel = {"Injetora hidráulica de bomba fixa": 1.38, "Injetora servo-hidráulica": 0.92, "Injetora totalmente elétrica": 0.70}[base]
+            esp = {"Injetora hidráulica de bomba fixa": 0.72, "Injetora servo-hidráulica": 0.42, "Injetora totalmente elétrica": 0.22}[base]
         elif proc == "SOP":
             rel = {"ISBM hidráulica": 1.12 + 0.012 * idade, "ISBM híbrida (servo)": 0.98, "ISBM elétrica com recuperação de ar": 0.80}[tec]
             esp = {"ISBM hidráulica": 0.62, "ISBM híbrida (servo)": 0.45, "ISBM elétrica com recuperação de ar": 0.30}[tec]
