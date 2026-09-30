@@ -27,7 +27,7 @@ TARTARUGA = {
     "REC": ("Receber, inspecionar e armazenar MP preservando a conformidade", "Lotes de MP, certificados de análise", "Fornecedores; CMP", "Lotes aceites/rejeitados, MP identificada",
             "INJ; SOP; SER; HFS", "Inspeção de receção; quarentena; armazenagem FIFO", "Laboratório de receção; armazém", "Amostragem; ensaios de MP", "PC-MP-01; IT-REC-01", "KPI-Q-08", "R13; R15", "8.4.2; 8.5.2; 8.5.4"),
     "INJ": ("Injetar tampas e potes conformes", "MP, molde, ordem de fabrico, parâmetros validados", "REC; PCP; MAN", "Tampas/potes e registos de controlo",
-            "SER; HFS; EXP; LAB", "Setup; arranque; controlo em processo; autocontrolo", "IM-001 a IM-008; 16 moldes", "Operação de injeção; autocontrolo", "PC-INJ-01; IT-INJ-01..04", "KPI-Q-01; KPI-Q-07", "R4; R5; R10; O1", "8.5.1; 8.5.2"),
+            "SER; HFS; EXP; LAB", "Setup; arranque; controlo em processo; autocontrolo", "IM-001 a IM-009; 16 moldes", "Operação de injeção; autocontrolo", "PC-INJ-01; IT-INJ-01..04", "KPI-Q-01; KPI-Q-07", "R4; R5; R10; O1", "8.5.1; 8.5.2"),
     "SOP": ("Soprar frascos conformes", "Preformas/MP, molde, parâmetros", "REC; PCP; MAN", "Frascos e registos de controlo", "SER; HFS; EXP; LAB",
             "Setup; condicionamento de preformas; controlo em processo", "ISBM-001 a ISBM-010; 34 moldes", "Operação ISBM; autocontrolo", "PC-SOP-01; IT-SOP-01..03", "KPI-Q-01; KPI-Q-07", "R1; R2; R3; R11", "8.5.1; 8.5.2"),
     "SER": ("Decorar por serigrafia com registo, cor e aderência conformes", "Frascos, artwork aprovado, tintas", "SOP; COM; CMP", "Frascos decorados e registos", "EXP; LAB",

@@ -8,7 +8,7 @@ import datetime as dt
 # Usos de energia (código, uso, tipo de energia, processo SGA, equipamentos, variável relevante candidata)
 USOS = [
     ("SOP", "Sopro de frascos (ISBM): aquecimento de pré-formas, sopro, hidráulica", "Eletricidade", "SOP", "ISBM-001 a ISBM-010", "Horas de marcha; unidades produzidas"),
-    ("INJ", "Injeção de tampas e potes: aquecimento do canhão, hidráulica/servo, extração", "Eletricidade", "INJ", "IM-001 a IM-008", "Horas de marcha; unidades produzidas"),
+    ("INJ", "Injeção de tampas e potes: aquecimento do canhão, hidráulica/servo, extração", "Eletricidade", "INJ", "IM-001 a IM-009", "Horas de marcha; unidades produzidas"),
     ("UTL-AR", "Ar comprimido (compressores CMP-01/02 de velocidade variável desde 02/2026, secadores)", "Eletricidade", "UTL", "CMP-01, CMP-02", "Procura de ar das máquinas; fugas"),
     ("UTL-FRIO", "Arrefecimento de moldes e óleo (chiller CH-01, torre TR-01, bombas)", "Eletricidade", "UTL", "CH-01, TR-01, bombas de circulação", "Carga térmica dos moldes; temperatura exterior"),
     ("GER", "Serviços gerais: iluminação, AVAC, escritórios, armazéns, laboratório", "Eletricidade", "GER", "QGBT serviços", "Temperatura exterior; dias úteis"),
@@ -104,10 +104,11 @@ MAQUINAS = [
     ("IM-003", "INJ", 2021, "Injetora servo-hidráulica"), ("IM-004", "INJ", 2012, "Injetora hidráulica de bomba fixa"),
     ("IM-005", "INJ", 2022, "Injetora servo-hidráulica"), ("IM-006", "INJ", 2022, "Injetora servo-hidráulica"),
     ("IM-007", "INJ", 2026, "Injetora totalmente elétrica"), ("IM-008", "INJ", 2026, "Injetora totalmente elétrica"),
+    ("IM-009", "INJ", 2026, "Injetora totalmente elétrica (linha dedicada a contacto alimentar)"),
     ("SS-001", "SER", 2013, "Serigrafia com cura UV"), ("SS-002", "SER", 2013, "Serigrafia com cura UV"),
     ("HF-001", "HFS", 2023, "Hot foil"), ("HF-002", "HFS", 2021, "Hot foil"),
 ]
-MAQ_NOVAS_2026 = ["ISBM-009", "ISBM-010", "IM-007", "IM-008"]   # alteração de fator estático (ALT-2026-03) em 07/2026
+MAQ_NOVAS_2026 = ["ISBM-009", "ISBM-010", "IM-007", "IM-008", "IM-009"]   # alteração de fator estático (ALT-2026-03) em 07/2026
 PROC_DATASET = {"Injection Molding": "INJ", "Blow Molding": "SOP", "Screen Printing": "SER", "Hot Foil Stamping": "HFS"}
 
 MESES = [dt.date(2025, m, 1) for m in range(3, 13)] + [dt.date(2026, m, 1) for m in range(1, 13)]

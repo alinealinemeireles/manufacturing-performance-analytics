@@ -51,10 +51,13 @@ is where the physical tables below actually live.
 | `LotId` | production, downtime, all QC tables, sales, complaints | 16-char batch traceability code — see README |
 | `LotIdStart` | material consumption | LotId at the start of that consumption record |
 | `MaterialLotSeq` | production, material consumption | Colorant-lot sequence number within a work order — the last 2 digits of `LotId` |
-| `LeadTimeProdHours`, `PlannedHours`, `PlannedTimeHours` | production | Duration in decimal hours |
+| `LeadTimeProdHours` | production | The order's real window on the machine (start to end), decimal hours |
+| `PlannedHours` | production, plan | Hours the schedule allotted to the order (plan adherence, Parte 4.9-4.10) |
+| `PlannedTimeHours` | production | OEE *Planned Production Time*: `LeadTimeProdHours` minus planned non-changeover stops (meal break, cleaning, PM). Availability denominator (audit decision D1, 2026-09-30) |
+| `RunTimeHours`, `UnplannedDowntimeHours` | production | Run time = `PlannedTimeHours` - unplanned stops - changeover/setup (effective minutes) |
 | `Availability`, `Performance`, `Quality`, `OEE` | production | OEE pillars, per work order |
 | `PerformanceVsNominal` | production | Uncapped speed ratio vs. rated capacity (`Performance` is the same ratio capped at 1). Empty when `DowntimeExceedsPlan` |
-| `DowntimeExceedsPlan` | production | `True` when the unplanned downtime matched to the order reaches its planned time — `RunTimeHours` is then floored at 0.01 h and speed ratios are artifacts (see `contracts/data_contract.yaml`) |
+| `DowntimeExceedsPlan` | production | `True` when the availability losses (unplanned stops + setup) matched to the order reach its planned production time — `RunTimeHours` is then floored at 0.01 h and speed ratios are artifacts (see `contracts/data_contract.yaml`) |
 | `ActualCycleTimeSec`, `SetupTimeHours`, `ThroughputLeadTimeHours` | production | Supporting OEE metrics |
 | `XBarUCL/LCL`, `RangeRUCL/LCL`, `Cp`, `Cpk`, `Pp`, `Ppk`, `Cpm`, `SigmaLevel` | QC variable-inspection tables | SPC / process-capability metrics |
 | `DefectRateP`, `DPU`, `DPMO` | QC attribute-inspection tables | AQL / Six Sigma defect-rate metrics |

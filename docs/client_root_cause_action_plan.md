@@ -6,6 +6,10 @@
 > passou a ser de janela móvel, e as vendas da expansão deixaram de expedir lotes rejeitados. Números de
 > OEE, Six Big Losses, MTBF/MTTR e ML citados abaixo são os da execução da época; os atuais e o detalhe de
 > cada correção estão em [`audit_2026-09-29.md`](audit_2026-09-29.md) e no notebook reexecutado.
+>
+> **Nota (auditoria de 2026-09-30, decisão D1):** o OEE passou a ser medido na janela real da ordem, com o
+> setup como perda de disponibilidade — OEE de planta 72,3% (ponderado), em vez dos 78,2%/79,1% da base
+> "horas do plano" citada neste relatório. Ver [`audit_2026-09-30.md`](audit_2026-09-30.md).
 
 > **Nota (expansão de portfólio, 2026-09-23):** este relatório cobre exclusivamente o dataset
 > Versão 00 original (18 máquinas, só cosméticos). A expansão de portfólio documentada em

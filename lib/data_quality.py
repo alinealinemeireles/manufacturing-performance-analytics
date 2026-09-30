@@ -26,6 +26,11 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
+try:  # imported as `lib.data_quality` (tests) or as `data_quality` with lib/ on sys.path (notebook)
+    from lib import aql
+except ImportError:  # pragma: no cover
+    import aql
+
 DEFAULT_CONTRACT = Path(__file__).resolve().parent.parent / "contracts" / "data_contract.yaml"
 # Identifier-like columns read as text: LotId is a 16-digit code (not a number to add up),
 # and reading it as int64 would silently turn a missing value into a float like 2.5e15.
@@ -236,6 +241,68 @@ def sales_lotid_suffix_matches_production(tables, contract):
     return len(pair), (pair["sales"].str[14:] != pair["production"].str[14:]).sum()
 
 
+ATTRIBUTE_TABLES = ("fact_bottle_attribute_inspection", "fact_cap_attribute_inspection", "fact_ink_attribute_inspection")
+
+
+def _attribute_inspections(tables) -> pd.DataFrame:
+    parts = [tables[name][["LotSize", "CodeLetter", "SampleSize", "AQL", "AcceptanceNumber", "RejectionNumber",
+                           "InspectionLevel"]] for name in ATTRIBUTE_TABLES if name in tables]
+    return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame(
+        columns=["LotSize", "CodeLetter", "SampleSize", "AQL", "AcceptanceNumber", "RejectionNumber", "InspectionLevel"])
+
+
+def _normative_plans(inspections: pd.DataFrame) -> pd.DataFrame:
+    plans = [aql.single_normal_plan(letter, q) for letter, q in zip(inspections["CodeLetter"], inspections["AQL"])]
+    return pd.DataFrame(plans, columns=["n", "ac", "re", "arrow"], index=inspections.index)
+
+
+def aql_plan_matches_iso_2859_1(tables, contract):
+    """Ac/Re are those of ISO 2859-1 Table II-A for the code letter and AQL, and the sample size is
+    the code letter's (arrow cases are judged by `aql_sample_not_below_normative`)."""
+    a = _attribute_inspections(tables)
+    plan = _normative_plans(a)
+    letter_n = a["CodeLetter"].map(aql.SAMPLE_SIZE)
+    wrong = (a["AcceptanceNumber"] != plan["ac"]) | (a["RejectionNumber"] != plan["re"]) | (a["SampleSize"] != letter_n)
+    return len(a), int(wrong.sum())
+
+
+def aql_sample_not_below_normative(tables, contract):
+    """Where Table II-A has an arrow (e.g. AQL 0.10 at letter L), the standard prescribes the plan
+    it points to -- a larger n. Sampling fewer pieces than that plan is a documented deviation."""
+    a = _attribute_inspections(tables)
+    plan = _normative_plans(a)
+    return len(a), int((a["SampleSize"] < plan["n"]).sum())
+
+
+def aql_inspection_level_is_normative(tables, contract):
+    """The (lot size, code letter) pair corresponds to a general inspection level of Table I."""
+    a = _attribute_inspections(tables)
+    return len(a), int((a["InspectionLevel"] == "Não normativo").sum())
+
+
+MOLDING = ("Blow Molding", "Injection Molding")
+DECORATION = ("Screen Printing", "Hot Foil Stamping")
+
+
+def _overlapping_orders(production: pd.DataFrame, processes: tuple[str, ...]) -> tuple[int, int]:
+    """Orders that start before the previous order on the same machine ended (real windows:
+    Date + StartTime + LeadTimeProdHours). A machine runs one work order at a time."""
+    production = production[production["Process"].isin(processes)]
+    start = pd.to_datetime(production["Date"]) + pd.to_timedelta(production["StartTime"].astype(str))
+    end = start + pd.to_timedelta(production["LeadTimeProdHours"].astype(float), unit="h")
+    frame = pd.DataFrame({"MachineId": production["MachineId"], "start": start, "end": end}).sort_values(["MachineId", "start"])
+    busy_until = frame.groupby("MachineId")["end"].transform(lambda s: s.cummax().shift())
+    return len(frame), int((frame["start"] < busy_until).sum())
+
+
+def no_overlapping_orders_molding(tables, contract):
+    return _overlapping_orders(tables["fact_production"], MOLDING)
+
+
+def no_overlapping_orders_decoration(tables, contract):
+    return _overlapping_orders(tables["fact_production"], DECORATION)
+
+
 def dates_within_window(tables, contract):
     """Aggregate of every per-table DATE rule, so the gate has one timeliness line to show."""
     checked = failed = 0
@@ -261,6 +328,11 @@ RULE_TABLES = {
     "sales_lotid_prefix_matches_production": ("fact_production", "fact_sales"),
     "sales_lotid_suffix_matches_production": ("fact_production", "fact_sales"),
     "dates_within_window": (),
+    "aql_plan_matches_iso_2859_1": (),
+    "aql_sample_not_below_normative": (),
+    "aql_inspection_level_is_normative": (),
+    "no_overlapping_orders_molding": ("fact_production",),
+    "no_overlapping_orders_decoration": ("fact_production",),
 }
 
 BUSINESS_RULES = {
@@ -271,6 +343,11 @@ BUSINESS_RULES = {
     "sales_lotid_prefix_matches_production": sales_lotid_prefix_matches_production,
     "sales_lotid_suffix_matches_production": sales_lotid_suffix_matches_production,
     "dates_within_window": dates_within_window,
+    "aql_plan_matches_iso_2859_1": aql_plan_matches_iso_2859_1,
+    "aql_sample_not_below_normative": aql_sample_not_below_normative,
+    "aql_inspection_level_is_normative": aql_inspection_level_is_normative,
+    "no_overlapping_orders_molding": no_overlapping_orders_molding,
+    "no_overlapping_orders_decoration": no_overlapping_orders_decoration,
 }
 
 

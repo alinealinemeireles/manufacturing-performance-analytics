@@ -29,6 +29,10 @@ KNOWN_WARNINGS = {
     "fact_raw_material_inspection:RMI-RESULT",
     "fact_bottle_attribute_inspection:ATTR-N",
     "fact_ink_attribute_inspection:ATTR-N",
+    "BR-AQL-ARROW",
+    "BR-AQL-LEVEL",
+    "BR-NO-OVERLAP-MOLDING",
+    "BR-NO-OVERLAP-DECORATION",
 }
 
 
@@ -119,6 +123,30 @@ def test_attribute_lot_decision_follows_the_acceptance_number():
         expected = (a["DefectsFound"] >= a["RejectionNumber"]).map({True: "Rejected", False: "Approved"})
         wrong = expected != a["LotDecision"].str.title()
         assert not wrong.any(), f"{name}: {wrong.sum()} decisions contradict Ac/Re"
+
+
+def test_attribute_plans_follow_iso_2859_1_table_ii_a():
+    """Decision D3: Ac/Re are the standard's for the code letter sampled (they were one letter too
+    lenient) and every sample size is a code letter's (Storyline F used n x 1.5 = 300/472)."""
+    import sys
+    sys.path.insert(0, str(ROOT / "lib"))
+    import aql
+
+    for name in ("fact_bottle_attribute_inspection_cq_raw", "fact_cap_attribute_inspection_cq_raw",
+                 "fact_ink_attribute_inspection_cq_raw"):
+        a = _bronze(name)
+        plans = [aql.single_normal_plan(letter, q) for letter, q in zip(a["CodeLetter"], a["AQL"])]
+        assert a["AcceptanceNumber"].tolist() == [ac for _, ac, _, _ in plans], name
+        assert (a["SampleSize"] == a["CodeLetter"].map(aql.SAMPLE_SIZE)).all(), name
+
+
+def test_food_contact_caps_run_on_their_own_line():
+    """Decision D2: IM-008 had 188% of its calendar hours booked (a third mold stacked on it)."""
+    production = _bronze("fact_production_raw").drop_duplicates("WorkOrder")
+    assert set(production.loc[production["ToolId"] == "M-INJ-014", "MachineId"]) == {"IM-009"}
+    start = pd.to_datetime(production["Date"]) + pd.to_timedelta(production["StartTime"])
+    booked = production.assign(start=start).query("MachineId in ['IM-008', 'IM-009']").groupby("MachineId")["start"]
+    assert (booked.max() - booked.min()).dt.days.min() > 150  # both lines exist over the expansion window
 
 
 def test_material_is_consumed_not_created():

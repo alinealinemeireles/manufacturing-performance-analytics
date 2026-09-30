@@ -128,7 +128,7 @@ PLANOS = [
 
 # alterações às LBE e fatores estáticos (6.5 — reter a informação das modificações)
 ALT_LBE = [
-    ("ALE-01", "2026-07-01", "Fator estático", "Entrada em produção de 4 máquinas novas (IM-007, IM-008, ISBM-009, ISBM-010) — ALT-2026-03 (linhas alimentar e farmacêutica).",
+    ("ALE-01", "2026-07-01", "Fator estático", "Entrada em produção de 5 máquinas novas (IM-007, IM-008, IM-009, ISBM-009, ISBM-010) — ALT-2026-03 (linhas alimentar e farmacêutica).",
      "LBE-01", "Ajuste não rotineiro (ISO 50006 §9.2): a energia atribuível às máquinas novas (horas × kW do RG-SGA-13 + quota de ar e frio) é retirada do real e as suas unidades das variáveis; fronteira do IDE-01 = instalação existente.",
      "Criar LBE-01b com 12 meses após a estabilização (07/2027) incluindo as máquinas novas.", "Aprovado", GE, "2026-09-15"),
     ("ALE-02", "2026-02-01", "Ação de melhoria (não é fator estático)", "Substituição dos compressores CMP-01/02 por unidades de velocidade variável (ALT-2026-01).",

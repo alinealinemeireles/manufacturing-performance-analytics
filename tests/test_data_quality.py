@@ -114,6 +114,28 @@ def test_a_broken_business_rule_is_not_silently_skipped():
     assert "BR-X" not in set(dq.validate(contract, tables)["rule_id"])
 
 
+def test_aql_rules_check_the_plan_against_iso_2859_1():
+    inspections = pd.DataFrame({"LotSize": [8000, 8000, 46969], "CodeLetter": ["L", "L", "M"],
+                                "SampleSize": [200, 200, 315], "AQL": [0.65, 0.65, 0.10],
+                                "AcceptanceNumber": [3, 5, 0], "RejectionNumber": [4, 6, 1],
+                                "InspectionLevel": ["II", "II", "Não normativo"]})
+    tables = {"fact_cap_attribute_inspection": inspections}
+    assert dq.aql_plan_matches_iso_2859_1(tables, {}) == (3, 1)        # Ac 5 at L/0.65: the old, lenient plan
+    assert dq.aql_sample_not_below_normative(tables, {}) == (3, 0)
+    assert dq.aql_inspection_level_is_normative(tables, {}) == (3, 1)
+    inspections.loc[2, ["CodeLetter", "SampleSize"]] = ["L", 200]      # AQL 0.10 at L: the table says use M/315
+    assert dq.aql_sample_not_below_normative(tables, {}) == (3, 1)
+
+
+def test_overlapping_orders_on_one_machine_are_counted():
+    production = pd.DataFrame({"Process": ["Blow Molding"] * 3 + ["Screen Printing"],
+                               "MachineId": ["M1", "M1", "M2", "S1"], "Date": ["2026-03-01"] * 4,
+                               "StartTime": ["08:00:00", "09:00:00", "09:00:00", "08:00:00"],
+                               "LeadTimeProdHours": [2.0, 1.0, 5.0, 1.0]})
+    assert dq.no_overlapping_orders_molding({"fact_production": production}, {}) == (3, 1)
+    assert dq.no_overlapping_orders_decoration({"fact_production": production}, {}) == (1, 0)
+
+
 def test_every_business_rule_in_the_real_contract_is_implemented():
     contract = dq.load_contract()
     assert {rule["check"] for rule in contract["business_rules"]} <= set(dq.BUSINESS_RULES)

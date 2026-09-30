@@ -106,7 +106,11 @@ def gen_pote_attributes(cap_attr_donor, donor_wo_to_new_wo, wo_info, batch_looku
         # Storyline F: proactive sampling tightening for PT- in the window, no defect elevation.
         in_f_window = STORYLINE_F_WINDOW[0] <= date <= STORYLINE_F_WINDOW[1]
         if in_f_window:
-            sample_size = int(round(sample_size * 1.5))
+            # Tightened sampling the way ISO 2859-1 does it: general inspection level III (next code
+            # letter), not n x 1.5 -- 300 and 472 are not sample sizes of the standard (audit
+            # 2026-09-30, D3). L/200 -> M/315, M/315 -> N/500.
+            sample_size = {200: 315, 315: 500}.get(sample_size, sample_size)
+        code_letter = {200: "L", 315: "M", 500: "N"}.get(sample_size, row.CodeLetter)
         defects = int(g.RNG.binomial(sample_size, base_p))
         rejection_n = int(row.RejectionNumber) if str(row.RejectionNumber).isdigit() else 999
         decision = "Rejected" if defects >= rejection_n else "Approved"  # ISO 2859-1: reject at d >= Re
@@ -116,7 +120,7 @@ def gen_pote_attributes(cap_attr_donor, donor_wo_to_new_wo, wo_info, batch_looku
             "MachineId": "IM-007", "MoldId": mold, "BottleId": product, "Material": material,
             "Characteristic": char, "Class": row.Class, "AQL": row.AQL,
             "Standard": row.Standard, "InspectionLevel": row.InspectionLevel, "LotSize": row.LotSize,
-            "CodeLetter": row.CodeLetter, "SampleSize": sample_size,
+            "CodeLetter": code_letter, "SampleSize": sample_size,
             "AcceptanceNumber": row.AcceptanceNumber, "RejectionNumber": row.RejectionNumber,
             "DefectsFound": defects, "LotDecision": decision, "InspectionDateTime": row.InspectionDateTime,
             "Inspector": row.Inspector,
