@@ -75,17 +75,43 @@ def test_missing_required_column_is_a_schema_failure():
     assert _status(results, "fact_production:SCHEMA") == "FAIL"
 
 
-def test_rejected_lot_shipped_business_rule():
-    tables = {
-        "fact_sales": pd.DataFrame({"WorkOrder": ["WO-1", "WO-2"], "Date": ["2026-03-05", "2026-03-06"]}),
-        "fact_bottle_disposition_lot": pd.DataFrame({"WorkOrder": ["WO-1", "WO-2"],
+def _release_tables():
+    # Batch B1 = WO-1 + WO-2 (disposition names only WO-2, the batch's last order); B2 = WO-3.
+    return {
+        "fact_production": pd.DataFrame({"WorkOrder": ["WO-1", "WO-2", "WO-3"], "ProductBatch": ["B1", "B1", "B2"]}),
+        "fact_sales": pd.DataFrame({"WorkOrder": ["WO-1", "WO-3"], "Date": ["2026-03-05", "2026-03-06"]}),
+        "fact_bottle_disposition_lot": pd.DataFrame({"ProductBatch": ["B1", "B2"], "WorkOrder": ["WO-2", "WO-3"],
                                                      "FinalLotDecision": ["Approved", "Rejected"],
                                                      "LotDecisionDateTime": ["2026-03-02 10:00", "2026-03-02 11:00"]}),
     }
+
+
+def test_rejected_lot_shipped_business_rule():
+    tables = _release_tables()
     assert dq.rejected_lot_not_shipped(tables, {}) == (2, 1)
-    assert dq.shipped_after_lot_decision(tables, {}) == (2, 0)
-    tables["fact_sales"]["Date"] = ["2026-03-01", "2026-03-06"]  # WO-1 shipped the day before its decision
-    assert dq.shipped_after_lot_decision(tables, {}) == (2, 1)
+    assert dq.shipped_after_batch_decision(tables, {}) == (2, 0)
+    tables["fact_sales"]["Date"] = ["2026-03-01", "2026-03-06"]  # WO-1 shipped the day before B1's decision
+    assert dq.shipped_after_batch_decision(tables, {}) == (2, 1)
+    # ... which the work-order-level rule cannot see: WO-1 is not named on any disposition.
+    assert dq.shipped_after_lot_decision(tables, {}) == (1, 0)
+
+
+def test_release_rules_work_at_batch_level_not_work_order_level():
+    """WO-1 is not named on any disposition, but its batch B2 is Rejected: it must not ship."""
+    tables = _release_tables()
+    tables["fact_production"]["ProductBatch"] = ["B2", "B1", "B2"]
+    assert dq.rejected_lot_not_shipped(tables, {}) == (2, 2)
+
+
+def test_a_broken_business_rule_is_not_silently_skipped():
+    contract = {**CONTRACT, "business_rules": [{"id": "BR-X", "check": "rejected_lot_not_shipped",
+                                                "description": "-"}]}
+    tables = {**_clean_tables(), **_release_tables()}
+    tables["fact_production"] = tables["fact_production"].drop(columns="ProductBatch")  # a real bug, not a missing table
+    with pytest.raises(KeyError):
+        dq.validate(contract, tables)
+    del tables["fact_sales"]  # a genuinely missing table IS skipped
+    assert "BR-X" not in set(dq.validate(contract, tables)["rule_id"])
 
 
 def test_every_business_rule_in_the_real_contract_is_implemented():

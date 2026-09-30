@@ -50,5 +50,5 @@
 | `fact_production_raw` | 16,427 |
 | `fact_raw_material_inspection_raw` | 6,969 |
 | `fact_raw_material_lot_disposition_raw` | 1,896 |
-| `fact_sales_raw` | 8,548 |
+| `fact_sales_raw` | 8,517 |
 | `fact_supplier_complaints_raw` | 80 |

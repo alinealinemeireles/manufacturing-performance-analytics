@@ -109,7 +109,7 @@ def gen_pote_attributes(cap_attr_donor, donor_wo_to_new_wo, wo_info, batch_looku
             sample_size = int(round(sample_size * 1.5))
         defects = int(g.RNG.binomial(sample_size, base_p))
         rejection_n = int(row.RejectionNumber) if str(row.RejectionNumber).isdigit() else 999
-        decision = "Rejected" if defects > rejection_n else "Approved"
+        decision = "Rejected" if defects >= rejection_n else "Approved"  # ISO 2859-1: reject at d >= Re
 
         rows.append({
             "ProductBatch": new_batch, "WorkOrder": new_wo, "ProductionDate": row.ProductionDate,

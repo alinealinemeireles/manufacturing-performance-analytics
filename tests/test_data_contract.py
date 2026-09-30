@@ -25,6 +25,10 @@ KNOWN_WARNINGS = {
     "fact_bottle_disposition_lot:BDISP-AQL",
     "fact_capa:CAPA-EFF",
     "BR-LOTID-SUFFIX",
+    "BR-SHIP-AFTER-BATCH-DECISION",
+    "fact_raw_material_inspection:RMI-RESULT",
+    "fact_bottle_attribute_inspection:ATTR-N",
+    "fact_ink_attribute_inspection:ATTR-N",
 }
 
 
@@ -63,32 +67,64 @@ def test_sales_and_supplier_lots_reference_known_master_data():
     assert set(_bronze("fact_raw_material_lot_disposition_raw")["SupplierId"]) <= set(_dim("dim_supplier")["SupplierId"])
 
 
-def _bronze_dispositions() -> pd.DataFrame:
-    parts = [_bronze(name)[["WorkOrder", "FinalLotDecision", "LotDecisionDateTime"]]
-             for name in ("fact_bottle_disposition_lot_cq_raw", "fact_cap_disposition_lot_cq_raw",
-                          "fact_ink_disposition_lot_cq_raw")]
-    dispositions = pd.concat(parts, ignore_index=True)
-    dispositions["FinalLotDecision"] = dispositions["FinalLotDecision"].str.title()
-    return dispositions
+def _bronze_batch_dispositions() -> pd.DataFrame:
+    """Disposition per released/rejected BATCH (ProductBatch; PrintLot for decoration) -- the unit
+    QC decides on. A batch spans several work orders; its disposition row names only one of them."""
+    parts = []
+    for name, key in [("fact_bottle_disposition_lot_cq_raw", "ProductBatch"),
+                      ("fact_cap_disposition_lot_cq_raw", "ProductBatch"),
+                      ("fact_ink_disposition_lot_cq_raw", "PrintLot")]:
+        d = _bronze(name)
+        parts.append(pd.DataFrame({"Batch": d[key], "FinalLotDecision": d["FinalLotDecision"].str.title(),
+                                   "LotDecisionDateTime": d["LotDecisionDateTime"]}))
+    return pd.concat(parts, ignore_index=True)
+
+
+def _bronze_sales_batch() -> pd.Series:
+    production = _bronze("fact_production_raw").drop_duplicates("WorkOrder").set_index("WorkOrder")
+    return _bronze("fact_sales_raw")["WorkOrder"].map(production["ProductBatch"])
 
 
 def test_no_rejected_lot_is_shipped():
-    """ISO 9001 8.6/8.7 -- regression test for the expansion generator bug that shipped 30
-    segregated lots (fixed by scripts/fix_expansion_sales_release.py)."""
-    dispositions = _bronze_dispositions()
-    rejected = set(dispositions.loc[dispositions["FinalLotDecision"] == "Rejected", "WorkOrder"])
-    shipped_rejected = _bronze("fact_sales_raw")["WorkOrder"].isin(rejected)
-    assert not shipped_rejected.any(), f"{shipped_rejected.sum()} rejected lots shipped"
+    """ISO 9001 8.6/8.7 -- regression test for the expansion generator bug that shipped segregated
+    lots (scripts/fix_expansion_sales_release.py at work-order level, then
+    scripts/fix_audit_2026_09_30.py at batch level: 31 more rows shipped from Rejected batches
+    through a sibling work order of the one named on the disposition)."""
+    dispositions = _bronze_batch_dispositions()
+    rejected = set(dispositions.loc[dispositions["FinalLotDecision"] == "Rejected", "Batch"])
+    shipped_rejected = _bronze_sales_batch().isin(rejected)
+    assert not shipped_rejected.any(), f"{shipped_rejected.sum()} sales rows from rejected batches"
 
 
 def test_no_lot_ships_before_its_release_decision():
-    dispositions = _bronze_dispositions()
+    """Expansion: no row ships before its batch decision. Versão 00 (frozen) ships 173 rows 1-6 days
+    before the decision of their batch -- pinned, so a new early shipment is a regression."""
+    dispositions = _bronze_batch_dispositions()
     decision_day = (pd.to_datetime(dispositions["LotDecisionDateTime"], format="mixed", errors="coerce")
-                    .groupby(dispositions["WorkOrder"]).max().dt.normalize())
+                    .groupby(dispositions["Batch"]).max().dt.normalize())
     sales = _bronze("fact_sales_raw")
-    decided = sales["WorkOrder"].map(decision_day)
-    early = pd.to_datetime(sales["Date"])[decided.notna()] < decided[decided.notna()]
-    assert not early.any(), f"{early.sum()} lots shipped before the lot decision"
+    decided = _bronze_sales_batch().map(decision_day)
+    early = decided.notna() & (pd.to_datetime(sales["Date"]) < decided)
+    is_expansion = sales["MachineId"].isin({"IM-007", "IM-008", "ISBM-009", "ISBM-010"})
+    assert not (early & is_expansion).any(), f"{(early & is_expansion).sum()} expansion rows shipped early"
+    assert (early & ~is_expansion).sum() == 173
+
+
+def test_attribute_lot_decision_follows_the_acceptance_number():
+    """ISO 2859-1: reject when defects >= Re (= Ac + 1). The expansion generator used `> Re`, so a
+    sample with exactly Re defects was approved (47 inspections)."""
+    for name in ("fact_bottle_attribute_inspection_cq_raw", "fact_cap_attribute_inspection_cq_raw",
+                 "fact_ink_attribute_inspection_cq_raw"):
+        a = _bronze(name)
+        expected = (a["DefectsFound"] >= a["RejectionNumber"]).map({True: "Rejected", False: "Approved"})
+        wrong = expected != a["LotDecision"].str.title()
+        assert not wrong.any(), f"{name}: {wrong.sum()} decisions contradict Ac/Re"
+
+
+def test_material_is_consumed_not_created():
+    c = _bronze("fact_material_consumption_raw")
+    grew = c["EndWeightKg"] > c["StartWeightKg"]
+    assert not grew.any(), f"{grew.sum()} consumption records end heavier than they started"
 
 
 # ---------------------------------------------------------------------------

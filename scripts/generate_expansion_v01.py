@@ -536,7 +536,7 @@ def gen_bottle_attributes(donor_attr, donor_wo_to_new_wo, wo_info, batch_lookup)
         p = min(base_p * mult, 0.9)
         defects = int(RNG.binomial(sample_size, p))
         rejection_n = int(row.RejectionNumber) if str(row.RejectionNumber).isdigit() else 999
-        decision = "Rejected" if defects > rejection_n else "Approved"
+        decision = "Rejected" if defects >= rejection_n else "Approved"  # ISO 2859-1: reject at d >= Re
 
         rows.append({
             "ProductBatch": new_batch, "WorkOrder": new_wo, "ProductionDate": row.ProductionDate,
@@ -645,7 +645,7 @@ def gen_cap_attributes(donor_attr, donor_wo_to_new_wo, wo_info, batch_lookup, ne
         base_p = min(donor_defects / sample_size, 0.5) if sample_size else 0.0
         defects = int(RNG.binomial(sample_size, base_p))
         rejection_n = int(row.RejectionNumber) if str(row.RejectionNumber).isdigit() else 999
-        decision = "Rejected" if defects > rejection_n else "Approved"
+        decision = "Rejected" if defects >= rejection_n else "Approved"  # ISO 2859-1: reject at d >= Re
         rows.append({
             "ProductBatch": new_batch, "WorkOrder": new_wo, "ProductionDate": row.ProductionDate,
             "Shift": row.Shift, "MachineId": info["machine"], "MoldId": mold, "CapId": product,
@@ -666,7 +666,7 @@ def gen_cap_attributes(donor_attr, donor_wo_to_new_wo, wo_info, batch_lookup, ne
         sample_size = 200
         p = min(0.02 * mult, 0.5)
         defects = int(RNG.binomial(sample_size, p))
-        decision = "Rejected" if defects > 1 else "Approved"
+        decision = "Rejected" if defects >= 1 else "Approved"  # Ac = 0, Re = 1
         rows.append({
             "ProductBatch": r.ProductBatch, "WorkOrder": r.WorkOrder, "ProductionDate": r.Date,
             "Shift": "Shift 1", "MachineId": "IM-008", "MoldId": r.ToolId, "CapId": r.ProductId,

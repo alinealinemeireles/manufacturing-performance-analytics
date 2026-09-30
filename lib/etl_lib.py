@@ -178,11 +178,16 @@ def work_order_number(work_order: str) -> str:
 def build_lotid_prefix(date: pd.Series, shift: pd.Series, process: pd.Series,
                         machine_id: pd.Series, work_order: pd.Series) -> pd.Series:
     """First 14 characters of the LotId: YY WW D T P MM OOOOO
-    year(2) + ISO week(2) + ISO weekday(1) + shift(1) + process(1) +
-    machine number(2) + work order number(5)."""
+    ISO year(2) + ISO week(2) + ISO weekday(1) + shift(1) + process(1) +
+    machine number(2) + work order number(5).
+
+    YY is the ISO-8601 week-numbering year, not the calendar year: WW is an ISO week, and
+    the two must come from the same calendar. 2025-12-29..31 belong to ISO week 1 of 2026
+    -- pairing the calendar year (25) with that week (01) encoded them as "2501", i.e. a
+    date in the first week of 2025, one year off (audit 2026-09-30)."""
     date = pd.to_datetime(date)
     iso_calendar = date.dt.isocalendar()
-    year = (date.dt.year % 100).astype(int).astype(str).str.zfill(2)
+    year = (iso_calendar["year"].astype(int) % 100).astype(str).str.zfill(2)
     week = iso_calendar["week"].astype(int).astype(str).str.zfill(2)
     weekday = iso_calendar["day"].astype(int).astype(str)
     shift_text = shift.astype(int).astype(str)
@@ -199,13 +204,17 @@ def compute_material_lot_sequence(consumption: pd.DataFrame, order_column="WorkO
     only when the physical material lot actually changes (not on every
     shift change). A loop is used deliberately -- each row must be compared
     to the row before it in real chronological order, and record_order_column
-    guards against the CSV coming back with rows out of order."""
+    guards against the CSV coming back with rows out of order.
+
+    Two consecutive blank lots (NaN) are the SAME unknown lot, not a lot change: `NaN != NaN`
+    is True in Python, so a plain `!=` bumped the sequence on every blank record."""
     df = consumption.sort_values([order_column, record_order_column]).copy()
     sequences, counter, previous_order, previous_lot = [], 0, None, None
     for current_order, current_lot in zip(df[order_column], df[lot_column]):
+        same_lot = (current_lot == previous_lot) or (pd.isna(current_lot) and pd.isna(previous_lot))
         if current_order != previous_order:
             counter = 1
-        elif current_lot != previous_lot:
+        elif not same_lot:
             counter += 1
         sequences.append(counter)
         previous_order, previous_lot = current_order, current_lot
