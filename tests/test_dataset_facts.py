@@ -29,5 +29,6 @@ def test_readme_period_matches_the_data():
 
 def test_readme_does_not_quote_a_stale_machine_count():
     quoted = {int(n) for n in re.findall(r"(\d+) máquinas", README)}
-    # 18 (original Versão 00 fleet) and 4 (expansion) are quoted on purpose as history.
-    assert quoted <= {FACTS["machines"], 18, 4}
+    # 18 (original Versão 00 fleet), 4 (expansion as first generated) and 5 (expansion after the
+    # dedicated food-contact line IM-009, audit decision D2) are quoted on purpose as history.
+    assert quoted <= {FACTS["machines"], 18, 4, 5}

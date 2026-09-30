@@ -71,7 +71,7 @@ AMBITO = [
 
 FRONTEIRAS = [
     ("FRT-01", "Nave de sopro (ISBM-001 a ISBM-010)", "Dentro", "Eletricidade; ar comprimido", "QGBT-SOP", "SOP", "Sim"),
-    ("FRT-02", "Nave de injeção (IM-001 a IM-008)", "Dentro", "Eletricidade; ar comprimido", "QGBT-INJ", "INJ", "Sim"),
+    ("FRT-02", "Nave de injeção (IM-001 a IM-009)", "Dentro", "Eletricidade; ar comprimido", "QGBT-INJ", "INJ", "Sim"),
     ("FRT-03", "Decoração (SS-001/002, HF-001/002)", "Dentro", "Eletricidade; ar comprimido", "QGBT-DEC", "SER; HFS", "Sim"),
     ("FRT-04", "Central de ar comprimido (CMP-01/02, secadores)", "Dentro", "Eletricidade", "Q-AR", "UTL-AR", "Sim"),
     ("FRT-05", "Arrefecimento (chiller CH-01, torre TR-01, bombas)", "Dentro", "Eletricidade", "Q-FRIO", "UTL-FRIO", "Sim"),

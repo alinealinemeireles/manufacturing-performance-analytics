@@ -107,3 +107,25 @@ def test_capability_over_time_flags_short_history_instead_of_guessing():
                        "InspectionDateTime": pd.date_range("2026-01-01", periods=10, freq="h")})
     summary = etl.summarize_capability_over_time(df, ["G"], subgroup_size=5, window=25).iloc[0]
     assert pd.isna(summary["PctWindowsBelowTarget"])
+
+
+def test_western_electric_rule_4_run_is_broken_by_a_point_on_the_center_line():
+    # 7 points above CL, then one exactly ON the CL: not 8 consecutive on one side.
+    out = _run_rules([0.5] * 7 + [0.0])
+    assert not out["Rule4_8ConsecutiveSameSide"].any()
+    assert _run_rules([0.5] * 8)["Rule4_8ConsecutiveSameSide"].iloc[-1]
+
+
+def test_xbar_chart_flags_are_drawn_at_the_same_positions_as_the_line():
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    # Filtered frame: index labels 10, 20, 30 -- the flag must land on position 1, not x=20.
+    df = pd.DataFrame({"X": [0.0, 5.0, 0.0], "CL": 0.0, "UCL": 3.0, "LCL": -3.0,
+                       "Flag": [False, True, False]}, index=[10, 20, 30])
+    fig, ax = plt.subplots()
+    sq.plot_xbar_chart(ax, df, "X", "CL", "UCL", "LCL", "t", flag_col="Flag")
+    offsets = ax.collections[0].get_offsets()
+    plt.close(fig)
+    assert offsets.tolist() == [[1.0, 5.0]]

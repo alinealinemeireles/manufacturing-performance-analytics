@@ -75,6 +75,25 @@ def test_lotid_prefix_layout():
     assert len(prefix.iloc[0]) == 14
 
 
+@pytest.mark.parametrize("date, expected_yyww", [
+    ("2025-12-29", "2601"),  # Monday of ISO week 1 of 2026 -- was "2501" (one year off)
+    ("2025-12-31", "2601"),
+    ("2026-12-30", "2653"),  # ISO week 53 of 2026
+    ("2027-01-01", "2653"),  # still ISO 2026-W53
+    ("2025-07-01", "2527"),
+])
+def test_lotid_year_is_the_iso_year_of_the_iso_week(date, expected_yyww):
+    prefix = etl.build_lotid_prefix(pd.Series([date]), pd.Series([1]), pd.Series(["Blow Molding"]),
+                                    pd.Series(["ISBM-001"]), pd.Series(["WO-1000"]))
+    assert prefix.iloc[0][:4] == expected_yyww
+
+
+def test_material_lot_sequence_treats_consecutive_blank_lots_as_one_lot():
+    consumption = pd.DataFrame({"WorkOrder": ["WO-1"] * 3, "MaterialLot": [np.nan, np.nan, np.nan],
+                                "RecordSeq": [1, 2, 3]})
+    assert etl.compute_material_lot_sequence(consumption).tolist() == [1, 1, 1]
+
+
 def test_material_lot_sequence_increments_only_on_real_lot_change():
     consumption = pd.DataFrame({
         "WorkOrder": ["WO-1", "WO-1", "WO-1", "WO-1", "WO-2"],
@@ -136,6 +155,29 @@ def test_oee_identity_and_bounds():
     assert out.loc["WO-1", "Availability"] == pytest.approx(0.9)          # 54 of 60 min running
     assert out.loc["WO-1", "Performance"] == pytest.approx(1.0)           # 900 pcs in 0.9 h = 1000/h
     assert out.loc["WO-1", "Quality"] == pytest.approx(0.9)               # 810 good of 900
+
+
+def test_oee_time_base_is_the_real_window_not_the_plan():
+    """Decision D1 (audit 2026-09-30): an order planned for 1 h that really took 2 h must not
+    show Availability 100% and full speed -- the overrun is lost time."""
+    production, plan, downtime, capacity = _oee_inputs()
+    production["LeadTimeProdHours"] = [2.0, 1.0]          # WO-1 ran twice as long as planned
+    out = etl.compute_oee_components(production, plan, downtime, capacity).set_index("WorkOrder")
+    assert out.loc["WO-1", "PlannedTimeHours"] == pytest.approx(2.0)
+    assert out.loc["WO-1", "PlannedHours"] == pytest.approx(1.0)       # the plan is still there
+    assert out.loc["WO-1", "Performance"] == pytest.approx(900 / 2 / 1000)  # 450 pcs/h vs 1000
+
+
+def test_setup_is_an_availability_loss_and_breaks_are_not_planned_production_time():
+    production, plan, downtime, capacity = _oee_inputs([
+        ("WO-1", "Yes", "Mold Change / Setup", 12.0, 12.0),
+        ("WO-1", "Yes", "Scheduled Cleaning", 6.0, 6.0),
+    ])
+    out = etl.compute_oee_components(production, plan, downtime, capacity).set_index("WorkOrder")
+    assert out.loc["WO-1", "PlannedTimeHours"] == pytest.approx(54 / 60)   # 60 min - 6 min cleaning
+    assert out.loc["WO-1", "SetupTimeHours"] == pytest.approx(12 / 60)
+    assert out.loc["WO-1", "RunTimeHours"] == pytest.approx(42 / 60)       # setup is lost time
+    assert out.loc["WO-1", "Availability"] == pytest.approx(42 / 54)
 
 
 def test_availability_uses_effective_not_summed_downtime():

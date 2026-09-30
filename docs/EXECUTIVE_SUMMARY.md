@@ -1,7 +1,7 @@
 # Sumário Executivo — leitura de 5 minutos
 
 > **O que é:** um protótipo de *Manufacturing Intelligence* para uma fábrica de embalagens plásticas
-> (22 máquinas, 4 processos, 18 meses), que integra Engenharia da Qualidade, Lean, manutenção,
+> (23 máquinas, 4 processos, 18 meses), que integra Engenharia da Qualidade, Lean, manutenção,
 > estatística, engenharia de dados e Machine Learning. O objetivo não é um dashboard: é fechar o ciclo
 > **dado → evidência → causa-raiz → ação → controlo → verificação de eficácia**.
 >
@@ -18,7 +18,7 @@ evidência, ação, controlo e verificação de eficácia?*
 ## Arquitetura em uma linha
 
 ```text
-CSV bronze (sujo) → limpeza Python → DATA QUALITY GATE (contrato: ~240 regras) → SQL Server silver/gold
+CSV bronze (sujo) → limpeza Python → DATA QUALITY GATE (contrato: 321 regras) → SQL Server silver/gold
       → OEE · SPC/Cpk · MSA · Six Big Losses · confiabilidade · DOE · ML com baseline
       → plano de ação com critério de eficácia → registos SGQ/SGA gerados do mesmo dado
 ```
@@ -27,15 +27,15 @@ CSV bronze (sujo) → limpeza Python → DATA QUALITY GATE (contrato: ~240 regra
 
 | KPI | Valor | Leitura |
 |---|---|---|
-| **OEE da planta** (ponderado) | **78,2%** — Disponibilidade 88,2% · Performance 90,8% · Qualidade 97,7% | Disponibilidade é o pilar mais fraco |
+| **OEE da planta** (ponderado, janela real da ordem) | **72,3%** — Disponibilidade 89,1% · Performance 83,1% · Qualidade 97,7% | A velocidade é o pilar mais fraco; a sobreduração face ao plano (43,5% das ordens > +10%) já está contada |
 | **Maior perda de disponibilidade** | Falta de material, utilidades ou operador: **10.221 h** vs. avarias de equipamento: 6.863 h | A máquina para mais **à espera** do que **avariada** — o alvo é abastecimento e organização do trabalho antes de manutenção |
 | **Capacidade de processo** | **0 de 726** grupos máquina × molde × produto × característica com Cpk ≥ 1,33 no período | Planta estatisticamente marginal, não "capaz com exceções" |
 | **Sistema de medição** | %GRR = 4,05%, ndc = 34 | A variação observada é do processo, não do instrumento — o SPC pode ser lido |
-| **Qualidade do dado** | 0 violações bloqueantes; 6 avisos documentados | Nenhum KPI é calculado sobre dado que quebra o contrato |
+| **Qualidade do dado** | 0 violações bloqueantes; 10 avisos documentados (defeitos do V00 congelado) | Nenhum KPI é calculado sobre dado que quebra o contrato |
 
 ## 3 casos — do sintoma à ação verificável
 
-**1. IM-002 — Short Shot (Six Sigma + DOE).** A IM-002 tem taxa de Short Shot de 1,35%, 3,5× a média da
+**1. IM-002 — Short Shot (Six Sigma + DOE).** A IM-002 tem taxa de Short Shot de 1,35%, 3,6× a média da
 injeção, e Cpk de peso muito abaixo da frota **depois de controlar o mix de produto**. Um DOE fatorial
 mostrou efeito significativo da velocidade de injeção, da temperatura do barril **e da sua interação**; o
 melhor vértice reduziu a taxa para 0,11% (−92%, medido). **Ação:** corrida de confirmação → novo padrão
@@ -59,15 +59,19 @@ mediana; a correlação mensal agregada não é significativa — e o projeto di
 
 - **Machine Learning:** cada um dos 6 modelos foi comparado com a regra simples que substituiria; **só 1
   (taxa de sucata por ordem, +14%) supera-a de forma material**. A "previsão de produção" com R² 0,998
-  empata com *plano × cumprimento histórico* (o mérito é do plano), e a manutenção preditiva (ROC-AUC 0,58)
+  empata com *plano × cumprimento histórico* (o mérito é do plano), e a manutenção preditiva (ROC-AUC 0,57)
   não bate a taxa histórica de avarias da máquina — com histórico de paragens apenas, sem sensores, o dado
   não sustenta manutenção preditiva. Resultado negativo reportado como tal.
 - **Eficácia de CAPA:** a redução de NC depois da CAPA deixa de ser significativa quando se removem janelas
   antes/depois sobrepostas — associação, não prova.
 - **Valores em €:** cenários condicionados a custos unitários declarados, não contabilidade.
+- **OEE:** a série publicada até 29/09 (78,2%) media o tempo pelas horas do **plano**; desde 30/09 (decisão
+  D1) mede-o pela janela **real** da ordem, com o setup como perda de disponibilidade — 72,3%. A meta
+  KPI-Q-07 do SGQ (80,5%) foi fixada contra a base antiga e precisa de ser revista.
 
 ## Onde aprofundar
 
 [`kpi_lineage.md`](kpi_lineage.md) · [`client_root_cause_action_plan.md`](client_root_cause_action_plan.md) ·
 [`sgi_analytics_integration.md`](sgi_analytics_integration.md) · [`audit_2026-09-29.md`](audit_2026-09-29.md) ·
+[`audit_2026-09-30.md`](audit_2026-09-30.md) ·
 notebook completo: [`manufacturing_performance_analytics.ipynb`](../manufacturing_performance_analytics.ipynb)

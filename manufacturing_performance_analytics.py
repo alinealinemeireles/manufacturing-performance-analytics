@@ -519,7 +519,7 @@ consumption = etl.add_calendar_columns(consumption, "Date")
 consumption["ShiftNumber"] = consumption["Shift"].str.extract(r"(\d)").astype(int)
 
 # %% [markdown]
-# `LotId`: 16 caracteres (`YYWWDTPMMOOOOOSS`) — ano, semana ISO, dia da semana, turno,
+# `LotId`: 16 caracteres (`YYWWDTPMMOOOOOSS`) — ano ISO, semana ISO, dia da semana, turno,
 # processo, máquina, ordem de produção e sequência do lote de material. É o mecanismo
 # que permite rastrear qualquer inspeção até a ordem de produção e o lote de matéria-
 # prima exatos que a geraram (rastreabilidade ISO 9001).
@@ -550,10 +550,20 @@ downtime = downtime.merge(production[["WorkOrder", "LotId"]].rename(columns={"Wo
 downtime = etl.add_maintenance_info(downtime)
 
 # %% [markdown]
-# OEE: `Availability = Tempo em Operação / Tempo Planejado`, `Performance = taxa real
+# OEE: `Availability = Tempo em Operação / Tempo de Produção Planeado`, `Performance = taxa real
 # (peças/h) / taxa nominal`, `Quality = (produzido - rejeitado) / produzido`,
 # `OEE = Availability × Performance × Quality`. A capacidade nominal vem de
 # `dim_machine_setup.csv`, por `(MachineId, ToolId)`.
+#
+# **Base de tempo (decisão D1 da auditoria de 2026-09-30).** O *Tempo de Produção Planeado*
+# (`PlannedTimeHours`, o "tempo de carga" do OEE) é a janela **real** da ordem na máquina menos as
+# paragens planeadas que não são troca (refeição, limpeza programada, manutenção preventiva). O
+# *Tempo em Operação* (`RunTimeHours`) desconta as paragens não planeadas **e o setup/troca** — na
+# TPM o setup é perda de disponibilidade, e é o mesmo número que as Six Big Losses (4.7) cobram. As
+# horas do plano ficam em `PlannedHours` e alimentam a aderência ao plano (4.9–4.10), um KPI à parte.
+# Antes, a paragem da janela real era subtraída das horas do **plano**: 43,5% das ordens correm mais
+# de 10% acima do plano, e essa sobreduração não era cobrada a nenhum pilar (OEE de 78,2% na base
+# antiga).
 
 # %%
 def parse_capacity_number(value) -> float:
@@ -700,8 +710,10 @@ for name, df in [("dim_machine", dim_machine), ("dim_mold", dim_mold), ("dim_ope
 # processos de QA na prática.
 
 # %%
-sales = pd.read_csv(RAW_DIR / "fact_sales_raw.csv", encoding="utf-8-sig")
-complaints = pd.read_csv(RAW_DIR / "fact_customer_complaints_raw.csv", encoding="utf-8-sig")
+# LotId é um código de 16 dígitos, não um número: lido como texto. Em reclamações a coluna tem
+# vazios, e sem `dtype=str` o pandas a lia como float -- a silver gravava "2549321010122831.0".
+sales = pd.read_csv(RAW_DIR / "fact_sales_raw.csv", encoding="utf-8-sig", dtype={"LotId": str})
+complaints = pd.read_csv(RAW_DIR / "fact_customer_complaints_raw.csv", encoding="utf-8-sig", dtype={"LotId": str})
 rm_inspect = pd.read_csv(RAW_DIR / "fact_raw_material_inspection_raw.csv", encoding="utf-8-sig")
 rm_disp = pd.read_csv(RAW_DIR / "fact_raw_material_lot_disposition_raw.csv", encoding="utf-8-sig")
 sup_complaints = pd.read_csv(RAW_DIR / "fact_supplier_complaints_raw.csv", encoding="utf-8-sig")
@@ -2593,17 +2605,16 @@ answer(f"Entre as três atividades sem valor agregado nomeadas na pergunta, **'{
 # %% [markdown]
 # ## 4.9 — Aderência ao plano
 #
-# Checagem honesta, herdada da estrutura original deste dado: `PlannedTimeHours` é
-# derivado da mesma janela de início/fim real da ordem
-# (`RunTimeHours = PlannedTimeHours - ParadaNãoPlanejadaHoras`), então por construção o
-# tempo de execução nunca pode exceder o plano — não existe aqui um "cronograma
-# comprometido" independente que uma ordem possa genuinamente bater ou perder. Reportar
-# os 100% honestamente, com o motivo pelo qual não é um resultado significativo, é mais
-# útil que uma métrica que parece tranquilizadora pelo motivo errado.
+# A aderência compara a janela **real** da ordem (`LeadTimeProdHours`) com as horas do **plano**
+# (`PlannedHours`, sorteadas pelo planeamento antes de a ordem correr). A versão anterior comparava
+# `RunTimeHours` com `PlannedTimeHours` — dois números derivados da mesma base, logo ~100% por
+# construção, e sem significado. Com o OEE na base real (decisão D1), o tempo que a ordem passa
+# além do plano já pesa na Disponibilidade/Performance; aqui ele aparece como o que é: falha de
+# aderência ao programa.
 
 # %%
-production["OnSchedule"] = production["RunTimeHours"] <= production["PlannedTimeHours"] * 1.05
-print("Aderência ao cronograma (tempo de execução dentro de 5% do plano):")
+production["OnSchedule"] = production["LeadTimeProdHours"] <= production["PlannedHours"] * 1.05
+print("Aderência ao cronograma (janela real dentro de +5% das horas do plano):")
 print(production.groupby("Process")["OnSchedule"].mean().round(3))
 
 # %% [markdown]
@@ -4651,14 +4662,28 @@ fig.tight_layout(); fig.savefig(REPORTS_DIR / "06_01_cpmu_by_customer.png"); plt
 complaint_link = complaints6.merge(production6, on="WorkOrder", how="left")
 linked = complaint_link.dropna(subset=["RejectedQty"])
 linked_rate = linked["RejectedQty"] / linked["ProducedQty"]
-plant_median_rate = (production6["RejectedQty"] / production6["ProducedQty"]).median()
-below_median_share = (linked_rate > plant_median_rate).mean()
+order_reject_rate6 = production6["RejectedQty"] / production6["ProducedQty"]
+plant_median_rate = order_reject_rate6.median()
+above_median_share = (linked_rate > plant_median_rate).mean()
 print(f"{len(linked)}/{len(complaint_link)} reclamações rastreadas até uma ordem de produção específica.")
-print(f"Dessas, {below_median_share:.1%} vieram de uma ordem cuja taxa de rejeição interna estava "
+print(f"Dessas, {above_median_share:.1%} vieram de uma ordem cuja taxa de rejeição interna estava "
       f"ACIMA da mediana da planta ({plant_median_rate:.2%}).")
 
-answer(f"O vínculo é real, mas parcial: {below_median_share:.0%} das reclamações rastreáveis vêm de uma ordem "
-       "com sinal de qualidade interna pior que a mediana — um indício genuíno de fuga de qualidade. O resto "
+# Hipótese nula correta: "acima da mediana" NÃO é 50% entre as ordens que podem gerar reclamação.
+# Só ordens EXPEDIDAS chegam ao cliente, e a libertação de lote filtra justamente as de rejeição
+# alta -- a fração acima da mediana entre as ordens expedidas é a taxa de referência, e é contra
+# ela (não contra 50%) que os ~2/3 das reclamações têm de ser comparados.
+shipped_orders6 = production6["WorkOrder"].isin(sales6["WorkOrder"])
+null_share6 = (order_reject_rate6[shipped_orders6] > plant_median_rate).mean()
+n_above6, n_linked6 = int((linked_rate > plant_median_rate).sum()), len(linked)
+complaint_signal_p6 = stats.binomtest(n_above6, n_linked6, null_share6, alternative="greater").pvalue
+print(f"Referência: {null_share6:.1%} das ordens EXPEDIDAS estão acima da mediana -> teste binomial "
+      f"(unilateral) de {n_above6}/{n_linked6} contra {null_share6:.1%}: p = {complaint_signal_p6:.2g}")
+
+answer(f"O vínculo é real, mas parcial: {above_median_share:.0%} das reclamações rastreáveis vêm de uma ordem "
+       f"com sinal de qualidade interna pior que a mediana, contra {null_share6:.0%} esperados se a reclamação "
+       f"não dependesse da qualidade interna (fração das ordens expedidas acima da mediana; teste binomial "
+       f"p = {complaint_signal_p6:.2g}) — um indício genuíno de fuga de qualidade. O resto "
        "não mostra esse sinal, consistente com o achado da Parte 5 (Ac=0/AQL) de que a disposição de lote "
        "depende bastante de variação amostral, não só da condição real do processo — e com "
        "`docs/simulation_storylines.md` (história 14), que documenta deliberadamente que cerca de metade das "
@@ -6542,10 +6567,13 @@ answer(f"Fatores significativos (p<0.05): {significant_terms9}. O melhor vértic
        f"{100*best_corner9['TaxaMedia']:.2f}% — uma redução relativa de {relative_reduction9:.0f}%, medida, não "
        "projetada. **Barreira prática de rodar isso numa linha ao vivo**: parar uma máquina de produção por "
        "27 corridas de teste (com peças de descarte) custa tempo de máquina e material — um delineamento "
-       "fatorial **fracionado** (metade das 24 corridas de vértice, um 2³⁻¹) estimaria os efeitos principais e "
-       "a interação de dois fatores mais importante com metade da disrupção, ao custo de confundir a interação "
-       "de três fatores com a média geral — uma troca aceitável quando o objetivo é a triagem, não a "
-       "caracterização completa.")
+       "fatorial **fracionado** 2³⁻¹ (gerador C = AB, relação de definição I = ABC; 4 vértices em vez de 8, "
+       "metade das corridas) corta a disrupção pela metade, mas é de **resolução III**: cada efeito principal "
+       "fica confundido com uma interação de dois fatores (A = BC, B = AC, C = AB). Só serve para triagem "
+       "quando se pode assumir interações desprezíveis — e **este** DOE mostra que não se pode: a interação "
+       "temperatura × velocidade é significativa, e num 2³⁻¹ ela seria lida, indistinguível, como efeito "
+       "principal do tempo de resfriamento. Com 3 fatores e interações relevantes, o 2³ completo (8 vértices) "
+       "já é o delineamento mínimo; para reduzir a disrupção, cortam-se réplicas, não vértices.")
 
 # %% [markdown]
 # ### Validação interna do vértice ótimo — e por que isto NÃO substitui uma corrida de confirmação real
@@ -6723,9 +6751,10 @@ display(Markdown("""
 - **Motivos com duração média longa e alto desvio-padrão** (ex. falhas elétricas/de controle) provavelmente
   são dominados por **diagnosticar** — a causa não é óbvia, o tempo varia muito de evento a evento porque
   cada diagnóstico é uma investigação diferente.
-- **Motivos com duração longa mas desvio-padrão baixo** (ex. escassez de matéria-prima, falhas mecânicas
-  recorrentes conhecidas) provavelmente são dominados por **preparar-para-reparo** (esperar peça de
-  reposição, esperar material chegar) — o problema já é conhecido, o gargalo é logístico.
+- **Motivos com duração longa mas desvio-padrão baixo** (ex. falhas mecânicas recorrentes e conhecidas)
+  provavelmente são dominados por **preparar-para-reparo** (esperar peça de reposição, esperar o técnico
+  certo) — o problema já é conhecido, o gargalo é logístico. (Faltas de material, utilidades ou operador
+  não aparecem nesta tabela: desde a auditoria de 29/09 elas são espera/*idling*, não avaria.)
 - **Motivos com duração curta e consistente** provavelmente são dominados por **reparar** em si — o
   diagnóstico é imediato e a correção é um procedimento padrão rápido.
 
@@ -6981,14 +7010,15 @@ any_sig_10a = min(p1, p2, p3) < 0.05
 answer(f"{'Encontrei um indicador antecedente estatisticamente significativo' if any_sig_10a else 'Não encontrei nenhum indicador antecedente estatisticamente significativo'} "
        f"nesta base. As três correlações testadas (parada → reclamação em 1 semana: r={r1:.3f}, p={p1:.3f}; "
        f"parada → reclamação em 2 semanas: r={r2:.3f}, p={p2:.3f}; consumo de material → reclamação em 1 semana: "
-       f"r={r3:.3f}, p={p3:.3f}) ficam todas com `|r|` menor que {max_abs_r_10a:.2f}"
+       f"r={r3:.3f}, p={p3:.3f}) ficam todas com `|r|` de no máximo {max_abs_r_10a:.2f}"
        f"{' e nenhuma é significativa a 5%' if not any_sig_10a else ', mas ao menos uma passa do limiar nominal de 5% — ver Seção 6.4b para o achado mensal correspondente, que testa a mesma pergunta noutra agregação'} "
-       f"— não é possível distinguir isso de ruído amostral com as ~{len(leading)-2} semanas disponíveis, se não "
-       "significativo. Isso é consistente com um achado já visto na Parte 6 "
-       "(BQ-075/storyline #14): cerca de metade das reclamações de clientes rastreia até uma "
-       "ordem de produção com qualidade interna abaixo da mediana, e a outra metade parece "
-       "logística/independente — se metade do sinal de reclamação nem é de origem produtiva, "
-       "um indicador agregado semanal de parada dificilmente vai prever o total combinado. "
+       f"— com as ~{len(leading)-2} semanas disponíveis, o que não é significativo não se distingue de "
+       "ruído amostral. Isso é consistente com o achado da Seção 6.1 (BQ-075/storyline #14): "
+       f"{above_median_share:.0%} das reclamações rastreáveis vêm de uma ordem com qualidade interna PIOR "
+       f"que a mediana (vs. {null_share6:.0%} esperados ao acaso) — sinal real, mas só no nível da ordem; "
+       f"o restante (~{1 - above_median_share:.0%}) não tem sinal interno e é, pela storyline #14, sobretudo "
+       "logístico/independente. Um indicador agregado semanal de parada dilui as duas coisas e dificilmente "
+       "vai prever o total combinado. "
        "Um indicador de nível de **lote** (não semanal) provavelmente teria mais poder — é "
        "exatamente o que a Parte 11 tenta com o modelo de risco de qualidade por lote.")
 
@@ -8118,8 +8148,9 @@ processo, não artefato de instrumento de medição, pela Parte 9/Gage R&R) são
 praticamente toda Parte deste notebook.
 
 **3 — Sinais de produção vs. reclamações reais**: o vínculo é real mas parcial — Parte 6 encontra que
-~{below_median_share:.0%} das reclamações rastreáveis vêm de uma ordem com sinal de qualidade interna acima da
-mediana; o resto não mostra esse sinal, consistente com a dependência de amostragem AQL documentada nas Partes
+~{above_median_share:.0%} das reclamações rastreáveis vêm de uma ordem com rejeição interna acima da
+mediana, ou seja, qualidade interna PIOR (vs. {null_share6:.0%} esperados ao acaso, p = {complaint_signal_p6:.2g});
+o resto não mostra esse sinal, consistente com a dependência de amostragem AQL documentada nas Partes
 5 e 6.
 
 **4 — Capacidade e estabilidade de processo**: a planta usa 77-84% da capacidade nominal por processo (Parte

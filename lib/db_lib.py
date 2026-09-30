@@ -26,10 +26,16 @@ from sqlalchemy.engine import Engine
 
 
 def _connection_string(server: str, database: str | None, driver: str) -> str:
+    """Windows Authentication by default (the original dev server accepts nothing else). When
+    SQLSERVER_USER is set -- a Linux container, CI, a colleague's machine -- SQL login is used
+    instead, with the password read from SQLSERVER_PASSWORD (environment only, never a file
+    in the repository)."""
+    user = os.environ.get("SQLSERVER_USER")
+    auth = [f"UID={user}", f"PWD={os.environ.get('SQLSERVER_PASSWORD', '')}"] if user else ["Trusted_Connection=yes"]
     parts = [
         f"DRIVER={{{driver}}}",
         f"SERVER={server}",
-        "Trusted_Connection=yes",   # the server is Windows-Authentication-only
+        *auth,
         "TrustServerCertificate=yes",  # local dev instance, self-signed cert
     ]
     if database:

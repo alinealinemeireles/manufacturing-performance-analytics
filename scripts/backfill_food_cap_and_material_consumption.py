@@ -45,7 +45,11 @@ import generate_expansion_v01 as g  # noqa: E402
 # ---------------------------------------------------------------------------
 # Fix 1: food-grade cap for FA- bottles
 # ---------------------------------------------------------------------------
-FOOD_CAP_MACHINE = "IM-008"
+# Dedicated food-contact line (audit 2026-09-30, decision D2). This pass originally put the food
+# caps on IM-008 as a third mold on top of the two it already ran full time -- 188% of its
+# calendar hours booked. The committed bronze was moved to IM-009 by scripts/fix_audit_2026_09_30.py
+# (which also adds IM-009 to dim_machine_profile); a regeneration must use the same line.
+FOOD_CAP_MACHINE = "IM-009"
 FOOD_CAP_DONOR = "IM-003"  # IM-008's primary donor (IM-006) is already fully used
 FOOD_CAP_MOLD = "M-INJ-014"
 FOOD_CAP_PRODUCTS = {
@@ -204,7 +208,7 @@ def gen_food_cap_qc(cap_var_donor, cap_attr_donor, cap_disp_donor, donor_wo_to_n
         base_p = min(donor_defects / sample_size, 0.5) if sample_size else 0.0
         defects = int(g.RNG.binomial(sample_size, base_p))
         rejection_n = int(row.RejectionNumber) if str(row.RejectionNumber).isdigit() else 999
-        decision = "Rejected" if defects > rejection_n else "Approved"
+        decision = "Rejected" if defects >= rejection_n else "Approved"  # ISO 2859-1: reject at d >= Re
         attr_rows.append({
             "ProductBatch": new_batch, "WorkOrder": new_wo, "ProductionDate": row.ProductionDate,
             "Shift": row.Shift, "MachineId": FOOD_CAP_MACHINE, "MoldId": mold, "CapId": product,
@@ -318,9 +322,14 @@ def gen_material_consumption(mc_donor, donor_wo_to_new_wo, wo_info, color_of, re
         seq = seq_by_color.setdefault(color_id, 1)
         lot = f"COL-{color_id}-{seq:03d}"
 
+        # Jitter the bag weight and the CONSUMED amount -- not start and end independently:
+        # +/-10% on a 40-250 kg bag is up to 25 kg of noise on a 4 kg consumption, which made
+        # 338 records end heavier than they started (audit 2026-09-30; the committed bronze was
+        # repaired by scripts/fix_audit_2026_09_30.py). Same two RNG draws per row as before.
         try:
             start_w = float(row.StartWeightKg) * float(g.RNG.uniform(0.9, 1.1))
-            end_w = float(row.EndWeightKg) * float(g.RNG.uniform(0.9, 1.1))
+            consumed = (float(row.StartWeightKg) - float(row.EndWeightKg)) * float(g.RNG.uniform(0.9, 1.1))
+            end_w = start_w - abs(consumed)
         except (TypeError, ValueError):
             start_w, end_w = row.StartWeightKg, row.EndWeightKg
 
