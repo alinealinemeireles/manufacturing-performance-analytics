@@ -45,7 +45,11 @@ import generate_expansion_v01 as g  # noqa: E402
 # ---------------------------------------------------------------------------
 # Fix 1: food-grade cap for FA- bottles
 # ---------------------------------------------------------------------------
-FOOD_CAP_MACHINE = "IM-008"
+# Dedicated food-contact line (audit 2026-09-30, decision D2). This pass originally put the food
+# caps on IM-008 as a third mold on top of the two it already ran full time -- 188% of its
+# calendar hours booked. The committed bronze was moved to IM-009 by scripts/fix_audit_2026_09_30.py
+# (which also adds IM-009 to dim_machine_profile); a regeneration must use the same line.
+FOOD_CAP_MACHINE = "IM-009"
 FOOD_CAP_DONOR = "IM-003"  # IM-008's primary donor (IM-006) is already fully used
 FOOD_CAP_MOLD = "M-INJ-014"
 FOOD_CAP_PRODUCTS = {

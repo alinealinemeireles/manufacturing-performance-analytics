@@ -13,7 +13,7 @@ PROCESSOS = [
     ("PCP", "Planeamento e controlo da produção", "Realização", "Gerente de Produção", "—"),
     ("CMP", "Compras e gestão de fornecedores", "Realização", "Responsável de Compras", "—"),
     ("REC", "Receção, inspeção de receção e armazenagem de matérias-primas", "Realização", "Responsável de Armazém e Logística", "—"),
-    ("INJ", "Injeção de tampas e potes", "Realização", "Gerente de Produção", "IM-001 a IM-008"),
+    ("INJ", "Injeção de tampas e potes", "Realização", "Gerente de Produção", "IM-001 a IM-009"),
     ("SOP", "Sopro de frascos (ISBM)", "Realização", "Gerente de Produção", "ISBM-001 a ISBM-010"),
     ("SER", "Serigrafia (decoração)", "Realização", "Gerente de Produção", "SS-001, SS-002"),
     ("HFS", "Hot foil stamping (decoração)", "Realização", "Gerente de Produção", "HF-001, HF-002"),

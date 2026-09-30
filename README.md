@@ -116,14 +116,16 @@ A partir de 2026-07-06, o portfólio foi ampliado de forma **estritamente aditiv
 com a "Versão 01" da Seção 13 abaixo, que se refere à auditoria pós-correção do notebook — esta é
 uma expansão de dado, feita por cima dela): além de embalagens de cosméticos, a fábrica passa a
 produzir frascos e potes para os segmentos alimentício e farmacêutico, em 4 máquinas novas — sem
-alterar nenhuma linha do dataset Versão 00 original. Ver
+alterar nenhuma linha do dataset Versão 00 original. (Uma 5.ª, a IM-009, foi separada depois pela
+decisão D2 da auditoria de 2026-09-30: as tampas alimentares tinham sido empilhadas na IM-008, que
+ficava com 188% das horas de calendário ocupadas.) Ver
 [`docs/simulation_storylines.md`](docs/simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)
 para as novas causas-raiz documentadas nessa expansão.
 
 - **Período**: 18 meses, 2025-07-01 a 2026-12-30 (dados de produção das 4 máquinas/linhas novas da
   expansão de portfólio cobrem a partir de 2026-07-06 dentro dessa mesma janela)
-- **Escala**: 4 processos, 22 máquinas (18 na Versão 00 original + 4 novas na expansão de
-  portfólio — 2 Blow Molding, 2 Injection Molding), 3 turnos, dezenas de milhões de unidades
+- **Escala**: 4 processos, 23 máquinas (18 na Versão 00 original + 5 novas na expansão de
+  portfólio — 2 Blow Molding, 3 Injection Molding, uma delas a IM-009 dedicada a contacto alimentar), 3 turnos, dezenas de milhões de unidades
   produzidas (somadas em ~16.400 ordens de produção, pós-reexecução do notebook após a expansão)
 - **Tabelas**: 22 tabelas fato brutas + 15 dimensões, cobrindo produção, parada, controle de
   qualidade (tampas/frascos/tinta+hot foil), vendas, reclamações, fornecedores e CAPA; além das
@@ -282,18 +284,20 @@ completo na primeira célula markdown do notebook).
 
 ## 7. Principais resultados
 
-*(Da Parte 12, execução completa de 2026-09-29 — 22 máquinas, 4 processos, depois das correções da
-auditoria de 2026-09-29 (Seção 14). Os achados por máquina/storyline continuam válidos; mudaram os
-totais de perdas, a leitura de confiabilidade e a de ML — antes/depois em
-[`docs/audit_2026-09-29.md`](docs/audit_2026-09-29.md).)*
+*(Da Parte 12, execução completa de 2026-09-30 — 23 máquinas, 4 processos, depois das correções e das
+decisões D1–D3 da auditoria de 2026-09-30 (Seção 15): OEE na janela real da ordem com setup como perda de
+disponibilidade, tampas alimentares na linha dedicada IM-009, planos AQL da ISO 2859-1. Antes/depois em
+[`docs/audit_2026-09-30.md`](docs/audit_2026-09-30.md) e [`docs/audit_2026-09-29.md`](docs/audit_2026-09-29.md).)*
 
-- **OEE de planta ≈ 78,2%** (agregação ponderada por tempo/capacidade/unidades — Disponibilidade
-  88,2%, Performance 90,8%, Qualidade 97,7%) — Disponibilidade é o pilar mais fraco. **Mas a maior
+- **OEE de planta ≈ 72,3%** (agregação ponderada por tempo/capacidade/unidades, sobre a janela **real**
+  de cada ordem — Disponibilidade 89,1%, Performance 83,1%, Qualidade 97,7%). Na base antiga (horas do
+  plano) lia-se 78,2%: 43,5% das ordens correm mais de 10% acima do plano, e esse tempo só aparece quando
+  o OEE é medido no tempo que a ordem realmente ocupou a máquina. A velocidade é o pilar mais fraco. **Mas a maior
   perda de disponibilidade não é avaria de equipamento**: só as paragens de máquina saudável à espera de
   material, utilidades ou operador somam 10.221 h, contra 6.863 h de avarias mecânicas/elétricas (com as
   microparagens e ajustes, o *idling* das Seis Grandes Perdas chega a 18.639 h) — o alvo prioritário é
-  abastecimento e organização do trabalho, antes de manutenção. A perda de velocidade (19.098 h-equivalentes) é a maior categoria em agregado; a
-  dominante muda por processo.
+  abastecimento e organização do trabalho, antes de manutenção. A perda de velocidade (38.198 h-equivalentes) é a maior categoria em agregado e a
+  dominante nos quatro processos.
 - **A capacidade de processo é amplamente marginal**: 0% dos 230 grupos máquina×molde×característica
   da Parte 5 (52 de tampa + 178 de frasco/pote) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que
   passam no gate de estabilidade. No grão por produto da camada gold (726 grupos, Cpk em janela móvel dos
@@ -305,7 +309,8 @@ totais de perdas, a leitura de confiabilidade e a de ML — antes/depois em
   para usá-lo diretamente), a máquina continua explicando a taxa de defeito de forma altamente
   significativa — não é "azar de receber produto difícil".
 - **O vínculo entre sinais de produção e reclamações reais é real, mas parcial**: ~67% das
-  reclamações rastreáveis vêm de uma ordem com qualidade interna abaixo da mediana; o resto não
+  reclamações rastreáveis vêm de uma ordem com qualidade interna pior que a mediana (rejeição acima
+  da mediana), contra ~41% esperados ao acaso entre as ordens expedidas (binomial, p ≈ 1e-14); o resto não
   mostra esse sinal — consistente com a dependência de amostragem AQL documentada ao longo do
   projeto. Testado formalmente (não só por um caso), o sinal é estatisticamente real, mas fraco:
   um alerta baseado só em taxa de rejeição interna captura uma fração pequena das reclamações
@@ -325,14 +330,14 @@ totais de perdas, a leitura de confiabilidade e a de ML — antes/depois em
 - **Um Índice Relativo de Priorização Operacional** (normalizado dentro da própria frota — não uma
   medida probabilística de risco) combina qualidade, manutenção, produção e reclamação de
   cliente (reclamações por milhão de unidades, não contagem bruta) num único ranking por máquina —
-  ISBM-003, IM-002 e ISBM-005 lideram o combinado, cada uma puxada por um ângulo diferente (qualidade,
+  ISBM-003, IM-002 e IM-004 lideram o combinado, cada uma puxada por um ângulo diferente (qualidade,
   cliente, manutenção) que um painel só de OEE
   deixaria escondido atrás de métricas mais visíveis.
 - **Seis modelos de Machine Learning, cada um contra a regra simples que substituiria — e só 1
   supera-a de forma material** (≥ 5%): o de taxa de sucata por ordem (R² 0,576 vs. 0,472 da sucata
-  histórica da máquina). A previsão de produção semanal (R² 0,998) **empata** com *plano × cumprimento
-  histórico do processo* (R² 0,998) — o mérito é do plano, não do modelo. A manutenção preditiva
-  (ROC-AUC 0,575, alvo só com avarias de equipamento) não supera a taxa histórica de avarias da máquina
+  histórica da máquina). A previsão de produção semanal (R² 0,999) **empata** com *plano × cumprimento
+  histórico do processo* (R² 0,999) — o mérito é do plano, não do modelo. A manutenção preditiva
+  (ROC-AUC 0,572, alvo só com avarias de equipamento) não supera a taxa histórica de avarias da máquina
   (0,586): com histórico de paragens apenas, sem dado de condição, o dataset não sustenta manutenção
   preditiva. Reportado como resultado — o projeto recomenda a regra simples onde o ML não a bate.
 - **Uma iniciativa recomendada, com evidência convergente de múltiplas Partes independentes**:
@@ -528,7 +533,10 @@ Revisão crítica de ponta a ponta, feita como um time multidisciplinar. Detalhe
   dia ao meio; a carta X̄ marca os pontos no lugar certo; foi acrescentado um teste binomial com o nulo
   correto no vínculo reclamação × qualidade interna; foi corrigida a afirmação sobre o fatorial 2³⁻¹
   (resolução III).
-- **Decisões pendentes** (documentadas e quantificadas, não aplicadas em silêncio): a base de tempo do OEE
-  (na janela real, 69,7% em vez de 78,2%), ordens sobrepostas (IM-008 com 188% das horas de calendário), o
-  setup fora da Disponibilidade, planos AQL fora da ISO 2859-1 e ~80 MB de material ISO/de terceiros
-  protegido por direitos de autor em `SGI_…/ISO_17025_…/`.
+- **Decisões implementadas** (a pedido; notebook reexecutado de ponta a ponta contra SQL Server 2022):
+  OEE na janela real da ordem com o setup como perda de disponibilidade (**72,3%**; na base antiga
+  "horas do plano", 78,2%), tampas alimentares na linha dedicada **IM-009** (a IM-008 tinha 188% das horas
+  de calendário ocupadas), planos AQL da **ISO 2859-1** (`lib/aql.py`). **Pendente**: remover ~80 MB de
+  material ISO/de terceiros protegido por direitos de autor em `SGI_…/ISO_17025_…/` (exige autorização e
+  reescrita do histórico) e regenerar os registos SGI no Windows. Ver
+  [`docs/audit_2026-09-30.md`](docs/audit_2026-09-30.md) §5.

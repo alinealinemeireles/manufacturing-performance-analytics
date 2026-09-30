@@ -16,7 +16,7 @@
 # linha a linha; uma linha viola a regra quando a expressão é False (NaN conta como violação só
 # nas colunas `required`).
 
-version: "1.1"
+version: "1.2"
 owner: "Engenharia de Dados (time virtual) -- Aline Meireles"
 dataset_window:
   start: "2025-07-01"
@@ -110,11 +110,12 @@ tables:
         max: 1.10
         severity: warn
         description: >-
-          Velocidade real até 110% do nominal. Defeito conhecido do V00: em ~500 ordens (sobretudo
-          Hot Foil / Serigrafia) a paragem registada na janela da ordem não deixa tempo físico para a
-          quantidade produzida à capacidade nominal -- inconsistência do gerador, não velocidade real.
-          O OEE usa Performance limitada a 1 e a Parte 4.17 usa a mediana; ordens em que a paragem
-          iguala o tempo planeado ficam com DowntimeExceedsPlan = True e PerformanceVsNominal vazio.
+          Velocidade real até 110% do nominal. Defeito conhecido do V00: em ~920 ordens (sobretudo Hot Foil / Serigrafia)
+          o gerador fixou a quantidade produzida sem descontar as paragens da janela da ordem -- com o tempo de
+          operação medido na janela real e descontadas refeições, limpezas, PM e setup (decisão D1), a quantidade
+          não cabe no tempo à capacidade nominal. Inconsistência do gerador, não velocidade real. O OEE usa
+          Performance limitada a 1 e a Parte 4.17 usa a mediana; ordens em que as perdas igualam o tempo de
+          produção planeado ficam com DowntimeExceedsPlan = True e PerformanceVsNominal vazio.
     row_rules:
       - {id: PROD-REJ, rule: "RejectedQty <= ProducedQty", severity: block, dimension: validity,
          description: "Não se rejeita mais do que se produz"}
@@ -442,3 +443,13 @@ business_rules:
      description: "Sufixo (sequência de lote de material) igual ao da produção. Convenção diferente no gerador V00 (sufixo = n.º de expedição) -- sinalizado, nenhuma análise junta vendas e produção por LotId (usam WorkOrder)"}
   - {id: BR-DATE-WINDOW, check: dates_within_window, severity: block, dimension: timeliness,
      description: "Datas de evento dentro da janela do dataset (+ tolerância para eventos de fecho)"}
+  - {id: BR-AQL-PLAN, check: aql_plan_matches_iso_2859_1, severity: block, dimension: validity,
+     description: "Ac/Re e tamanho de amostra = ISO 2859-1 Tabela II-A (amostragem simples, normal) para a letra-código e o AQL (decisão D3: os planos usavam o Ac da letra seguinte, um degrau mais brando do que a norma)"}
+  - {id: BR-AQL-ARROW, check: aql_sample_not_below_normative, severity: warn, dimension: validity,
+     description: "Onde a Tabela II-A tem seta (AQL 0,10 com letra L), a norma manda usar o plano M (n = 315, Ac 0); as características críticas foram amostradas com n = 200 -- menos proteção do que a norma exige. A amostra física não se refaz: desvio documentado, a corrigir no plano de controlo daqui para a frente"}
+  - {id: BR-AQL-LEVEL, check: aql_inspection_level_is_normative, severity: warn, dimension: validity,
+     description: "O par (tamanho do lote, letra-código) corresponde a um nível geral de inspeção da Tabela I (I, II ou III). Desvio conhecido: lotes pequenos com n = 200 fixo (incluindo n >= N, que exigiria inspeção a 100%) e lotes > 35.000 com letra M (nível II exige N)"}
+  - {id: BR-NO-OVERLAP-MOLDING, check: no_overlapping_orders_molding, severity: warn, dimension: consistency,
+     description: "Sopro/injeção: uma máquina corre uma ordem de cada vez. Conhecido: 8 sobreposições de 5 ordens de refação do V00 inseridas sobre a ordem em curso, e 3 da expansão V01 (clonadas com o horário da máquina doadora). A IM-008 (188% das horas de calendário) foi resolvida pela decisão D2: as tampas alimentares passaram para a linha dedicada IM-009"}
+  - {id: BR-NO-OVERLAP-DECORATION, check: no_overlapping_orders_decoration, severity: warn, dimension: consistency,
+     description: "Serigrafia/Hot Foil: defeito estrutural do V00 congelado -- as ordens de decoração foram agendadas sem fila (até 7 simultâneas; na HF-001 a soma das durações excede o calendário), logo nenhuma re-sequenciação cabe numa máquina. Consequência: a utilização por máquina de decoração e o casamento paragem -> ordem (a paragem vai para a ordem iniciada por último) são aproximados; o OEE por ordem não é afetado"}

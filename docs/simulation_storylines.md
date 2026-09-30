@@ -60,7 +60,8 @@ Versão 00 dataset (18 months, 4 processes, 18 machines, cosmetics-only portfoli
 was validated and audited — none of it changed. (This portfolio expansion is unrelated to, and
 does not renumber, the "Versão 01" of `README.md` §13 / `docs/technical_audit_and_methodology.md`,
 which refers to the post-fix multidisciplinary audit of the notebook itself.) This section
-documents a strictly **additive** expansion: 4 brand-new machines (`ISBM-009`, `ISBM-010`, `IM-007`, `IM-008`), ~15 new product SKUs
+documents a strictly **additive** expansion: 4 brand-new machines (`ISBM-009`, `ISBM-010`, `IM-007`, `IM-008`) -- plus `IM-009`, the dedicated
+food-contact cap line split off `IM-008` by audit decision D2 (2026-09-30) -- ~15 new product SKUs
 (food/pharma bottles, cream pots, a tamper-evident cap, a pot lid — prefixes `FA-`, `FP-`, `PT-`,
 `TE-`, `TP-`), 2 new suppliers (`SUP-009`, `SUP-010`), 4 new customers (`CUST-015`-`CUST-018`,
 segments `Food Packaging`/`Pharmaceutical`), and ~6 new employees, all commissioned on

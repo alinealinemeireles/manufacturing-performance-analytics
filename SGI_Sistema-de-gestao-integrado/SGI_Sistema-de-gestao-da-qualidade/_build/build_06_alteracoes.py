@@ -18,7 +18,7 @@ MOC = [
      "Capacidade para os SKU FA/FP; consequência: novo equipamento sem capacidade demonstrada pode gerar lotes NC", "Novos planos de controlo e instruções; máquinas no âmbito da metrologia e da manutenção",
      "Investimento € 1,9 M; técnico do fabricante 3 semanas", "Diretor Industrial; Engenheiro(a) de Processo (qualificação)", "Plano de arranque divulgado a produção, qualidade e manutenção",
      "OEE ≥ 70% e FPY ≥ 90% após 8 semanas", "Revisão aos 90 dias de produção", "7.1.3; 8.5.1 f); 8.5.6", "Sim", "2026-06-20", "IQ/OQ/PQ", "R12", "PC-SOP-01 rev. 04; IT-SOP-03", DIND, "2026-02-02", "2026-06-29", "Implementada", "2026-09-30", "Parcial", "RG-SGA-18"),
-    ("MOC-Q-26-03", "2026-01-12", "Equipamento", "Planeada", "Instalação das injetoras IM-007 e IM-008 (potes PT e tampas TE/TP/TA)",
+    ("MOC-Q-26-03", "2026-01-12", "Equipamento", "Planeada", "Instalação das injetoras IM-007, IM-008 e IM-009 (potes PT, tampas TE/TP; IM-009 dedicada às tampas alimentares TA)",
      "Capacidade para potes e tampas farma/alimentar; risco de defeitos no arranque", "Novos moldes M-INJ-010 a 014 na metrologia e manutenção", "Investimento € 1,1 M",
      "Diretor Industrial; Engenheiro(a) de Processo", "Plano de arranque", "FPY ≥ 90% após 8 semanas; anel de inviolabilidade ≤ 1 000 ppm", "Revisão aos 90 dias",
      "7.1.3; 8.5.1 f); 8.5.6", "Sim", "2026-06-20", "IQ/OQ/PQ", "R12", "PC-INJ-01 rev. 05; IT-INJ-04", DIND, "2026-02-02", "2026-06-29", "Implementada", "2026-09-30", "Não eficaz", ""),

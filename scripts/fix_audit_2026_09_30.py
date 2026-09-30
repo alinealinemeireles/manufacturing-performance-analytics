@@ -39,19 +39,45 @@ script is idempotent (a second run changes nothing).
 5. **dim_supplier** -- SUP-001 delivered HDPE-PCR lots (the documented 2026-05 transition from
    SUP-001 to SUP-004, docs/simulation_storylines.md), but its `MaterialsSupplied` omitted it.
 
+Decisions D2 and D3 (implemented on request after the audit, same script so one run reproduces
+the whole corrected dataset):
+
+6. **D2 -- food-contact caps get their own injection line, IM-009.** The food-cap backfill put a
+   third mold (M-INJ-014, TA-014 caps, 263 orders) on IM-008 "additively", on top of the two
+   molds IM-008 already ran full time: IM-008 ended up with 188% of its calendar hours booked,
+   which no machine can do. Those orders (and their plan, process parameters, QC and material
+   rows -- they have no sales or downtime rows) move to a new, dedicated IM-009, installed in
+   2026 with automated defect detection like the other new lines -- food-contact segregation is
+   also what a food-safety scheme would ask for. dim_machine_profile / dim_machine_setup follow.
+
+7. **D3 -- attribute sampling plans per ISO 2859-1** (all attribute inspections). The data used
+   the Ac/Re of the NEXT code letter (L / AQL 0.65 -> Ac 5, the standard says 3; M / 1.5 -> 14 vs
+   10), i.e. plans one step more lenient than the standard they cite. Fix: Ac/Re from Table II-A
+   for the code letter actually sampled (the physical sample cannot be re-drawn), LotDecision
+   re-derived (reject at d >= Re), and `InspectionLevel` set to the general level (Table I) the
+   lot size / code letter pair really corresponds to -- "Não normativo" where none does. The
+   Storyline F tightening (n x 1.5 = 300 / 472, not sizes the standard has) becomes what the
+   standard prescribes for more discrimination: inspection level III (M/315, N/500).
+
 Run: python scripts/fix_audit_2026_09_30.py
 """
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "lib"))
+import aql  # noqa: E402
 
 BRONZE = ROOT / "datasets" / "bronze"
 DIM = ROOT / "datasets" / "dim"
-NEW_MACHINES = {"IM-007", "IM-008", "ISBM-009", "ISBM-010"}
+NEW_MACHINES = {"IM-007", "IM-008", "IM-009", "ISBM-009", "ISBM-010"}
+FOOD_CAP_MOLD, FOOD_CAP_FROM, FOOD_CAP_TO = "M-INJ-014", "IM-008", "IM-009"
+ATTRIBUTE_TABLES = ("fact_bottle_attribute_inspection_cq_raw", "fact_cap_attribute_inspection_cq_raw",
+                    "fact_ink_attribute_inspection_cq_raw")
 WINDOW_END = pd.Timestamp("2026-12-30")
 RUN_CONSUMPTION_KG = 4.00  # Versão 00 mode: 13,259 of 15,452 records consume exactly 4.00 kg
 
@@ -179,10 +205,71 @@ def fix_supplier_materials() -> None:
     print(f"[5] dim_supplier: SUP-001 supplies {', '.join(materials)}")
 
 
+# ---------------------------------------------------------------------------
+# 6. D2 -- dedicated food-contact injection line
+# ---------------------------------------------------------------------------
+def move_food_caps_to_dedicated_line() -> None:
+    production = read(BRONZE, "fact_production_raw")
+    food_orders = set(production.loc[production["ToolId"].str.strip() == FOOD_CAP_MOLD, "WorkOrder"])
+    moved = {}
+    for name in ("fact_production_raw", "fact_production_plan_raw", "fact_process_parameters_raw",
+                 "fact_cap_inspection_variable_cq_raw", "fact_cap_attribute_inspection_cq_raw",
+                 "fact_cap_disposition_lot_cq_raw", "fact_material_consumption_raw", "fact_sales_raw",
+                 "fact_downtime_raw"):
+        df = read(BRONZE, name)
+        if "WorkOrder" not in df.columns:
+            assert not (df["MachineId"] == FOOD_CAP_FROM).any() or name == "fact_downtime_raw"
+            continue
+        rows = df["WorkOrder"].isin(food_orders) & (df["MachineId"].str.strip() == FOOD_CAP_FROM)
+        assert not (rows & (name == "fact_sales_raw")).any(), "food-cap orders were never shipped"
+        df.loc[rows, "MachineId"] = FOOD_CAP_TO
+        moved[name] = int(rows.sum())
+        write(df, BRONZE, name)
+
+    profile = read(DIM, "dim_machine_profile")
+    if FOOD_CAP_TO not in set(profile["MachineId"]):
+        new_line = pd.DataFrame([{"MachineId": FOOD_CAP_TO, "InstallationYear": 2026, "HasAutomatedDefectDetection": True}])
+        position = profile.index[profile["MachineId"] == FOOD_CAP_FROM][0] + 1
+        profile = pd.concat([profile.iloc[:position], new_line, profile.iloc[position:]], ignore_index=True)
+        write(profile, DIM, "dim_machine_profile")
+    setup = read(DIM, "dim_machine_setup")
+    setup.loc[setup["MoldId"] == FOOD_CAP_MOLD, "MachineId"] = FOOD_CAP_TO
+    write(setup, DIM, "dim_machine_setup")
+    print(f"[6] D2: {len(food_orders)} food-cap orders ({FOOD_CAP_MOLD}) on {FOOD_CAP_TO}; rows moved: {moved}")
+
+
+# ---------------------------------------------------------------------------
+# 7. D3 -- ISO 2859-1 sampling plans
+# ---------------------------------------------------------------------------
+STORYLINE_F_LEVEL_III = {300: ("M", 315), 472: ("N", 500)}  # n x 1.5 -> level III letter/size
+
+
+def apply_iso_2859_plans() -> None:
+    for name in ATTRIBUTE_TABLES:
+        a = read(BRONZE, name)
+        before = a["LotDecision"].str.strip().str.title().eq("Rejected").sum()
+        for n_old, (letter, n_new) in STORYLINE_F_LEVEL_III.items():
+            rows = a["SampleSize"] == n_old
+            assert a.loc[rows, "MachineId"].eq("IM-007").all(), "n = 300/472 is Storyline F (IM-007) only"
+            a.loc[rows, ["CodeLetter", "SampleSize"]] = [letter, n_new]
+        plans = [aql.single_normal_plan(letter, q) for letter, q in zip(a["CodeLetter"], a["AQL"])]
+        a["AcceptanceNumber"] = [ac for _, ac, _, _ in plans]
+        a["RejectionNumber"] = [re for _, _, re, _ in plans]
+        a["LotDecision"] = (a["DefectsFound"] >= a["RejectionNumber"]).map({True: "Rejected", False: "Approved"})
+        a["InspectionLevel"] = [aql.inspection_level_used(int(lot), letter) or "Não normativo"
+                                for lot, letter in zip(a["LotSize"], a["CodeLetter"])]
+        write(a, BRONZE, name)
+        after = int((a["LotDecision"] == "Rejected").sum())
+        print(f"[7] D3 {name}: rejected characteristic-lots {int(before)} -> {after}; "
+              f"levels {a['InspectionLevel'].value_counts().to_dict()}")
+
+
 def main() -> None:
     production = read(BRONZE, "fact_production_raw").drop_duplicates("WorkOrder")
     fix_batch_release(production)
     fix_attribute_decisions()
+    move_food_caps_to_dedicated_line()
+    apply_iso_2859_plans()
     fix_material_consumption()
     fix_lotid_iso_year(production)
     fix_supplier_materials()

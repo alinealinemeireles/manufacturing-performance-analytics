@@ -550,10 +550,20 @@ downtime = downtime.merge(production[["WorkOrder", "LotId"]].rename(columns={"Wo
 downtime = etl.add_maintenance_info(downtime)
 
 # %% [markdown]
-# OEE: `Availability = Tempo em Operação / Tempo Planejado`, `Performance = taxa real
+# OEE: `Availability = Tempo em Operação / Tempo de Produção Planeado`, `Performance = taxa real
 # (peças/h) / taxa nominal`, `Quality = (produzido - rejeitado) / produzido`,
 # `OEE = Availability × Performance × Quality`. A capacidade nominal vem de
 # `dim_machine_setup.csv`, por `(MachineId, ToolId)`.
+#
+# **Base de tempo (decisão D1 da auditoria de 2026-09-30).** O *Tempo de Produção Planeado*
+# (`PlannedTimeHours`, o "tempo de carga" do OEE) é a janela **real** da ordem na máquina menos as
+# paragens planeadas que não são troca (refeição, limpeza programada, manutenção preventiva). O
+# *Tempo em Operação* (`RunTimeHours`) desconta as paragens não planeadas **e o setup/troca** — na
+# TPM o setup é perda de disponibilidade, e é o mesmo número que as Six Big Losses (4.7) cobram. As
+# horas do plano ficam em `PlannedHours` e alimentam a aderência ao plano (4.9–4.10), um KPI à parte.
+# Antes, a paragem da janela real era subtraída das horas do **plano**: 43,5% das ordens correm mais
+# de 10% acima do plano, e essa sobreduração não era cobrada a nenhum pilar (OEE de 78,2% na base
+# antiga).
 
 # %%
 def parse_capacity_number(value) -> float:
@@ -2595,17 +2605,16 @@ answer(f"Entre as três atividades sem valor agregado nomeadas na pergunta, **'{
 # %% [markdown]
 # ## 4.9 — Aderência ao plano
 #
-# Checagem honesta, herdada da estrutura original deste dado: `PlannedTimeHours` é
-# derivado da mesma janela de início/fim real da ordem
-# (`RunTimeHours = PlannedTimeHours - ParadaNãoPlanejadaHoras`), então por construção o
-# tempo de execução nunca pode exceder o plano — não existe aqui um "cronograma
-# comprometido" independente que uma ordem possa genuinamente bater ou perder. Reportar
-# os 100% honestamente, com o motivo pelo qual não é um resultado significativo, é mais
-# útil que uma métrica que parece tranquilizadora pelo motivo errado.
+# A aderência compara a janela **real** da ordem (`LeadTimeProdHours`) com as horas do **plano**
+# (`PlannedHours`, sorteadas pelo planeamento antes de a ordem correr). A versão anterior comparava
+# `RunTimeHours` com `PlannedTimeHours` — dois números derivados da mesma base, logo ~100% por
+# construção, e sem significado. Com o OEE na base real (decisão D1), o tempo que a ordem passa
+# além do plano já pesa na Disponibilidade/Performance; aqui ele aparece como o que é: falha de
+# aderência ao programa.
 
 # %%
-production["OnSchedule"] = production["RunTimeHours"] <= production["PlannedTimeHours"] * 1.05
-print("Aderência ao cronograma (tempo de execução dentro de 5% do plano):")
+production["OnSchedule"] = production["LeadTimeProdHours"] <= production["PlannedHours"] * 1.05
+print("Aderência ao cronograma (janela real dentro de +5% das horas do plano):")
 print(production.groupby("Process")["OnSchedule"].mean().round(3))
 
 # %% [markdown]
