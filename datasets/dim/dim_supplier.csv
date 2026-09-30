@@ -1,5 +1,5 @@
 ﻿SupplierId,SupplierName,Country,HeadquartersCity,MaterialsSupplied,SupplierTier,YearsAsSupplier,ContractType
-SUP-001,PolyGlobal Resins Corp,USA,Houston,"HDPE, LDPE, MDPE",Tier 1,12,Annual Contract
+SUP-001,PolyGlobal Resins Corp,USA,Houston,"HDPE, HDPE-PCR, LDPE, MDPE",Tier 1,12,Annual Contract
 SUP-002,Meridian Petrochemicals GmbH,Germany,Ludwigshafen,"PP, PP-PCR",Tier 1,17,Annual Contract
 SUP-003,NorthStar Polymer Solutions,USA,Baytown,"PET, PETG",Tier 1,19,Annual Contract
 SUP-004,TransAtlantic Polymers plc,United Kingdom,Wilton,"HDPE-PCR, rPET",Tier 2,15,Annual Contract

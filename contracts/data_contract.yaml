@@ -16,7 +16,7 @@
 # linha a linha; uma linha viola a regra quando a expressão é False (NaN conta como violação só
 # nas colunas `required`).
 
-version: "1.0"
+version: "1.1"
 owner: "Engenharia de Dados (time virtual) -- Aline Meireles"
 dataset_window:
   start: "2025-07-01"
@@ -164,8 +164,13 @@ tables:
     layer: silver
     file: fact_material_consumption_processed.csv
     grain: "1 linha = 1 registo de consumo de colorante/material dentro de uma ordem"
-    required: [Date, WorkOrder, MachineId, MaterialId]
+    required: [Date, WorkOrder, MachineId, MaterialId, StartWeightKg, EndWeightKg]
     date_columns: [Date]
+    ranges:
+      EndWeightKg: {min: 0}
+    row_rules:
+      - {id: MC-CONSUMED, rule: "EndWeightKg <= StartWeightKg", severity: block, dimension: validity,
+         description: "Material é consumido, não criado: peso final <= peso inicial (a expansão V01 tinha 338 registos a 'ganhar' até 35,8 kg -- corrigido por scripts/fix_audit_2026_09_30.py)"}
     foreign_keys:
       - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
 
@@ -204,6 +209,63 @@ tables:
     foreign_keys:
       - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
       - {columns: [CapId], references: dim_cap, ref_columns: [CapId], severity: block}
+
+  fact_bottle_attribute_inspection:
+    layer: silver
+    file: fact_bottle_attribute_inspection_cq_processed.csv
+    grain: "1 linha = 1 característica de atributo (AQL, ISO 2859-1) inspecionada em 1 lote de frasco/pote"
+    required: &attr_required [WorkOrder, MachineId, Characteristic, AQL, LotSize, SampleSize, AcceptanceNumber,
+                              RejectionNumber, DefectsFound, LotDecision]
+    date_columns: [ProductionDate]
+    allowed_values:
+      LotDecision: *lot_decision
+    row_rules:
+      - &attr_decision {id: ATTR-DECISION, rule: "(DefectsFound >= RejectionNumber) == (LotDecision == 'Rejected')",
+         severity: block, dimension: consistency,
+         description: "Decisão segue o plano de amostragem: rejeita se defeitos >= Re (a expansão V01 aprovava com defeitos = Re -- 47 casos, corrigidos)"}
+      - &attr_re {id: ATTR-RE, rule: "RejectionNumber == AcceptanceNumber + 1", severity: block, dimension: validity,
+         description: "Amostragem simples: Re = Ac + 1"}
+      - &attr_d {id: ATTR-DEFECTS, rule: "DefectsFound <= SampleSize", severity: block, dimension: validity,
+         description: "Não se encontram mais defeituosos do que peças amostradas"}
+      - {id: ATTR-N, rule: "SampleSize <= LotSize", severity: warn, dimension: validity,
+         description: "Amostra nunca maior do que o lote (ISO 2859-1: se n >= N, inspeção 100%). Defeito conhecido do V00: 18 inspeções (ISBM-005/ISBM-008, lotes de 105-184 un. com n = 200)"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  fact_cap_attribute_inspection:
+    layer: silver
+    file: fact_cap_attribute_inspection_cq_processed.csv
+    grain: "1 linha = 1 característica de atributo inspecionada em 1 lote de tampa"
+    required: *attr_required
+    date_columns: [ProductionDate]
+    allowed_values:
+      LotDecision: *lot_decision
+    row_rules:
+      - *attr_decision
+      - *attr_re
+      - *attr_d
+      - {id: ATTR-N, rule: "SampleSize <= LotSize", severity: block, dimension: validity,
+         description: "Amostra nunca maior do que o lote"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+      - {columns: [CapId], references: dim_cap, ref_columns: [CapId], severity: block}
+
+  fact_ink_attribute_inspection:
+    layer: silver
+    file: fact_ink_attribute_inspection_cq_processed.csv
+    grain: "1 linha = 1 característica de atributo inspecionada em 1 lote de decoração"
+    required: *attr_required
+    date_columns: [ProductionDate]
+    allowed_values:
+      LotDecision: *lot_decision
+    row_rules:
+      - *attr_decision
+      - *attr_re
+      - *attr_d
+      - {id: ATTR-N, rule: "SampleSize <= LotSize", severity: warn, dimension: validity,
+         description: "Amostra nunca maior do que o lote. Defeito conhecido do V00: 423 inspeções de decoração em lotes pequenos (< 200 un.) com n = 200 fixo -- o plano não reduz a amostra nem passa a 100%"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
 
   fact_bottle_disposition_lot:
     layer: silver
@@ -256,6 +318,9 @@ tables:
     ranges:
       ShippedQty: {min: 1}
       UnitPriceEUR: {min: 0}
+    row_rules:
+      - {id: SALES-VALUE, rule: "abs(TotalValueEUR - ShippedQty * UnitPriceEUR) < 0.05", severity: block,
+         dimension: consistency, description: "Valor da linha = quantidade x preço unitário (tolerância de arredondamento)"}
     foreign_keys:
       - {columns: [CustomerId], references: dim_customer, ref_columns: [CustomerId], severity: block}
       - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
@@ -273,11 +338,31 @@ tables:
     row_rules:
       - {id: CMP-STATUS, rule: "(Status == 'Closed') == ResolutionDate.notna()", severity: block,
          dimension: consistency, description: "Reclamação fechada tem data de resolução, e só ela"}
+      - {id: CMP-ORDER, rule: "ResolutionDate.fillna('9999-12-31').astype('str') >= Date.astype('str')", severity: block,
+         dimension: consistency, description: "Resolução nunca antes da abertura da reclamação"}
     foreign_keys:
       - {columns: [CustomerId], references: dim_customer, ref_columns: [CustomerId], severity: block}
       - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
       - {columns: [SalesOrderId], references: fact_sales, ref_columns: [SalesOrderId], severity: warn,
          description: "Reclamação rastreável até à encomenda expedida"}
+
+  fact_raw_material_inspection:
+    layer: silver
+    file: fact_raw_material_inspection_processed.csv
+    grain: "1 linha = 1 característica ensaiada em 1 lote de matéria-prima recebido"
+    primary_key: [InspectionId]
+    required: [InspectionId, Date, SupplierId, Material, MaterialLotId, Characteristic, ResultValue, LSL, USL, Result]
+    date_columns: [Date]
+    allowed_values:
+      Result: ["Pass", "Fail"]
+    row_rules:
+      - {id: RMI-SPEC, rule: "LSL < USL", severity: block, dimension: validity, description: "Especificação coerente"}
+      - {id: RMI-RESULT, rule: "(Result == 'Pass') == ((ResultValue >= LSL) & (ResultValue <= USL))", severity: warn,
+         dimension: consistency,
+         description: "Veredito coerente com a especificação. Defeito conhecido do V00: 3 ensaios exatamente no limite (ex.: densidade 0,95 = LSL) registados como Fail -- o valor foi arredondado depois de decidido; a regra de arredondamento vs. limite deve estar escrita no plano de controlo"}
+    foreign_keys:
+      - {columns: [MaterialLotId], references: fact_raw_material_lot_disposition, ref_columns: [MaterialLotId], severity: block}
+      - {columns: [SupplierId], references: dim_supplier, ref_columns: [SupplierId], severity: block}
 
   fact_raw_material_lot_disposition:
     layer: silver
@@ -301,6 +386,8 @@ tables:
     row_rules:
       - {id: SCMP-STATUS, rule: "(Status == 'Closed') == DateResolved.notna()", severity: block,
          dimension: consistency, description: "Reclamação a fornecedor fechada tem data de resolução"}
+      - {id: SCMP-ORDER, rule: "(DateSupplierResponded.fillna('9999-12-31').astype('str') >= Date.astype('str')) & (DateResolved.fillna('9999-12-31').astype('str') >= DateSupplierResponded.fillna(Date).astype('str'))",
+         severity: block, dimension: consistency, description: "Abertura <= resposta do fornecedor <= resolução"}
     foreign_keys:
       - {columns: [SupplierId], references: dim_supplier, ref_columns: [SupplierId], severity: block}
 
@@ -329,6 +416,8 @@ tables:
     row_rules:
       - {id: CAPA-CLOSE, rule: "(Status == 'Closed') == CloseDate.notna()", severity: block,
          dimension: consistency, description: "CAPA fechada tem data de fecho, e só ela"}
+      - {id: CAPA-ORDER, rule: "(DueDate.astype('str') >= OpenDate.astype('str')) & (CloseDate.fillna('9999-12-31').astype('str') >= OpenDate.astype('str'))",
+         severity: block, dimension: consistency, description: "Prazo e fecho nunca antes da abertura da CAPA"}
       - {id: CAPA-EFF, rule: "(Status == 'Closed') | ~EffectivenessCheck.isin(['Effective', 'Not Effective'])",
          severity: warn, dimension: consistency,
          description: "Eficácia só pode ser concluída depois de a ação estar implementada/fechada (ISO 9001 10.2.1 d). Defeito conhecido do V00: 139 CAPAs abertas/atrasadas já com veredito de eficácia"}
@@ -342,9 +431,11 @@ business_rules:
   - {id: BR-PLAN-PROD, check: every_production_order_is_planned, severity: block, dimension: referential_integrity,
      description: "Toda ordem executada tem ordem planeada (plano <-> real 1:1)"}
   - {id: BR-RELEASE, check: rejected_lot_not_shipped, severity: block, dimension: consistency,
-     description: "Lote com decisão final Rejected (segregado) nunca aparece numa expedição (ISO 9001 8.6/8.7)"}
+     description: "Nenhuma ordem de um LOTE (ProductBatch / PrintLot) com decisão final Rejected aparece numa expedição (ISO 9001 8.6/8.7). Verificado por lote, não pela ordem citada na disposição: um lote junta 1-16 ordens"}
   - {id: BR-SHIP-AFTER-DECISION, check: shipped_after_lot_decision, severity: block, dimension: timeliness,
-     description: "Nenhum lote é expedido antes do dia da sua decisão de libertação"}
+     description: "A ordem citada na disposição do lote nunca é expedida antes do dia da decisão de libertação"}
+  - {id: BR-SHIP-AFTER-BATCH-DECISION, check: shipped_after_batch_decision, severity: warn, dimension: timeliness,
+     description: "Nenhuma ordem do lote é expedida antes da decisão do LOTE. Defeito conhecido do V00: 173 expedições 1-6 dias antes da decisão do seu lote (o gerador ligava a libertação só à última ordem do lote); na expansão V01, 0 depois de scripts/fix_audit_2026_09_30.py"}
   - {id: BR-LOTID-TRACE, check: sales_lotid_prefix_matches_production, severity: block, dimension: consistency,
      description: "Os 14 primeiros caracteres do LotId da expedição = LotId da ordem que o produziu (rastreabilidade ISO 9001 8.5.2)"}
   - {id: BR-LOTID-SUFFIX, check: sales_lotid_suffix_matches_production, severity: warn, dimension: consistency,

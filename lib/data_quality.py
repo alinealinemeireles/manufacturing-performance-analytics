@@ -158,12 +158,27 @@ def _table_rules(name: str, spec: dict, df: pd.DataFrame, contract: dict,
 # Cross-table business rules (declared in the contract's `business_rules`)
 # ---------------------------------------------------------------------------
 
-def _dispositions(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    parts = [tables[name][["WorkOrder", "FinalLotDecision", "LotDecisionDateTime"]]
-             for name in ("fact_bottle_disposition_lot", "fact_cap_disposition_lot", "fact_ink_disposition_lot")
-             if name in tables]
+# The lot released or rejected by QC is the PRODUCT BATCH, not the work order: one batch
+# (`ProductBatch`; `PrintLot` for decoration) spans 1-16 work orders, and its disposition row
+# carries only the batch's last WorkOrder. Checking release at WorkOrder level let 31 sales rows
+# from Rejected (scrapped/segregated) batches through the gate (audit 2026-09-30), so the
+# release rules join sales -> WorkOrder -> batch.
+DISPOSITION_BATCH_KEY = {"fact_bottle_disposition_lot": "ProductBatch", "fact_cap_disposition_lot": "ProductBatch",
+                         "fact_ink_disposition_lot": "PrintLot"}
+
+
+def _batch_dispositions(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    parts = [pd.DataFrame({"Batch": tables[name][key].to_numpy(),
+                           "FinalLotDecision": tables[name]["FinalLotDecision"].to_numpy(),
+                           "LotDecisionDateTime": tables[name]["LotDecisionDateTime"].to_numpy()})
+             for name, key in DISPOSITION_BATCH_KEY.items() if name in tables]
     return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame(
-        columns=["WorkOrder", "FinalLotDecision", "LotDecisionDateTime"])
+        columns=["Batch", "FinalLotDecision", "LotDecisionDateTime"])
+
+
+def _sales_batch(tables: dict[str, pd.DataFrame]) -> pd.Series:
+    batch_by_order = tables["fact_production"].drop_duplicates("WorkOrder").set_index("WorkOrder")["ProductBatch"]
+    return tables["fact_sales"]["WorkOrder"].map(batch_by_order)
 
 
 def every_production_order_is_planned(tables, contract):
@@ -172,21 +187,36 @@ def every_production_order_is_planned(tables, contract):
 
 
 def rejected_lot_not_shipped(tables, contract):
-    dispositions = _dispositions(tables)
-    rejected = set(dispositions.loc[dispositions["FinalLotDecision"] == "Rejected", "WorkOrder"])
-    sales = tables["fact_sales"]
-    return len(sales), sales["WorkOrder"].isin(rejected).sum()
+    dispositions = _batch_dispositions(tables)
+    rejected = set(dispositions.loc[dispositions["FinalLotDecision"] == "Rejected", "Batch"])
+    sales_batch = _sales_batch(tables)
+    return len(sales_batch), sales_batch.isin(rejected).sum()
 
 
-def shipped_after_lot_decision(tables, contract):
-    dispositions = _dispositions(tables)
-    decision_day = (pd.to_datetime(dispositions["LotDecisionDateTime"], format="mixed", errors="coerce")
-                    .groupby(dispositions["WorkOrder"]).max().dt.normalize())
-    sales = tables["fact_sales"]
-    decided = sales["WorkOrder"].map(decision_day)
+def _shipped_before(decision_by_key: pd.Series, sales_key: pd.Series, sales: pd.DataFrame) -> tuple[int, int]:
+    decided = sales_key.map(decision_by_key)
     has_decision = decided.notna()
     shipped = pd.to_datetime(sales["Date"])
     return int(has_decision.sum()), int((shipped[has_decision] < decided[has_decision]).sum())
+
+
+def shipped_after_lot_decision(tables, contract):
+    """Work order named on the disposition row ships on or after the decision day."""
+    parts = [tables[name][["WorkOrder", "LotDecisionDateTime"]] for name in DISPOSITION_BATCH_KEY if name in tables]
+    dispositions = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame(columns=["WorkOrder", "LotDecisionDateTime"])
+    decision_day = (pd.to_datetime(dispositions["LotDecisionDateTime"], format="mixed", errors="coerce")
+                    .groupby(dispositions["WorkOrder"]).max().dt.normalize())
+    sales = tables["fact_sales"]
+    return _shipped_before(decision_day, sales["WorkOrder"], sales)
+
+
+def shipped_after_batch_decision(tables, contract):
+    """EVERY work order of a batch ships on or after the batch's decision day (the stricter,
+    correct reading of ISO 9001 8.6 -- the batch is what QC releases)."""
+    dispositions = _batch_dispositions(tables)
+    decision_day = (pd.to_datetime(dispositions["LotDecisionDateTime"], format="mixed", errors="coerce")
+                    .groupby(dispositions["Batch"]).max().dt.normalize())
+    return _shipped_before(decision_day, _sales_batch(tables), tables["fact_sales"])
 
 
 def _sales_vs_production_lotid(tables) -> pd.DataFrame:
@@ -219,10 +249,25 @@ def dates_within_window(tables, contract):
     return checked, failed
 
 
+# Tables each business rule reads. A rule is skipped only when one of these was not loaded;
+# any other error inside a rule (a renamed column, a bad join) must surface, not be swallowed
+# -- catching every KeyError silently dropped a BLOCK rule from the gate.
+# (The disposition tables are optional inputs: each one loaded contributes its batches.)
+RULE_TABLES = {
+    "every_production_order_is_planned": ("fact_production", "fact_production_plan"),
+    "rejected_lot_not_shipped": ("fact_production", "fact_sales"),
+    "shipped_after_lot_decision": ("fact_sales",),
+    "shipped_after_batch_decision": ("fact_production", "fact_sales"),
+    "sales_lotid_prefix_matches_production": ("fact_production", "fact_sales"),
+    "sales_lotid_suffix_matches_production": ("fact_production", "fact_sales"),
+    "dates_within_window": (),
+}
+
 BUSINESS_RULES = {
     "every_production_order_is_planned": every_production_order_is_planned,
     "rejected_lot_not_shipped": rejected_lot_not_shipped,
     "shipped_after_lot_decision": shipped_after_lot_decision,
+    "shipped_after_batch_decision": shipped_after_batch_decision,
     "sales_lotid_prefix_matches_production": sales_lotid_prefix_matches_production,
     "sales_lotid_suffix_matches_production": sales_lotid_suffix_matches_production,
     "dates_within_window": dates_within_window,
@@ -241,10 +286,9 @@ def validate(contract: dict, tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
             results.extend(_table_rules(name, spec, tables[name], contract, tables))
     for rule in contract.get("business_rules", []):
         check = BUSINESS_RULES[rule["check"]]
-        try:
-            n_checked, n_failed = check(tables, contract)
-        except KeyError:  # a table this rule needs was not loaded -- skip, don't guess
-            continue
+        if any(table not in tables for table in RULE_TABLES[rule["check"]]):
+            continue  # a table this rule needs was not loaded -- skip, don't guess
+        n_checked, n_failed = check(tables, contract)
         results.append(RuleResult("business_rules", rule["id"], rule.get("dimension", "consistency"),
                                   rule.get("severity", "block"), rule["description"], int(n_checked), int(n_failed)))
     frame = pd.DataFrame([asdict(r) for r in results])

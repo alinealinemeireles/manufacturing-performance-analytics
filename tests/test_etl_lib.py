@@ -75,6 +75,25 @@ def test_lotid_prefix_layout():
     assert len(prefix.iloc[0]) == 14
 
 
+@pytest.mark.parametrize("date, expected_yyww", [
+    ("2025-12-29", "2601"),  # Monday of ISO week 1 of 2026 -- was "2501" (one year off)
+    ("2025-12-31", "2601"),
+    ("2026-12-30", "2653"),  # ISO week 53 of 2026
+    ("2027-01-01", "2653"),  # still ISO 2026-W53
+    ("2025-07-01", "2527"),
+])
+def test_lotid_year_is_the_iso_year_of_the_iso_week(date, expected_yyww):
+    prefix = etl.build_lotid_prefix(pd.Series([date]), pd.Series([1]), pd.Series(["Blow Molding"]),
+                                    pd.Series(["ISBM-001"]), pd.Series(["WO-1000"]))
+    assert prefix.iloc[0][:4] == expected_yyww
+
+
+def test_material_lot_sequence_treats_consecutive_blank_lots_as_one_lot():
+    consumption = pd.DataFrame({"WorkOrder": ["WO-1"] * 3, "MaterialLot": [np.nan, np.nan, np.nan],
+                                "RecordSeq": [1, 2, 3]})
+    assert etl.compute_material_lot_sequence(consumption).tolist() == [1, 1, 1]
+
+
 def test_material_lot_sequence_increments_only_on_real_lot_change():
     consumption = pd.DataFrame({
         "WorkOrder": ["WO-1", "WO-1", "WO-1", "WO-1", "WO-2"],

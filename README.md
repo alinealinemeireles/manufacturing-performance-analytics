@@ -447,6 +447,7 @@ docs/
   data_dictionary.md           schema e referência de rastreabilidade
   simulation_storylines.md     referência de causas-raiz para validação metodológica
   audit_2026-09-29.md          auditoria de 2026-09-29: achados, correções e o que não foi feito
+  audit_2026-09-30.md          revisão crítica multidisciplinar: 17 correções + 9 decisões pendentes
   client_root_cause_action_plan.md, root_cause_action_register.csv,
   technical_audit_and_methodology.md, post_fix_independent_audit.md
 SGI_Sistema-de-gestao-integrado/   registos SGQ (ISO 9001) e SGA (ISO 14001) gerados de datasets/silver
@@ -509,3 +510,25 @@ Em resumo:
   explícito; painel de manutenção preditiva sem dias fabricados; modelos lineares padronizados.
 - **Leitura**: sumário executivo de 5 minutos, guia de leitura em 3 níveis, datas de referência e mapa de
   integração SGI ↔ Analytics.
+
+## 15. Auditoria de 2026-09-30 — Versão 1.3
+
+Revisão crítica de ponta a ponta, feita como um time multidisciplinar. Detalhe, evidência e testes em
+[`docs/audit_2026-09-30.md`](docs/audit_2026-09-30.md). Em resumo:
+
+- **Quality Gate mais rigoroso**: a libertação de produto passou a ser verificada **por lote**
+  (`ProductBatch`/`PrintLot`, 1–16 ordens), não pela ordem citada na disposição. Isso encontrou 31
+  expedições de lotes rejeitados que passavam no gate. Uma regra de negócio com bug já não é ignorada em
+  silêncio. O contrato passou de 21 para 25 tabelas e de 239 para 321 regras (planos AQL, ensaio de
+  matéria-prima, consumo de material, ordem das datas, valor das vendas).
+- **Dado corrigido** (`scripts/fix_audit_2026_09_30.py`, idempotente): decisões AQL contrárias ao Ac/Re,
+  consumo de material "negativo", `LotId` com o ano errado na virada ISO 2025/26. As causas-raiz foram
+  corrigidas nos geradores.
+- **Método**: o limiar económico passou a ser escolhido fora da amostra; a divisão temporal não corta um
+  dia ao meio; a carta X̄ marca os pontos no lugar certo; foi acrescentado um teste binomial com o nulo
+  correto no vínculo reclamação × qualidade interna; foi corrigida a afirmação sobre o fatorial 2³⁻¹
+  (resolução III).
+- **Decisões pendentes** (documentadas e quantificadas, não aplicadas em silêncio): a base de tempo do OEE
+  (na janela real, 69,7% em vez de 78,2%), ordens sobrepostas (IM-008 com 188% das horas de calendário), o
+  setup fora da Disponibilidade, planos AQL fora da ISO 2859-1 e ~80 MB de material ISO/de terceiros
+  protegido por direitos de autor em `SGI_…/ISO_17025_…/`.
