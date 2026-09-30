@@ -178,11 +178,16 @@ def work_order_number(work_order: str) -> str:
 def build_lotid_prefix(date: pd.Series, shift: pd.Series, process: pd.Series,
                         machine_id: pd.Series, work_order: pd.Series) -> pd.Series:
     """First 14 characters of the LotId: YY WW D T P MM OOOOO
-    year(2) + ISO week(2) + ISO weekday(1) + shift(1) + process(1) +
-    machine number(2) + work order number(5)."""
+    ISO year(2) + ISO week(2) + ISO weekday(1) + shift(1) + process(1) +
+    machine number(2) + work order number(5).
+
+    YY is the ISO-8601 week-numbering year, not the calendar year: WW is an ISO week, and
+    the two must come from the same calendar. 2025-12-29..31 belong to ISO week 1 of 2026
+    -- pairing the calendar year (25) with that week (01) encoded them as "2501", i.e. a
+    date in the first week of 2025, one year off (audit 2026-09-30)."""
     date = pd.to_datetime(date)
     iso_calendar = date.dt.isocalendar()
-    year = (date.dt.year % 100).astype(int).astype(str).str.zfill(2)
+    year = (iso_calendar["year"].astype(int) % 100).astype(str).str.zfill(2)
     week = iso_calendar["week"].astype(int).astype(str).str.zfill(2)
     weekday = iso_calendar["day"].astype(int).astype(str)
     shift_text = shift.astype(int).astype(str)
@@ -199,13 +204,17 @@ def compute_material_lot_sequence(consumption: pd.DataFrame, order_column="WorkO
     only when the physical material lot actually changes (not on every
     shift change). A loop is used deliberately -- each row must be compared
     to the row before it in real chronological order, and record_order_column
-    guards against the CSV coming back with rows out of order."""
+    guards against the CSV coming back with rows out of order.
+
+    Two consecutive blank lots (NaN) are the SAME unknown lot, not a lot change: `NaN != NaN`
+    is True in Python, so a plain `!=` bumped the sequence on every blank record."""
     df = consumption.sort_values([order_column, record_order_column]).copy()
     sequences, counter, previous_order, previous_lot = [], 0, None, None
     for current_order, current_lot in zip(df[order_column], df[lot_column]):
+        same_lot = (current_lot == previous_lot) or (pd.isna(current_lot) and pd.isna(previous_lot))
         if current_order != previous_order:
             counter = 1
-        elif current_lot != previous_lot:
+        elif not same_lot:
             counter += 1
         sequences.append(counter)
         previous_order, previous_lot = current_order, current_lot
@@ -270,43 +279,57 @@ def find_work_order_for_stoppage(downtime: pd.DataFrame, production: pd.DataFram
 def compute_oee_components(production: pd.DataFrame, plan: pd.DataFrame,
                             downtime_by_order: pd.DataFrame,
                             capacity_by_machine: dict) -> pd.DataFrame:
-    """OEE = Availability x Performance x Quality.
-    - Availability = Run Time / Planned Time (Run Time already excludes
-      unplanned downtime matched to this work order).
-    - Performance = actual pieces/hour vs. the machine's rated pieces/hour,
-      capped at 1.0 so OEE stays a proper share of theoretical max output
-      (see `PerformanceVsNominal` for the uncapped ratio).
+    """OEE = Availability x Performance x Quality, on the order's REAL time window.
+
+    - `PlannedTimeHours` is OEE's *Planned Production Time* (loading time): the order's actual
+      window on the machine (`LeadTimeProdHours`) minus the planned stops that are NOT
+      changeovers -- meal breaks, scheduled cleaning, planned preventive maintenance. The
+      schedule's own hours stay in `PlannedHours` (plan adherence is a separate KPI).
+    - `RunTimeHours` = Planned Production Time - availability losses, where the availability
+      losses are unplanned stops AND changeovers/setups (TPM: setup & adjustment is an
+      availability loss). Changeovers are planned stops in this data, so the loss is booked on
+      `SetupTimeHours`; the Six Big Losses charge exactly the same hours.
+    - Availability = RunTime / Planned Production Time.
+    - Performance = actual pieces/hour vs. rated pieces/hour, capped at 1.0 so OEE stays a
+      share of theoretical output (`PerformanceVsNominal` keeps the uncapped ratio).
     - Quality = (produced - rejected) / produced.
+
+    Why not the plan's hours (audit 2026-09-30, decision D1): the stops are matched to the
+    order's REAL window, and 43.5% of the orders run > 10% longer than planned. Subtracting
+    real-window downtime from planned hours mixed two time bases and charged the overrun to no
+    pillar at all -- the plant OEE read 78.2% where the real-window figure was ~70%.
     """
     df = production.merge(plan[["WorkOrder", "PlannedHours"]], on="WorkOrder", how="left")
-    df["PlannedTimeHours"] = df["PlannedHours"].astype(float)
 
-    unplanned_stoppages = downtime_by_order[downtime_by_order["PlannedStoppage"] == "No"]
-    setup_stoppages = downtime_by_order[
-        downtime_by_order["StoppageReason"].str.contains("Change / Setup|Change/Setup", case=False, na=False, regex=True)
-    ]
+    reason = downtime_by_order["StoppageReason"]
+    is_setup = (downtime_by_order["IsChangeoverSetup"] if "IsChangeoverSetup" in downtime_by_order.columns
+                else reason.str.contains("Change / Setup|Change/Setup", case=False, na=False, regex=True))
+    is_unplanned = downtime_by_order["PlannedStoppage"] == "No"
     # Machine time actually lost, not the sum of event durations: stoppage events on the same
     # machine overlap in the raw log (e.g. a registration adjustment running inside a quality
     # adjustment), and summing them charged the same minutes to Availability two or three
     # times -- see `compute_effective_downtime`.
     minutes_column = "EffectiveDowntimeMin" if "EffectiveDowntimeMin" in downtime_by_order.columns else "DowntimeDurationMin"
-    unplanned_minutes = unplanned_stoppages.groupby("WorkOrder")[minutes_column].sum()
-    setup_minutes = setup_stoppages.groupby("WorkOrder")[minutes_column].sum()
 
-    df["UnplannedDowntimeHours"] = df["WorkOrder"].map(unplanned_minutes).fillna(0) / 60.0
-    df["SetupTimeHours"] = df["WorkOrder"].map(setup_minutes).fillna(0) / 60.0
+    def hours(mask: pd.Series) -> pd.Series:
+        by_order = downtime_by_order.loc[mask].groupby("WorkOrder")[minutes_column].sum() / 60.0
+        return df["WorkOrder"].map(by_order).fillna(0.0)
 
-    # An order with no plan row falls back to its actual lead time as planned time. The SAME
-    # fallback must be the Availability denominator too -- dividing by the unfilled
-    # PlannedTimeHours made Availability (and so OEE) NaN for exactly those orders while
-    # RunTimeHours was still computed from the fallback.
-    planned_time = df["PlannedTimeHours"].fillna(df["LeadTimeProdHours"])
-    # When the unplanned downtime matched to an order reaches its planned time (the order ran
-    # longer than planned, so its real window holds more stoppage than the plan had hours),
-    # RunTime is floored at 0.01 h to keep ratios finite -- and the order is FLAGGED, because
-    # its PerformanceVsNominal (units / 0.01 h) is then an arithmetic artifact, not a speed.
-    df["DowntimeExceedsPlan"] = df["UnplannedDowntimeHours"] >= planned_time
-    df["RunTimeHours"] = (planned_time - df["UnplannedDowntimeHours"]).clip(lower=0.01)
+    df["UnplannedDowntimeHours"] = hours(is_unplanned)
+    df["SetupTimeHours"] = hours(is_setup)
+    availability_loss = hours(is_unplanned | is_setup)  # union: an unplanned changeover counts once
+    planned_non_setup = hours(~is_unplanned & ~is_setup)
+
+    # The order's real window; an order without one falls back to its plan (the same fallback
+    # feeds numerator and denominator, so Availability is never NaN for it).
+    window = df["LeadTimeProdHours"].astype(float).fillna(df["PlannedHours"].astype(float))
+    df["PlannedTimeHours"] = (window - planned_non_setup).clip(lower=0.01)
+    planned_time = df["PlannedTimeHours"]
+    # When the losses matched to an order reach its planned production time, RunTime is floored
+    # at 0.01 h to keep ratios finite -- and the order is FLAGGED, because its
+    # PerformanceVsNominal (units / 0.01 h) is then an arithmetic artifact, not a speed.
+    df["DowntimeExceedsPlan"] = availability_loss >= planned_time
+    df["RunTimeHours"] = (planned_time - availability_loss).clip(lower=0.01)
     df["Availability"] = (df["RunTimeHours"] / planned_time).clip(0, 1)
 
     rated_capacity = df.apply(lambda row: capacity_by_machine.get((row["MachineId"], row["ToolId"]), np.nan), axis=1)

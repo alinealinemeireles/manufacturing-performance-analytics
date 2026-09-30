@@ -81,3 +81,36 @@ def test_linear_coefficients_unwrap_the_scaler_pipeline():
     coefficients = ml.linear_coefficients(model, X.columns)
     assert list(coefficients.index) == ["a", "b"]
     assert ml.linear_coefficients(object(), X.columns) is None
+
+
+def test_split_by_date_keeps_each_day_on_one_side():
+    # 10 days x 3 rows per day: a positional 80/20 cut would split day 8 across train and test.
+    df = pd.DataFrame({"Date": np.repeat(pd.date_range("2026-01-01", periods=10), 3), "y": np.arange(30)})
+    df = df.iloc[[*range(0, 23), 24, 23, *range(25, 30)]]  # the cut row is not the first of its day
+    train, test = ml.split_by_date(df, "Date", test_fraction=0.25)
+    assert set(train["Date"]).isdisjoint(set(test["Date"]))
+    assert train["Date"].max() < test["Date"].min()
+    assert len(train) + len(test) == len(df)
+
+
+@pytest.mark.parametrize("model_value, higher, beats", [(1.0, False, False), (0.0, False, False),
+                                                        (-0.1, True, False), (0.1, True, True)])
+def test_baseline_verdict_with_a_zero_baseline_is_not_an_automatic_win(model_value, higher, beats):
+    assert ml.baseline_verdict(model_value, 0.0, "metric", higher_is_better=higher)["beats_baseline"] is beats
+
+
+def test_economic_threshold_is_chosen_on_out_of_sample_probabilities():
+    from sklearn.ensemble import RandomForestClassifier
+
+    rng = np.random.default_rng(4)
+    n = 1000
+    X = pd.DataFrame({"a": rng.normal(size=n), "b": rng.normal(size=n)})
+    y = pd.Series((X["a"] + rng.normal(scale=1.5, size=n) > 1.0).astype(int))
+    X_train, X_test, y_train, y_test = X.iloc[:800], X.iloc[800:], y.iloc[:800], y.iloc[800:]
+    model = RandomForestClassifier(n_estimators=50, random_state=0).fit(X_train, y_train)
+    result = ml.economic_threshold_val_test(model, X_train, y_train, X_test, y_test,
+                                            cost_false_positive=1, cost_false_negative=5)
+    # In-sample, a fully grown forest separates the validation rows perfectly, so every threshold
+    # between the classes costs 0. Out of sample the sweep must see real errors.
+    assert result["validation_sweep"]["total_cost"].min() > 0
+    assert result["n_test"] == 200

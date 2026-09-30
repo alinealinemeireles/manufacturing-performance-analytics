@@ -24,7 +24,7 @@ PROJ = [
      "M-INJ-013 · IM-008", "Baixa: geometria simples de encaixe", RD_, "R&D ↔ injeção", "Aprovação de amostras", "Ensaio de força de remoção (não binário)", "Médio",
      "2026-02-16", "2026-06-30", "2026-07-07", "Fechado"),
     ("DD-26-06", "Tampa de rosca alimentar 28/410 (HDPE-FG, PP-FG)", "TA-014-HDPE-FG-28410; TA-014-PP-FG-28410", "TA-014", "CUST-015; CUST-016",
-     "M-INJ-014 · IM-008", "Média: material de grau alimentar; vedação", RD_, "R&D ↔ injeção ↔ laboratório", "Aprovação de amostras; ensaio de vedação no cliente",
+     "M-INJ-014 · IM-009 (linha dedicada a contacto alimentar)", "Média: material de grau alimentar; vedação", RD_, "R&D ↔ injeção ↔ laboratório", "Aprovação de amostras; ensaio de vedação no cliente",
      "Plano de controlo de vedação e rosca", "Alto (alimentar)", "2026-02-16", "2026-06-30", "2026-07-06", "Fechado"),
 ]
 

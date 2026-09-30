@@ -4,7 +4,7 @@
 PROCESSOS = [
     ("REC", "Receção e armazenagem de matérias-primas", "Suporte", "—", "Aquisição"),
     ("ARQ", "Armazém de produtos químicos (tintas, solventes, óleos)", "Suporte", "—", "Produção"),
-    ("INJ", "Injeção de tampas", "Produtivo", "IM-001 a IM-008", "Produção"),
+    ("INJ", "Injeção de tampas", "Produtivo", "IM-001 a IM-009", "Produção"),
     ("SOP", "Sopro de frascos (ISBM)", "Produtivo", "ISBM-001 a ISBM-010", "Produção"),
     ("SER", "Serigrafia (decoração)", "Produtivo", "SS-001, SS-002", "Produção"),
     ("HFS", "Hot foil stamping (decoração)", "Produtivo", "HF-001, HF-002", "Produção"),

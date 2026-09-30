@@ -9,7 +9,7 @@
 | Tabelas fato brutas (bronze) | 22 |
 | Dimensões (arquivos em `datasets/dim/` + derivadas na Parte 2) | 15 (10 arquivos + 5 derivadas) |
 | Processos | 4 |
-| Máquinas | 22 |
+| Máquinas | 23 |
 | Ordens de produção (únicas, bronze) | 16,397 |
 | Produtos — frascos/potes | 149 |
 | Produtos — tampas | 36 |
@@ -23,7 +23,7 @@
 |---|---|
 | Blow Molding | 10 |
 | Hot Foil Stamping | 2 |
-| Injection Molding | 8 |
+| Injection Molding | 9 |
 | Screen Printing | 2 |
 
 ## Linhas por tabela bronze
@@ -50,5 +50,5 @@
 | `fact_production_raw` | 16,427 |
 | `fact_raw_material_inspection_raw` | 6,969 |
 | `fact_raw_material_lot_disposition_raw` | 1,896 |
-| `fact_sales_raw` | 8,548 |
+| `fact_sales_raw` | 8,517 |
 | `fact_supplier_complaints_raw` | 80 |

@@ -38,9 +38,12 @@ def plot_xbar_chart(ax, df: pd.DataFrame, value_col: str, cl_col: str, ucl_col: 
     ax.axhline(df[ucl_col].iloc[0], color="firebrick", ls="--", lw=1, label="LSC/LIC (3σ)")
     ax.axhline(df[lcl_col].iloc[0], color="firebrick", ls="--", lw=1)
     if flag_col is not None:
-        flagged = df[df[flag_col]]
-        ax.scatter(flagged.index if not isinstance(df.index, pd.RangeIndex) else [x[i] for i in flagged.index],
-                    flagged[value_col], color="firebrick", s=45, zorder=5, marker="x", label="Fora de controle")
+        # Positions, not index labels: the line above is drawn at 0..n-1, so a flagged point must
+        # be too. Using the index labels misplaced every flag whenever `df` came filtered (a
+        # non-contiguous RangeIndex/Index) or carried a date index.
+        flagged_positions = np.flatnonzero(df[flag_col].fillna(False).to_numpy(dtype=bool))
+        ax.scatter(flagged_positions, df[value_col].to_numpy()[flagged_positions],
+                    color="firebrick", s=45, zorder=5, marker="x", label="Fora de controle")
     ax.set_title(title)
 
 
@@ -70,7 +73,8 @@ def apply_western_electric_rules(df: pd.DataFrame, value_col: str, cl_col: str,
     beyond_2s_upper = (df[value_col] > zone2_upper).to_numpy()
     beyond_2s_lower = (df[value_col] < zone2_lower).to_numpy()
     beyond_3s = ((df[value_col] > df[ucl_col]) | (df[value_col] < df[lcl_col])).to_numpy()
-    side = np.where(df[value_col] >= df[cl_col], 1, -1)
+    # A point exactly on the center line belongs to neither side and breaks a Rule 4 run.
+    side = np.sign((df[value_col] - df[cl_col]).to_numpy())
 
     rule1, rule2, rule3, rule4 = beyond_3s.copy(), np.zeros(n, bool), np.zeros(n, bool), np.zeros(n, bool)
     for i in range(n):
@@ -89,7 +93,7 @@ def apply_western_electric_rules(df: pd.DataFrame, value_col: str, cl_col: str,
                 rule3[i] = True
         if i >= 7:
             w = slice(i - 7, i + 1)
-            if np.all(side[w] == side[i]):
+            if side[i] != 0 and np.all(side[w] == side[i]):
                 rule4[i] = True
 
     df["Rule1_Beyond3Sigma"] = rule1
@@ -105,7 +109,7 @@ def apply_western_electric_rules(df: pd.DataFrame, value_col: str, cl_col: str,
 # 3. PARETO CHART
 # ---------------------------------------------------------------------------
 
-def pareto_chart(series: pd.Series, title: str, ax, ylabel: str = "Ocorrências") -> pd.Series:
+def pareto_chart(series: pd.Series, title: str, ax, ylabel: str = "Ocorrências") -> pd.DataFrame:
     """Classic Pareto: bars sorted descending, cumulative-% line on a second axis,
     an 80% reference line. Returns the sorted series (with its cumulative %) so the
     caller can print/inspect the same numbers shown on the chart."""

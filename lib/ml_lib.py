@@ -38,10 +38,19 @@ def split_by_date(df: pd.DataFrame, date_column: str, test_fraction: float = 0.2
     """Sorts by date and takes the oldest (1-test_fraction) share as train,
     the newest as test -- never a random split. A random split would let a
     later failure "help" predict an earlier one, which no real forecaster
-    would ever have access to at prediction time."""
-    df_sorted = df.sort_values(date_column).reset_index(drop=True)
+    would ever have access to at prediction time.
+
+    The cut is made at a DATE boundary, not at a row position: with many rows per date (orders
+    of the same day, one row per machine-day), a positional cut put part of a day in train and
+    the rest of the same day in test -- same-day information on both sides of the split. Every
+    row dated on the cut-off day goes to test, so train is strictly older than test."""
+    df_sorted = df.sort_values(date_column, kind="stable").reset_index(drop=True)
     split_index = int(len(df_sorted) * (1 - test_fraction))
-    return df_sorted.iloc[:split_index].copy(), df_sorted.iloc[split_index:].copy()
+    if split_index >= len(df_sorted):
+        return df_sorted.copy(), df_sorted.iloc[0:0].copy()
+    cutoff = df_sorted[date_column].iloc[split_index]
+    is_train = (df_sorted[date_column] < cutoff).to_numpy()
+    return df_sorted.loc[is_train].copy(), df_sorted.loc[~is_train].copy()
 
 
 def regression_metrics(y_true, y_pred) -> dict:
@@ -109,13 +118,21 @@ def economic_threshold_val_test(model, X_train, y_train, X_test, y_test, cost_fa
     """Same idea as `economic_threshold`, but picks the threshold WITHOUT
     touching X_test: the sweep runs on a validation slice carved from the
     newest part of X_train (`_chrono_inner_split` -- the same device used
-    for algorithm selection in `tune_classification_models`), using
-    probabilities from the already-fitted `model`. X_test is then scored
-    exactly once, at that already-chosen threshold -- not re-swept -- so
-    the reported test cost is a genuine out-of-sample number, not one the
-    test set helped pick."""
-    _, X_val, _, y_val = _chrono_inner_split(X_train, y_train, val_fraction)
-    val_proba = model.predict_proba(X_val)[:, 1]
+    for algorithm selection in `tune_classification_models`). X_test is then
+    scored exactly once, with the already-fitted `model`, at that already-chosen
+    threshold -- not re-swept -- so the reported test cost is a genuine
+    out-of-sample number, not one the test set helped pick.
+
+    The validation probabilities come from a CLONE of `model` refit on the
+    older part of X_train only. `model` itself was fit on all of X_train, so
+    its probabilities on the validation slice are in-sample: a random forest
+    scores its own training rows near 0/1, and the threshold picked on those
+    was systematically miscalibrated for new data (audit 2026-09-30)."""
+    from sklearn.base import clone
+
+    X_inner, X_val, y_inner, y_val = _chrono_inner_split(X_train, y_train, val_fraction)
+    selection_model = clone(model).fit(X_inner, y_inner)
+    val_proba = selection_model.predict_proba(X_val)[:, 1]
     val_result = economic_threshold(y_val, val_proba, cost_false_positive, cost_false_negative)
     chosen_threshold = val_result["best_threshold"]
 
@@ -328,10 +345,13 @@ def baseline_verdict(model_value: float, baseline_value: float, metric: str,
     """Decision rule, not just a number: ML is only worth deploying if it beats the
     baseline by a material margin (default 5% relative), otherwise the simpler rule
     wins on cost, transparency and maintenance."""
-    if higher_is_better:
-        gain = (model_value - baseline_value) / abs(baseline_value) if baseline_value else np.inf
+    improvement = (model_value - baseline_value) if higher_is_better else (baseline_value - model_value)
+    if baseline_value:
+        gain = improvement / abs(baseline_value)
     else:
-        gain = (baseline_value - model_value) / abs(baseline_value) if baseline_value else np.inf
+        # A zero baseline (e.g. MAE 0) has no relative scale: the model beats it only by being
+        # strictly better. The old `else np.inf` declared ANY model a winner, even a worse one.
+        gain = np.inf if improvement > 0 else (0.0 if improvement == 0 else -np.inf)
     beats = bool(gain >= min_relative_gain)
     return {"metric": metric, "model": float(model_value), "baseline": float(baseline_value),
             "relative_gain": float(gain), "beats_baseline": beats,
