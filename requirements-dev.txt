@@ -1,0 +1,4 @@
+# Ferramentas de desenvolvimento/CI (não necessárias para executar o notebook).
+-r requirements.txt
+pytest==8.4.2
+ruff==0.16.9

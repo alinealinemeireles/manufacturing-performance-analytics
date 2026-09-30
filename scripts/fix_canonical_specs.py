@@ -26,7 +26,6 @@ Run: python scripts/fix_canonical_specs.py
 """
 from __future__ import annotations
 
-import hashlib
 import sys
 from pathlib import Path
 
@@ -192,8 +191,6 @@ def main():
     cap_path = g.BRONZE / "fact_cap_inspection_variable_cq_raw.csv"
 
     print("Snapshotting current files...")
-    snap = g.snapshot([bottle_path, cap_path])
-    b = snap[bottle_path]
     old_bottle_bytes = bottle_path.read_bytes()
     old_cap_bytes = cap_path.read_bytes()
 

@@ -53,10 +53,15 @@ is where the physical tables below actually live.
 | `MaterialLotSeq` | production, material consumption | Colorant-lot sequence number within a work order — the last 2 digits of `LotId` |
 | `LeadTimeProdHours`, `PlannedHours`, `PlannedTimeHours` | production | Duration in decimal hours |
 | `Availability`, `Performance`, `Quality`, `OEE` | production | OEE pillars, per work order |
+| `PerformanceVsNominal` | production | Uncapped speed ratio vs. rated capacity (`Performance` is the same ratio capped at 1). Empty when `DowntimeExceedsPlan` |
+| `DowntimeExceedsPlan` | production | `True` when the unplanned downtime matched to the order reaches its planned time — `RunTimeHours` is then floored at 0.01 h and speed ratios are artifacts (see `contracts/data_contract.yaml`) |
 | `ActualCycleTimeSec`, `SetupTimeHours`, `ThroughputLeadTimeHours` | production | Supporting OEE metrics |
 | `XBarUCL/LCL`, `RangeRUCL/LCL`, `Cp`, `Cpk`, `Pp`, `Ppk`, `Cpm`, `SigmaLevel` | QC variable-inspection tables | SPC / process-capability metrics |
 | `DefectRateP`, `DPU`, `DPMO` | QC attribute-inspection tables | AQL / Six Sigma defect-rate metrics |
-| `DowntimeDurationMin`, `UnplannedFailure`, `IsChangeoverSetup`, `IsPreventiveMaintenance` | downtime | Maintenance classification flags |
+| `DowntimeDurationMin` | downtime | Duration of the event itself — use for per-event statistics (MTTR, Pareto by reason) |
+| `EffectiveDowntimeMin` | downtime | Part of the event not already covered by an earlier event on the same machine (union of overlapping intervals) — use for time lost (Availability, Six Big Losses, downtime cost) |
+| `UnplannedFailure` | downtime | Unplanned **equipment** failure (mechanical, electrical/control). Supply/staffing stops (material, utilities, ink/ribbon shortage, operator unavailable) are unplanned but NOT failures |
+| `IsChangeoverSetup`, `IsPreventiveMaintenance` | downtime | Maintenance classification flags |
 | `MatchedWorkOrder` | downtime | The work order whose `[start, end)` window contains the stoppage, matched by time overlap — `NULL` for standalone scheduled maintenance between orders |
 | `ResolutionDays`, `ResponseDays`, `ClosureDays`, `IsOverdue`, `IsAccepted`, `IsRejected` | QA extension tables (notebook Parte 2) | Day-count and boolean derived columns |
 
@@ -188,3 +193,12 @@ Complaints-per-million-shipped and supplier approval rate are aggregates,
 computed in notebook Parte 6 via `etl_lib.compute_complaints_per_million_shipped`
 and `etl_lib.compute_supplier_approval_rate`, not stored as fact columns —
 true aggregates live in the analysis layer, not the warehouse.
+
+## Gold: `gold.cpk_summary_by_characteristic`
+
+One row per machine × mold × product × characteristic (the SPC grain — specifications are per product).
+`PeriodCpk` is the whole-period within-subgroup Cpk; `LatestCpk` is the Cpk of the last 25 subgroups
+(rolling window, same estimator); `PctWindowsBelowTarget` is the share of rolling windows with Cpk < 1.33
+(empty when the group has fewer than 25 subgroups); `IsCapable` = `LatestCpk >= 1.33`. Computed by
+`lib/etl_lib.summarize_capability_over_time`. Data contract and KPI lineage: `contracts/data_contract.yaml`,
+`docs/kpi_lineage.md`.

@@ -18,10 +18,20 @@ import numpy as np
 import pandas as pd
 from joblib import dump, load
 from sklearn.metrics import (
-    accuracy_score, average_precision_score, f1_score, mean_absolute_error, mean_squared_error,
-    precision_score, r2_score, recall_score, roc_auc_score,
-    classification_report, confusion_matrix,
+    accuracy_score,
+    average_precision_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+    mean_absolute_error,
+    mean_squared_error,
+    precision_score,
+    r2_score,
+    recall_score,
+    roc_auc_score,
 )
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 
 def split_by_date(df: pd.DataFrame, date_column: str, test_fraction: float = 0.2):
@@ -47,10 +57,10 @@ def regression_metrics(y_true, y_pred) -> dict:
 
 
 def classification_metrics(y_true, y_pred, probability=None) -> dict:
-    """Precision/Recall/F1 alongside Accuracy on purpose: the positive
-    class (a rejected lot, a machine failure tomorrow) is rare (5-40%)
-    across every classifier in this project, so accuracy alone would
-    reward a model that just always predicts "no problem". PR-AUC
+    """Precision/Recall/F1 alongside Accuracy on purpose: accuracy alone
+    rewards a model that just always predicts the majority class -- and the
+    positive class ("something went wrong": a rejected lot, an equipment
+    failure tomorrow) is the minority in every classifier of Parte 11. PR-AUC
     (average precision) is reported alongside ROC-AUC for the same reason
     ROC-AUC alone is not enough here: ROC-AUC can look deceptively good
     under class imbalance because it credits the (large) true-negative
@@ -191,7 +201,13 @@ def tune_regression_models(X_train, y_train, X_test, y_test, n_splits: int = 4, 
     X_inner_train, X_val, y_inner_train, y_val = _chrono_inner_split(X_train, y_train, val_fraction)
     cv = TimeSeriesSplit(n_splits=max(2, min(n_splits, len(X_inner_train) // 8)))
     grids = {
-        "Ridge": (Ridge(random_state=random_state), {"alpha": [0.1, 1.0, 10.0, 50.0]}),
+        # Linear models get a StandardScaler in front: their penalty (and, for the logistic
+        # model, lbfgs convergence) depends on feature scale, and these feature sets mix
+        # 0/1 dummies with quantities in the tens of thousands. Unscaled, the linear
+        # candidate was handicapped before the comparison even started (the full-run log
+        # showed repeated lbfgs ConvergenceWarnings) -- tree models are scale-invariant.
+        "Ridge": (Pipeline([("scale", StandardScaler()), ("model", Ridge(random_state=random_state))]),
+                  {"model__alpha": [0.1, 1.0, 10.0, 50.0]}),
         "RandomForest": (RandomForestRegressor(random_state=random_state),
                           {"n_estimators": [200, 400], "max_depth": [4, 6, None], "min_samples_leaf": [1, 3]}),
         "XGBoost": (XGBRegressor(random_state=random_state, objective="reg:squarederror", verbosity=0),
@@ -221,10 +237,9 @@ def tune_regression_models(X_train, y_train, X_test, y_test, n_splits: int = 4, 
 def tune_classification_models(X_train, y_train, X_test, y_test, n_splits: int = 4, random_state: int = 42,
                                  val_fraction: float = 0.2):
     """Classification counterpart to `tune_regression_models`: Logistic
-    Regression, Random Forest, and XGBoost, tuned via `GridSearchCV` under
-    `TimeSeriesSplit`, scored on ROC-AUC (robust to the class imbalance
-    every classifier in this project faces -- the positive class is
-    always the rarer "something went wrong" outcome).
+    Regression (standardized inputs), Random Forest, and XGBoost, tuned via
+    `GridSearchCV` under `TimeSeriesSplit`, scored on ROC-AUC (threshold-free
+    and insensitive to which class happens to be the majority).
 
     Same fix as `tune_regression_models`: the three candidates are compared
     on an inner validation slice carved from the newest part of X_train
@@ -246,8 +261,9 @@ def tune_classification_models(X_train, y_train, X_test, y_test, n_splits: int =
     val_has_both_classes = y_val.nunique() >= 2
     cv = TimeSeriesSplit(n_splits=max(2, min(n_splits, len(X_inner_train) // 50)))
     grids = {
-        "LogisticRegression": (LogisticRegression(max_iter=2000, random_state=random_state),
-                                {"C": [0.1, 1.0, 10.0]}),
+        "LogisticRegression": (Pipeline([("scale", StandardScaler()),
+                                          ("model", LogisticRegression(max_iter=2000, random_state=random_state))]),
+                                {"model__C": [0.1, 1.0, 10.0]}),
         "RandomForest": (RandomForestClassifier(random_state=random_state, class_weight="balanced"),
                           {"n_estimators": [200, 400], "max_depth": [4, 6, None]}),
         "XGBoost": (XGBClassifier(random_state=random_state, eval_metric="logloss", verbosity=0),
@@ -277,6 +293,50 @@ def tune_classification_models(X_train, y_train, X_test, y_test, n_splits: int =
     test_metrics["Metric_Basis"] = "Teste (reportado)"
     comparison.loc[best_name] = pd.Series(test_metrics)
     return comparison, final_model, best_name
+
+
+def linear_coefficients(model, feature_names) -> pd.Series | None:
+    """Coefficients of a (possibly scaler-wrapped) linear model, indexed by feature.
+    For a `Pipeline(StandardScaler, Ridge/LogisticRegression)` these are STANDARDIZED
+    coefficients (effect of +1 standard deviation of the feature), which is the scale on
+    which features of very different units can be compared at all. Returns None for
+    non-linear models."""
+    estimator = model.steps[-1][1] if isinstance(model, Pipeline) else model
+    if not hasattr(estimator, "coef_"):
+        return None
+    return pd.Series(np.ravel(estimator.coef_), index=list(feature_names))
+
+
+# ---------------------------------------------------------------------------
+# Formal baselines -- every model in Parte 11 is reported NEXT TO the simplest
+# rule an engineer would use without ML. If the model does not beat it, the
+# recommendation is "do not deploy ML for this decision", not a better model.
+# ---------------------------------------------------------------------------
+
+def group_rate_baseline(train_groups: pd.Series, y_train, test_groups: pd.Series) -> np.ndarray:
+    """Historical-average baseline: predicts, for each test row, the TRAIN-period
+    mean of the target for that row's group (e.g. the machine's historical scrap % or
+    rejection/failure rate); unseen groups fall back to the overall train mean. Uses
+    only training data, so it is a legitimate out-of-sample predictor."""
+    y_train = pd.Series(np.asarray(y_train, dtype=float), index=train_groups.index)
+    rate_by_group = y_train.groupby(train_groups).mean()
+    return test_groups.map(rate_by_group).fillna(y_train.mean()).to_numpy(dtype=float)
+
+
+def baseline_verdict(model_value: float, baseline_value: float, metric: str,
+                     higher_is_better: bool, min_relative_gain: float = 0.05) -> dict:
+    """Decision rule, not just a number: ML is only worth deploying if it beats the
+    baseline by a material margin (default 5% relative), otherwise the simpler rule
+    wins on cost, transparency and maintenance."""
+    if higher_is_better:
+        gain = (model_value - baseline_value) / abs(baseline_value) if baseline_value else np.inf
+    else:
+        gain = (baseline_value - model_value) / abs(baseline_value) if baseline_value else np.inf
+    beats = bool(gain >= min_relative_gain)
+    return {"metric": metric, "model": float(model_value), "baseline": float(baseline_value),
+            "relative_gain": float(gain), "beats_baseline": beats,
+            "verdict": ("ML supera a baseline de forma material" if beats else
+                        "ML NÃO supera a baseline de forma material -- preferir a regra simples")}
 
 
 def save_model(model, path: str, **metadata) -> None:

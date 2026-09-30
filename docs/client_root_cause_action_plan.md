@@ -1,5 +1,12 @@
 # Relatório Executivo ao Cliente — Diagnóstico de Causas-Raiz e Plano de Ação
 
+> **Nota (auditoria de 2026-09-29):** depois deste documento, a definição de alguns KPIs foi corrigida —
+> paragens sobrepostas deixaram de ser somadas em duplicado (`EffectiveDowntimeMin`), "avaria" passou a
+> significar só falha de equipamento (falta de material/operador passou a *idling*), o Cpk "recente" da gold
+> passou a ser de janela móvel, e as vendas da expansão deixaram de expedir lotes rejeitados. Números de
+> OEE, Six Big Losses, MTBF/MTTR e ML citados abaixo são os da execução da época; os atuais e o detalhe de
+> cada correção estão em [`audit_2026-09-29.md`](audit_2026-09-29.md) e no notebook reexecutado.
+
 > **Nota (expansão de portfólio, 2026-09-23):** este relatório cobre exclusivamente o dataset
 > Versão 00 original (18 máquinas, só cosméticos). A expansão de portfólio documentada em
 > [`simulation_storylines.md`](simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)
@@ -440,14 +447,25 @@ Para investimento real, integrar:
 
 Os modelos devem ser tratados como **sistemas de apoio à decisão**, não como substitutos da engenharia.
 
+*(Atualizado na auditoria de 2026-09-29 — cada modelo comparado com a regra simples que substituiria;
+detalhe em [`audit_2026-09-29.md`](audit_2026-09-29.md), secção 3.)*
+
 ### Produção
-R² alto representa previsão **condicional ao plano**, não previsão autónoma de demanda.
+R² 0,998 é previsão **condicional ao plano**: a regra *plano × cumprimento histórico do processo* chega ao
+mesmo R² 0,998 (ganho do modelo de 1,9% no MAE). Recomendação: usar a regra simples.
 
 ### Manutenção preditiva
-ROC-AUC ≈ 0,593 é fraco; não justifica implantação autónoma.
+ROC-AUC ≈ 0,575 (alvo agora só com avarias de equipamento) não supera a taxa histórica de avarias da
+própria máquina (0,586). Não justifica implantação; o próximo passo é dado de condição (vibração,
+temperatura, pressão, horas de operação), não outro algoritmo.
 
 ### Qualidade de lote
-ROC-AUC ≈ 0,689 e baixo recall no threshold padrão indicam uso como **ranking/triagem**, não bloqueio automático.
+ROC-AUC ≈ 0,659 vs. 0,644 da taxa de rejeição histórica da máquina — quase todo o sinal está em *qual*
+máquina fez o lote. Uso, no máximo, como **ranking/triagem**, não bloqueio automático.
+
+### Taxa de sucata por ordem
+Único modelo que supera a regra simples de forma material (R² 0,576 vs. 0,472; MAE −14%): candidato a
+alerta antecipado de sucata, sujeito a validação em piloto.
 
 ### Governança
 Antes de produção:

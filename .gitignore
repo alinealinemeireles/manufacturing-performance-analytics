@@ -28,3 +28,10 @@ Thumbs.db
 
 # pytest cache
 .pytest_cache/
+
+# SGI (sistema de gestão integrado) -- o que NÃO deve ir para um repositório público:
+# normas ISO e material de curso de terceiros (direitos de autor ISO/editoras -- consultar,
+# não redistribuir), cópias de segurança locais e áudio grande (publicar via release, se desejado)
+SGI_Sistema-de-gestao-integrado/gestao_de_riscos_ISO_31000/*.pdf
+**/_backup/
+*.mp3
