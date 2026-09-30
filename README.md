@@ -8,6 +8,22 @@
 > [`LICENSE`](LICENSE). Cópia, redistribuição ou reuso de qualquer parte deste conteúdo sem
 > autorização não são permitidos.
 
+> [!IMPORTANT]
+> **Dataset industrial sintético, desenhado para validar métodos analíticos — não para descoberta causal
+> empírica.** As causas-raiz foram embutidas no dado por construção e estão documentadas
+> ([`docs/simulation_storylines.md`](docs/simulation_storylines.md)); o que o projeto demonstra é a
+> capacidade do pipeline (dados, estatística, Six Sigma, ML) de **recuperá-las** contra uma verdade
+> conhecida. A janela do dataset (até 2026-12-30) estende-se além da data de referência do SGI
+> (2026-09-28) — ver [`docs/reference_dates.md`](docs/reference_dates.md).
+
+### Como ler este projeto
+
+| Tempo | Leitura | Para quem |
+|---|---|---|
+| **5 minutos** | [`docs/EXECUTIVE_SUMMARY.md`](docs/EXECUTIVE_SUMMARY.md) — a pergunta, 5 KPIs, 3 casos (DOE IM-002, desgaste de molde M-SOP-007, fornecedor SUP-005 → cliente), o que os dados **não** sustentam | Recrutador, gestor |
+| **30 minutos** | Este README → [`docs/kpi_lineage.md`](docs/kpi_lineage.md) (de onde vem cada número) → [`docs/client_root_cause_action_plan.md`](docs/client_root_cause_action_plan.md) (causa → ação → eficácia) → [`docs/sgi_analytics_integration.md`](docs/sgi_analytics_integration.md) | Engenheiro(a) da Qualidade / Melhoria Contínua |
+| **Auditoria técnica** | O notebook, o [data contract](contracts/data_contract.yaml) e o Quality Gate ([`lib/data_quality.py`](lib/data_quality.py)), os [testes](tests/) e o [CI](.github/workflows/ci.yml), o SGI (`SGI_Sistema-de-gestao-integrado/`) | Engenheiro(a) de dados / cientista de dados / auditor |
+
 ### Manufacturing Intelligence, Quality Analytics & Industrial Data Science
 
 O objetivo não é apenas responder **"o que aconteceu?"**, mas avançar sistematicamente para:
@@ -34,7 +50,7 @@ formato jupytext, a fonte editável) é o relatório inteiro — importação e 
 brutos, limpeza, carga em um data warehouse SQL Server em arquitetura medalhão (bronze/silver/
 gold), controle estatístico de processo, Lean/Seis Grandes Perdas, DMAIC, Teoria das Restrições,
 ferramentas avançadas da qualidade (FMEA, MSA/Gage R&R, DOE), confiabilidade (MTBF/MTTR/Weibull),
-Índice de Risco Operacional e seis modelos de Machine Learning, tudo em um único documento, na
+Índice Relativo de Priorização Operacional e seis modelos de Machine Learning, tudo em um único documento, na
 ordem em que efetivamente acontece — como se faz em um notebook Databricks. Os scripts SQL
 aparecem embutidos no notebook (células `%%sql` reais, executadas contra o SQL Server) exatamente
 no ponto em que são usados, sem arquivos `.sql` soltos duplicando o mesmo conteúdo.
@@ -47,9 +63,10 @@ histórica (ver Seção 6 abaixo).
 
 ## 1. O time virtual e a pergunta central
 
-**Pergunta central**: *o monitoramento integrado de indicadores de produção, qualidade e
-manutenção é capaz de sustentar decisões em tempo real para reduzir perdas e melhorar a
-eficiência?*
+**Pergunta central**: *como transformar dados industriais em decisões verificáveis de melhoria
+contínua — integrando desempenho, qualidade, manutenção e os requisitos do sistema de gestão
+(ISO 9001/14001) — de forma que cada decisão tenha evidência, ação, controlo e verificação de
+eficácia?*
 
 Mais oito perguntas gerais orientam o raio-X, cada uma respondida com evidência (consulta real +
 cálculo + conclusão) no notebook:
@@ -108,10 +125,12 @@ para as novas causas-raiz documentadas nessa expansão.
 - **Escala**: 4 processos, 22 máquinas (18 na Versão 00 original + 4 novas na expansão de
   portfólio — 2 Blow Molding, 2 Injection Molding), 3 turnos, dezenas de milhões de unidades
   produzidas (somadas em ~16.400 ordens de produção, pós-reexecução do notebook após a expansão)
-- **Tabelas**: 22 tabelas fato brutas + 15 dimensões; além das camadas Silver/Gold, o projeto mantém saídas de Machine Learning.
-  A contagem física final deve ser lida a partir do DDL/warehouse gerado pelo notebook, evitando que a documentação
-  fique defasada quando uma tabela analítica é acrescentada., cobrindo produção, parada, controle
-  de qualidade (tampas/frascos/tinta+hot foil), vendas, reclamações, fornecedores e CAPA
+- **Tabelas**: 22 tabelas fato brutas + 15 dimensões, cobrindo produção, parada, controle de
+  qualidade (tampas/frascos/tinta+hot foil), vendas, reclamações, fornecedores e CAPA; além das
+  camadas silver/gold, o warehouse guarda as saídas de Machine Learning. Todas as contagens do
+  dataset (tabelas, linhas, máquinas, produtos, clientes, janela) são **geradas** a partir dos dados
+  em [`docs/dataset_facts.md`](docs/dataset_facts.md) — não digitadas — e um teste falha se este
+  README citar um número diferente.
 
 ## 3. Arquitetura (medalhão: bronze / silver / gold)
 
@@ -166,6 +185,18 @@ AÇÃO CORRETIVA, CONTROLE E VERIFICAÇÃO DE EFICÁCIA (docs/client_root_cause_
   `TimeSeriesSplit` entre três famílias de algoritmo (linear regularizado, Random Forest,
   XGBoost) — nunca um único modelo de hiperparâmetro fixo. SHAP para interpretabilidade de modelo
   de árvore.
+- **Governança de dados**: um **data contract** ([`contracts/data_contract.yaml`](contracts/data_contract.yaml) —
+  grão, chave, obrigatoriedade, domínio, faixas, integridade referencial e regras de negócio entre
+  tabelas, cada uma `block` ou `warn`) executado por um **Data Quality Gate**
+  ([`lib/data_quality.py`](lib/data_quality.py)) no fim da Parte 2: se uma regra `block` falha, o notebook
+  para **antes** da carga no warehouse. Linhagem de cada KPI em [`docs/kpi_lineage.md`](docs/kpi_lineage.md).
+- **Testes e CI**: `pytest` (fórmulas de OEE, Six Big Losses, paragem efetiva, SPC/capacidade, Western
+  Electric, disciplina temporal do ML, motor de data quality, contrato sobre os dados reais, e um teste de
+  *drift* que falha se o README citar uma contagem diferente da gerada em
+  [`docs/dataset_facts.md`](docs/dataset_facts.md)); `ruff`; GitHub Actions
+  ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
+- **Reprodutibilidade**: dependências com versão exata em [`requirements.txt`](requirements.txt)
+  (ambiente de execução: Python 3.14.7, Windows 11, SQL Server + ODBC Driver 18).
 - **Controle de versão**: Git
 
 ### 4B. Indicadores calculados, por área
@@ -190,22 +221,28 @@ A regra de governança é: **não encerrar uma causa apenas porque o KPI melhoro
 
 ## 5. Como rodar o projeto
 
-1. Crie/ative o ambiente virtual e instale as dependências:
+1. Crie/ative o ambiente virtual e instale as dependências (versões fixadas):
    ```
    python -m venv .venv
-   .venv\Scripts\pip install -r requirements.txt
+   .venv\Scripts\pip install -r requirements-dev.txt
    ```
-2. `.env` na raiz do projeto (já no `.gitignore`) com as configurações de conexão do SQL Server:
+2. Copie [`.env.example`](.env.example) para `.env` (que está no `.gitignore` e nunca deve ser
+   versionado nem entrar num pacote .zip) e ajuste ao seu SQL Server. O servidor roda com
+   autenticação do Windows (sem usuário/senha) — ajuste `lib/db_lib.py` se usar login SQL.
+3. Rode os testes (não precisam de SQL Server): `pytest`. Os testes de contrato sobre a camada silver
+   só rodam depois da primeira execução do notebook (antes disso são marcados como *skipped*).
+4. Rode o notebook do início ao fim, uma vez — cria banco, schema e views sozinho (idempotente):
    ```
-   SQLSERVER_HOST=localhost
-   SQLSERVER_DB=ManufacturingPerformanceAnalytics
-   SQLSERVER_DRIVER=ODBC Driver 18 for SQL Server
+   python -m jupytext --to ipynb --set-kernel <seu-kernel> --execute manufacturing_performance_analytics.py
    ```
-   O servidor deve rodar com autenticação do Windows (sem usuário/senha necessário) — ajuste
-   `lib/db_lib.py` se seu SQL Server usar login SQL.
-3. Rode `manufacturing_performance_analytics.ipynb` do início ao fim, uma vez — o notebook cria o
-   banco, o schema e as views sozinho (idempotente, seguro para reexecutar). Não é necessário rodar
-   nenhum script SQL manualmente antes.
+   (~12 min). Se o Data Quality Gate bloquear, a mensagem lista cada regra violada e quantas linhas.
+5. Depois de reexecutar o notebook, regenere os registos do SGI que leem a silver
+   (`python SGI_Sistema-de-gestao-integrado/<subsistema>/_build/build_all.py`, requer Excel) e os
+   fatos do dataset (`python scripts/dataset_facts.py`).
+
+**Para entregar o projeto como .zip**, gere o pacote a partir do Git, nunca da pasta de trabalho —
+assim `.env`, `.git/`, `datasets/silver/`, caches e logs ficam de fora por construção:
+`git archive --format=zip -o manufacturing-performance-analytics.zip HEAD`.
 
 ## 6. Estrutura do notebook, Parte por Parte
 
@@ -224,7 +261,7 @@ A regra de governança é: **não encerrar uma causa apenas porque o KPI melhoro
 | 9 | Ferramentas avançadas: FMEA (M-SOP-007), MSA/Gage R&R, DOE fatorial, Weibull (P10 exploratório de confiabilidade da SS-001, não uma política de PM) | Eng. da Qualidade / Black Belt |
 | 10 | Estatística de produção: defasagens, indicador antecedente, sazonalidade, previsibilidade | Cientista de Dados |
 | 11 | Machine Learning: 3 previsões semanais + 3 modelos de risco, auditoria de vazamento (BQ-079) | Cientista de Dados / Eng. de ML |
-| 12 | Síntese: as 8 perguntas gerais respondidas juntas, Índice de Risco Operacional, custo da não-qualidade por máquina, recomendação de investimento (BQ-078), controle | Todo o time |
+| 12 | Síntese: as 8 perguntas gerais respondidas juntas, Índice Relativo de Priorização Operacional, custo da não-qualidade por máquina, recomendação de investimento (BQ-078), controle | Todo o time |
 
 O notebook também traz, no topo, um segundo índice que agrupa o mesmo conteúdo por tema em vez de
 por ordem cronológica:
@@ -236,7 +273,7 @@ por ordem cronológica:
 | 03 — Maintenance Analytics | MTBF/MTTR por máquina, matriz de criticidade MTBF×MTTR, custo de indisponibilidade, efetividade de PM, confiabilidade Weibull, vida útil de molde | Parte 4; Parte 5 (BQ-016) |
 | 04 — Process & Machine Analytics | Machine Effect vs. Product Mix (GLM), confundimento (ANOVA), variação de operador, benchmark interno | Parte 5 |
 | 05 — Customer Quality | Rastreabilidade de reclamação, early-warning, scorecard de fornecedor, Fornecedor→Material→Qualidade a jusante, NC→CAPA→Recorrência | Parte 6 |
-| 06 — Decision Analytics | Índice de Risco Operacional, custo da não-qualidade por máquina, Manufacturing Loss Pareto financeiro, impacto financeiro, recomendação única | Parte 6; Parte 12 |
+| 06 — Decision Analytics | Índice Relativo de Priorização Operacional, custo da não-qualidade por máquina, Manufacturing Loss Pareto financeiro, impacto financeiro, recomendação única | Parte 6; Parte 12 |
 
 Cada Parte cita, literalmente, as perguntas de negócio que responde (identificadas por `BQ-XXX`
 quando aplicável) imediatamente antes da análise — não há um documento separado de perguntas: a
@@ -245,22 +282,24 @@ completo na primeira célula markdown do notebook).
 
 ## 7. Principais resultados
 
-*(Da Parte 12. Recalculado após a expansão de portfólio de 2026-07-06 — 22 máquinas, 4 processos
-(Seção 2/`docs/simulation_storylines.md`). Todos os achados por máquina/storyline nomeados neste
-documento e em `docs/post_fix_independent_audit.md` continuam válidos como publicados — só os
-totais agregados de planta abaixo mudaram, porque agora somam as 4 máquinas novas junto com as 18
-originais.)*
+*(Da Parte 12, execução completa de 2026-09-29 — 22 máquinas, 4 processos, depois das correções da
+auditoria de 2026-09-29 (Seção 14). Os achados por máquina/storyline continuam válidos; mudaram os
+totais de perdas, a leitura de confiabilidade e a de ML — antes/depois em
+[`docs/audit_2026-09-29.md`](docs/audit_2026-09-29.md).)*
 
 - **OEE de planta ≈ 78,2%** (agregação ponderada por tempo/capacidade/unidades — Disponibilidade
-  87,6%, Performance 91,4%, Qualidade 97,7%; era 79,1% nas 18 máquinas originais — a queda vem das
-  4 máquinas novas ainda em ramp-up, com Performance mais baixa enquanto operadores e processos se
-  estabilizam) — Disponibilidade é o pilar mais fraco em todo processo, ou seja, parada não
-  planejada — não velocidade nem sucata — é o maior gap estrutural até a classe mundial (85%).
+  88,2%, Performance 90,8%, Qualidade 97,7%) — Disponibilidade é o pilar mais fraco. **Mas a maior
+  perda de disponibilidade não é avaria de equipamento**: só as paragens de máquina saudável à espera de
+  material, utilidades ou operador somam 10.221 h, contra 6.863 h de avarias mecânicas/elétricas (com as
+  microparagens e ajustes, o *idling* das Seis Grandes Perdas chega a 18.639 h) — o alvo prioritário é
+  abastecimento e organização do trabalho, antes de manutenção. A perda de velocidade (19.098 h-equivalentes) é a maior categoria em agregado; a
+  dominante muda por processo.
 - **A capacidade de processo é amplamente marginal**: 0% dos 230 grupos máquina×molde×característica
-  (52 de tampa + 178 de frasco/pote; eram 190 grupos — 40+150 — nas 18 máquinas originais) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que passam no gate de estabilidade
-  (causa especial ausente), o Cpk máximo observado continua bem abaixo de 1,33 — não é "tudo capaz,
-  com algumas exceções", é uma planta estatisticamente marginal como um todo, com máquinas nomeadas
-  (IM-002) mensuravelmente piores que essa linha de base já modesta.
+  da Parte 5 (52 de tampa + 178 de frasco/pote) cravam Cpk ≥ 1,33 — mesmo restringindo aos grupos que
+  passam no gate de estabilidade. No grão por produto da camada gold (726 grupos, Cpk em janela móvel dos
+  últimos 25 subgrupos), só 2 estão capazes hoje e 11 tiveram queda recente de mais de 0,2 — não é "tudo
+  capaz, com algumas exceções", é uma planta estatisticamente marginal como um todo, com máquinas
+  nomeadas (IM-002) mensuravelmente piores que essa linha de base já modesta.
 - **Machine Effect sobrevive ao controle de mix de produto**: mesmo controlando material e
   capacidade do produto fabricado (o `ProductId` exato é confundido 1:1 com a máquina, então não dá
   para usá-lo diretamente), a máquina continua explicando a taxa de defeito de forma altamente
@@ -285,18 +324,17 @@ originais.)*
   confirma que isso é sinal de processo real, não artefato do instrumento de medição.
 - **Um Índice Relativo de Priorização Operacional** (normalizado dentro da própria frota — não uma
   medida probabilística de risco) combina qualidade, manutenção, produção e reclamação de
-  cliente num único ranking por máquina — IM-002, ISBM-003 e ISBM-005 lideram o combinado, cada
-  uma puxada por um ângulo diferente (cliente, qualidade, manutenção) que um painel só de OEE
+  cliente (reclamações por milhão de unidades, não contagem bruta) num único ranking por máquina —
+  ISBM-003, IM-002 e ISBM-005 lideram o combinado, cada uma puxada por um ângulo diferente (qualidade,
+  cliente, manutenção) que um painel só de OEE
   deixaria escondido atrás de métricas mais visíveis.
-- **Seis modelos de Machine Learning** transformam o monitoramento histórico em um prospectivo,
-  com honestidade sobre onde cada um é forte ou fraco. Previsão de produção é forte (R²≈0,998,
-  mas condicionada ao plano de produção informado como feature — não uma previsão de capacidade
-  "às cegas"). Manutenção preditiva tem discriminação **fraca/marginal** (ROC-AUC≈0,59, quase
-  aleatório; a classe "falha amanhã" é majoritária nos dados, não rara, o que muda a leitura do
-  PR-AUC) — o modelo aponta a ISBM-005 como maior risco no último dia de dados, batendo com o
-  padrão de causa-raiz documentado para essa máquina (`docs/simulation_storylines.md`), o que
-  mostra que o modelo recupera esse sinal conhecido, mas não garante o mesmo desempenho fora deste
-  dataset de referência.
+- **Seis modelos de Machine Learning, cada um contra a regra simples que substituiria — e só 1
+  supera-a de forma material** (≥ 5%): o de taxa de sucata por ordem (R² 0,576 vs. 0,472 da sucata
+  histórica da máquina). A previsão de produção semanal (R² 0,998) **empata** com *plano × cumprimento
+  histórico do processo* (R² 0,998) — o mérito é do plano, não do modelo. A manutenção preditiva
+  (ROC-AUC 0,575, alvo só com avarias de equipamento) não supera a taxa histórica de avarias da máquina
+  (0,586): com histórico de paragens apenas, sem dado de condição, o dataset não sustenta manutenção
+  preditiva. Reportado como resultado — o projeto recomenda a regra simples onde o ML não a bate.
 - **Uma iniciativa recomendada, com evidência convergente de múltiplas Partes independentes**:
   executar uma corrida de confirmação da condição identificada por um estudo DOE fatorial (Parte 9)
   na IM-002 e, se confirmada, formalizá-la como novo padrão operacional — com controle via
@@ -350,47 +388,70 @@ originais.)*
 - **Modelos de ML → ação**: conectar a previsão à decisão operacional (ex.: o modelo de ScrapRate
   alertando a equipe de qualidade com antecedência sobre um lote de alta probabilidade de sucata),
   não só reportar a métrica de teste.
-- **Publicar `etl_lib`, `stats_lib` e `db_lib` como um pacote Python mínimo, com testes unitários** —
-  eleva o projeto de "notebook reprodutível" para produto de engenharia de dados.
+- **Separar o notebook em módulos por domínio** (qualidade, manutenção, ambiente, ML) com o notebook
+  atual como relatório mestre — a lógica crítica já vive em `lib/` com testes; o passo seguinte é que
+  cada Parte seja um script executável e testável isoladamente (smoke test no CI com um SQL Server em
+  contêiner).
+- **Dataset cego para validação**: gerar uma storyline adicional cuja causa-raiz não é revelada a quem
+  executa o pipeline, e só depois comparar — a validação atual recupera causas conhecidas de antemão.
 
 **Recomendações finais para a fábrica**:
-1. **Crítico** — revisar o programa de Manutenção Preventiva: auditar escopo e execução, já que a
-   Weibull indica modo de falha predominantemente de desgaste na maioria das máquinas, e a PM atual
-   pode não estar atacando esse modo corretamente.
-2. **Foco na máquina de maior prioridade combinada** (Índice de Risco Operacional, Parte 12.1b) —
-   plano de engenharia específico para o problema identificado, conforme o padrão apurado nesta
-   análise.
-3. **Iniciativas Lean direcionadas por processo**, não uma solução única — a perda dominante do Six
+1. **Crítico — atacar as paragens por espera, antes das avarias**: falta de operador, de material e de
+   utilidades (ar comprimido) param máquinas saudáveis mais horas do que as avarias de equipamento
+   (Six Big Losses, Parte 4.7). É uma frente de abastecimento, planeamento de turnos e utilidades — não
+   de manutenção — e é a maior alavanca de Disponibilidade.
+2. **Revisar o programa de Manutenção Preventiva onde a evidência o sustenta**: a Weibull das avarias
+   de equipamento indica desgaste (β > 1) na maioria das máquinas (Parte 4.6b), e a ISBM-005 tem o pior
+   MTBF da frota; mas para equipamento reparável a evidência temporal (antes/depois de reforma, como na
+   SS-001) pesa mais do que a Weibull isolada.
+3. **Foco na máquina de maior prioridade combinada** (Índice Relativo de Priorização Operacional, Parte
+   12.1b, lido sempre com os 4 componentes) — plano de engenharia específico para o problema
+   identificado, começando pela IM-002 (DOE com corrida de confirmação).
+4. **Iniciativas Lean direcionadas por processo**, não uma solução única — a perda dominante do Six
    Big Losses muda por processo (Parte 4).
-4. **Integrar o Data Quality Scorecard ao pipeline de dados**, para monitorar continuamente a
-   qualidade do dado de produção.
-5. **Validar a acurácia dos modelos antes de qualquer sistema de recomendação**, depois construir um
-   loop de ação (ex.: alerta de sucata ~2h antes do resultado final do lote).
+5. **Manter o Data Quality Gate como condição de publicação de KPI** (já implementado no pipeline:
+   `contracts/data_contract.yaml`) e acrescentar regras à medida que novos defeitos de dado forem
+   encontrados — cada defeito vira uma regra, não uma correção silenciosa.
+6. **ML só onde bate a regra simples**: pilotar o modelo de taxa de sucata (o único que supera a
+   baseline) como alerta antecipado; nos outros cinco, usar a regra simples e investir em dado de
+   condição (vibração, temperatura, horas de operação) antes de voltar à manutenção preditiva.
 
 ## 10. Estrutura do repositório
 
 ```
-manufacturing_performance_analytics.ipynb   o notebook único -- tudo vive aqui
+manufacturing_performance_analytics.ipynb   o notebook único -- o relatório completo
 manufacturing_performance_analytics.py      fonte jupytext (formato "percent") do notebook acima
 lib/
-  etl_lib.py       limpeza / LotId / OEE / SPC / AQL / QA
+  etl_lib.py       limpeza / LotId / OEE / paragem efetiva / SPC / capacidade / AQL / QA
+  data_quality.py  executa o data contract: scorecard DAMA + Data Quality Gate
   db_lib.py        engine SQL Server + carga em massa + execução de script SQL
-  ml_lib.py        split treino/teste, métricas, comparação de modelos, persistência
-  stats_lib.py     X-barra/R, regras de Western Electric, Pareto, teste de proporção (Python puro)
+  ml_lib.py        split temporal, métricas, seleção de modelo, baselines formais, persistência
+  stats_lib.py     X-barra/R, regras de Western Electric, Pareto, teste de proporção
+contracts/
+  data_contract.yaml         grão, chaves, domínios, faixas, FKs e regras de negócio (block/warn)
+tests/                       pytest -- fórmulas, ML, data quality, contrato sobre os dados, drift de docs
+.github/workflows/ci.yml     lint + testes a cada push
 datasets/
-  bronze/          dados brutos Versão 00 (congelado, versionado -- fonte de dado deste projeto)
+  bronze/          dados brutos Versão 00 + expansão (versionado -- fonte de dado deste projeto)
   dim/             dimensões que chegam prontas da engenharia (versionado)
-  silver/          dados limpos + previsões de ML + resumos JSON entre Partes -- não versionado
-                    (regenerado pelas Partes 1-2 do notebook a partir de bronze/)
-models/            os 6 modelos de Machine Learning treinados (.pkl)
+  silver/          dados limpos + resumos entre Partes -- não versionado (regenerado pelas Partes 1-2)
+models/            os 6 modelos de Machine Learning treinados (.pkl, com métricas e baseline)
 reports/           todo gráfico gerado pelo notebook, exportado como .png
+scripts/           geradores/correções da expansão de portfólio (aditivos, auditáveis) + dataset_facts.py
 docs/
-  data_dictionary.md         schema e referência de rastreabilidade
-  simulation_storylines.md   referência de causas-raiz para validação metodológica
-README.md
-requirements.txt
-.env               configurações de conexão do SQL Server (não versionado)
-.gitignore
+  EXECUTIVE_SUMMARY.md         leitura de 5 minutos
+  kpi_lineage.md               de onde vem cada KPI, classes de evidência, Six Big Losses medidas/proxy
+  reference_dates.md           datas de referência do SGI vs. janela do dataset
+  sgi_analytics_integration.md ligação ISO 9001/14001 ↔ dado ↔ KPI ↔ eficácia
+  dataset_facts.md             contagens geradas automaticamente (não editar à mão)
+  data_dictionary.md           schema e referência de rastreabilidade
+  simulation_storylines.md     referência de causas-raiz para validação metodológica
+  audit_2026-09-29.md          auditoria de 2026-09-29: achados, correções e o que não foi feito
+  client_root_cause_action_plan.md, root_cause_action_register.csv,
+  technical_audit_and_methodology.md, post_fix_independent_audit.md
+SGI_Sistema-de-gestao-integrado/   registos SGQ (ISO 9001) e SGA (ISO 14001) gerados de datasets/silver
+requirements.txt / requirements-dev.txt / pyproject.toml
+.env.example       modelo das configurações do SQL Server (o .env real não é versionado)
 ```
 
 ## 11. Autoria
@@ -430,3 +491,21 @@ A Versão 01 incorpora uma auditoria multidisciplinar com foco em rigor de causa
 - criação de relatório cliente e registro estruturado de causas-raiz e ações;
 - criação de testes automatizados básicos para invariantes críticos do cálculo de OEE/perdas;
 - adição de `pyproject.toml` para aproximar o projeto de uma estrutura de engenharia de software reproduzível.
+
+## 14. Auditoria de 2026-09-29 — Versão 1.2
+
+Detalhe completo, com evidência e antes/depois, em [`docs/audit_2026-09-29.md`](docs/audit_2026-09-29.md).
+Em resumo:
+
+- **Governança de dados**: data contract + Data Quality Gate que bloqueia o pipeline antes do warehouse;
+  linhagem de KPIs; contagens da documentação geradas e testadas; dependências fixadas; CI.
+- **Correções de cálculo encontradas ao executar o contrato contra o dado**: paragens sobrepostas deixaram
+  de ser contadas em duplicado; "avaria" passou a ser só falha de equipamento (falta de material, utilidades
+  ou operador é *idling*); Cpk recente passou a ser de janela móvel no grão do SPC; Lei de Little com
+  throughput por hora de calendário; componente Cliente do índice de priorização normalizado por volume.
+- **Correção de dado**: as vendas da expansão de portfólio expediam lotes rejeitados e antes da decisão de
+  libertação — corrigido por `scripts/fix_expansion_sales_release.py`, com teste de regressão.
+- **Machine Learning**: cada modelo comparado com a regra simples que substituiria, com critério de decisão
+  explícito; painel de manutenção preditiva sem dias fabricados; modelos lineares padronizados.
+- **Leitura**: sumário executivo de 5 minutos, guia de leitura em 3 níveis, datas de referência e mapa de
+  integração SGI ↔ Analytics.

@@ -1,5 +1,12 @@
 # Auditoria Técnica Pós-Correção — Manufacturing Performance Analytics
 
+> **Nota (auditoria de 2026-09-29):** depois deste documento, a definição de alguns KPIs foi corrigida —
+> paragens sobrepostas deixaram de ser somadas em duplicado (`EffectiveDowntimeMin`), "avaria" passou a
+> significar só falha de equipamento (falta de material/operador passou a *idling*), o Cpk "recente" da gold
+> passou a ser de janela móvel, e as vendas da expansão deixaram de expedir lotes rejeitados. Números de
+> OEE, Six Big Losses, MTBF/MTTR e ML citados abaixo são os da execução da época; os atuais e o detalhe de
+> cada correção estão em [`audit_2026-09-29.md`](audit_2026-09-29.md) e no notebook reexecutado.
+
 > **Nota (expansão de portfólio, 2026-09-23):** esta auditoria cobre exclusivamente o dataset
 > Versão 00 original (18 máquinas, só cosméticos). A expansão de portfólio documentada em
 > [`simulation_storylines.md`](simulation_storylines.md#portfolio-expansion-storylines-additive--added-2026-09-23)

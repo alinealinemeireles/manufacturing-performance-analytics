@@ -1,0 +1,353 @@
+# Data Contract -- camada silver (datasets/silver/) e dimensões de engenharia (datasets/dim/)
+#
+# O dicionário de dados (docs/data_dictionary.md) diz O QUE cada coluna significa; este contrato diz
+# o que cada tabela PROMETE a quem a consome -- grão, chave, obrigatoriedade, domínio, integridade
+# referencial e regras de negócio -- e o que acontece quando a promessa é quebrada:
+#
+#   severity: block -> o Data Quality Gate (lib/data_quality.py) interrompe o pipeline ANTES da
+#                      carga no warehouse (Parte 3). Nenhum KPI é calculado sobre dado que viola
+#                      uma regra block.
+#   severity: warn  -> o gate deixa passar, mas a violação fica listada no scorecard, com contagem.
+#                      Usado para defeitos conhecidos e documentados do dataset Versão 00 (congelado)
+#                      que não invalidam os KPIs agregados.
+#
+# Validado por: tests/test_data_contract.py (CI) e pela célula "Data Quality Gate" no fim da
+# Parte 2 do notebook. Formato das regras de linha: expressões pandas `DataFrame.eval`, avaliadas
+# linha a linha; uma linha viola a regra quando a expressão é False (NaN conta como violação só
+# nas colunas `required`).
+
+version: "1.0"
+owner: "Engenharia de Dados (time virtual) -- Aline Meireles"
+dataset_window:
+  start: "2025-07-01"
+  end: "2026-12-30"
+  # eventos de fecho (decisão de lote, fecho de CAPA, resolução de reclamação) podem cair depois
+  # do fim da janela de produção -- tolerância explícita, não silenciosa:
+  closing_events_tolerance_days: 90
+
+layers:
+  silver: "datasets/silver"
+  dim: "datasets/dim"
+
+domains:
+  process: &process ["Blow Molding", "Injection Molding", "Screen Printing", "Hot Foil Stamping"]
+  shift_label: &shift_label ["Shift 1", "Shift 2", "Shift 3"]
+  severity: &severity ["Critical", "Major", "Minor"]
+  lot_decision: &lot_decision ["Approved", "Rejected"]
+
+tables:
+
+  # ------------------------------------------------------------------ dimensões
+  dim_machine_profile:
+    layer: dim
+    file: dim_machine_profile.csv
+    grain: "1 linha = 1 máquina"
+    primary_key: [MachineId]
+    required: [MachineId, InstallationYear]
+
+  dim_machine_setup:
+    layer: dim
+    file: dim_machine_setup.csv
+    grain: "1 linha = 1 molde/ferramenta montável numa máquina"
+    primary_key: [MoldId, MachineId]
+    required: [MoldId, MachineId, Cavities, RatedCapacityPerHour]
+    foreign_keys:
+      - {columns: [MachineId], references: dim_machine_profile, ref_columns: [MachineId], severity: block}
+
+  dim_customer:
+    layer: dim
+    file: dim_customer.csv
+    grain: "1 linha = 1 cliente"
+    primary_key: [CustomerId]
+    required: [CustomerId]
+
+  dim_supplier:
+    layer: dim
+    file: dim_supplier.csv
+    grain: "1 linha = 1 fornecedor"
+    primary_key: [SupplierId]
+    required: [SupplierId]
+
+  dim_masterbatch:
+    layer: dim
+    file: dim_masterbatch.csv
+    grain: "1 linha = 1 produto (frasco/pote) e a sua cor"
+    primary_key: [ProductId]
+    required: [ProductId, ProductType, MoldId]
+
+  dim_cap:
+    layer: dim
+    file: dim_cap.csv
+    grain: "1 linha = 1 tampa"
+    primary_key: [CapId]
+    required: [CapId, MoldId, MinWeightG, MaxWeightG]
+    row_rules:
+      - {id: CAP-SPEC, rule: "MinWeightG < MaxWeightG", severity: block, dimension: validity,
+         description: "Especificação de peso coerente (mínimo < máximo)"}
+
+  # ------------------------------------------------------------------ produção
+  fact_production:
+    layer: silver
+    file: fact_production_processed.csv
+    grain: "1 linha = 1 ordem de produção (WorkOrder)"
+    primary_key: [WorkOrder]
+    unique: [[LotId]]
+    required: [WorkOrder, Date, Process, MachineId, ToolId, ProductId, LotId, ProducedQty, RejectedQty,
+               PlannedTimeHours, RunTimeHours, Availability, Performance, Quality, OEE, DowntimeExceedsPlan]
+    date_columns: [Date]
+    allowed_values:
+      Process: *process
+      ShiftNumber: [1, 2, 3]
+    ranges:
+      ProducedQty: {min: 1}
+      RejectedQty: {min: 0}
+      Availability: {min: 0, max: 1}
+      Performance: {min: 0, max: 1}
+      Quality: {min: 0, max: 1}
+      OEE: {min: 0, max: 1}
+      PerformanceVsNominal:
+        min: 0
+        max: 1.10
+        severity: warn
+        description: >-
+          Velocidade real até 110% do nominal. Defeito conhecido do V00: em ~500 ordens (sobretudo
+          Hot Foil / Serigrafia) a paragem registada na janela da ordem não deixa tempo físico para a
+          quantidade produzida à capacidade nominal -- inconsistência do gerador, não velocidade real.
+          O OEE usa Performance limitada a 1 e a Parte 4.17 usa a mediana; ordens em que a paragem
+          iguala o tempo planeado ficam com DowntimeExceedsPlan = True e PerformanceVsNominal vazio.
+    row_rules:
+      - {id: PROD-REJ, rule: "RejectedQty <= ProducedQty", severity: block, dimension: validity,
+         description: "Não se rejeita mais do que se produz"}
+      - {id: PROD-OEE, rule: "abs(OEE - Availability * Performance * Quality) < 1e-9", severity: block,
+         dimension: consistency, description: "Identidade do OEE = A x P x Q"}
+      - {id: PROD-LOTID, rule: "LotId.astype('str').str.len() == 16", severity: block, dimension: validity,
+         description: "LotId com 16 caracteres (YYWWDTPMMOOOOOSS)"}
+    foreign_keys:
+      - {columns: [MachineId], references: dim_machine_profile, ref_columns: [MachineId], severity: block}
+      - {columns: [MachineId, ToolId], references: dim_machine_setup, ref_columns: [MachineId, MoldId], severity: block}
+
+  fact_production_plan:
+    layer: silver
+    file: fact_production_plan_processed.csv
+    grain: "1 linha = 1 ordem planeada"
+    primary_key: [WorkOrder]
+    required: [WorkOrder, Date, MachineId, PlannedQty, PlannedHours]
+    date_columns: [Date]
+    ranges:
+      PlannedQty: {min: 1}
+      PlannedHours: {min: 0.01}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block,
+         description: "Toda ordem planeada foi executada (e vice-versa, ver PROD-PLAN)"}
+
+  fact_downtime:
+    layer: silver
+    file: fact_downtime_processed.csv
+    grain: "1 linha = 1 evento de paragem"
+    required: [Date, Process, MachineId, PlannedStoppage, StoppageReason, DowntimeDurationMin, EffectiveDowntimeMin]
+    date_columns: [Date]
+    allowed_values:
+      Process: *process
+      Shift: *shift_label
+      PlannedStoppage: ["Yes", "No"]
+    ranges:
+      DowntimeDurationMin: {min: 0, max: 1440}
+      EffectiveDowntimeMin: {min: 0, max: 1440}
+    row_rules:
+      - {id: DT-EFF, rule: "EffectiveDowntimeMin <= DowntimeDurationMin + 1e-6", severity: block, dimension: consistency,
+         description: "Minutos efetivos (união dos intervalos sobrepostos por máquina) nunca excedem a duração do evento"}
+    foreign_keys:
+      - {columns: [MachineId], references: dim_machine_profile, ref_columns: [MachineId], severity: block}
+      - {columns: [MatchedWorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  fact_material_consumption:
+    layer: silver
+    file: fact_material_consumption_processed.csv
+    grain: "1 linha = 1 registo de consumo de colorante/material dentro de uma ordem"
+    required: [Date, WorkOrder, MachineId, MaterialId]
+    date_columns: [Date]
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  # ------------------------------------------------------------------ controlo de qualidade
+  fact_bottle_inspection_variables:
+    layer: silver
+    file: fact_bottle_inspection_variables_cq_processed.csv
+    grain: "1 linha = 1 subgrupo (5 peças) de 1 característica de 1 lote"
+    required: [WorkOrder, MachineId, MoldId, BottleId, Characteristic, LSL, USL, XBar, RangeR]
+    date_columns: [ProductionDate]
+    ranges:
+      RangeR: {min: 0}
+    row_rules:
+      - {id: BVAR-SPEC, rule: "LSL < USL", severity: block, dimension: validity,
+         description: "Limites de especificação coerentes"}
+      - {id: BVAR-POS, rule: "(M1 > 0) & (M2 > 0) & (M3 > 0) & (M4 > 0) & (M5 > 0)", severity: warn,
+         dimension: validity,
+         description: "Medida física (peso, espessura, volume) não pode ser <= 0. Defeito conhecido do V00: 1 leitura negativa (ISBM-003, WO-2974) -- impacto desprezível no subgrupo, mantido e sinalizado, não corrigido em silêncio"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  fact_cap_inspection_variable:
+    layer: silver
+    file: fact_cap_inspection_variable_cq_processed.csv
+    grain: "1 linha = 1 subgrupo (10 peças) de 1 característica de 1 lote"
+    required: [WorkOrder, MachineId, MoldId, CapId, Characteristic, LSL, USL, XBar, RangeR]
+    date_columns: [ProductionDate]
+    ranges:
+      RangeR: {min: 0}
+    row_rules:
+      - {id: CVAR-SPEC, rule: "LSL < USL", severity: block, dimension: validity,
+         description: "Limites de especificação coerentes"}
+      - {id: CVAR-POS, rule: "(M1 > 0) & (M2 > 0) & (M3 > 0) & (M4 > 0) & (M5 > 0) & (M6 > 0) & (M7 > 0) & (M8 > 0) & (M9 > 0) & (M10 > 0)",
+         severity: warn, dimension: validity,
+         description: "Medida física não pode ser <= 0. Defeito conhecido do V00: 1 leitura negativa (IM-002, WO-8300)"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+      - {columns: [CapId], references: dim_cap, ref_columns: [CapId], severity: block}
+
+  fact_bottle_disposition_lot:
+    layer: silver
+    file: fact_bottle_disposition_lot_cq_processed.csv
+    grain: "1 linha = 1 decisão de lote de frasco/pote"
+    primary_key: [WorkOrder]
+    required: [WorkOrder, MachineId, LotSize, SampleSize, FinalLotDecision, LotDecisionDateTime]
+    allowed_values:
+      FinalLotDecision: *lot_decision
+      Shift: *shift_label
+    row_rules:
+      - {id: BDISP-AQL, rule: "SampleSize <= LotSize", severity: warn, dimension: validity,
+         description: "Amostra AQL nunca maior do que o lote (ISO 2859-1: se n >= N, inspeção 100%, n = N). Defeito conhecido do V00: 1 lote (ISBM-008, WO-7094, N=184, n=200)"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  fact_cap_disposition_lot:
+    layer: silver
+    file: fact_cap_disposition_lot_cq_processed.csv
+    grain: "1 linha = 1 decisão de lote de tampa"
+    primary_key: [WorkOrder]
+    required: [WorkOrder, MachineId, LotSize, SampleSize, FinalLotDecision, LotDecisionDateTime]
+    allowed_values:
+      FinalLotDecision: *lot_decision
+    row_rules:
+      - {id: CDISP-AQL, rule: "SampleSize <= LotSize", severity: block, dimension: validity,
+         description: "Amostra AQL nunca maior do que o lote"}
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  fact_ink_disposition_lot:
+    layer: silver
+    file: fact_ink_disposition_lot_cq_processed.csv
+    grain: "1 linha = 1 decisão de lote de decoração (serigrafia / hot foil)"
+    primary_key: [WorkOrder]
+    required: [WorkOrder, MachineId, LotSize, SampleSize, FinalLotDecision, LotDecisionDateTime]
+    allowed_values:
+      FinalLotDecision: *lot_decision
+    foreign_keys:
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  # ------------------------------------------------------------------ cliente e fornecedor
+  fact_sales:
+    layer: silver
+    file: fact_sales_processed.csv
+    grain: "1 linha = 1 linha de encomenda expedida (1 lote)"
+    primary_key: [SalesOrderId]
+    required: [SalesOrderId, Date, CustomerId, ProductId, WorkOrder, LotId, MachineId, ShippedQty]
+    date_columns: [Date]
+    ranges:
+      ShippedQty: {min: 1}
+      UnitPriceEUR: {min: 0}
+    foreign_keys:
+      - {columns: [CustomerId], references: dim_customer, ref_columns: [CustomerId], severity: block}
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+
+  fact_customer_complaints:
+    layer: silver
+    file: fact_customer_complaints_processed.csv
+    grain: "1 linha = 1 reclamação de cliente"
+    primary_key: [ComplaintId]
+    required: [ComplaintId, Date, CustomerId, DefectType, Severity, Status]
+    date_columns: [Date]
+    allowed_values:
+      Severity: *severity
+      Status: ["Open", "Closed"]
+    row_rules:
+      - {id: CMP-STATUS, rule: "(Status == 'Closed') == ResolutionDate.notna()", severity: block,
+         dimension: consistency, description: "Reclamação fechada tem data de resolução, e só ela"}
+    foreign_keys:
+      - {columns: [CustomerId], references: dim_customer, ref_columns: [CustomerId], severity: block}
+      - {columns: [WorkOrder], references: fact_production, ref_columns: [WorkOrder], severity: block}
+      - {columns: [SalesOrderId], references: fact_sales, ref_columns: [SalesOrderId], severity: warn,
+         description: "Reclamação rastreável até à encomenda expedida"}
+
+  fact_raw_material_lot_disposition:
+    layer: silver
+    file: fact_raw_material_lot_disposition_processed.csv
+    grain: "1 linha = 1 lote de matéria-prima recebido"
+    primary_key: [MaterialLotId]
+    required: [MaterialLotId, Date, SupplierId, FinalDecision]
+    date_columns: [Date]
+    allowed_values:
+      FinalDecision: ["Accepted", "Accepted With Deviation", "Rejected"]
+    foreign_keys:
+      - {columns: [SupplierId], references: dim_supplier, ref_columns: [SupplierId], severity: block}
+
+  fact_supplier_complaints:
+    layer: silver
+    file: fact_supplier_complaints_processed.csv
+    grain: "1 linha = 1 reclamação a fornecedor"
+    primary_key: [SupplierComplaintId]
+    required: [SupplierComplaintId, Date, SupplierId, Status]
+    date_columns: [Date]
+    row_rules:
+      - {id: SCMP-STATUS, rule: "(Status == 'Closed') == DateResolved.notna()", severity: block,
+         dimension: consistency, description: "Reclamação a fornecedor fechada tem data de resolução"}
+    foreign_keys:
+      - {columns: [SupplierId], references: dim_supplier, ref_columns: [SupplierId], severity: block}
+
+  # ------------------------------------------------------------------ NC / CAPA
+  fact_nonconformance:
+    layer: silver
+    file: fact_nonconformance_processed.csv
+    grain: "1 linha = 1 não conformidade"
+    primary_key: [NCId]
+    required: [NCId, Date, Type, Source, Severity]
+    date_columns: [Date]
+    allowed_values:
+      Type: ["Internal", "External"]
+      Severity: *severity
+
+  fact_capa:
+    layer: silver
+    file: fact_capa_processed.csv
+    grain: "1 linha = 1 ação corretiva/preventiva, ligada a exatamente 1 NC"
+    primary_key: [CAPAId]
+    unique: [[RelatedNCId]]
+    required: [CAPAId, OpenDate, DueDate, Status, RelatedNCId]
+    allowed_values:
+      Status: ["Open", "Closed", "Overdue"]
+      CAPAType: ["Corrective", "Preventive"]
+    row_rules:
+      - {id: CAPA-CLOSE, rule: "(Status == 'Closed') == CloseDate.notna()", severity: block,
+         dimension: consistency, description: "CAPA fechada tem data de fecho, e só ela"}
+      - {id: CAPA-EFF, rule: "(Status == 'Closed') | ~EffectivenessCheck.isin(['Effective', 'Not Effective'])",
+         severity: warn, dimension: consistency,
+         description: "Eficácia só pode ser concluída depois de a ação estar implementada/fechada (ISO 9001 10.2.1 d). Defeito conhecido do V00: 139 CAPAs abertas/atrasadas já com veredito de eficácia"}
+    foreign_keys:
+      - {columns: [RelatedNCId], references: fact_nonconformance, ref_columns: [NCId], severity: block}
+
+# Regras de negócio entre tabelas -- implementadas em lib/data_quality.py (BUSINESS_RULES), porque
+# cruzam mais de uma tabela. Listadas aqui para o contrato continuar a ser a fonte única do que é
+# verificado.
+business_rules:
+  - {id: BR-PLAN-PROD, check: every_production_order_is_planned, severity: block, dimension: referential_integrity,
+     description: "Toda ordem executada tem ordem planeada (plano <-> real 1:1)"}
+  - {id: BR-RELEASE, check: rejected_lot_not_shipped, severity: block, dimension: consistency,
+     description: "Lote com decisão final Rejected (segregado) nunca aparece numa expedição (ISO 9001 8.6/8.7)"}
+  - {id: BR-SHIP-AFTER-DECISION, check: shipped_after_lot_decision, severity: block, dimension: timeliness,
+     description: "Nenhum lote é expedido antes do dia da sua decisão de libertação"}
+  - {id: BR-LOTID-TRACE, check: sales_lotid_prefix_matches_production, severity: block, dimension: consistency,
+     description: "Os 14 primeiros caracteres do LotId da expedição = LotId da ordem que o produziu (rastreabilidade ISO 9001 8.5.2)"}
+  - {id: BR-LOTID-SUFFIX, check: sales_lotid_suffix_matches_production, severity: warn, dimension: consistency,
+     description: "Sufixo (sequência de lote de material) igual ao da produção. Convenção diferente no gerador V00 (sufixo = n.º de expedição) -- sinalizado, nenhuma análise junta vendas e produção por LotId (usam WorkOrder)"}
+  - {id: BR-DATE-WINDOW, check: dates_within_window, severity: block, dimension: timeliness,
+     description: "Datas de evento dentro da janela do dataset (+ tolerância para eventos de fecho)"}

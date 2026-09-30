@@ -285,15 +285,29 @@ def compute_oee_components(production: pd.DataFrame, plan: pd.DataFrame,
     setup_stoppages = downtime_by_order[
         downtime_by_order["StoppageReason"].str.contains("Change / Setup|Change/Setup", case=False, na=False, regex=True)
     ]
-    unplanned_minutes = unplanned_stoppages.groupby("WorkOrder")["DowntimeDurationMin"].sum()
-    setup_minutes = setup_stoppages.groupby("WorkOrder")["DowntimeDurationMin"].sum()
+    # Machine time actually lost, not the sum of event durations: stoppage events on the same
+    # machine overlap in the raw log (e.g. a registration adjustment running inside a quality
+    # adjustment), and summing them charged the same minutes to Availability two or three
+    # times -- see `compute_effective_downtime`.
+    minutes_column = "EffectiveDowntimeMin" if "EffectiveDowntimeMin" in downtime_by_order.columns else "DowntimeDurationMin"
+    unplanned_minutes = unplanned_stoppages.groupby("WorkOrder")[minutes_column].sum()
+    setup_minutes = setup_stoppages.groupby("WorkOrder")[minutes_column].sum()
 
     df["UnplannedDowntimeHours"] = df["WorkOrder"].map(unplanned_minutes).fillna(0) / 60.0
     df["SetupTimeHours"] = df["WorkOrder"].map(setup_minutes).fillna(0) / 60.0
 
+    # An order with no plan row falls back to its actual lead time as planned time. The SAME
+    # fallback must be the Availability denominator too -- dividing by the unfilled
+    # PlannedTimeHours made Availability (and so OEE) NaN for exactly those orders while
+    # RunTimeHours was still computed from the fallback.
     planned_time = df["PlannedTimeHours"].fillna(df["LeadTimeProdHours"])
+    # When the unplanned downtime matched to an order reaches its planned time (the order ran
+    # longer than planned, so its real window holds more stoppage than the plan had hours),
+    # RunTime is floored at 0.01 h to keep ratios finite -- and the order is FLAGGED, because
+    # its PerformanceVsNominal (units / 0.01 h) is then an arithmetic artifact, not a speed.
+    df["DowntimeExceedsPlan"] = df["UnplannedDowntimeHours"] >= planned_time
     df["RunTimeHours"] = (planned_time - df["UnplannedDowntimeHours"]).clip(lower=0.01)
-    df["Availability"] = (df["RunTimeHours"] / df["PlannedTimeHours"]).clip(0, 1)
+    df["Availability"] = (df["RunTimeHours"] / planned_time).clip(0, 1)
 
     rated_capacity = df.apply(lambda row: capacity_by_machine.get((row["MachineId"], row["ToolId"]), np.nan), axis=1)
     df["RatedCapacityPcH"] = rated_capacity
@@ -309,7 +323,7 @@ def compute_oee_components(production: pd.DataFrame, plan: pd.DataFrame,
     # (the OEE input) is therefore capped at 1.0, while `PerformanceVsNominal` keeps
     # the uncapped ratio so above-nominal orders remain visible as a distinct signal.
     raw_performance = (df["ProducedQty"] / df["RunTimeHours"]) / rated_capacity
-    df["PerformanceVsNominal"] = raw_performance.clip(lower=0)
+    df["PerformanceVsNominal"] = raw_performance.clip(lower=0).where(~df["DowntimeExceedsPlan"])
     df["Performance"] = raw_performance.clip(0, 1)
 
     df["Quality"] = ((df["ProducedQty"] - df["RejectedQty"]) / df["ProducedQty"]).clip(0, 1)
@@ -333,14 +347,22 @@ def compute_production_time(df: pd.DataFrame, start_column="StartTime", end_colu
     return pd.Series(duration_hours, index=df.index, name="LeadTimeProdHours")
 
 
-UNPLANNED_FAILURE_WORDS = ["Failure", "Shortage", "Unavailable"]
+UNPLANNED_FAILURE_WORDS = ["Failure"]
+# Unplanned stops that are NOT equipment failures: the machine was fine but starved of
+# material/utilities or of an operator. They still cost Availability (OEE), but they are not
+# breakdowns -- counting them as failures inflated "Quebras" in the Six Big Losses by ~150%,
+# put the largest single category (Operator Unavailable) inside MTBF/MTTR/Weibull, and made the
+# predictive-maintenance target ("failure tomorrow") mostly about staffing and logistics, which
+# no maintenance action can prevent. In TPM terms they belong to idling/starvation losses.
+SUPPLY_OR_STAFFING_STOP_WORDS = ["Shortage", "Unavailable"]
 
 
 def classify_stoppage(df: pd.DataFrame, reason_column="StoppageReason",
                        planned_column="PlannedStoppage") -> pd.Series:
-    """A genuine unplanned FAILURE (breakdown, material shortage) is a
-    narrower category than "any unplanned stoppage" (which also includes an
-    unplanned mold/tool change)."""
+    """A genuine unplanned EQUIPMENT failure (mechanical, electrical/control) is a
+    narrower category than "any unplanned stoppage", which also includes unplanned
+    mold/tool changes and supply/staffing stops (`SUPPLY_OR_STAFFING_STOP_WORDS`:
+    raw material, ink, ribbon or compressed-air shortage, operator unavailable)."""
     reason_indicates_failure = df[reason_column].str.contains("|".join(UNPLANNED_FAILURE_WORDS), case=False, na=False)
     was_flagged_unplanned = df[planned_column].str.strip().str.lower().eq("no")
     return reason_indicates_failure & was_flagged_unplanned
@@ -359,10 +381,15 @@ def compute_six_big_losses(production_df: pd.DataFrame, downtime_df: pd.DataFram
     columns `[*group_columns, "LossCategory", "Hours"]`. Pass `group_columns=[]` for a
     single plant-wide total per category instead of a breakdown.
 
+    Downtime categories use `EffectiveDowntimeMin` (union of overlapping events per machine)
+    when present, falling back to `DowntimeDurationMin`.
+
     - Quebras (falha não planejada): downtime where `UnplannedFailure`.
     - Setup / troca: downtime where `IsChangeoverSetup`.
-    - Paradas breves / idling: unplanned downtime that is neither a failure nor a
-      changeover (e.g. micro-stops) -- `PlannedStoppage == "No"` and neither flag.
+    - Paradas breves / idling: unplanned downtime that is neither an equipment failure nor
+      a changeover -- micro-stops, and the supply/staffing stops where the machine was
+      healthy but starved (material, utilities, operator; see
+      `SUPPLY_OR_STAFFING_STOP_WORDS`) -- `PlannedStoppage == "No"` and neither flag.
     - Perda de velocidade: `RunTimeHours * (1 - Performance)` -- equivalent capacity
       lost to running below rated speed.
     - Perda de qualidade (sucata): `RunTimeHours * Performance * (1 - Quality)` --
@@ -388,11 +415,14 @@ def compute_six_big_losses(production_df: pd.DataFrame, downtime_df: pd.DataFram
 
     is_minor_stop = ((downtime_df["PlannedStoppage"] == "No") & ~downtime_df["UnplannedFailure"]
                       & ~downtime_df["IsChangeoverSetup"])
-    breakdown = _hours(downtime_df, downtime_df["UnplannedFailure"], "DowntimeDurationMin")
+    # Same de-overlapped minutes as Availability (see compute_effective_downtime), so a loss
+    # hour charged here is the same hour missing from RunTimeHours -- not a second copy of it.
+    minutes = "EffectiveDowntimeMin" if "EffectiveDowntimeMin" in downtime_df.columns else "DowntimeDurationMin"
+    breakdown = _hours(downtime_df, downtime_df["UnplannedFailure"], minutes)
     breakdown["LossCategory"] = "Quebras (falha não planejada)"
-    changeover = _hours(downtime_df, downtime_df["IsChangeoverSetup"], "DowntimeDurationMin")
+    changeover = _hours(downtime_df, downtime_df["IsChangeoverSetup"], minutes)
     changeover["LossCategory"] = "Setup / troca"
-    minor_stop = _hours(downtime_df, is_minor_stop, "DowntimeDurationMin")
+    minor_stop = _hours(downtime_df, is_minor_stop, minutes)
     minor_stop["LossCategory"] = "Paradas breves / idling"
 
     production_df = production_df.assign(
@@ -484,6 +514,47 @@ def compute_process_capability(df: pd.DataFrame, group_columns: list[str], subgr
     return df
 
 
+def summarize_capability_over_time(df: pd.DataFrame, group_columns: list[str], subgroup_size: int,
+                                   time_column: str = "InspectionDateTime", window: int = 25,
+                                   target: float = 1.33) -> pd.DataFrame:
+    """Capability as a TIME series, not a single number per group.
+
+    `compute_process_capability` gives one within-subgroup Cpk per group for the whole period,
+    broadcast onto every row -- so "the Cpk of the latest row" is still the full-period Cpk, and
+    "share of subgroups with Cpk < target" can only be 0 or 1. This function recomputes Cpk on
+    a rolling window of the last `window` subgroups (X-bar grand mean and R-bar/d2 of that window,
+    the same estimator), and returns per group:
+    - PeriodCpk: whole-period Cpk (same value as `compute_process_capability`);
+    - LatestCpk: Cpk of the most recent `window` subgroups -- the state that decides action today;
+    - PctWindowsBelowTarget: share of rolling windows with Cpk < target (time spent below target);
+    - SubgroupCount, and IsCapable = LatestCpk >= target.
+    Groups with fewer than `window` subgroups use all they have for LatestCpk and report NaN for
+    the rolling share (not enough history to call it a trend)."""
+    d2 = D2_CONSTANT[subgroup_size]
+    rows = []
+    for key, g in df.sort_values(time_column).groupby(group_columns, sort=False):
+        lsl, usl = g["LSL"].iloc[-1], g["USL"].iloc[-1]
+
+        def cpk(mean, rbar):
+            sigma = rbar / d2
+            return np.minimum(usl - mean, mean - lsl) / (3 * sigma)
+
+        period = cpk(g["XBar"].mean(), g["RangeR"].mean())
+        recent = g.tail(window)
+        latest = cpk(recent["XBar"].mean(), recent["RangeR"].mean())
+        if len(g) >= window:
+            rolling = cpk(g["XBar"].rolling(window).mean(), g["RangeR"].rolling(window).mean()).dropna()
+            pct_below = float((rolling < target).mean())
+        else:
+            pct_below = np.nan
+        rows.append({**dict(zip(group_columns, key if isinstance(key, tuple) else (key,))),
+                     "PeriodCpk": period, "LatestCpk": latest, "PctWindowsBelowTarget": pct_below,
+                     "SubgroupCount": len(g)})
+    summary = pd.DataFrame(rows)
+    summary["IsCapable"] = summary["LatestCpk"] >= target
+    return summary
+
+
 def compute_attribute_indicators(df: pd.DataFrame) -> pd.DataFrame:
     """Defect rate (p-chart), DPU and DPMO -- one defect opportunity per
     unit, since each row is one characteristic on one lot."""
@@ -505,14 +576,35 @@ PLANNED_STOPPAGE_REASONS = {
 }
 
 
+def compute_effective_downtime(downtime: pd.DataFrame) -> pd.Series:
+    """Minutes of each stoppage event that were NOT already covered by an earlier-starting
+    event on the same machine -- i.e. each event's share of the UNION of stoppage intervals.
+
+    The raw log records overlapping events on one machine (a colour-registration adjustment
+    logged inside a quality adjustment, a micro-stop inside both). Event duration
+    (`DowntimeDurationMin`) stays the right number for per-event statistics -- MTTR, repair-time
+    distributions, Pareto by reason. But machine time lost can only be counted once, so
+    Availability/OEE and the Six Big Losses hours use this column: summed over any set of
+    events it equals the length of their union, never more. Overlap is attributed to the event
+    that started first."""
+    start = pd.to_datetime(downtime["Date"]) + pd.to_timedelta(downtime["StoppageStartTime"].astype(str))
+    end = start + pd.to_timedelta(downtime["DowntimeDurationMin"], unit="min")
+    frame = pd.DataFrame({"MachineId": downtime["MachineId"], "start": start, "end": end}).sort_values(["MachineId", "start"])
+    covered_until = frame.groupby("MachineId")["end"].transform(lambda s: s.cummax().shift())
+    effective_start = frame["start"].where(covered_until.isna() | (covered_until < frame["start"]), covered_until)
+    effective = ((frame["end"] - effective_start).dt.total_seconds() / 60.0).clip(lower=0)
+    return effective.reindex(downtime.index).rename("EffectiveDowntimeMin")
+
+
 def add_maintenance_info(downtime: pd.DataFrame) -> pd.DataFrame:
-    """Stoppage duration in minutes, plus flags for genuine unplanned
-    failure, changeover/setup, and preventive maintenance."""
+    """Stoppage duration in minutes (per event and de-overlapped per machine), plus flags
+    for genuine unplanned failure, changeover/setup, and preventive maintenance."""
     df = downtime.copy()
     start = pd.to_timedelta(df["StoppageStartTime"].astype(str))
     end = pd.to_timedelta(df["StoppageEndTime"].astype(str))
     duration_minutes = (end - start).dt.total_seconds() / 60.0
     df["DowntimeDurationMin"] = duration_minutes.where(duration_minutes >= 0, duration_minutes + 24 * 60)
+    df["EffectiveDowntimeMin"] = compute_effective_downtime(df)
     df["UnplannedFailure"] = classify_stoppage(df)
     df["IsChangeoverSetup"] = df["StoppageReason"].str.contains("Change / Setup|Change/Setup", case=False, na=False, regex=True)
     df["IsPreventiveMaintenance"] = df["StoppageReason"].str.contains("Preventive Maintenance", case=False, na=False)

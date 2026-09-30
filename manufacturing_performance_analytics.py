@@ -150,6 +150,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 PROJECT_ROOT = Path.cwd()
 sys.path.insert(0, str(PROJECT_ROOT / "lib"))
+import data_quality  # noqa: E402
 import db_lib  # noqa: E402
 import etl_lib as etl  # noqa: E402
 import ml_lib as ml  # noqa: E402
@@ -794,6 +795,39 @@ answer(f"Scorecard consolidado: {'todos os 4 achados de branco disfarçado foram
        "aqui, não deixada implícita em texto espalhado pelas células anteriores.")
 
 # %% [markdown]
+# ## Data Quality Gate — o data contract decide se a Parte 3 pode rodar
+#
+# O scorecard acima mede se a *limpeza* funcionou. O gate abaixo mede outra coisa: se a camada
+# silver cumpre o que promete a quem a consome — o **data contract**
+# ([`contracts/data_contract.yaml`](contracts/data_contract.yaml)): grão e chave de cada tabela,
+# colunas obrigatórias, domínios, faixas, integridade referencial com as dimensões e regras de
+# negócio entre tabelas (ex.: *lote rejeitado nunca é expedido*, *nenhuma expedição antes da
+# decisão de libertação do lote*, *LotId da expedição rastreável até a ordem que o produziu*).
+#
+# Regra de governança: **uma regra `block` que falha interrompe o notebook aqui**, antes de qualquer
+# carga no warehouse — nenhum OEE, Cpk ou indicador de CAPA é calculado sobre dado que quebrou o
+# contrato. Regras `warn` deixam passar, mas ficam listadas com contagem: são defeitos conhecidos e
+# documentados do dataset Versão 00 (congelado), pequenos demais para invalidar os KPIs agregados,
+# e que não seria honesto "corrigir" em silêncio. O mesmo contrato roda no CI
+# (`tests/test_data_contract.py`), então uma regressão no dado é pega antes mesmo de o notebook rodar.
+
+# %%
+dq_contract = data_quality.load_contract(PROJECT_ROOT / "contracts" / "data_contract.yaml")
+dq_tables = data_quality.load_tables(dq_contract, PROJECT_ROOT)
+dq_results = data_quality.validate(dq_contract, dq_tables)
+print(f"{len(dq_results)} regras avaliadas em {len(dq_tables)} tabelas.\n")
+print("Scorecard por dimensão de qualidade de dado (DAMA):")
+print(data_quality.scorecard(dq_results).to_string())
+dq_not_passing = dq_results[dq_results["status"] != "PASS"]
+print("\nRegras que não passaram (WARN = conhecido/documentado, FAIL = bloqueia):")
+print(dq_not_passing[["rule_id", "severity", "n_checked", "n_failed", "status", "description"]].to_string(index=False)
+      if not dq_not_passing.empty else "  nenhuma")
+data_quality.enforce_gate(dq_results)  # levanta DataQualityGateError se alguma regra block falhar
+answer(f"Gate aprovado: {int((dq_results['status'] == 'PASS').sum())} de {len(dq_results)} regras passam, "
+       f"{int((dq_results['status'] == 'WARN').sum())} avisos documentados, 0 regras bloqueantes violadas — "
+       "a camada silver cumpre o data contract e pode ser carregada no warehouse.")
+
+# %% [markdown]
 # ---
 # # Parte 3 — O warehouse SQL Server (arquitetura medalhão)
 # ---
@@ -878,7 +912,7 @@ IF OBJECT_ID('dbo.fact_production_processed', 'U') IS NOT NULL DROP TABLE dbo.fa
         ISOWeek BIGINT, ISOWeekday BIGINT,
         ShiftNumber BIGINT, MaterialLotSeq BIGINT, LotId NVARCHAR(20),
         LeadTimeProdHours FLOAT, PlannedHours FLOAT, PlannedTimeHours FLOAT,
-        UnplannedDowntimeHours FLOAT, SetupTimeHours FLOAT, RunTimeHours FLOAT,
+        UnplannedDowntimeHours FLOAT, SetupTimeHours FLOAT, DowntimeExceedsPlan BIT, RunTimeHours FLOAT,
         Availability FLOAT, RatedCapacityPcH FLOAT, IdealCycleTimeSec FLOAT,
         Performance FLOAT, PerformanceVsNominal FLOAT, Quality FLOAT, OEE FLOAT, ActualCycleTimeSec FLOAT,
         ThroughputLeadTimeHours FLOAT
@@ -892,7 +926,7 @@ IF OBJECT_ID('dbo.fact_downtime_processed', 'U') IS NOT NULL DROP TABLE dbo.fact
         StoppageReason NVARCHAR(166), MaintenanceTeam NVARCHAR(32),
         MaintenanceTechnician NVARCHAR(46), ISOWeek BIGINT, ISOWeekday BIGINT,
         ShiftNumber BIGINT, MatchedWorkOrder NVARCHAR(16), LotId NVARCHAR(22),
-        DowntimeDurationMin FLOAT, UnplannedFailure BIT, IsChangeoverSetup BIT,
+        DowntimeDurationMin FLOAT, EffectiveDowntimeMin FLOAT, UnplannedFailure BIT, IsChangeoverSetup BIT,
         IsPreventiveMaintenance BIT
     );
 GO
@@ -1406,9 +1440,9 @@ CREATE TABLE gold.oee_weekly_by_machine (
 GO
 IF OBJECT_ID('gold.cpk_summary_by_characteristic', 'U') IS NOT NULL DROP TABLE gold.cpk_summary_by_characteristic;
 CREATE TABLE gold.cpk_summary_by_characteristic (
-    Domain NVARCHAR(10), MachineId NVARCHAR(16), MoldId NVARCHAR(52),
-    Characteristic NVARCHAR(40), MeanCpk FLOAT, LatestCpk FLOAT, MeanCp FLOAT,
-    IsCapable BIT, SubgroupCount BIGINT, PctSubgroupsBelow133 FLOAT
+    Domain NVARCHAR(10), MachineId NVARCHAR(16), MoldId NVARCHAR(52), ProductId NVARCHAR(40),
+    Characteristic NVARCHAR(40), PeriodCpk FLOAT, LatestCpk FLOAT, PctWindowsBelowTarget FLOAT,
+    SubgroupCount BIGINT, IsCapable BIT
 );
 GO
 IF OBJECT_ID('gold.six_big_losses_monthly', 'U') IS NOT NULL DROP TABLE gold.six_big_losses_monthly;
@@ -1583,38 +1617,38 @@ oee_weekly = (
     .reset_index()
 )
 
+# Capacidade como SÉRIE TEMPORAL, no mesmo grão do SPC (máquina x molde x produto x característica
+# -- a especificação é por produto, então misturar produtos num só Cpk não teria significado).
+# O `Cpk` gravado em cada linha da silver é o Cpk do período inteiro do grupo, repetido em todas
+# as linhas; por isso "o Cpk da última linha" NÃO é o estado recente, e "fração de subgrupos com
+# Cpk < 1.33" só poderia ser 0 ou 1. `etl.summarize_capability_over_time` recalcula o Cpk numa
+# janela móvel dos últimos 25 subgrupos (mesmo estimador: X-barra e R-barra/d2 da janela):
+# LatestCpk = estado mais recente (o que decide ação hoje); PctWindowsBelowTarget = fração do
+# tempo em que a janela móvel ficou abaixo de 1,33 (incapacidade crônica vs. pontual).
+CPK_WINDOW_SUBGROUPS = 25
 cpk_frames = []
-for table, domain in [("fact_bottle_inspection_variables_cq_processed", "Bottle"),
-                       ("fact_cap_inspection_variable_cq_processed", "Cap")]:
-    d = pd.read_sql(f"SELECT MachineId, MoldId, Characteristic, Cpk, Cp, InspectionDateTime FROM dbo.{table}",
-                     engine, parse_dates=["InspectionDateTime"])
-    d["Domain"] = domain
-    cpk_frames.append(d)
-cpk_all = pd.concat(cpk_frames, ignore_index=True)
-latest_cpk = cpk_all.sort_values("InspectionDateTime").groupby(["Domain", "MachineId", "MoldId", "Characteristic"]).tail(1)
-latest_cpk = latest_cpk.set_index(["Domain", "MachineId", "MoldId", "Characteristic"])["Cpk"].rename("LatestCpk")
-# Média de Cpk ao longo do período não é um resumo robusto de capacidade: um grupo que
-# alterna entre Cpk=0.7 e Cpk=1.6 tem a MESMA média de um grupo estável em Cpk=1.15,
-# mas descreve um processo muito mais instável. PctSubgroupsBelow133 (fração do tempo
-# fora da meta) e LatestCpk (estado mais recente, o que decide ação hoje) preservam
-# essa distinção -- IsCapable usa o Cpk mais recente, não a média histórica.
-pct_below_133 = (cpk_all.groupby(["Domain", "MachineId", "MoldId", "Characteristic"])["Cpk"]
-                  .apply(lambda s: (s < 1.33).mean()).rename("PctSubgroupsBelow133"))
-cpk_summary = (
-    cpk_all.groupby(["Domain", "MachineId", "MoldId", "Characteristic"])
-    .agg(MeanCpk=("Cpk", "mean"), MeanCp=("Cp", "mean"), SubgroupCount=("Cpk", "size"))
-    .join(latest_cpk).join(pct_below_133).reset_index()
-)
-cpk_summary["IsCapable"] = cpk_summary["LatestCpk"] >= 1.33
-print(f"Fração da planta capaz pelo Cpk MAIS RECENTE (>= 1.33): {100 * cpk_summary['IsCapable'].mean():.1f}%")
-print(f"Para contraste -- pela média histórica de Cpk (métrica menos robusta, mantida só para comparação): "
-      f"{100 * (cpk_summary['MeanCpk'] >= 1.33).mean():.1f}%")
-print(f"Grupos com >=50% dos subgrupos historicamente abaixo de 1.33 (incapacidade crônica, não pontual): "
-      f"{(cpk_summary['PctSubgroupsBelow133'] >= 0.5).sum()} de {len(cpk_summary)}")
+for table, domain, product_column, subgroup_size in [
+        ("fact_bottle_inspection_variables_cq_processed", "Bottle", "BottleId", 5),
+        ("fact_cap_inspection_variable_cq_processed", "Cap", "CapId", 10)]:
+    d = pd.read_sql(f"SELECT MachineId, MoldId, {product_column} AS ProductId, Characteristic, XBar, RangeR, LSL, USL, "
+                    f"InspectionDateTime FROM dbo.{table}", engine, parse_dates=["InspectionDateTime"])
+    summary = etl.summarize_capability_over_time(d, ["MachineId", "MoldId", "ProductId", "Characteristic"],
+                                                 subgroup_size=subgroup_size, window=CPK_WINDOW_SUBGROUPS)
+    summary.insert(0, "Domain", domain)
+    cpk_frames.append(summary)
+cpk_summary = pd.concat(cpk_frames, ignore_index=True)
+print(f"{len(cpk_summary)} grupos máquina x molde x produto x característica, janela móvel de {CPK_WINDOW_SUBGROUPS} subgrupos")
+print(f"Fração capaz pelo Cpk RECENTE (últimos {CPK_WINDOW_SUBGROUPS} subgrupos, >= 1.33): {100 * cpk_summary['IsCapable'].mean():.1f}%")
+print(f"Para contraste -- pelo Cpk do período inteiro: {100 * (cpk_summary['PeriodCpk'] >= 1.33).mean():.1f}%")
+print(f"Grupos abaixo de 1,33 em >= 50% das janelas móveis (incapacidade crônica, não pontual): "
+      f"{int((cpk_summary['PctWindowsBelowTarget'] >= 0.5).sum())} de {int(cpk_summary['PctWindowsBelowTarget'].notna().sum())} "
+      "com histórico suficiente")
+cpk_degrading = cpk_summary[cpk_summary["LatestCpk"] < cpk_summary["PeriodCpk"] - 0.2]
+print(f"Grupos cujo Cpk recente caiu > 0,2 abaixo do Cpk do período (alerta de queda, não só de nível): {len(cpk_degrading)}")
 
 downtime_full = pd.read_sql(
-    "SELECT [Date], Process, MachineId, DowntimeDurationMin, UnplannedFailure, IsChangeoverSetup, PlannedStoppage "
-    "FROM dbo.fact_downtime_processed", engine, parse_dates=["Date"])
+    "SELECT [Date], Process, MachineId, DowntimeDurationMin, EffectiveDowntimeMin, UnplannedFailure, IsChangeoverSetup, "
+    "PlannedStoppage FROM dbo.fact_downtime_processed", engine, parse_dates=["Date"])
 downtime_full["Month"] = downtime_full["Date"].dt.to_period("M").astype(str)
 prod_by_process = prod_full.copy()
 prod_by_process["Month"] = prod_by_process["Date"].dt.to_period("M").astype(str)
@@ -2296,7 +2330,9 @@ benchmark_machines = reliability[reliability["Quadrante"] == "Benchmark (MTBF al
 
 # %%
 ASSUMED_DOWNTIME_COST_PER_HOUR_EUR = 350.0
-unplanned_hours_by_machine = failures.groupby("MachineId")["DowntimeDurationMin"].sum() / 60
+# Horas de máquina realmente perdidas (EffectiveDowntimeMin: eventos sobrepostos contam uma vez) --
+# a soma de DowntimeDurationMin cobraria a mesma hora parada duas ou três vezes.
+unplanned_hours_by_machine = failures.groupby("MachineId")["EffectiveDowntimeMin"].sum() / 60
 downtime_cost_by_machine = (unplanned_hours_by_machine * ASSUMED_DOWNTIME_COST_PER_HOUR_EUR).sort_values(ascending=False)
 print(f"Custo de indisponibilidade não planejada, ilustrativo (€ {ASSUMED_DOWNTIME_COST_PER_HOUR_EUR:.0f}/h), 18 meses:")
 print(downtime_cost_by_machine.round(0))
@@ -2807,15 +2843,24 @@ answer(f"A genealogia real ordem-a-ordem (checagem de sanidade acima: 0 esperas 
 # medidos OBRIGAM a existir, por identidade matemática, não por suposição extra.
 
 # %%
-throughput_bm = bm_orders["ProducedQty"].sum() / bm_orders["LeadTimeProdHours"].sum()  # unidades/hora de processamento
+# Na Lei de Little, "throughput" é a taxa MÉDIA DE SAÍDA do sistema por hora de CALENDÁRIO (o mesmo
+# relógio em que o lead time é medido) -- não a velocidade de processamento por hora-máquina. Usar
+# unidades / horas de processamento (≈ a velocidade nominal do sopro) superestimaria o WIP pelo
+# fator (horas de calendário / horas em que este produto estava de fato sendo soprado).
+processing_rate_bm = bm_orders["ProducedQty"].sum() / bm_orders["LeadTimeProdHours"].sum()  # contexto, não entra em Little
+flow_window_hours_bm = (pd.to_datetime(bm_orders["Date"]).max() - pd.to_datetime(bm_orders["Date"]).min()
+                        + pd.Timedelta(days=1)).total_seconds() / 3600
+throughput_bm = bm_orders["ProducedQty"].sum() / flow_window_hours_bm  # unidades/hora de calendário
 implied_wip_units = throughput_bm * lead_time_estimate_hours
 implied_wip_units_waiting_only = throughput_bm * wait_hours  # agora a espera real da genealogia (Seção 4.14), não mais proxy de cadência
-print(f"Taxa de processamento (Sopro): {throughput_bm:,.0f} unidades/hora")
-print(f"WIP implícito pela Lei de Little (lead time total): {implied_wip_units:,.0f} unidades")
+print(f"Velocidade de processamento do Sopro (contexto, NÃO é o throughput de Little): {processing_rate_bm:,.0f} unidades/hora-máquina")
+print(f"Throughput do fluxo (taxa média de saída, hora de calendário): {throughput_bm:,.0f} unidades/hora")
+print(f"WIP equivalente estimado pela Lei de Little (lead time total): {implied_wip_units:,.0f} unidades")
 print(f"...das quais, só esperando no estoque intermediário (não sendo processadas): {implied_wip_units_waiting_only:,.0f} unidades")
 
 wip_waiting_share = implied_wip_units_waiting_only / implied_wip_units
-answer(f"A Lei de Little implica ~{implied_wip_units:,.0f} unidades de {PRODUCT} em processo a qualquer instante "
+answer(f"A Lei de Little implica um WIP equivalente médio de ~{implied_wip_units:,.0f} unidades de {PRODUCT} "
+       "(estimado pela identidade, não medido no chão de fábrica, e válido sob fluxo aproximadamente estável) "
        f"neste fluxo, das quais ~{implied_wip_units_waiting_only:,.0f} ({wip_waiting_share:.0%}, minoria — "
        f"coerente com o PCE de {pce:.1%} da Seção 4.14) estão especificamente "
        "esperando no estoque intermediário entre Sopro e Serigrafia, não sendo trabalhadas. O WIP em espera aqui é "
@@ -6895,7 +6940,7 @@ answer(f"O ajuste in-sample por si só não é evidência de ganho preditivo —
 # > material que preveja uma reclamação de cliente uma ou duas semanas depois?*
 
 # %%
-downtime_ts = pd.read_sql("SELECT [Date], DowntimeDurationMin, PlannedStoppage FROM silver.fact_downtime", engine, parse_dates=["Date"])
+downtime_ts = pd.read_sql("SELECT [Date], EffectiveDowntimeMin AS DowntimeDurationMin, PlannedStoppage FROM silver.fact_downtime", engine, parse_dates=["Date"])
 downtime_ts["WeekStart"] = downtime_ts["Date"].dt.to_period("W-SUN").dt.start_time
 weekly_downtime = downtime_ts[downtime_ts["PlannedStoppage"] == "No"].groupby("WeekStart")["DowntimeDurationMin"].sum().div(60).rename("HorasParadaNaoPlanejada")
 
@@ -7342,12 +7387,12 @@ def run_forecast_pipeline11(name: str, value_col: str, weekly: pd.DataFrame, ext
             plt.tight_layout(); plt.savefig(REPORTS_DIR / f"11_{value_col}_shap_summary.png", bbox_inches="tight"); plt.show()
         except Exception as exc:
             print(f"(resumo SHAP pulado: {exc})")
-    elif hasattr(best_model, "coef_"):
-        coefs = pd.Series(best_model.coef_, index=feature_cols).sort_values()
+    elif (coefs := ml.linear_coefficients(best_model, feature_cols)) is not None:
+        coefs = coefs.sort_values()
         fig, ax = plt.subplots(figsize=(8, 5))
         coefs.plot(kind="barh", ax=ax, color=PALETTE[3])
         ax.axvline(0, color="black", linewidth=0.8)
-        ax.set_title(f"{name} — coeficientes Ridge ({best_name})")
+        ax.set_title(f"{name} — coeficientes Ridge padronizados, efeito de +1 desvio-padrão ({best_name})")
         fig.tight_layout(); fig.savefig(REPORTS_DIR / f"11_{value_col}_coefficients.png"); plt.show()
 
     # `best_model` só viu o treino (~80% mais antigo do histórico) -- correto para a
@@ -7376,6 +7421,7 @@ def run_forecast_pipeline11(name: str, value_col: str, weekly: pd.DataFrame, ext
     history_out = test_plot[["WeekStart", "Process", value_col, "Predicted"]].rename(
         columns={value_col: f"Actual{value_col}", "Predicted": f"Predicted{value_col}"})
     history_out["WeekStart"] = history_out["WeekStart"].astype(str)
+    comparison.attrs["baseline_metrics"] = baseline_metrics
     return forecast_out, history_out, comparison, best_name
 
 
@@ -7396,10 +7442,37 @@ prod_forecast11, prod_history11, prod_comparison11, prod_best11 = run_forecast_p
     "Previsão de produção", "ProducedQty", weekly_prod11, extra_cols=["PlannedQty"], unit="unidades")
 
 # %% [markdown]
+# **A baseline que importa para este modelo não é a média móvel — é o próprio plano.** Se o
+# modelo recebe `PlannedQty` como feature, a pergunta honesta é: quanto ele acrescenta sobre a
+# regra que qualquer PCP já usa sem ML, *"vamos produzir o plano × a taxa histórica de
+# cumprimento do plano deste processo"*? A taxa de cumprimento é medida **só no período de
+# treino**, então esta baseline é tão fora-da-amostra quanto o modelo.
+
+# %%
+train_plan11, test_plan11 = ml.split_by_date(weekly_prod11, "WeekStart", test_fraction=0.2)
+attainment11 = (train_plan11.groupby("Process")["ProducedQty"].sum()
+                / train_plan11.groupby("Process")["PlannedQty"].sum())
+plan_only_pred11 = (test_plan11["PlannedQty"] * test_plan11["Process"].map(attainment11)).fillna(
+    test_plan11["RollingMean4_ProducedQty"])
+plan_only_metrics11 = ml.regression_metrics(test_plan11["ProducedQty"], plan_only_pred11)
+prod_vs_plan11 = ml.baseline_verdict(prod_comparison11.loc[prod_best11, "MAE"], plan_only_metrics11["MAE"],
+                                     "MAE", higher_is_better=False)
+print("Taxa de cumprimento do plano no treino, por processo:", attainment11.round(3).to_dict())
+print(f"Baseline 'plano x cumprimento histórico': MAE={plan_only_metrics11['MAE']:,.0f}, R²={plan_only_metrics11['R2']:.3f}")
+print(f"Modelo ({prod_best11}):                     MAE={prod_comparison11.loc[prod_best11, 'MAE']:,.0f}, "
+      f"R²={prod_comparison11.loc[prod_best11, 'R2']:.3f}")
+print(f"Ganho relativo de MAE sobre a baseline do plano: {prod_vs_plan11['relative_gain']:+.1%} -> {prod_vs_plan11['verdict']}")
+answer(f"O plano sozinho (× cumprimento histórico) já explica R²={plan_only_metrics11['R2']:.3f} da produção semanal "
+       f"de teste; o modelo chega a R²={prod_comparison11.loc[prod_best11, 'R2']:.3f}. O ganho do ML sobre a regra "
+       f"simples do PCP é de {prod_vs_plan11['relative_gain']:+.1%} no MAE — **{prod_vs_plan11['verdict']}**. "
+       "É por isso que este modelo é apresentado como *previsão de cumprimento do plano*, não como previsão de "
+       "capacidade: o R² alto é, em grande parte, mérito da informação que o plano já carrega.")
+
+# %% [markdown]
 # ### Previsão de parada não planejada (horas)
 
 # %%
-downtime_weekly11 = downtime11[downtime11["PlannedStoppage"] == "No"].groupby(["Process", "WeekStart"])["DowntimeDurationMin"].sum().div(60).rename("DowntimeHours").reset_index()
+downtime_weekly11 = downtime11[downtime11["PlannedStoppage"] == "No"].groupby(["Process", "WeekStart"])["EffectiveDowntimeMin"].sum().div(60).rename("DowntimeHours").reset_index()
 weekly_down11 = production11.groupby(["Process", "WeekStart"]).size().reset_index(name="_n")[["Process", "WeekStart"]]
 weekly_down11 = weekly_down11.merge(downtime_weekly11, on=["Process", "WeekStart"], how="left")
 weekly_down11["DowntimeHours"] = weekly_down11["DowntimeHours"].fillna(0)
@@ -7461,6 +7534,9 @@ production_scrap11 = pd.read_sql("""
 production_scrap11["ScrapRatePct"] = (production_scrap11["RejectedQty"] / production_scrap11["ProducedQty"] * 100).clip(0, 100)
 production_scrap11 = production_scrap11.dropna(subset=["ActualCycleTimeSec", "RatedCapacityPcH"])
 production_scrap11 = production_scrap11[~production_scrap11["OperatorId"].isin(["-", "--", "---", "/", "//"])]
+# Índice contíguo: o split abaixo seleciona linhas por posição (`_idx`) via `.loc` -- com um índice
+# esburacado pelos filtros acima, `.loc` escolheria silenciosamente as linhas erradas.
+production_scrap11 = production_scrap11.reset_index(drop=True)
 
 cat_cols11 = ["Process", "MachineId", "OperatorId"]
 num_cols11 = ["ShiftNumber", "PlannedQty", "ActualCycleTimeSec", "RatedCapacityPcH", "Availability"]
@@ -7527,6 +7603,16 @@ print(lq_comparison11.round(3))
 print(f"Vencedor escolhido em VALIDAÇÃO: {lq_best11}. Ver coluna Metric_Basis antes de comparar linhas.")
 ml.show_classification_report(ylq_test11, lq_model11.predict(Xlq_test11), class_names=("Approved", "Rejected"))
 
+# Baseline formal: a taxa histórica de rejeição da máquina (só treino) como score de risco.
+lq_baseline_proba11 = ml.group_rate_baseline(train_lq11["MachineId"], ylq_train11, test_lq11["MachineId"])
+lq_baseline_metrics11 = ml.classification_metrics(ylq_test11, (lq_baseline_proba11 >= 0.5).astype(int),
+                                                  probability=lq_baseline_proba11)
+lq_vs_baseline11 = ml.baseline_verdict(lq_comparison11.loc[lq_best11, "ROC_AUC"], lq_baseline_metrics11["ROC_AUC"],
+                                       "ROC_AUC", higher_is_better=True)
+print(f"Baseline (taxa de rejeição histórica da máquina): ROC-AUC={lq_baseline_metrics11['ROC_AUC']:.3f}, "
+      f"PR-AUC={lq_baseline_metrics11['PR_AUC']:.3f} | Modelo: ROC-AUC={lq_comparison11.loc[lq_best11, 'ROC_AUC']:.3f} "
+      f"-> {lq_vs_baseline11['verdict']} ({lq_vs_baseline11['relative_gain']:+.1%})")
+
 # %% [markdown]
 # **Achado honesto, esperado desde a Parte 10**: a disposição de lote depende bastante
 # de variação amostral AQL (Parte 5/6) — um ROC-AUC modesto (bem acima de 0,5, bem
@@ -7577,8 +7663,11 @@ print(f"Impacto operacional no teste ({lq_econ11['n_test']:,} lotes): {lq_econ11
       f"{lq_econ11['false_negatives']:,} falsos negativos (lote ruim liberado) -- número absoluto e percentual, "
       "não só custo relativo, porque \"X% menor custo\" sozinho esconde o volume real de trabalho extra de "
       "Qualidade que este limiar geraria.")
-answer(f"PR-AUC = {lq_pr_auc11:.3f} confirma o mesmo diagnóstico do ROC-AUC (poder preditivo real, mas modesto) "
-       "sem o otimismo que desbalanceamento de classe injeta no ROC-AUC sozinho. Sob os custos assimétricos "
+answer(f"PR-AUC = {lq_pr_auc11:.3f} confirma o mesmo diagnóstico do ROC-AUC (acima do acaso, mas modesto) "
+       "sem o otimismo que desbalanceamento de classe injeta no ROC-AUC sozinho — e, contra a regra simples "
+       f"'taxa de rejeição histórica da máquina' (ROC-AUC={lq_baseline_metrics11['ROC_AUC']:.3f}), "
+       f"**{lq_vs_baseline11['verdict']}**: quase todo o sinal do modelo já está em QUAL máquina fez o lote. "
+       "Sob os custos assimétricos "
        f"ilustrativos assumidos (reter lote bom: € {FALSE_POSITIVE_COST_LOT_EUR:.0f}; liberar lote ruim: € "
        f"{FALSE_NEGATIVE_COST_LOT_EUR:,.0f}), o limiar de decisão custo-mínimo "
        f"({lq_econ11['best_threshold']:.2f}) fica {'abaixo' if lq_econ11['best_threshold'] < 0.5 else 'acima'} de "
@@ -7618,6 +7707,12 @@ daily_failures11 = downtime_pm11.groupby(["MachineId", "Process", "Date"]).agg(F
 all_dates11 = pd.date_range(daily_failures11["Date"].min(), daily_failures11["Date"].max(), freq="D")
 machine_process11 = daily_failures11[["MachineId", "Process"]].drop_duplicates()
 panel11 = machine_process11.merge(pd.DataFrame({"Date": all_dates11}), how="cross")
+# Cada máquina só entra no painel a partir do seu primeiro dia de operação. O produto cartesiano
+# máquina x calendário, sozinho, fabricava ~1.500 máquina-dias "sem falha" (12% do painel) para as
+# 4 máquinas da expansão de portfólio ANTES de elas existirem (2025-07 a 2026-07) -- negativos
+# falsos que ensinavam ao modelo que "máquina nova não falha" e inflavam DaysSinceLastFailure.
+first_day11 = daily_failures11.groupby("MachineId")["Date"].min()
+panel11 = panel11[panel11["Date"] >= panel11["MachineId"].map(first_day11)]
 panel11 = panel11.merge(daily_failures11, on=["MachineId", "Process", "Date"], how="left").fillna({"Failures": 0, "DowntimeMin": 0})
 panel11 = panel11.sort_values(["MachineId", "Date"])
 
@@ -7658,6 +7753,22 @@ print(f"Vencedor escolhido em VALIDAÇÃO: {pm_best11}. Ver coluna Metric_Basis 
       "(mesma leitura da 11.1/11.4 -- só a linha do vencedor é métrica de teste).")
 ml.show_classification_report(ypm_test11, pm_model11.predict(Xpm_test11), class_names=("SemFalha", "FalhaAmanhã"))
 
+# Duas baselines formais, as regras que um planejador de manutenção usaria sem ML:
+# (a) a taxa histórica de falha-amanhã da própria máquina (só treino);
+# (b) persistência -- "houve falha hoje, haverá amanhã" (a contagem de falhas de hoje como score).
+from sklearn.metrics import roc_auc_score
+pm_baseline_rate_proba11 = ml.group_rate_baseline(train_pm11["MachineId"], ypm_train11, test_pm11["MachineId"])
+pm_baseline_auc11 = {
+    "taxa histórica da máquina": roc_auc_score(ypm_test11, pm_baseline_rate_proba11),
+    "persistência (falhou hoje)": roc_auc_score(ypm_test11, test_pm11["Failures"].to_numpy()),
+}
+pm_best_baseline_name11 = max(pm_baseline_auc11, key=pm_baseline_auc11.get)
+pm_vs_baseline11 = ml.baseline_verdict(pm_comparison11.loc[pm_best11, "ROC_AUC"], pm_baseline_auc11[pm_best_baseline_name11],
+                                       "ROC_AUC", higher_is_better=True)
+print("ROC-AUC das baselines:", {k: round(v, 3) for k, v in pm_baseline_auc11.items()})
+print(f"Modelo: ROC-AUC={pm_comparison11.loc[pm_best11, 'ROC_AUC']:.3f} vs. melhor baseline ({pm_best_baseline_name11}) "
+      f"-> {pm_vs_baseline11['verdict']} ({pm_vs_baseline11['relative_gain']:+.1%})")
+
 # %% [markdown]
 # Mesma lógica de custo assimétrico do classificador de qualidade de lote acima,
 # aplicada aqui: um falso positivo custa uma PM desnecessária (poucas horas de parada
@@ -7684,26 +7795,29 @@ print(f"Impacto operacional no teste ({pm_econ11['n_test']:,} máquina-dias): {p
       f"({_pm_pct_flagged:.1f}% do total) sinalizados para PM neste limiar -- {pm_econ11['false_positives']:,} "
       f"falsos positivos (PM desnecessária), {pm_econ11['false_negatives']:,} falsos negativos (falha não "
       "antecipada).")
-# `FailureTomorrow` NÃO é uma classe rara aqui ({y_pm11.mean():.1%} dos máquina-dias) -- ao
-# contrário de "poucos dias de falha em meio a muitos sem falha", a maioria dos dias JÁ é
-# de falha. Isso muda a leitura do PR-AUC: um classificador sem nenhuma habilidade real,
-# que sempre prevê a classe majoritária, já teria PR-AUC próximo da própria taxa-base
-# ({y_pm11.mean():.3f}) -- então o PR-AUC do modelo precisa ser comparado a ESSE piso, não
-# a zero, para dizer se o modelo aprendeu algo.
+# O piso "sem habilidade" do PR-AUC é a própria taxa-base de falha-amanhã: um classificador que
+# ignora as features e dá a mesma probabilidade a todo máquina-dia já alcança PR-AUC ≈ taxa-base.
+# Por isso o PR-AUC do modelo é lido contra ESSE piso, não contra zero. `FailureTomorrow` conta só
+# avarias de equipamento (mecânicas/elétricas) desde a correção de `classify_stoppage` -- falta de
+# material, de utilidades ou de operador param a máquina, mas nenhuma manutenção as preveniria.
 pm_noskill_pr_auc11 = float(y_pm11.mean())
-answer(f"ROC-AUC = {pm_comparison11.loc[pm_best11, 'ROC_AUC']:.3f} está muito perto de 0,5 (aleatório) — "
-       "capacidade discriminativa fraca, não uma demonstração forte de manutenção preditiva. PR-AUC = "
-       f"{pm_pr_auc11:.3f} parece melhor isoladamente, mas a taxa-base de falha-amanhã é "
-       f"{y_pm11.mean():.1%} — a classe positiva é MAJORITÁRIA aqui, não rara -- então um classificador "
-       f"'sem nenhuma habilidade' (sempre prevê falha) já chegaria perto de PR-AUC≈{pm_noskill_pr_auc11:.3f} só "
-       f"pela base rate; o ganho real do modelo sobre esse piso é modesto ({pm_pr_auc11 - pm_noskill_pr_auc11:+.3f}). "
-       "**Classificação honesta deste modelo: discriminação fraca/marginal, valor incremental modesto** — não "
-       "uma capacidade preditiva forte pronta para operação autônoma. Sob o custo assimétrico assumido (falha "
-       "não planejada custa 4x uma PM extra desnecessária), o limiar custo-mínimo "
-       f"({pm_econ11['best_threshold']:.2f}) fica {'abaixo' if pm_econ11['best_threshold'] < 0.5 else 'acima'} de "
-       "0,5 — um viés deliberado para mais alarmes falsos em troca de menos falhas perdidas, coerente com o "
-       "objetivo de manutenção preditiva (errar para o lado seguro custa menos que uma parada não planejada), "
-       "mas isso reduz custo esperado sob um modelo fraco — não o transforma num modelo forte.")
+pm_auc_value11 = pm_comparison11.loc[pm_best11, "ROC_AUC"]
+pm_auc_reading11 = ("muito perto de 0,5 (aleatório) — discriminação fraca" if pm_auc_value11 < 0.6 else
+                    "discriminação modesta" if pm_auc_value11 < 0.7 else
+                    "discriminação moderada" if pm_auc_value11 < 0.8 else "discriminação boa")
+pm_class_reading11 = ("a classe positiva é MAJORITÁRIA aqui" if pm_noskill_pr_auc11 > 0.5 else
+                      "a classe positiva é minoritária, mas não rara")
+answer(f"ROC-AUC = {pm_auc_value11:.3f}: {pm_auc_reading11}. PR-AUC = {pm_pr_auc11:.3f} contra um piso sem "
+       f"habilidade de {pm_noskill_pr_auc11:.3f} (taxa-base de avaria-amanhã, {pm_class_reading11}) — ganho de "
+       f"{pm_pr_auc11 - pm_noskill_pr_auc11:+.3f} sobre esse piso. Contra as regras que um planejador usaria sem ML "
+       f"(melhor baseline: {pm_best_baseline_name11}, ROC-AUC={pm_baseline_auc11[pm_best_baseline_name11]:.3f}): "
+       f"**{pm_vs_baseline11['verdict']}**. Sob o custo assimétrico assumido (avaria não planejada custa 4x uma PM "
+       f"extra desnecessária), o limiar custo-mínimo ({pm_econ11['best_threshold']:.2f}) fica "
+       f"{'abaixo' if pm_econ11['best_threshold'] < 0.5 else 'acima'} de 0,5 — um viés deliberado para mais alarmes "
+       "falsos em troca de menos avarias perdidas; isso reduz o custo esperado, mas não aumenta o poder "
+       "discriminativo do modelo. Com features só de histórico de paragens (sem vibração, temperatura, pressão ou "
+       "horas de operação), o teto deste modelo é estrutural: é um resultado sobre o DADO disponível, não só sobre "
+       "o algoritmo.")
 
 if hasattr(pm_model11, "feature_importances_"):
     pm_importance11 = pd.Series(pm_model11.feature_importances_, index=X_pm11.columns).sort_values().tail(15)
@@ -7766,6 +7880,16 @@ r2_clean11 = comparison_clean11.loc[best_clean11, "R2"]
 print(f"\nModelo A (COM ActualCycleTimeSec + Availability -- vazado): {scrap_best11}, R2 = {r2_leaky11:.3f}")
 print(f"Modelo B (SEM as features vazadas -- honesto): {best_clean11}, R2 = {r2_clean11:.3f}")
 
+# Baseline formal: a sucata % média histórica de cada máquina, medida só no treino.
+scrap_baseline_pred11 = ml.group_rate_baseline(production_scrap11.loc[train_mask11["_idx"], "MachineId"], y_train11,
+                                               production_scrap11.loc[test_mask11["_idx"], "MachineId"])
+scrap_baseline_metrics11 = ml.regression_metrics(y_test11, scrap_baseline_pred11)
+scrap_vs_baseline11 = ml.baseline_verdict(comparison_clean11.loc[best_clean11, "MAE"], scrap_baseline_metrics11["MAE"],
+                                          "MAE", higher_is_better=False)
+print(f"Baseline (sucata % histórica da máquina): MAE={scrap_baseline_metrics11['MAE']:.3f} pp, "
+      f"R2={scrap_baseline_metrics11['R2']:.3f} | Modelo B: MAE={comparison_clean11.loc[best_clean11, 'MAE']:.3f} pp "
+      f"-> {scrap_vs_baseline11['verdict']} ({scrap_vs_baseline11['relative_gain']:+.1%})")
+
 # O modelo salvo/exportado em 11.2 (`scrap_rate_model.pkl`, `ml_predictions_scrap_rate`) foi o
 # Modelo A, treinado antes desta checagem de leakage existir. Agora que sabemos que ele usa
 # features ilegítimas (não conhecíveis no momento da previsão), o artefato de produção é
@@ -7824,15 +7948,33 @@ fig.tight_layout(); fig.savefig(REPORTS_DIR / "11_04_leakage_r2_comparison.png")
 # ## Resumo — os seis modelos
 
 # %%
+down_baseline11 = down_comparison11.attrs["baseline_metrics"]
+rej_baseline11 = rej_comparison11.attrs["baseline_metrics"]
+down_verdict11 = ml.baseline_verdict(down_comparison11.loc[down_best11, "MAE"], down_baseline11["MAE"], "MAE", higher_is_better=False)
+rej_verdict11 = ml.baseline_verdict(rej_comparison11.loc[rej_best11, "MAE"], rej_baseline11["MAE"], "MAE", higher_is_better=False)
 summary_models11 = pd.DataFrame([
-    {"Modelo": "Previsão de produção", "Algoritmo": prod_best11, "Métrica": f"R²={prod_comparison11.loc[prod_best11, 'R2']:.3f}"},
-    {"Modelo": "Previsão de parada", "Algoritmo": down_best11, "Métrica": f"R²={down_comparison11.loc[down_best11, 'R2']:.3f}"},
-    {"Modelo": "Previsão de rejeitos", "Algoritmo": rej_best11, "Métrica": f"R²={rej_comparison11.loc[rej_best11, 'R2']:.3f}"},
-    {"Modelo": "Taxa de sucata", "Algoritmo": best_clean11, "Métrica": f"R²={r2_clean11:.3f} (sem leakage)"},
-    {"Modelo": "Qualidade de lote", "Algoritmo": lq_best11, "Métrica": f"ROC-AUC={lq_comparison11.loc[lq_best11, 'ROC_AUC']:.3f}"},
-    {"Modelo": "Manutenção preditiva", "Algoritmo": pm_best11, "Métrica": f"ROC-AUC={pm_comparison11.loc[pm_best11, 'ROC_AUC']:.3f}"},
+    {"Modelo": "Previsão de cumprimento do plano", "Algoritmo": prod_best11,
+     "Métrica": f"R²={prod_comparison11.loc[prod_best11, 'R2']:.3f}",
+     "Baseline": f"plano × cumprimento histórico: R²={plan_only_metrics11['R2']:.3f}", "Veredito": prod_vs_plan11["verdict"]},
+    {"Modelo": "Previsão de parada", "Algoritmo": down_best11, "Métrica": f"MAE={down_comparison11.loc[down_best11, 'MAE']:.1f} h",
+     "Baseline": f"média móvel 4 sem.: MAE={down_baseline11['MAE']:.1f} h", "Veredito": down_verdict11["verdict"]},
+    {"Modelo": "Previsão de rejeitos", "Algoritmo": rej_best11, "Métrica": f"MAE={rej_comparison11.loc[rej_best11, 'MAE']:,.0f} un.",
+     "Baseline": f"média móvel 4 sem.: MAE={rej_baseline11['MAE']:,.0f} un.", "Veredito": rej_verdict11["verdict"]},
+    {"Modelo": "Taxa de sucata", "Algoritmo": best_clean11, "Métrica": f"R²={r2_clean11:.3f} (sem leakage)",
+     "Baseline": f"sucata histórica da máquina: R²={scrap_baseline_metrics11['R2']:.3f}", "Veredito": scrap_vs_baseline11["verdict"]},
+    {"Modelo": "Qualidade de lote", "Algoritmo": lq_best11, "Métrica": f"ROC-AUC={lq_comparison11.loc[lq_best11, 'ROC_AUC']:.3f}",
+     "Baseline": f"rejeição histórica da máquina: ROC-AUC={lq_baseline_metrics11['ROC_AUC']:.3f}", "Veredito": lq_vs_baseline11["verdict"]},
+    {"Modelo": "Manutenção preditiva", "Algoritmo": pm_best11, "Métrica": f"ROC-AUC={pm_comparison11.loc[pm_best11, 'ROC_AUC']:.3f}",
+     "Baseline": f"{pm_best_baseline_name11}: ROC-AUC={pm_baseline_auc11[pm_best_baseline_name11]:.3f}", "Veredito": pm_vs_baseline11["verdict"]},
 ])
 print(summary_models11.to_string(index=False))
+summary_models11.to_csv(PROCESSED_DIR / "ml_models_vs_baseline.csv", index=False)
+n_beat11 = int(summary_models11["Veredito"].str.startswith("ML supera").sum())
+answer(f"Regra formal desta Parte: **ML só é recomendado onde supera de forma material (≥5% relativo) a regra simples "
+       f"que a fábrica já usaria sem ele**. Resultado: {n_beat11} de 6 modelos passam nesse critério. Nos demais, a "
+       "recomendação correta é a baseline — mais barata, transparente e sem manutenção de modelo — e o modelo fica "
+       "documentado como resultado negativo, que também é informação: o dataset atual não sustenta ML confiável para "
+       "essas decisões.")
 print("\nParte 11 completa — todos os seis modelos de ML treinados, avaliados, salvos e exportados ao warehouse.")
 
 # %% [markdown]
@@ -7967,9 +8109,9 @@ maior fator de variação é *qual máquina e turno* rodou a ordem (Parte 4, Se�
 si — confirmado pela Parte 10 (BQ-050): "quem/o quê" explica pouco da variância ordem-a-ordem, mas o efeito de
 máquina real aparece quando se agrega por máquina ao longo do tempo (Parte 5).
 
-**2 — Máquinas/turnos/operadores com mais variação**: IM-002 (qualidade, Cpk=0,36 — Parte 5), ISBM-005
-(disponibilidade, MTBF mais baixo da frota — Parte 4), SS-001 (MTTR caindo de forma sustentada depois da
-reforma — Parte 4; **nota** — o ajuste Weibull dedicado da Parte 9.4 dá forma k≈0,79, que NÃO sustenta desgaste
+**2 — Máquinas/turnos/operadores com mais variação**: IM-002 (qualidade, Cpk=0,36 — Parte 5), {reliability['MTBF_hours'].idxmin()}
+(disponibilidade, MTBF de avarias de equipamento mais baixo da frota, {reliability['MTBF_hours'].min():.1f} h — Parte 4), SS-001 (MTTR caindo de forma sustentada depois da
+reforma — Parte 4; **nota** — o ajuste Weibull dedicado da Parte 9.4 dá forma k≈{shape9:.2f}, que NÃO sustenta desgaste
 clássico [k>1] e não deve ser usado como base de um intervalo de manutenção preventiva) e OP-INJ-003
 (inconsistência de PROCESSO, não viés de média — Parte 5/Bartlett; confirmado sinal real de
 processo, não artefato de instrumento de medição, pela Parte 9/Gage R&R) são os quatro nomes que se repetem de forma independente em
@@ -7985,9 +8127,12 @@ mediana; o resto não mostra esse sinal, consistente com a dependência de amost
 **0% dos grupos máquina×molde×característica de tampa cravam Cpk ≥ 1,33** (Parte 5) — a planta é amplamente
 marginal, não "capaz com algumas exceções".
 
-**5 — Principais perdas e onde priorizar**: Quebras (falha não planejada) domina as Seis Grandes Perdas em
-agregado, mas a categoria dominante muda por processo (Parte 4) — não existe uma única correção de planta
-inteira. Custo da Qualidade (Parte 3B/6): Avaliação domina
+**5 — Principais perdas e onde priorizar**: **{plantwide_losses.idxmax()}** é a maior das Seis Grandes Perdas
+em agregado ({plantwide_losses.max():,.0f} h), seguida de **{plantwide_losses.drop(plantwide_losses.idxmax()).idxmax()}**
+({plantwide_losses.drop(plantwide_losses.idxmax()).max():,.0f} h); avarias de equipamento somam
+{plantwide_losses['Quebras (falha não planejada)']:,.0f} h — a máquina para mais à espera (material, utilidades, operador,
+microparagens) do que avariada. A categoria dominante muda por processo (Parte 4) — não existe uma única correção
+de planta inteira. Custo da Qualidade (Parte 3B/6): Avaliação domina
 (€ {charter_s['cost_of_quality_eur']['Avaliação']:,.0f}, {100*charter_s['cost_of_quality_eur']['Avaliação']/charter_s['cost_of_quality_total_eur']:.1f}%
 do total), e Falha Externa excede Falha Interna — um sinal de alerta sobre a proteção real da amostragem AQL,
 não uma tranquilidade.
@@ -8014,7 +8159,8 @@ detalhe) — desvios de volume semanal são antecipáveis com defasagens simples
 é antecipável para máquinas com taxa-base extrema ({easiest['MachineId']}) e genuinamente difícil para máquinas
 perto de 50/50 e com alta variação mês a mês ({hardest['MachineId']}); reclamações de clientes não mostraram
 indicador antecedente agregado detectável.
-Os seis modelos de ML (Parte 11) tornam três dessas respostas prospectivas, não só históricas.
+Os seis modelos de ML (Parte 11) tornam essas respostas prospectivas, mas só {n_beat11} de 6 supera de forma
+material a regra simples que a fábrica usaria sem ML — nos outros, a recomendação é a baseline.
 """))
 
 # %% [markdown]
@@ -8041,7 +8187,12 @@ quality_risk_raw = pd.DataFrame(quality_risk_raw).join((1 - fpy_by_machine["FPY"
 maintenance_risk_raw = pd.DataFrame({"MTBF_Inverso": 1 / reliability["MTBF_hours"], "Beta_Weibull": weibull_fit["Beta_forma"]})
 production_risk_raw = pd.DataFrame({"OEE_Inverso": 1 - production.groupby("MachineId")["OEE"].mean()})
 complaints_by_machine_12 = complaints_with_machine.groupby("MachineId").size().rename("ContagemReclamacao")
-customer_risk_raw = pd.DataFrame({"ContagemReclamacao": complaints_by_machine_12})
+# Reclamações POR MILHÃO DE UNIDADES PRODUZIDAS, não contagem bruta: a contagem penalizava quem produz
+# mais (e quem tem mais meses de histórico) e favorecia as 4 máquinas da expansão, com ~6 meses de dado.
+produced_by_machine_12 = production.groupby("MachineId")["ProducedQty"].sum()
+customer_risk_raw = pd.DataFrame({
+    "ReclamacoesPorMilhao": (complaints_by_machine_12.reindex(produced_by_machine_12.index).fillna(0)
+                             / produced_by_machine_12 * 1_000_000)})
 
 risk_components = quality_risk_raw.join(maintenance_risk_raw).join(production_risk_raw).join(customer_risk_raw).fillna(0)
 
@@ -8055,7 +8206,7 @@ risk_score = pd.DataFrame({
     "Qualidade": risk_norm[["DefectRate", "FPY_Inverso"]].mean(axis=1),
     "Manutenção": risk_norm[["MTBF_Inverso", "Beta_Weibull"]].mean(axis=1),
     "Produção": risk_norm["OEE_Inverso"],
-    "Cliente": risk_norm["ContagemReclamacao"],
+    "Cliente": risk_norm["ReclamacoesPorMilhao"],
 })
 risk_score["RiskScore"] = sum(risk_score[cat] * w for cat, w in RISK_WEIGHTS.items())
 risk_score = risk_score.sort_values("RiskScore", ascending=False)
@@ -8278,9 +8429,10 @@ mesma verba desta recomendação.
 # 1. **Processamento pesado** (OEE, Weibull) roda hoje em Python/pandas — em escala de
 #    produção, migrar para stored procedures SQL ou orquestração (ex.: Databricks Jobs)
 #    reduziria footprint de memória e tempo de execução.
-# 2. **`IsCapable`** (Seção 5.3b) classifica pelo Cpk mais recente, sem alertar sobre
-#    QUEDAS bruscas de Cpk — um complemento útil à classificação atual, não uma
-#    substituição dela.
+# 2. **`IsCapable`** (gold `cpk_summary_by_characteristic`, Parte 3.7) já classifica pelo Cpk
+#    de uma janela móvel dos últimos 25 subgrupos e a Parte 3.7 conta os grupos cuja capacidade
+#    recente caiu mais de 0,2 abaixo da do período; o próximo passo é transformar essa contagem
+#    num alerta operacional (ex.: e-mail/andon quando um grupo cruza o limiar), não só num número.
 # 3. **Weibull (Seção 9.4)** usa tempo-entre-falhas em horas de calendário, não horas de
 #    operação efetiva (`RunTimeHours`) — a limitação já é declarada ali; o próximo passo
 #    concreto é recalcular a exposição usando `RunTimeHours` acumulado por máquina, não

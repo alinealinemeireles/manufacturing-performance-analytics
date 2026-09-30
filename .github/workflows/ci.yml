@@ -1,0 +1,35 @@
+name: CI
+
+# Runs on every push/PR: lint, unit tests (OEE, Six Big Losses, SPC/capability, Western
+# Electric, ML validation discipline, data-quality engine), data tests on the versioned
+# bronze/dim data (referential integrity, product-release rules) and the documentation drift
+# test (docs/dataset_facts.md and README counts). The full notebook needs SQL Server, so it is
+# not executed here; its Data Quality Gate runs the same contract locally (Parte 2).
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      - name: System ODBC library (pyodbc links against it at install time)
+        run: sudo apt-get update && sudo apt-get install -y unixodbc-dev
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Lint
+        run: ruff check lib tests scripts
+
+      - name: Tests
+        run: pytest -v

@@ -25,8 +25,8 @@ Run: python scripts/generate_expansion_v01.py
 """
 from __future__ import annotations
 
-import sys
 import hashlib
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -864,6 +864,10 @@ for pid in CAP_PRODUCTS:
 
 
 def gen_sales(new_production_df, donor_sales_prices):
+    # Known defect, corrected downstream by scripts/fix_expansion_sales_release.py (run after
+    # this script): ships regardless of lot disposition, on the production date itself, with a
+    # hard-coded shift digit in LotId. Kept as-is so the deterministic RNG sequence -- which the
+    # later fix-up passes re-derive -- does not change.
     rows = []
     for r in new_production_df.itertuples(index=False):
         if RNG.random() > 0.55:  # not every lot ships as its own sales order in the sample window
